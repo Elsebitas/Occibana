@@ -1,6 +1,7 @@
 import { Login } from './../../_model/Login';
 import { LoginService } from './../../_service/login.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,26 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   login : Login;
+  loginForm: FormGroup;
 
-  constructor(private loginService:LoginService) { }
+  constructor(private formBuilder:FormBuilder,private loginService:LoginService) { }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      Usuario:['', [ Validators.required ] ],
+      Contrasena:['', [ Validators.required ] ],
+    })
   }
 
-  postIngresoLogin(){
-    this.loginService.postIngresoLogin(this.login).subscribe(data =>{
-      console.log(data)
+  onFromSubmit(f:NgForm){
+    let login = f.value;
+    console.log(f.value);
+    this.postIngresoLogin(login);
+  }
+
+  postIngresoLogin(login: Login){
+    this.loginService.postIngresoLogin(login).subscribe(data =>{
+      console.log(data);
     })
   }
 

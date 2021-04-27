@@ -2,12 +2,12 @@
     <mat-card > 
         <mat-card-content>
             
-            <form>
+            <form #myFrom="ngForm" (ngSubmit)="onFromSubmit(myFrom)">
                 <h2>Iniciar Sesión</h2>
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Usuario</mat-label>
-                        <input  matInput placeholder="Usuario" [(ngModel)]="login.Usuario">
+                        <input  matInput name="Usuario" placeholder="Usuario" value="" ngModel>
                     </mat-form-field>
 
                 </p>
@@ -15,12 +15,12 @@
             
                     <mat-form-field appearance="outline">
                         <mat-label>Contraseña</mat-label>
-                        <input matInput type="password" placeholder="Contraseña" [(ngModel)]="login.Contrasena">
+                        <input matInput name="Contrasena" type="password" placeholder="Contraseña" value="" ngModel>
                     </mat-form-field>     
 
                 </p> 
                                
-                <button mat-raised-button style="cursor: pointer" (click)="postIngresoLogin()" color="primary">
+                <button mat-raised-button style="cursor: pointer" color="primary">
                     Iniciar Sesión
                 </button>  
             </form>     
