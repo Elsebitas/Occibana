@@ -1,7 +1,10 @@
+import { environment } from './../../../environments/environment';
 import { Login } from './../../_model/Login';
-import { LoginService } from './../../_service/login.service';
+import { LoginService } from '../../_service/registroLogin.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,7 @@ export class LoginComponent implements OnInit {
   login : Login;
   loginForm: FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private loginService:LoginService) { }
+  constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -31,6 +34,14 @@ export class LoginComponent implements OnInit {
   postIngresoLogin(login: Login){
     this.loginService.postIngresoLogin(login).subscribe(data =>{
       console.log(data);
+      sessionStorage.setItem(environment.TOKEN, data);
+      const helper = new JwtHelperService();
+
+      const decodedToken = helper.decodeToken(data);
+      const expirationDate = helper.getTokenExpirationDate(data);
+      const isExpired = helper.isTokenExpired(data); 
+      console.log(decodedToken.name);
+      this.router.navigate(['/inicio']);
     })
   }
 
