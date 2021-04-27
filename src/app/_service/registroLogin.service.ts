@@ -15,10 +15,10 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class RegistroLoginService {
 
   private url: string = `${environment.HOST}/registroLogin/`;
-  
+  private url2: string = `${environment.HOST}/perfil/`;
 
   constructor( private http: HttpClient) { }
 
@@ -28,6 +28,10 @@ export class LoginService {
     //console.log(Body);
     /*Body,{'headers': Headers}*/
     return this.http.post<any>(this.url + 'postIngresoLogin', login, httpOptions);
+  }
+
+  postCerrarSesion(usuario: string) {
+    return this.http.post(this.url2 + 'postCerrarSesion', usuario);
   }
 
 }

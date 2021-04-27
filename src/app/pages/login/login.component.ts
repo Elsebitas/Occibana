@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment';
 import { Login } from './../../_model/Login';
-import { LoginService } from '../../_service/registroLogin.service';
+import { RegistroLoginService } from '../../_service/registroLogin.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   login : Login;
   loginForm: FormGroup;
 
-  constructor(private formBuilder:FormBuilder,private loginService:LoginService, private router: Router) { }
+  constructor(private formBuilder:FormBuilder,private loginService:RegistroLoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
