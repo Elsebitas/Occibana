@@ -1,9 +1,8 @@
-<div>
-    <mat-card > 
+<div >
+    <mat-card class="sombra" > 
         <mat-card-content>
-            
             <form #myFrom="ngForm" (ngSubmit)="onFromSubmit(myFrom)">
-                <h2>Iniciar Sesión</h2>
+                <h2 class="h2">Iniciar Sesión</h2>
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Usuario</mat-label>
@@ -19,10 +18,22 @@
                     </mat-form-field>     
 
                 </p> 
-                               
+                 
+                <p> 
                 <button mat-raised-button style="cursor: pointer" color="primary">
                     Iniciar Sesión
                 </button>  
+                </p> 
+
+                <p>    
+                <button mat-raised-button style="cursor: pointer" color="primary">
+                    Olvide mi contraseña
+                </button>  
+                </p> 
+
+                <button mat-raised-button style="cursor: pointer" color="primary">
+                    ¿No estas registrado? Registrar Ahora
+                </button>
             </form>     
 
         </mat-card-content> 

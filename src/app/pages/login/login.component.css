@@ -1,9 +1,25 @@
 mat-card {
+    background-color:white;
     max-width: 400px;
     margin: 2em auto;
     text-align: center;
+    margin-top: 5%;
   }
-  
+
+  .sombra{
+    box-shadow: 1px 1px 1px 1px #aaaaaa;
+  }
+
+  .h2{
+    color: #545454;
+  }
+
   mat-form-field {
+    
     display: block;
   }
+
+  .mat-raised-button{
+    width: 100%;
+  }
+  
