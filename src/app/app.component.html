@@ -5,7 +5,8 @@
       <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
       <mat-icon *ngIf="sidenav.opened">close</mat-icon>
     </button>-->
-
+    
+    <img src="assets/logo.jpg" width="100" style="margin-left: 20px;">
     <span>Occibana</span>
     <span class="example-spacer"></span>
 
@@ -18,7 +19,7 @@
         <mat-icon>account_box</mat-icon>
         <span>Login</span>
       </button>
-      <button mat-menu-item routerLink="/inicio">
+      <button mat-menu-item routerLink="/inicio" (click)="postCerrarSesion()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Cerrar Sesión</span>
       </button>

@@ -1,4 +1,5 @@
-export class Login{
-    usuario: string;
-    contrasena: string;
+
+export interface Login{
+    Usuario: string;
+    Contrasena: string;
 }

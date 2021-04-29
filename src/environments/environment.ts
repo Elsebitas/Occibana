@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  HOST: 'http://18.230.178.121:8081/api'
+  HOST: 'http://18.230.178.121:8081/api',
+  TOKEN: 'access_token'
 };
 
 /*

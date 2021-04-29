@@ -1,14 +1,41 @@
-<div>
-    <mat-card > 
+<div >
+    <mat-card class="sombra" > 
         <mat-card-content>
-            <mat-tab-group>
-                <mat-tab label="First">
-                    
-                </mat-tab>
-                <mat-tab label="Second">Content 2</mat-tab>
-                <mat-tab label="Third">Content 3</mat-tab>
-            </mat-tab-group>  
-                     
+            <form #myFrom="ngForm" (ngSubmit)="onFromSubmit(myFrom)">
+                <h2 class="h2">Iniciar Sesión</h2>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <input  matInput name="Usuario" placeholder="Usuario" value="" ngModel>
+                    </mat-form-field>
+
+                </p>
+                <p>
+            
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput name="Contrasena" type="password" placeholder="Contraseña" value="" ngModel>
+                    </mat-form-field>     
+
+                </p> 
+                 
+                <p> 
+                <button mat-raised-button style="cursor: pointer" color="primary">
+                    Iniciar Sesión
+                </button>  
+                </p> 
+
+                <p>    
+                <button mat-raised-button style="cursor: pointer" color="primary">
+                    Olvide mi contraseña
+                </button>  
+                </p> 
+
+                <button mat-raised-button style="cursor: pointer" color="primary">
+                    ¿No estas registrado? Registrar Ahora
+                </button>
+            </form>     
+
 
         </mat-card-content> 
     </mat-card>

@@ -1,17 +1,25 @@
 mat-card {
+    background-color:white;
     max-width: 400px;
     margin: 2em auto;
     text-align: center;
+    margin-top: 5%;
   }
-  
+
+  .sombra{
+    box-shadow: 1px 1px 1px 1px #aaaaaa;
+  }
+
+  .h2{
+    color: #545454;
+  }
+
   mat-form-field {
     display: block;
   }
 
-  .example-tab-icon {
-    margin-right: 8px;
+  .mat-raised-button{
+    width: 100%;
   }
+  
 
-  .mat-tab-group {
-    margin-bottom: 48px;
-  }
