@@ -11,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class InicioComponent implements OnInit {
 
   public listaDeHotelesDestacados:any = []; 
+  dataSource = new MatTableDataSource<HotelesDestacados>();
 
 
 
@@ -21,5 +22,8 @@ export class InicioComponent implements OnInit {
       this.listaDeHotelesDestacados = data; 
       console.log(data);
     });
+  }
+  applyFilter(filtro: string) {
+    this.listaDeHotelesDestacados.filter = filtro.trim().toLowerCase();
   }
 }

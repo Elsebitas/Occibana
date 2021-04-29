@@ -15,10 +15,12 @@ export class LoginComponent implements OnInit {
 
   login : Login;
   loginForm: FormGroup;
+  error: string;
 
   constructor(private formBuilder:FormBuilder,private loginService:RegistroLoginService, private router: Router) { }
 
   ngOnInit(): void {
+    this.error = null;
     this.loginForm = this.formBuilder.group({
       Usuario:['', [ Validators.required ] ],
       Contrasena:['', [ Validators.required ] ],
@@ -42,7 +44,14 @@ export class LoginComponent implements OnInit {
       const isExpired = helper.isTokenExpired(data); 
       console.log(decodedToken.name);
       this.router.navigate(['/inicio']);
-    })
+    }, err =>{
+      console.log(err);
+      if(err.status == 500) {
+        this.error = 'Usuario y/o cotrasena inconrrecta';
+      } else {
+        //this.router.navigate([`/error/${err.status}/${err.statusText}`]);
+      }
+  })
   }
 
 }
