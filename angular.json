@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "occibana"
+  "defaultProject": "occibana",
+  "cli": {
+    "analytics": false
+  }
 }

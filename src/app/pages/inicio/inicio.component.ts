@@ -1,5 +1,7 @@
+import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-inicio',
@@ -8,12 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
+  public listaDeHotelesDestacados:any = []; 
+
+
+
   constructor(private listasService: ListasService) { }
 
   ngOnInit(): void {
-    this.listasService.getListasZonas().subscribe(data =>{
+    this.listasService.getHotelesDestacados().subscribe(data =>{
+      this.listaDeHotelesDestacados = data; 
       console.log(data);
-    })
+    });
   }
-
 }

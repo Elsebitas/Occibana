@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,6 +11,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [],
@@ -23,7 +27,11 @@ import {MatCardModule} from '@angular/material/card';
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatTableModule,
+    FlexLayoutModule
+    
   ], exports:[
     MatButtonModule,
     MatIconModule,
@@ -33,7 +41,10 @@ import {MatCardModule} from '@angular/material/card';
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatTableModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule { }

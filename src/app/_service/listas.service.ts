@@ -1,3 +1,4 @@
+import { HotelesDestacados } from './../_model/HotelesDestacados';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -14,6 +15,10 @@ export class ListasService {
 
   getListasZonas(){
     return this.http.get<Listas[]>(`${this.url}getListasZonas`);
+  }
+
+  getHotelesDestacados(){
+    return this.http.get<HotelesDestacados[]>(`${this.url}getHotelesDestacados`);
   }
 
 }

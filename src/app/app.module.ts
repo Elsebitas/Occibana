@@ -10,11 +10,13 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InicioComponent,    
+    InicioComponent,
+        
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
