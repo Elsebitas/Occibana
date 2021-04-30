@@ -1,3 +1,6 @@
+/**
+ * Clase que mapea el servicio de postHotelesPrincipal
+ */
 export class HotelesPrincipales{
     idhotel : number = 1;
     nombre : string = "sample string 2";
