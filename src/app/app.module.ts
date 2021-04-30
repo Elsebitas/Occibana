@@ -10,12 +10,14 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InicioComponent,
+    Error404Component,
         
   ],
   imports: [
