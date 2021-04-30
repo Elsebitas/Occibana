@@ -11,14 +11,38 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+/**
+ * Clase del componente Login que implementa OnInit.
+ */
 export class LoginComponent implements OnInit {
 
+  /**
+   * Variable que instancia el objeto Login.
+   */
   login : Login;
+
+  /**
+   * Variable que instancia el objeto FormGroup.
+   */
   loginForm: FormGroup;
+
+  /**
+   * Variable que almacena el error.
+   */
   error: string;
 
+  /**
+   * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
+   * 
+   * @param formBuilder recibe el objeto FormBuilder.
+   * @param loginService recibe el objeto RegistroLoginService.
+   * @param router recibe el objeto Router.
+   */
   constructor(private formBuilder:FormBuilder,private loginService:RegistroLoginService, private router: Router) { }
 
+  /**
+   * Método que instancia el formulario con sus validaciones.
+   */
   ngOnInit(): void {
     this.error = null;
     this.loginForm = this.formBuilder.group({
@@ -27,12 +51,22 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  /**
+   * Método que recibe un formulario y ejecuta el método postIngresoLogin.
+   * 
+   * @param f recibe el NgForm.
+   */
   onFromSubmit(f:NgForm){
     let login = f.value;
     console.log(f.value);
     this.postIngresoLogin(login);
   }
 
+  /**
+   * Método que consume el servicio de postIngresoLogin, almacena el token y muestra el error.
+   * 
+   * @param login recibe el objeto de la clase Login.
+   */
   postIngresoLogin(login: Login){
     this.loginService.postIngresoLogin(login).subscribe(data =>{
       console.log(data);

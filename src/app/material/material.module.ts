@@ -14,9 +14,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 
-
-
-
+/**
+ * Modulo donde se realizan importaciones de AngularMaterial.
+ * 
+ * @module NgModule
+ */
 @NgModule({
   declarations: [],
   imports: [

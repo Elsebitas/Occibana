@@ -13,6 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
 
+/**
+ * Modulo donde se realizan importaciones de funcionalidad.
+ * 
+ * @module NgModule
+ */
 @NgModule({
   declarations: [
     AppComponent,

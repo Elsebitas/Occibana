@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+
   production: false,
+
+  /**
+   * Variable que indica la URL de la API.
+   */
   HOST: 'http://18.230.178.121:8081/api',
+
+  /**
+   * Variable que indica el token.
+   */
   TOKEN: 'access_token'
 };
 

@@ -1,3 +1,6 @@
+/**
+ * Clase que mapea el servicio de getHotelesDestacados
+ */
 export class HotelesDestacados{
     idhotel: number; 
     idmunicipio: number; 
