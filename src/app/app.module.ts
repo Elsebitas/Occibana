@@ -10,12 +10,14 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InicioComponent,
+    FiltroHotelesPipe,
         
   ],
   imports: [

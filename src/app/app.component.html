@@ -1,25 +1,25 @@
 <div class="example-container">
-  <mat-toolbar  color = "primary" class="example-toolbar">
-    
-    <!--<button mat-icon-button color (click)="sidenav.toggle()">
-      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
-    </button>-->
+  <mat-toolbar  color = "primary" class="example-toolbar">    
+  
     
     <img src="assets/logo.jpg" width="100" style="margin-left: 20px;">
-    <span>Occibana</span>
+    <!--<span>Occibana</span>-->
     <span class="example-spacer"></span>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button mat-raised-button routerLink="/inicio" style="cursor: pointer" color="primary">
+      Inicio
+    </button>  
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">      
       <mat-icon>more_vert</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/login">
+      <button mat-menu-item *ngIf="usuario == null" routerLink="/login">
         <mat-icon>account_box</mat-icon>
         <span>Login</span>
       </button>
-      <button mat-menu-item routerLink="/inicio" (click)="postCerrarSesion()">
+      <button mat-menu-item *ngIf="usuario != null" routerLink="/inicio" (click)="postCerrarSesion()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Cerrar Sesión</span>
       </button>
@@ -28,35 +28,5 @@
   </mat-toolbar >
 
   <router-outlet></router-outlet>
-  
-  <!--<mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #sidenav style="width: 200px">
-
-      <img src="assets/Escudo_udec.png" width="128" style="margin-left: 20px">
-
-      <button mat-menu-item style="cursor: pointer" routerLink="/buscar" (click)="sidenav.toggle()">
-        <mat-icon>search</mat-icon>
-        <span>Buscar</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item style="cursor: pointer" routerLink="/profesor" (click)="sidenav.toggle()">
-        <mat-icon>perm_identity</mat-icon>
-        <span>Profesor</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item style="cursor: pointer" routerLink="/estudiante" (click)="sidenav.toggle()">
-        <mat-icon>face</mat-icon>
-        <span>Estudiante</span>
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item style="cursor: pointer" routerLink="/consulta" (click)="sidenav.toggle()">
-        <mat-icon>api</mat-icon>
-        <span>Consulta</span>
-      </button>
-
-
-    </mat-sidenav>
-
-  </mat-sidenav-container>-->
 
 </div>

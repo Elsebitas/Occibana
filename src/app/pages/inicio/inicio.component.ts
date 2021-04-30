@@ -12,13 +12,15 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class InicioComponent implements OnInit {
 
+
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
-
+ 
   hotelesPrincipales : HotelesPrincipales;
   public listaDeHotelesPrincipales:any = []; 
 
+  searchText:string;
 
 
   constructor(private listasService: ListasService, fb: FormBuilder) { 
@@ -33,9 +35,5 @@ export class InicioComponent implements OnInit {
       this.listaDeHotelesPrincipales = data; 
       console.log(data);
     });
-  }
-
-  applyFilter(filtro : string){
-      
   }
 }

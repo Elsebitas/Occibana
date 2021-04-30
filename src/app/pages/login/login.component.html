@@ -18,6 +18,9 @@
                     </mat-form-field>     
 
                 </p> 
+                <p>
+                    <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
+                </p>
                  
                 <p> 
                 <button mat-raised-button style="cursor: pointer" color="primary">

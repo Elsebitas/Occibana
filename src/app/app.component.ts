@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from './../environments/environment';
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { RegistroLoginService } from './../app/_service/registroLogin.service';
 
 @Component({
@@ -9,10 +8,14 @@ import { RegistroLoginService } from './../app/_service/registroLogin.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements DoCheck{
   title = 'occibana';
+  usuario: string;
 
   constructor(private registroLogin: RegistroLoginService, private router: Router) {}
+  ngDoCheck(): void {
+    this.usuario = sessionStorage.getItem(environment.TOKEN);
+  }
 
   postCerrarSesion() {
     const usuario = sessionStorage.getItem(environment.TOKEN);

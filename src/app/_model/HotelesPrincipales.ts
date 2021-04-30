@@ -1,6 +1,7 @@
 export class HotelesPrincipales{
     idhotel : number = 1;
-    nombrehotel : string = "sample string 2";
+    nombre : string = "sample string 2";
+    precionoche : number = 1.1; 
     preciomax : number = 1.1;
     preciomin : number = 1.1; 
     numpersonas : number = 1;

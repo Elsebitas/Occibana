@@ -2,12 +2,12 @@
   <div >
     <mat-form-field class="filter" appearance="fill" [floatLabel]="floatLabelControl.value">
       <mat-label>Consultar hotel</mat-label>
-      <input matInput placeholder="Escriba el nombre del hotel">
+      <input matInput [(ngModel)] = "searchText"  placeholder="Escriba el nombre del hotel">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
   <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
-    <ng-container *ngFor="let card of listaDeHotelesPrincipales">
+    <ng-container *ngFor="let card of listaDeHotelesPrincipales | filtroHoteles : searchText">
       <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)"
         fxFlex.lt-sm="100%">
         <img mat-card-image src=".\assets\images\hotel1.jpg" alt="Photo of a Shiba Inu">
