@@ -1,3 +1,4 @@
+import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
 import { HotelesPrincipales } from './../_model/HotelesPrincipales';
 import { HotelesDestacados } from './../_model/HotelesDestacados';
@@ -63,6 +64,15 @@ export class ListasService {
   postHolelesPrincipales(hotelesPrincipales:HotelesPrincipales): Observable<any>{
     return this.http.post<any>(this.url + 'postHotelesPrincipal', hotelesPrincipales, httpOptions)
 
+  }
+  /**
+   * Método que recibe el objeto de la clase ObtenerComentarios.
+   * 
+   * @param obtenerComentarios recibe el objeto ObtenerComentarios.
+   * @returns la respuesta del servicio.
+   */
+  postObtenerComentarios(obtenerComentarios: ObtenerComentarios): Observable<any>{
+    return this.http.post<any>(this.url + 'postObtenerComentarios', obtenerComentarios, httpOptions) 
   }
 
 }
