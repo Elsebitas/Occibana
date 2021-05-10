@@ -1,7 +1,7 @@
 <div>
     <mat-card class="sombra">
         <mat-card-content>
-            <form #myFrom="ngForm" (ngSubmit)="onFromSubmit(myFrom)">
+            <form #myForm="ngForm" (ngSubmit)="onFromSubmit(myForm)">
                 <h2 class="h2">Iniciar Sesión</h2>
                 <p>
                     <mat-form-field appearance="outline">
@@ -11,7 +11,6 @@
 
                 </p>
                 <p>
-
                     <mat-form-field appearance="outline">
                         <mat-label>Contraseña</mat-label>
                         <input matInput name="Contrasena" type="password" placeholder="Contraseña" value="" ngModel>
