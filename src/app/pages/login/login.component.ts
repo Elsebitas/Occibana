@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
     }, err =>{
       console.log(err);
       if(err.status == 401) {
-        this.error = 'Usuario y/o cotrasena inconrrecta';
+        this.error = 'Usuario y/o cotrasena incorrecta';
       } else {
         //this.router.navigate([`/error/${err.status}/${err.statusText}`]);
       }

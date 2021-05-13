@@ -1,0 +1,27 @@
+.content {
+    align-items: center;
+    margin: 2em auto;
+    width: 1300px;
+    height: 1300px;
+  }
+
+  .reservaTitle {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  div.w-33 {
+    width: 100%;
+    margin: 20px;
+  }
+  
+  div.center {
+    text-align: center;
+  }
+
+  .boton {
+    margin-right: 10px;
+  }

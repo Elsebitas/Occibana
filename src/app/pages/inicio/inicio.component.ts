@@ -1,9 +1,12 @@
+import { HotelComponent } from './../hotel/hotel.component';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { NavigationExtras, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-inicio',
@@ -51,12 +54,14 @@ export class InicioComponent implements OnInit {
    * @param listasService recibe el objeto ListasService.
    * @param fb recibe el objeto FormBuilder.
    */
-  constructor(private listasService: ListasService, fb: FormBuilder) { 
+  constructor(private listasService: ListasService, fb: FormBuilder, private router: Router) { 
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
+      
     });
   }
+
 
   /**
    * Método que inicia el servicio postHolelesPrincipales con su suscripción.
@@ -66,5 +71,12 @@ export class InicioComponent implements OnInit {
       this.listaDeHotelesPrincipales = data; 
       console.log(data);
     });
+  }
+ 
+  mostrarHotel(card){
+    this.hotelesPrincipales = new HotelesPrincipales();                                                                            
+    this.hotelesPrincipales.idhotel = card;
+    this.router.navigate(['/hotel'], { state:{ idhotel: card} });
+
   }
 }
