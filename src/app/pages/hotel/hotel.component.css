@@ -1,0 +1,10 @@
+.example-card {
+    max-width: 500px;
+    margin: 2em auto;
+
+  }
+  
+  .example-header-image {
+    background-image: url("https://cdn.discordapp.com/attachments/715325854384652339/842209037721534534/unknown.png");
+    background-size: cover;
+  }

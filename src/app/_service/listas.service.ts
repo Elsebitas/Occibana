@@ -71,8 +71,8 @@ export class ListasService {
    * @param obtenerComentarios recibe el objeto ObtenerComentarios.
    * @returns la respuesta del servicio.
    */
-  postObtenerComentarios(obtenerComentarios: ObtenerComentarios): Observable<any>{
-    return this.http.post<any>(this.url + 'postObtenerComentarios', obtenerComentarios, httpOptions) 
+  postObtenerComentarios(hotelesPrincipales:HotelesPrincipales): Observable<any>{
+    return this.http.post<any>(this.url + 'postObtenerComentarios', hotelesPrincipales, httpOptions) 
   }
 
 }

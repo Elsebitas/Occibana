@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
 import { HotelComponent } from './pages/hotel/hotel.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -27,6 +28,7 @@ import { HotelComponent } from './pages/hotel/hotel.component';
     Error404Component,
     FiltroHotelesPipe,
     HotelComponent,
+    PerfilComponent,
         
   ],
   imports: [
