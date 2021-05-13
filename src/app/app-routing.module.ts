@@ -1,3 +1,4 @@
+import { GuardianService } from './_service/guardian.service';
 import { Error404Component } from './pages/error404/error404.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -11,7 +12,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: 'perfil', component: PerfilComponent},
+  {path: 'perfil', component: PerfilComponent, canActivate: [GuardianService]}, //Guardian
   {path: '', component: InicioComponent},
   {path: '**', component: Error404Component},
 ];

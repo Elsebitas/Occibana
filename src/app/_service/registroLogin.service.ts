@@ -1,3 +1,4 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Login } from '../_model/Login';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -56,4 +57,20 @@ export class RegistroLoginService {
     return this.http.post(this.url2 + 'postCerrarSesion', usuario);
   }
 
+  estaLogueado(): number {
+    let token = sessionStorage.getItem(environment.TOKEN);
+    if(token != null){
+      const helper = new JwtHelperService();
+      const isExpired = helper.isTokenExpired(token);
+      if(isExpired == true){
+        console.log("TOKEN EXPIRADO");
+        return 2;
+      }else{
+        console.log("TOKEN VALIDO");
+        return 1;
+      }
+    }else{
+      return 0;
+    }
+  }
 }
