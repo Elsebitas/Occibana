@@ -1,0 +1,29 @@
+table{    
+    width:100%;
+}
+.tdPicture{    
+    width:20%;
+}
+.imagen{
+    margin-left: 8%;
+    margin-top: 10%;
+}
+.imagen img{
+    width:250px;
+    height:250px;
+    border-radius:150px;
+}
+.menu{
+    position: absolute;
+    margin-top: 5%;
+}
+.correo{
+    display: inline;
+}
+.correo div{
+    position: absolute;
+}
+.correoTx{
+    margin-top: 0.2%;
+    margin-left: 2%;
+}
