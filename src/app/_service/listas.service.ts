@@ -7,14 +7,6 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Listas } from '../_model/Listas';
 
-/**
- * Variable constante que especifica el tipo de archivo que se quiere enviar.
- */
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',  
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +53,7 @@ export class ListasService {
    * @returns la respuesta del servicio.
    */
   postHolelesPrincipales(hotelesPrincipales:HotelesPrincipales): Observable<any>{
-    return this.http.post<any>(this.url + 'postHotelesPrincipal', hotelesPrincipales, httpOptions)
+    return this.http.post<any>(this.url + 'postHotelesPrincipal', hotelesPrincipales)
 
   }
 

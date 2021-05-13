@@ -2,20 +2,27 @@ table{
     width:100%;
 }
 .tdPicture{    
+    position: Block;
+    padding-left: 2%;
     width:20%;
 }
 .imagen{
-    margin-left: 8%;
     margin-top: 10%;
 }
 .imagen img{
-    width:250px;
-    height:250px;
+    margin-top: 5%;
+    width:200px;
+    height:200px;
     border-radius:150px;
+}
+.linea{
+    position: absolute;
+    background-color: gray;
+    width: 10px;
 }
 .menu{
     position: absolute;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .correo{
     display: inline;
@@ -27,3 +34,26 @@ table{
     margin-top: 0.2%;
     margin-left: 2%;
 }
+.salto{    
+    display: none;
+}
+
+.green-icon{
+    color: greenyellow;
+}
+.red-icon{
+    color: red;
+}
+.orange-icon{
+    color: orange;
+}
+
+.example-card {
+    max-width: 400px;
+    margin: 2em auto;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

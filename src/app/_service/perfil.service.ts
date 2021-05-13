@@ -1,3 +1,4 @@
+import { CargarDatosPerfil } from './../_model/CargarDatosPerfil';
 import { DatosPerfil } from '../_model/DatosPerfil';
 import { environment } from './../../environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -21,9 +22,9 @@ export class PerfilService {
 
   constructor(private http: HttpClient) { }
 
-  postCargarDatosPerfil(datosPerfil: DatosPerfil): Observable<any>{
+  postCargarDatosPerfil(datosPerfil: DatosPerfil): Observable<CargarDatosPerfil>{
     //httpOptions.headers.set('Authorization', sessionStorage.getItem(environment.TOKEN));
     //console.log("service "+ usuario);
-    return this.http.post<any>(this.url + 'postCargarDatosPerfil', datosPerfil, httpOptions);
+    return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil, httpOptions);
   }
 }

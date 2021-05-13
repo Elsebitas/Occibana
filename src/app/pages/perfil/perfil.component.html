@@ -1,51 +1,66 @@
 <table>
     <td class="tdPicture">
+        <div class="linea"></div>
         <div class="imagen">
             <img mat-card-image src=".\assets\images\hotel1.jpg">
+            <!--<img mat-card-image src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">-->
         </div>
-        <div>
-            <h1>Tatan Gono</h1>
-            <h2>tatan</h2>
+        <div *ngIf="cargarDatosPerfil">
+            <h1>{{cargarDatosPerfil.datos.nombre}} {{cargarDatosPerfil.datos.apellido}}</h1>
+            <h2>@{{cargarDatosPerfil.datos.usuario}}</h2>
         </div>
         <div class="correo">
             <div>
                 <mat-icon>email</mat-icon>
             </div>
             <div class="correoTx">
-                <p>gnorrea64@gamil.com</p>
+                <p>{{cargarDatosPerfil.datos.correo}}</p>
             </div>
+        </div><br><br>
+        <div class="correo">
+            <div>
+                <mat-icon class="green-icon" *ngIf="cargarDatosPerfil.estadoMembresia">check_circle_outline</mat-icon>
+            </div>
+            <div>
+                <mat-icon class="red-icon" *ngIf="cargarDatosPerfil.b_ComprarMembresia1">error_outline</mat-icon>
+            </div>
+            <div>
+                <mat-icon class="orange-icon" *ngIf="cargarDatosPerfil.b_ActualizarMembresia1">warning</mat-icon>
+            </div>
+            <div class="correoTx">
+                <h3>Membresia</h3>
+            </div>
+        </div><br><br>
+        <div>
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary">Actualizar Membresia</button>
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary">Comprar Membresia</button>
         </div>
     </td>
     <td>
         <div class="menu">
             <mat-tab-group mat-align-tabs="start">
-                <mat-tab label="Mis Hoteles">
+                <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
                     <mat-card class="example-card">
                         <mat-card-header>
                             <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title>Shiba Inu</mat-card-title>
-                            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                            <mat-card-title>Hotel</mat-card-title>
+                            <mat-card-subtitle>Perro</mat-card-subtitle>
                         </mat-card-header>
                         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                             alt="Photo of a Shiba Inu">
                         <mat-card-content>
                             <p>
-                                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                                Japan.
-                                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                                originally
-                                bred for hunting.
+                                descripción
                             </p>
                         </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button>LIKE</button>
-                            <button mat-button>SHARE</button>
+                            <button mat-button>No</button>
+                            <button mat-button>Si</button>
                         </mat-card-actions>
                     </mat-card>
                 </mat-tab>
                 <mat-tab label="Mis Reservas">
                     <mat-card>
-                        <app-inicio></app-inicio>
                     </mat-card>
                 </mat-tab>
             </mat-tab-group>
