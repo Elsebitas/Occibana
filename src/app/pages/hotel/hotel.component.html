@@ -1,0 +1,39 @@
+<ng-container *ngFor="let coment of comentarios">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>AQUI HOTEL</mat-card-title>
+            <mat-card-subtitle>Comentarios acerca del hotel...</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://d1hg6wdwbisxfa.cloudfront.net/wp-content/uploads/2020/02/26150835/Airbnb-29.jpg"
+            alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <div>
+                <p>
+                    <b>ID usuario: </b> {{coment.id_usuario}}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <b>Nombre de usuario: </b> {{coment.nombre_usuario}}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <b>Comentario: </b> {{coment.comentario}}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <b>Fecha del Comentario: </b> {{coment.fecha_comentario}}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <b>Fecha de salida: </b> {{coment.fecha_salida}}
+                </p>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+</ng-container>

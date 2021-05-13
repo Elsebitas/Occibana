@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
+import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 
@@ -27,6 +28,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     InicioComponent,
     Error404Component,
     FiltroHotelesPipe,
+    HotelComponent,
     PerfilComponent,
     MisReservasComponent,
         

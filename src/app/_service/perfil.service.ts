@@ -1,3 +1,4 @@
+import { DatosPerfil } from '../_model/DatosPerfil';
 import { environment } from './../../environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,7 +7,7 @@ import { Observable } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    Authorization: `${environment.TOKEN}`
+    Authorization: 'Bearer '+sessionStorage.getItem(environment.TOKEN) 
   })
 };
 
@@ -20,7 +21,9 @@ export class PerfilService {
 
   constructor(private http: HttpClient) { }
 
-  postCargarDatosPerfil(usuario: string): Observable<any>{
-    return this.http.post<any>(this.url + 'postCargarDatosPerfil', usuario, httpOptions);
+  postCargarDatosPerfil(datosPerfil: DatosPerfil): Observable<any>{
+    //httpOptions.headers.set('Authorization', sessionStorage.getItem(environment.TOKEN));
+    //console.log("service "+ usuario);
+    return this.http.post<any>(this.url + 'postCargarDatosPerfil', datosPerfil, httpOptions);
   }
 }

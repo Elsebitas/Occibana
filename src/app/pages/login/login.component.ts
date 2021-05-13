@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
    * Variable que almacena el error.
    */
   error: string;
-
   /**
    * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
    * 
@@ -80,8 +79,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/inicio']);
     }, err =>{
       console.log(err);
-      if(err.status == 500) {
-        this.error = 'Usuario y/o cotrasena inconrrecta';
+      if(err.status == 401) {
+        this.error = 'Usuario y/o cotrasena incorrecta';
       } else {
         //this.router.navigate([`/error/${err.status}/${err.statusText}`]);
       }
