@@ -45,6 +45,8 @@ export class AppComponent implements DoCheck{
     const usuario = sessionStorage.getItem(environment.TOKEN);
     this.registroLogin.postCerrarSesion(usuario);
     sessionStorage.removeItem(environment.TOKEN);
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('userpassword');
     this.router.navigate(['/inicio']);
   }
 }

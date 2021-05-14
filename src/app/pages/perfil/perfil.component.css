@@ -80,3 +80,7 @@ table{
 .card-style{
   margin-top: 16px;  
 }
+.boton {
+    margin-right: 10px;
+    width: 50%;
+}

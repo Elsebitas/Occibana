@@ -1,3 +1,4 @@
+import { Login } from './_model/Login';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 
 /**
@@ -30,6 +32,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     FiltroHotelesPipe,
     HotelComponent,
     PerfilComponent,
+    Error401Component,
     MisReservasComponent,
         
   ],
@@ -40,10 +43,10 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     ReactiveFormsModule,
     NoopAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-   
+   Login
   ],
   bootstrap: [AppComponent]
 })

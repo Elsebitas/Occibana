@@ -1,3 +1,4 @@
+import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { GuardianService } from './_service/guardian.service';
 import { HotelComponent } from './pages/hotel/hotel.component';
@@ -15,8 +16,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'perfil', component: PerfilComponent, canActivate: [GuardianService]}, //Guardian
+  {path: 'error401', component: Error401Component},
   {path: 'perfil', component: PerfilComponent},
-  {path: 'mis_reservas', component: MisReservasComponent},
+  {path: 'mis_reservas', component: MisReservasComponent, canActivate: [GuardianService]},
   {path: 'hotel', component: HotelComponent},
   {path: '', component: InicioComponent},
   {path: '**', component: Error404Component},
