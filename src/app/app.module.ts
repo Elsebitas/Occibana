@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -25,7 +26,6 @@ import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
     InicioComponent,
     Error404Component,
     FiltroHotelesPipe,
-        
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,7 @@ import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
     ReactiveFormsModule,
     NoopAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
    

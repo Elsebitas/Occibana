@@ -1,7 +1,6 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -13,6 +12,20 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { BrowserModule } from '@angular/platform-browser';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SwiperModule } from 'swiper/angular';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+
+
+
 
 /**
  * Modulo donde se realizan importaciones de AngularMaterial.
@@ -34,8 +47,17 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatTabsModule,
     MatTableModule,
-    FlexLayoutModule
-    
+    FlexLayoutModule,
+    IvyCarouselModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    BrowserModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    SwiperModule,
+    MatProgressBarModule
   ], exports:[
     MatButtonModule,
     MatIconModule,
@@ -48,7 +70,17 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatTabsModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    IvyCarouselModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    BrowserModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    SwiperModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule { }

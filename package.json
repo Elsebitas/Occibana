@@ -24,6 +24,13 @@
     "@angular/platform-browser-dynamic": "~10.0.2",
     "@angular/router": "~10.0.2",
     "@auth0/angular-jwt": "^5.0.2",
+    "@ngbmodule/material-carousel": "^0.7.1",
+    "@ngmodule/material-carousel": "^0.6.0",
+    "angular-responsive-carousel": "^2.0.2",
+    "jquery": "^3.6.0",
+    "ngx-owl-carousel": "^2.0.7",
+    "ngx-owl-carousel-o": "^5.0.0",
+    "owl.carousel": "^2.3.4",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

@@ -15,4 +15,6 @@ export class HotelesPrincipales{
     fecha_despuesde : string = "2021-04-29T20:23:41.9706772Z"; 
     tipo : string = "sample string 6"; 
     mensaje : string = "sample string 7"; 
+    precioNocheDoble : number = 1.1;
+    precioNochePremium : number = 1.1;
 }
