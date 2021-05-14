@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent, canActivate: [GuardianService]}, //Guardian
   {path: 'error401', component: Error401Component},
   {path: 'perfil', component: PerfilComponent},
-  {path: 'mis_reservas', component: MisReservasComponent, canActivate: [GuardianService]},
+  {path: 'mis_reservas', component: MisReservasComponent},
   {path: 'hotel', component: HotelComponent},
   {path: '', component: InicioComponent},
   {path: '**', component: Error404Component},
