@@ -32,36 +32,34 @@
             </div>
         </div><br><br>
         <div>
-            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary">Actualizar Membresia</button>
-            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary">Comprar Membresia</button>
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary">Actualizar
+                Membresia</button>
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary">Comprar
+                Membresia</button>
         </div>
     </td>
     <td>
         <div class="menu">
             <mat-tab-group mat-align-tabs="start">
                 <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                            <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title>Hotel</mat-card-title>
-                            <mat-card-subtitle>Perro</mat-card-subtitle>
-                        </mat-card-header>
-                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                            alt="Photo of a Shiba Inu">
-                        <mat-card-content>
-                            <p>
-                                descripción
-                            </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button>No</button>
-                            <button mat-button>Si</button>
-                        </mat-card-actions>
-                    </mat-card>
+                    <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
+                        fxLayoutAlign="flex-start">
+                        <ng-container *ngFor="let num of [1,2,3,4,5]">
+                            <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
+                                fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                                <img mat-card-image src=".\assets\images\hotel1.jpg" alt="Photo of a Shiba Inu">
+                                <mat-card-content>
+                                    <p class="hoteltitle"> </p>
+                                    <div class="line"></div>
+                                    <p class="titles">Precio desde: </p>
+                                    <p class="subtitles">Ubicado en: </p>
+                                </mat-card-content>
+                            </mat-card>
+                        </ng-container>
+                    </div>
                 </mat-tab>
                 <mat-tab label="Mis Reservas">
-                    <mat-card>
-                    </mat-card>
+                    <app-mis-reservas></app-mis-reservas>
                 </mat-tab>
             </mat-tab-group>
         </div>

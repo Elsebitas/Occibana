@@ -16,7 +16,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PerfilService {
-
   
   private url: string = `${environment.HOST}/perfil/`;
 

@@ -23,6 +23,7 @@ table{
 .menu{
     position: absolute;
     margin-top: 2%;
+    width: 79%;
 }
 .correo{
     display: inline;
@@ -48,12 +49,34 @@ table{
     color: orange;
 }
 
-.example-card {
-    max-width: 400px;
-    margin: 2em auto;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+
+.content{
+  margin: 2em auto;
+}
+
+.hoteltitle{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+} 
+
+.titles{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.subtitles{
+  color:rebeccapurple;
+}
+
+
+.line{
+  margin-top: -10px;
+  margin-bottom: 8px;
+  background-color: rebeccapurple;
+  height: 1px;
+}
+
+.card-style{
+  margin-top: 16px;  
+}
