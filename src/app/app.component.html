@@ -1,16 +1,18 @@
 <div class="example-container">
-  <mat-toolbar  color = "primary" class="example-toolbar">    
-  
-    
-    <img src="assets/logo.jpg" width="100" style="margin-left: 20px;">
+  <div [hidden]="barraProgreso">
+    <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+  </div>
+  <mat-toolbar color="primary" class="example-toolbar">
+
+    <img src="assets/logo.png" width="100" style="margin-left: 20px;">
     <!--<span>Occibana</span>-->
     <span class="example-spacer"></span>
 
     <button mat-raised-button routerLink="/inicio" style="cursor: pointer" color="primary">
       Inicio
-    </button>  
+    </button>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">      
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
 
@@ -19,13 +21,17 @@
         <mat-icon>account_box</mat-icon>
         <span>Login</span>
       </button>
+      <button mat-menu-item *ngIf="usuario != null" routerLink="/perfil">
+        <mat-icon>account_circle</mat-icon>
+        <span>Perfil</span>
+      </button>
       <button mat-menu-item *ngIf="usuario != null" routerLink="/inicio" (click)="postCerrarSesion()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Cerrar Sesión</span>
       </button>
     </mat-menu>
 
-  </mat-toolbar >
+  </mat-toolbar>
 
   <router-outlet></router-outlet>
 

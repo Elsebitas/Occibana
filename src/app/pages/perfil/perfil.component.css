@@ -1,0 +1,94 @@
+table{    
+    width:100%;
+}
+.tdPicture{    
+    position: Block;
+    padding-left: 2%;
+    width:20%;
+}
+.imagen{
+    margin-top: 10%;
+}
+.imagen img{
+    margin-top: 5%;
+    width:200px;
+    height:200px;
+    border-radius:150px;
+}
+.linea{
+    position: absolute;
+    background-color: gray;
+    width: 10px;
+}
+.menu{
+    position: absolute;
+    margin-top: 2%;
+    width: 79%;
+}
+.correo{
+    display: inline;
+}
+.correo div{
+    position: absolute;
+}
+.correoTx{
+    margin-top: 0.2%;
+    margin-left: 2%;
+}
+.salto{    
+    display: none;
+}
+
+.green-icon{
+    color: greenyellow;
+}
+.red-icon{
+    color: red;
+}
+.orange-icon{
+    color: orange;
+}
+
+
+.content{
+  margin: 2em auto;
+}
+
+.hoteltitle{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
+} 
+
+.titles{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.subtitles{
+  color:rebeccapurple;
+}
+
+
+.line{
+  margin-top: -10px;
+  margin-bottom: 8px;
+  background-color: rebeccapurple;
+  height: 1px;
+}
+
+.card-style{
+  margin-top: 16px;  
+}
+.boton {
+    margin-right: 10px;
+    width: 50%;
+}
+
+.boton {
+    margin-right: 2%;
+    width: 48%;
+}
+.boton2 {
+    width: 48%;
+}

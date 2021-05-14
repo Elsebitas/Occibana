@@ -1,3 +1,5 @@
+import { MisReservas } from './../_model/MisReservas';
+import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
 import { HotelesPrincipales } from './../_model/HotelesPrincipales';
 import { HotelesDestacados } from './../_model/HotelesDestacados';
@@ -7,14 +9,6 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Listas } from '../_model/Listas';
 
-/**
- * Variable constante que especifica el tipo de archivo que se quiere enviar.
- */
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',  
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -61,8 +55,20 @@ export class ListasService {
    * @returns la respuesta del servicio.
    */
   postHolelesPrincipales(hotelesPrincipales:HotelesPrincipales): Observable<HotelesPrincipales[]>{
-    return this.http.post<HotelesPrincipales[]>(this.url + 'postHotelesPrincipal', hotelesPrincipales, httpOptions)
+    return this.http.post<HotelesPrincipales[]>(this.url + 'postHotelesPrincipal', hotelesPrincipales)
+  }
+  /**
+   * Método que recibe el objeto de la clase ObtenerComentarios.
+   * 
+   * @param obtenerComentarios recibe el objeto ObtenerComentarios.
+   * @returns la respuesta del servicio.
+   */
+  postObtenerComentarios(hotelesPrincipales:HotelesPrincipales): Observable<any>{
+    return this.http.post<any>(this.url + 'postObtenerComentarios', hotelesPrincipales) 
+  }
 
+  postMostrarMisreservas(misReservas: MisReservas): Observable<any> {
+    return this.http.post<any>(this.url + 'postMostrarMisreservas', misReservas)
   }
 
 }

@@ -1,0 +1,10 @@
+.example-card {
+    max-width: 500px;
+    margin: 2em auto;
+
+  }
+  
+  .example-header-image {
+    background-image: url("https://www.seekpng.com/png/detail/72-729756_how-to-add-a-new-user-to-your.png");
+    background-size: cover;
+  }

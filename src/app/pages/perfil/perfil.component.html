@@ -1,0 +1,74 @@
+<table>
+    <td class="tdPicture">
+        <div class="linea"></div>
+        <div class="imagen">
+            <img mat-card-image src=".\assets\images\hotel1.jpg">
+            <!--<img mat-card-image src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">-->
+        </div>
+        <div *ngIf="cargarDatosPerfil">
+            <h1>{{cargarDatosPerfil.datos.nombre}} {{cargarDatosPerfil.datos.apellido}}</h1>
+            <h2>@{{cargarDatosPerfil.datos.usuario}}</h2>
+        </div>
+        <div class="correo">
+            <div>
+                <mat-icon>email</mat-icon>
+            </div>
+            <div class="correoTx">
+                <p>{{cargarDatosPerfil.datos.correo}}</p>
+            </div>
+        </div><br><br>
+        <div class="correo">
+            <div>
+                <mat-icon class="green-icon" *ngIf="cargarDatosPerfil.estadoMembresia">check_circle_outline</mat-icon>
+            </div>
+            <div>
+                <mat-icon class="red-icon" *ngIf="cargarDatosPerfil.b_ComprarMembresia1">error_outline</mat-icon>
+            </div>
+            <div>
+                <mat-icon class="orange-icon" *ngIf="cargarDatosPerfil.b_ActualizarMembresia1">warning</mat-icon>
+            </div>
+            <div class="correoTx">
+                <h3>Membresia</h3>
+            </div>
+        </div><br><br>
+        <div>
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary">Actualizar
+                Membresia</button>
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary">Comprar
+                Membresia</button>
+        </div>
+    </td>
+    <td>
+        <div class="menu">
+            <mat-tab-group mat-align-tabs="start">
+                <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
+                    <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
+                        fxLayoutAlign="flex-start">
+                        <ng-container *ngFor="let num of [1,2,3,4,5]">
+                            <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
+                                fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                                <img mat-card-image src=".\assets\images\hotel1.jpg" alt="Photo of a Shiba Inu">
+                                <mat-card-content>
+                                    <p class="hoteltitle"> </p>
+                                    <div class="line"></div>
+                                    <p class="titles">Precio desde: </p>
+                                    <p class="subtitles">Ubicado en: </p>
+
+                                    <div class="center">
+                                        <button mat-raised-button routerLink="" class="boton" style="cursor: pointer"
+                                            color="warn">Borrar</button>
+                                        <button mat-raised-button routerLink="" class="boton2" style="cursor: pointer"
+                                            color="primary">Ver reservas</button>
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </ng-container>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Mis Reservas">
+                    <app-mis-reservas></app-mis-reservas>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </td>
+</table>

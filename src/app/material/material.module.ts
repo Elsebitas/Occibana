@@ -58,6 +58,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     BrowserAnimationsModule,
     SwiperModule,
     MatProgressBarModule
+
+    
   ], exports:[
     MatButtonModule,
     MatIconModule,
@@ -81,6 +83,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     BrowserAnimationsModule,
     SwiperModule,
     MatProgressBarModule
+
   ]
 })
 export class MaterialModule { }

@@ -1,8 +1,10 @@
+import { ProgressbarService } from './../../_service/progressbar.service';
 import { Observable } from 'rxjs';
+import { HotelComponent } from './../hotel/hotel.component';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
@@ -12,6 +14,8 @@ export interface State {
   flag: string;
   name: string;
 }
+import { NavigationExtras, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-inicio',
@@ -255,17 +259,17 @@ states: State[] = [
    * @param listasService recibe el objeto ListasService.
    * @param fb recibe el objeto FormBuilder.
    */
-  constructor(private listasService: ListasService, fb: FormBuilder) { 
+  constructor(private listasService: ListasService, fb: FormBuilder, private router: Router, private progressbarService: ProgressbarService) { 
 
     this.filteredStates = this.stateCtrl.valueChanges
     .pipe(
       startWith(''),
       map(state => state ? this._filterStates(state) : this.states.slice())
     );
-
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
+      
     });
   }
 
@@ -275,11 +279,13 @@ states: State[] = [
    * Método que inicia el servicio postHolelesPrincipales con su suscripción.
    */
   ngOnInit(): void {
+    this.progressbarService.barraProgreso.next("1");
     this.hotelesPrincipales = new HotelesPrincipales;
     this.listasService.postHolelesPrincipales(this.hotelesPrincipales).subscribe(data =>{
       this.listaDeHotelesPrincipales = data; 
       this.listaDeHotelesPrincipalesFiltrados = data;
       console.log(data);
+      this.progressbarService.barraProgreso.next("2");
     });
   }
 
@@ -314,6 +320,14 @@ states: State[] = [
     const filterValue = value.toLowerCase();
 
     return this.states.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  
+  mostrarHotel(card){
+    this.hotelesPrincipales = new HotelesPrincipales();                                                                            
+    this.hotelesPrincipales.idhotel = card;
+    this.router.navigate(['/hotel'], { state:{ idhotel: card} });
+
   }
 }
 
