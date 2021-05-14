@@ -1,7 +1,7 @@
 /**
  * Clase que mapea el servicio PostRegistroLogin
  */
-export interface Login{
+export class Login{
     Usuario: string;
     Contrasena: string;
 }

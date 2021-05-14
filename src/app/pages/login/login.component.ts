@@ -1,3 +1,4 @@
+import { CryptoService } from './../../_service/crypto.service';
 import { environment } from './../../../environments/environment';
 import { Login } from './../../_model/Login';
 import { RegistroLoginService } from '../../_service/registroLogin.service';
@@ -37,7 +38,10 @@ export class LoginComponent implements OnInit {
    * @param loginService recibe el objeto RegistroLoginService.
    * @param router recibe el objeto Router.
    */
-  constructor(private formBuilder:FormBuilder,private loginService:RegistroLoginService, private router: Router) { }
+  constructor(private formBuilder:FormBuilder,
+              private loginService:RegistroLoginService, 
+              private router: Router,
+              private crypto: CryptoService,) { }
 
   /**
    * Método que instancia el formulario con sus validaciones.
@@ -68,14 +72,10 @@ export class LoginComponent implements OnInit {
    */
   postIngresoLogin(login: Login){
     this.loginService.postIngresoLogin(login).subscribe(data =>{
-      console.log(data);
       sessionStorage.setItem(environment.TOKEN, data);
-      const helper = new JwtHelperService();
-
-      const decodedToken = helper.decodeToken(data);
-      const expirationDate = helper.getTokenExpirationDate(data);
-      const isExpired = helper.isTokenExpired(data); 
-      console.log(decodedToken.name);
+      this.crypto.encryptUsingAES256('user',login.Usuario);
+      this.crypto.encryptUsingAES256('userpassword',login.Contrasena);
+      
       this.router.navigate(['/inicio']);
     }, err =>{
       console.log(err);

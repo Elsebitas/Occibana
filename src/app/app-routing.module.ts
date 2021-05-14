@@ -1,3 +1,4 @@
+import { Error401Component } from './pages/error401/error401.component';
 import { GuardianService } from './_service/guardian.service';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { Error404Component } from './pages/error404/error404.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'perfil', component: PerfilComponent, canActivate: [GuardianService]}, //Guardian
+  {path: 'error401', component: Error401Component},
   {path: 'perfil', component: PerfilComponent},
   {path: 'hotel', component: HotelComponent},
   {path: '', component: InicioComponent},

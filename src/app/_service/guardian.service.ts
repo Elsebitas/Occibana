@@ -1,3 +1,4 @@
+import { CryptoService } from './crypto.service';
 import { Observable } from 'rxjs';
 import { Login } from './../_model/Login';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -11,11 +12,12 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router} from 
 })
 export class GuardianService implements CanActivate {
 
-  login: Login;
-
-  constructor(private RegistroLoginService: RegistroLoginService, private router: Router) { }
-
-  
+ 
+  constructor(private RegistroLoginService: RegistroLoginService, 
+              private router: Router,
+              private crypto: CryptoService,
+              private login: Login
+              ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const usuario = sessionStorage.getItem(environment.TOKEN);
@@ -23,7 +25,7 @@ export class GuardianService implements CanActivate {
     let intentos = 0;
     if(respuesta == 1 || respuesta == 2) {
       if(respuesta == 2) {
-        this.reLogin(this.login);
+        this.reLogin();
         while(true) {
             respuesta = this.RegistroLoginService.estaLogueado();
             if(respuesta == 1) {
@@ -47,16 +49,19 @@ export class GuardianService implements CanActivate {
       if(url.includes('/perfil') && rol == 1)
           return true;
       else {
-          this.router.navigate(['401Invalid']);
+          this.router.navigate(['/login']);
       }
 
     } else {
-      this.router.navigate(['loginReal']);
+      this.router.navigate(['/error401']);
     } 
     return false;
   }
-  reLogin(login: Login): void{  
-    this.RegistroLoginService.postIngresoLogin(login).subscribe(data =>{
+  reLogin(){  
+    this.login = new Login();
+    this.login.Usuario = this.crypto.decryptUsingAES256("user");
+    this.login.Contrasena = this.crypto.decryptUsingAES256("userpassword");
+    this.RegistroLoginService.postIngresoLogin(this.login).subscribe(data =>{
       console.log(data);
       sessionStorage.setItem(environment.TOKEN, data);
     });

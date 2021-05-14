@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 /**
  * Modulo donde se realizan importaciones de AngularMaterial.
@@ -34,7 +36,8 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatTabsModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressBarModule,
     
   ], exports:[
     MatButtonModule,
@@ -48,7 +51,8 @@ import {MatTableModule} from '@angular/material/table';
     MatCardModule,
     MatTabsModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressBarModule,
   ]
 })
 export class MaterialModule { }

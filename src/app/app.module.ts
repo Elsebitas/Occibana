@@ -1,3 +1,4 @@
+import { Login } from './_model/Login';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { Error401Component } from './pages/error401/error401.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -29,6 +31,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     FiltroHotelesPipe,
     HotelComponent,
     PerfilComponent,
+    Error401Component,
         
   ],
   imports: [
@@ -41,7 +44,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     HttpClientModule
   ],
   providers: [
-   
+   Login
   ],
   bootstrap: [AppComponent]
 })
