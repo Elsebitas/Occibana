@@ -16,6 +16,7 @@ import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
+import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -32,6 +33,7 @@ import { Error401Component } from './pages/error401/error401.component';
     HotelComponent,
     PerfilComponent,
     Error401Component,
+    MisReservasComponent,
         
   ],
   imports: [
@@ -41,7 +43,7 @@ import { Error401Component } from './pages/error401/error401.component';
     ReactiveFormsModule,
     NoopAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
    Login

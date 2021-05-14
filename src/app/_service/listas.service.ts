@@ -1,3 +1,4 @@
+import { MisReservas } from './../_model/MisReservas';
 import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
 import { HotelesPrincipales } from './../_model/HotelesPrincipales';
@@ -73,6 +74,10 @@ export class ListasService {
    */
   postObtenerComentarios(hotelesPrincipales:HotelesPrincipales): Observable<any>{
     return this.http.post<any>(this.url + 'postObtenerComentarios', hotelesPrincipales, httpOptions) 
+  }
+
+  postMostrarMisreservas(misReservas: MisReservas): Observable<any> {
+    return this.http.post<any>(this.url + 'postMostrarMisreservas', misReservas, httpOptions)
   }
 
 }
