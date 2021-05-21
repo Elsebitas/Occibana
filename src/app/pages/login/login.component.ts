@@ -1,3 +1,5 @@
+import { AppModule } from './../../app.module';
+import { ProgressbarService } from './../../_service/progressbar.service';
 import { CryptoService } from './../../_service/crypto.service';
 import { environment } from './../../../environments/environment';
 import { Login } from './../../_model/Login';
@@ -31,6 +33,8 @@ export class LoginComponent implements OnInit {
    * Variable que almacena el error.
    */
   error: string;
+
+  hide = true;
   /**
    * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
    * 
@@ -41,7 +45,9 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,
               private loginService:RegistroLoginService, 
               private router: Router,
-              private crypto: CryptoService,) { }
+              private crypto: CryptoService,
+              private progressbarService: ProgressbarService,
+              private appModule: AppModule) { }
 
   /**
    * Método que instancia el formulario con sus validaciones.
@@ -71,11 +77,17 @@ export class LoginComponent implements OnInit {
    * @param login recibe el objeto de la clase Login.
    */
   postIngresoLogin(login: Login){
+    this.progressbarService.barraProgreso.next("1");
+    this.progressbarService.delay();
     this.loginService.postIngresoLogin(login).subscribe(data =>{
       sessionStorage.setItem(environment.TOKEN, data);
+      //appModule usuarios
       this.crypto.encryptUsingAES256('user',login.Usuario);
       this.crypto.encryptUsingAES256('userpassword',login.Contrasena);
-      
+      /*
+      this.appModule.usuario = login.Usuario;
+      this.appModule.contra = login.Contrasena;*/
+      this.progressbarService.barraProgreso.next("2");
       this.router.navigate(['/inicio']);
     }, err =>{
       console.log(err);

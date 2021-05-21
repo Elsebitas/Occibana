@@ -48,11 +48,11 @@ function search(entries: any[], search: string) {
       const value = obj[key];
       if (isArray(value)) {
         return value.some(v => {
-          return (v==search);
+          return v==search;
         });
       }
       else if (!isArray(value)) {
-        return (value==search);
+        return value==search;
       }
     })
   });

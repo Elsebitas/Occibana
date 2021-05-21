@@ -1,3 +1,4 @@
+import { ProgressbarService } from './progressbar.service';
 import { CargarDatosPerfil } from './../_model/CargarDatosPerfil';
 import { DatosPerfil } from '../_model/DatosPerfil';
 import { environment } from './../../environments/environment';
@@ -5,12 +6,13 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const httpOptions = {
+/*const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
     Authorization: 'Bearer '+sessionStorage.getItem(environment.TOKEN) 
   })
-};
+
+};*/
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +26,9 @@ export class PerfilService {
   postCargarDatosPerfil(datosPerfil: DatosPerfil): Observable<CargarDatosPerfil>{
     //httpOptions.headers.set('Authorization', sessionStorage.getItem(environment.TOKEN));
     //console.log("service "+ usuario);
-    return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil, httpOptions);
+    
+    return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil);
   }
+
+
 }

@@ -1,3 +1,4 @@
+import { ProgressbarService } from './_service/progressbar.service';
 import { Router } from '@angular/router';
 import { environment } from './../environments/environment';
 import { Component, DoCheck } from '@angular/core';
@@ -12,6 +13,7 @@ import { RegistroLoginService } from './../app/_service/registroLogin.service';
  * Clase que funciona como Master Page e implementa de DoCheck.
  */
 export class AppComponent implements DoCheck{
+  barraProgreso: boolean = true;
 
   /**
    * Variable que indica el título del aplicativo.
@@ -29,7 +31,14 @@ export class AppComponent implements DoCheck{
    * @param registroLogin recibe el objeto RegistroLoginService.
    * @param router recibe el objeto Router.
    */
-  constructor(private registroLogin: RegistroLoginService, private router: Router) {}
+  constructor(private registroLogin: RegistroLoginService, progressbarService: ProgressbarService, private router: Router) {
+    progressbarService.barraProgreso.subscribe(data =>{
+      if(data == "1")
+         this.barraProgreso = false;
+      else
+          this.barraProgreso = true;
+  });
+  }
 
   /**
    * Método que verifica el estado del sessionStorage.
@@ -43,7 +52,9 @@ export class AppComponent implements DoCheck{
    */
   postCerrarSesion() {
     const usuario = sessionStorage.getItem(environment.TOKEN);
-    this.registroLogin.postCerrarSesion(usuario);
+    this.registroLogin.postCerrarSesion(usuario).subscribe(data=>{
+      console.log("cerrar sesion: "+data);
+    });
     sessionStorage.removeItem(environment.TOKEN);
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('userpassword');

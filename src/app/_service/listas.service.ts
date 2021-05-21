@@ -54,9 +54,8 @@ export class ListasService {
    * @param hotelesPrincipales recibe el objeto HotelesPrincipales.
    * @returns la respuesta del servicio.
    */
-  postHolelesPrincipales(hotelesPrincipales:HotelesPrincipales): Observable<any>{
-    return this.http.post<any>(this.url + 'postHotelesPrincipal', hotelesPrincipales)
-
+  postHolelesPrincipales(hotelesPrincipales:HotelesPrincipales): Observable<HotelesPrincipales[]>{
+    return this.http.post<HotelesPrincipales[]>(this.url + 'postHotelesPrincipal', hotelesPrincipales)
   }
   /**
    * Método que recibe el objeto de la clase ObtenerComentarios.

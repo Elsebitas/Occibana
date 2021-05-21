@@ -32,7 +32,7 @@
             </div>
         </div><br><br>
         <div>
-            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary">Actualizar
+            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary" (click)="postCargarDatosPerfil()">Actualizar
                 Membresia</button>
             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary">Comprar
                 Membresia</button>

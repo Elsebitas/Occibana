@@ -1,23 +1,204 @@
 <div class="content2">
-  <div >
-    <mat-form-field class="filter" appearance="fill" [floatLabel]="floatLabelControl.value">
-      <mat-label>Consultar hotel</mat-label>
-      <input matInput [(ngModel)] = "searchText"  placeholder="Escriba el nombre del hotel">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+  <div>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="filter" appearance="fill" [floatLabel]="floatLabelControl.value">
+            <mat-label>Consultar hotel por nombre</mat-label>
+            <input matInput [(ngModel)]="searchTerm" placeholder="Escriba el nombre del hotel" autocomplete="off">
+            <mat-icon matSuffix></mat-icon>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Precio minimo </mat-label>
+            <input matInput [(ngModel)]="searchMin">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Precio maximo</mat-label>
+            <input matInput [(ngModel)]="searchMax">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <div>
+            <form class="example-form">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Municipio</mat-label>
+                <input matInput [(ngModel)]="searchMun" aria-label="State" [matAutocomplete]="auto"
+                  [formControl]="stateCtrl">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+                    <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+                    <span>{{state.name}}</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+          </div>
+        </td>
+        <td>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter a date range</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date">
+                <input matEndDate placeholder="End date">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+          </div>
+        </td>
+
+        <td>
+          <div>
+
+            <mat-form-field appearance="fill" class="menubar">
+              <mat-label>Zonas</mat-label>
+              <mat-select [(ngModel)]="searchText">
+                <mat-option value="Norte">Norte</mat-option>
+                <mat-option value="Sur">Sur</mat-option>
+                <mat-option value="Centro">Centro</mat-option>
+                <mat-option value="Oriente">Oriente</mat-option>
+                <mat-option value="Occidente">Occidente</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </td>
+
+        <td>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Tipo de Habitación</mat-label>
+              <mat-select>
+                <mat-option value="1">Basica</mat-option>
+                <mat-option value="2">Doble</mat-option>
+                <mat-option value="3">Premium</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div>
+            <form class="example-form">
+              <mat-form-field class="example-full-width" appearance="fill" class="numPersonas">
+                <mat-label>personas</mat-label>
+                <input type="number" step="1" matInput placeholder="Ex. 4" value="">
+              </mat-form-field>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
-  <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
-    <ng-container *ngFor="let card of listaDeHotelesPrincipales | filtroHoteles : searchText">
-      <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" (click)="mostrarHotel(card.idhotel)"
-        fxFlex.lt-sm="100%">
-        <img mat-card-image src=".\assets\images\hotel1.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p class="hoteltitle"> {{card.nombre}} </p>
-          <div class="line"></div>
-          <p class="titles">Precio desde: {{card.precionoche}}$ </p>
-          <p class="subtitles">Ubicado en: {{card.municipio}}</p>
-        </mat-card-content>
-      </mat-card>
-    </ng-container>
+
+
+  <div>
+    <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+      <ng-container *ngFor="let card of listaDeHotelesPrincipalesFiltrados">
+        <mat-card style="cursor: pointer;" class="card-style" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" (click)="mostrarHotel(card.idhotel)">
+          <img mat-card-image src=".\assets\images\hotel1.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p class="hoteltitle"> {{card.nombre}} </p>
+            <div class="line"></div>
+            <p class="titles">Precio desde: {{card.precionoche}}$ </p>
+            <p class="subtitles">Ubicado en: {{card.municipio}}</p>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+
+
+  <div class="content3">
+    <div class="subtitles2">
+      Sugerencias y hoteles destacados
+      <carousel height="350px" cellWidth="300px" dots="true">
+        <ng-container *ngFor="let card of listaDeHotelesPrincipales">
+          <mat-card class="card-style2" fxFlex="0 1 calc(25% - 32px)">
+            <img mat-card-image src=".\assets\images\hotel1.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p class="hoteltitle"> {{card.nombre}} </p>
+              <div class="line"></div>
+              <p class="titles2">Precio desde: {{card.precionoche}} $ </p>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </carousel>
+    </div>
   </div>
 </div>
+
+<div class="container"></div>
+<footer>
+  <!-- Footer main -->
+  <section class="ft-main">
+    <div class="ft-main-item">
+      <h2 class="ft-title">Nosotros</h2>
+      <ul>
+        <li><a href="#">Mision</a></li>
+        <li><a href="#">Vision</a></li>
+        <li><a href="#">Lema</a></li>
+      </ul>
+    </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title">Recursos</h2>
+      <ul>
+        <li><a href="#">Manual de usuario</a></li>
+      </ul>
+    </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title">Contactanos</h2>
+      <ul>
+        <li><mat-icon> email</mat-icon><a href="#"> Occibana@gmail.com</a></li>
+        <li><mat-icon> phone</mat-icon><a href="#"> +57 1234567</a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+    <div class="ft-main-item">
+      <h2 class="ft-title">Siguenos</h2>
+      <div class="example-button-container">
+        <button mat-fab disabled class="boton">
+          <mat-icon>facebook</mat-icon>
+        </button>
+        <button mat-fab disabled class="boton">
+          <mat-icon>http</mat-icon>
+        </button>
+        <button mat-fab disabled class="boton">
+          <mat-icon>http</mat-icon>
+        </button>
+        <button mat-fab disabled class="boton">
+          <mat-icon>linkedin</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer social -->
+  <section class="ft-social">
+    <ul class="ft-social-list">
+      <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="#"><i class="fab fa-github"></i></a></li>
+      <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+    </ul>
+  </section>
+
+  <!-- Footer legal -->
+  <section class="ft-legal">
+    <ul class="ft-legal-list">
+      <li><a href="#">Terms &amp; Conditions</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li>&copy; 2019 Copyright Occibana</li>
+    </ul>
+  </section>
+</footer>

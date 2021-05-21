@@ -1,4 +1,7 @@
 <div class="example-container">
+  <div [hidden]="barraProgreso">
+    <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+  </div>
   <mat-toolbar color="primary" class="example-toolbar">
 
     <img src="assets/logo.png" width="100" style="margin-left: 20px;">
@@ -27,9 +30,9 @@
         <span>Cerrar Sesión</span>
       </button>
     </mat-menu>
-    
+
   </mat-toolbar>
-  
+
   <router-outlet></router-outlet>
 
 </div>

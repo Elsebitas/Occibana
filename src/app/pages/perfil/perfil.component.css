@@ -66,20 +66,21 @@ table{
 }
 
 .subtitles{
-  color:rebeccapurple;
+  color:#3f51b5;
 }
 
 
 .line{
   margin-top: -10px;
   margin-bottom: 8px;
-  background-color: rebeccapurple;
+  background-color: #3f51b5;
   height: 1px;
 }
 
 .card-style{
   margin-top: 16px;  
 }
+
 .boton {
     margin-right: 2%;
     width: 48%;
