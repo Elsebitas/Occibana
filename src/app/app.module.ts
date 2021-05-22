@@ -18,6 +18,8 @@ import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogoElimReservaComponent } from './pages/mis-reservas/dialogo-elim-reserva/dialogo-elim-reserva.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -35,7 +37,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     PerfilComponent,
     Error401Component,
     MisReservasComponent,
-        
+    DialogoElimReservaComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     NoopAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
    Login

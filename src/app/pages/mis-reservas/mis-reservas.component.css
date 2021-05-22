@@ -11,16 +11,7 @@
   table {
     width: 100%;
   }
-
-  div.w-33 {
-    width: 100%;
-    margin: 20px;
-  }
   
   div.center {
     text-align: center;
-  }
-
-  .boton {
-    margin-right: 10px;
   }

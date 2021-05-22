@@ -44,20 +44,40 @@
     
             <ng-container matColumnDef="calificacion">
                 <th mat-header-cell *matHeaderCellDef> Calificación </th>
-                <td mat-cell *matCellDef="let element"> </td>
+                <td mat-cell *matCellDef="let element"> {{element.calificacion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="calificar">
+                <th mat-header-cell *matHeaderCellDef> Calificar </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button color="primary" >
+                        <mat-icon>grade</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="comentar">
+                <th mat-header-cell *matHeaderCellDef> Comentar </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button color="primary" >
+                        <mat-icon>comment</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cancelar_reserva">
+                <th mat-header-cell *matHeaderCellDef> Cancelar reserva </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button color="primary" (click)="dialogoCancelarReserva(element.id)">
+                        <mat-icon>disabled_by_default</mat-icon>
+                    </button>
+                </td>
             </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             
         </table>
-    </div>
-
-    <div class="w-33">
-        <div class="center">
-            <button mat-raised-button routerLink="" class="boton" style="cursor: pointer" color="primary">Calificar y comentar</button>
-            <button mat-raised-button routerLink="" style="cursor: pointer" color="primary">Cancelar reserva</button>
-        </div>
     </div>
     
 </div>
