@@ -12,11 +12,20 @@
                 </p>
                 <p>
                     <mat-form-field appearance="outline">
+                        <mat-label>Ingresar su contraseña</mat-label>
+                        <input matInput name="Contrasena" [type]="hide ? 'password' : 'text'" ngModel>
+                        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>                    
+                </p>
+                <!--<p>
+                    <mat-form-field appearance="outline">
                         <mat-label>Contraseña</mat-label>
                         <input matInput name="Contrasena" type="password" placeholder="Contraseña" value="" ngModel>
                     </mat-form-field>
 
-                </p>
+                </p>-->
                 <p>
                     <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
                 </p>

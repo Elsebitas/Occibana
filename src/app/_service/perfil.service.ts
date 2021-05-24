@@ -7,12 +7,13 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const httpOptions = {
+/*const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
     Authorization: 'Bearer '+sessionStorage.getItem(environment.TOKEN) 
   })
-};
+
+};*/
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +28,12 @@ export class PerfilService {
     //httpOptions.headers.set('Authorization', sessionStorage.getItem(environment.TOKEN));
     //console.log("service "+ usuario);
     
-    return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil, httpOptions);
+    return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil);
   }
 
   postActualizarDatos(actualizarDatosperfil: ActualizarDatosPerfil): Observable<ActualizarDatosPerfil>{
 
-    return this.http.post<ActualizarDatosPerfil>(this.url + 'postActualizarDatos', actualizarDatosperfil, httpOptions);
+    return this.http.post<ActualizarDatosPerfil>(this.url + 'postActualizarDatos', actualizarDatosperfil);
 
   }
 

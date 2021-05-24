@@ -33,6 +33,9 @@ export class PerfilComponent implements OnInit {
   postCargarDatosPerfil(){
     
     console.log("entro!!");
+    /*/appModule usuarios
+    console.log("Usuario App Module "+this.appModule.usuario);
+    console.log("Contraseña App Module "+this.appModule.contra);*/
     this.url = environment.HOST;
     
     const helper = new JwtHelperService();
@@ -51,5 +54,5 @@ export class PerfilComponent implements OnInit {
     })
     this.progressbarService.barraProgreso.next("2");
   }
-
+  
 }

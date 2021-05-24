@@ -30,11 +30,11 @@ export class EditarPerfilComponent implements OnInit {
     this.datosPerfil = new DatosPerfil();
     this.actualizarDatosPerfil = new ActualizarDatosPerfil();
     this.actualizarform = new FormGroup({
-      UsuarioRegistro: new FormControl('',Validators.required),
-      NombreRegistro: new FormControl(''),
-      ApellidoRegistro: new FormControl(''),
-      CorreoRegistro: new FormControl(''),
-      TelefonoRegistro: new FormControl(''),
+      UsuarioRegistro: new FormControl('',[Validators.required, Validators.maxLength(10)]),
+      NombreRegistro: new FormControl('',[Validators.pattern('^[a-zA-Z]+$')]),
+      ApellidoRegistro: new FormControl('',[Validators.pattern('^[a-zA-Z]+$')]),
+      CorreoRegistro: new FormControl('',[Validators.email]),
+      TelefonoRegistro: new FormControl('',[Validators.pattern('^[0-9]+$')]),
 
       UsuarioSession: new FormControl(''),
       NombreSession: new FormControl(''),
