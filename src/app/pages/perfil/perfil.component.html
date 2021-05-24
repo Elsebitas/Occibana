@@ -1,3 +1,4 @@
+<div [hidden]="route.children.length !== 0">
 <table>
     <td class="tdPicture">
         <div class="linea"></div>
@@ -37,6 +38,12 @@
             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary">Comprar
                 Membresia</button>
         </div>
+        <br>
+        <div>
+            <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">Editar
+                Perfil</button>
+            
+        </div>
     </td>
     <td>
         <div class="menu">
@@ -55,8 +62,10 @@
                                     <p class="subtitles">Ubicado en: </p>
 
                                     <div class="center">
-                                        <button mat-raised-button routerLink="" class="boton" style="cursor: pointer" color="warn">Borrar</button>
-                                        <button mat-raised-button routerLink="" style="cursor: pointer" color="primary">Ver reservas</button>
+                                        <button mat-raised-button routerLink="" class="boton" style="cursor: pointer"
+                                            color="warn">Borrar</button>
+                                        <button mat-raised-button routerLink="" class="boton2" style="cursor: pointer"
+                                            color="primary">Ver reservas</button>
                                     </div>
                                 </mat-card-content>
                             </mat-card>
@@ -70,3 +79,7 @@
         </div>
     </td>
 </table>
+</div>
+
+
+<router-outlet></router-outlet>

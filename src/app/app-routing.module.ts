@@ -1,3 +1,4 @@
+import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { GuardianService } from './_service/guardian.service';
@@ -15,7 +16,9 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: 'perfil', component: PerfilComponent, canActivate: [GuardianService]}, //Guardian
+  {path: 'perfil', component: PerfilComponent, children: [
+      {path: 'editarperfil', component: EditarPerfilComponent}
+  ], canActivate: [GuardianService]}, //Guardian
   {path: 'error401', component: Error401Component},
   {path: 'mis_reservas', component: MisReservasComponent},
   {path: 'hotel', component: HotelComponent},

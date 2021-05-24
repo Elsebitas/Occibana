@@ -1,3 +1,4 @@
+import { ProgressbarService } from './../../_service/progressbar.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MisReservas } from './../../_model/MisReservas';
 import { ListasService } from './../../_service/listas.service';
@@ -19,15 +20,17 @@ export class MisReservasComponent implements OnInit {
 
   dataSource = new MatTableDataSource<MisReservas>();
 
-  constructor(private listaService: ListasService) { }
+  constructor(private listaService: ListasService, private progressbarService:ProgressbarService) { }
 
   ngOnInit(): void {
+    this.progressbarService.barraProgreso.next("1");
       this.misReservas = new MisReservas();
       this.misReservas.id = 39;
       this.listaService.postMostrarMisreservas(this.misReservas).subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.listaMisReservas = data;
       console.log(data);
+      this.progressbarService.barraProgreso.next("2");
     });
   }
 

@@ -13,10 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
+import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -34,6 +36,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     PerfilComponent,
     Error401Component,
     MisReservasComponent,
+    EditarPerfilComponent,
         
   ],
   imports: [
@@ -44,6 +47,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     NoopAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
    Login

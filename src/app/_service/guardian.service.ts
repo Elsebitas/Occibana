@@ -1,3 +1,4 @@
+import { ProgressbarService } from './progressbar.service';
 import { CryptoService } from './crypto.service';
 import { Observable } from 'rxjs';
 import { Login } from './../_model/Login';
@@ -16,23 +17,28 @@ export class GuardianService implements CanActivate {
   constructor(private RegistroLoginService: RegistroLoginService, 
               private router: Router,
               private crypto: CryptoService,
-              private login: Login
+              private login: Login,
+              private progressbarService:ProgressbarService
               ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const usuario = sessionStorage.getItem(environment.TOKEN);
     let respuesta = this.RegistroLoginService.estaLogueado();
     let intentos = 0;
     if(respuesta == 1 || respuesta == 2) {
       if(respuesta == 2) {
+        this.progressbarService.barraProgreso.next("1");
         this.reLogin();
         while(true) {
+          await this.delay(2000);
             respuesta = this.RegistroLoginService.estaLogueado();
             if(respuesta == 1) {
+              this.progressbarService.barraProgreso.next("2");
               break;
             }
             intentos++;
             if(intentos == 3) {
+              this.progressbarService.barraProgreso.next("2");
               console.log("INTENTO 3");
               this.RegistroLoginService.postCerrarSesion(usuario);
               return false;
@@ -67,5 +73,9 @@ export class GuardianService implements CanActivate {
     });
     console.log("TOKEN RENOVADO");
   }
+
+  private delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
   
 }

@@ -1,3 +1,4 @@
+import { ProgressbarService } from './../../_service/progressbar.service';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { InicioComponent } from './../inicio/inicio.component';
 import { ObtenerComentarios } from './../../_model/ObtenerComentarios';
@@ -18,7 +19,7 @@ export class HotelComponent implements OnInit {
 
   obtenerComentarios: ObtenerComentarios;
 
-  constructor(private listasService: ListasService, private router: Router) {
+  constructor(private listasService: ListasService, private router: Router, private progressbarService: ProgressbarService) {
   
     this.id = this.router.getCurrentNavigation().extras.state.idhotel;
 
@@ -27,15 +28,14 @@ export class HotelComponent implements OnInit {
   //Creo el array
   public comentarios:any = []; 
   ngOnInit(): void {
+    this.progressbarService.barraProgreso.next("1");
     this.postObtenerComents();
+    this.progressbarService.barraProgreso.next("2");
   }
   
   postObtenerComents(){
     this.hotelesPrincipales = new HotelesPrincipales();
-    //this.obtenerComentarios = new ObtenerComentarios();
-    //this.obtenerComentarios.id_hotel = this.id;
     this.hotelesPrincipales.idhotel = this.id;
-    //console.log(this.obtenerComentarios);
     this.listasService.postObtenerComentarios(this.hotelesPrincipales).subscribe(data =>{
       this.comentarios = data; 
       console.log(data);
