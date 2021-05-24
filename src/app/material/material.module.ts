@@ -20,7 +20,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SwiperModule } from 'swiper/angular';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 
@@ -56,9 +55,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     BrowserModule,
     CarouselModule,
     BrowserAnimationsModule,
-    SwiperModule,
     MatProgressBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule
+
     
   ], exports:[
     MatButtonModule,
@@ -81,9 +81,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     BrowserModule,
     CarouselModule,
     BrowserAnimationsModule,
-    SwiperModule,
     MatProgressBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule
 
   ]
 })

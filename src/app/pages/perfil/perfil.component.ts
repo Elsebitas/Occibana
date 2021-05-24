@@ -1,4 +1,4 @@
-
+import { AppModule } from './../../app.module';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { CargarDatosPerfil } from './../../_model/CargarDatosPerfil';
 import { environment } from './../../../environments/environment';
@@ -16,13 +16,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
-  
+ 
 
   cargarDatosPerfil: CargarDatosPerfil;
 
   url: string;
 
-  constructor(private perfilService: PerfilService,public route:ActivatedRoute, private progressbarService:ProgressbarService) {     
+  constructor(private perfilService: PerfilService, 
+              public route: ActivatedRoute,
+              private progressbarService:ProgressbarService,
+              public appModule: AppModule) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 
@@ -36,6 +39,9 @@ export class PerfilComponent implements OnInit {
   postCargarDatosPerfil(){
     
     console.log("entro!!");
+    /*/appModule usuarios
+    console.log("Usuario App Module "+this.appModule.usuario);
+    console.log("Contraseña App Module "+this.appModule.contra);*/
     this.url = environment.HOST;
     
     const helper = new JwtHelperService();
@@ -54,5 +60,5 @@ export class PerfilComponent implements OnInit {
     })
     this.progressbarService.barraProgreso.next("2");
   }
-
+  
 }
