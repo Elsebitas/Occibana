@@ -1,3 +1,4 @@
+
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { CargarDatosPerfil } from './../../_model/CargarDatosPerfil';
 import { environment } from './../../../environments/environment';
@@ -5,6 +6,8 @@ import { PerfilService } from './../../_service/perfil.service';
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-perfil',
@@ -13,11 +16,13 @@ import { DatosPerfil } from 'src/app/_model/DatosPerfil';
 })
 export class PerfilComponent implements OnInit {
 
+  
+
   cargarDatosPerfil: CargarDatosPerfil;
 
   url: string;
 
-  constructor(private perfilService: PerfilService, private progressbarService:ProgressbarService) {     
+  constructor(private perfilService: PerfilService,public route:ActivatedRoute, private progressbarService:ProgressbarService) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 
@@ -25,6 +30,7 @@ export class PerfilComponent implements OnInit {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.postCargarDatosPerfil();
+
   }
 
   postCargarDatosPerfil(){
@@ -44,7 +50,7 @@ export class PerfilComponent implements OnInit {
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data =>{
       this.cargarDatosPerfil = data;  
       console.log(data);
-      console.log(this.cargarDatosPerfil);
+      //console.log(this.cargarDatosPerfil);
     })
     this.progressbarService.barraProgreso.next("2");
   }

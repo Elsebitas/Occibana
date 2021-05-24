@@ -1,3 +1,4 @@
+import { RegistroUsuarios } from './../_model/RegistroUsuarios';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Login } from '../_model/Login';
 import { environment } from '../../environments/environment';
@@ -73,4 +74,10 @@ export class RegistroLoginService {
       return 0;
     }
   }
+
+  postRegistroUsuarios(registroUsuarios: RegistroUsuarios): Observable<any> {
+    return this.http.post<any>(this.url + 'postRegistroUsuario', registroUsuarios, httpOptions);
+  }
+  
 }
+

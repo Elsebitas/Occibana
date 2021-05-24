@@ -1,0 +1,60 @@
+<div class="main-wrapper">
+    <mat-card>
+        <mat-card-title>
+            <div>Actualizar contraseña</div>
+        </mat-card-title>
+        <br>
+        <mat-card-content>
+            <form [formGroup]="profileForm" (ngSubmit)="onFromSubmit()">
+                <div class="line"></div>
+                <br>
+                <div>Confirme su contraseña actual.</div>
+                
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña actual</mat-label>
+                        <input matInput formControlName="contrasenaAct" [type]="hide ? 'password' : 'text'" >
+                        <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </p>
+                <div>Ingrese la nueva contraseña.</div>
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nueva contraseña</mat-label>
+                        <input matInput formControlName="contrasenaNueva" [type]="hide ? 'password' : 'text'" >
+                        <button mat-icon-button matSuffix type="button" (click)="hide2 = !hide2"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                            <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Confirmar nueva contraseña</mat-label>
+                        <input matInput  [type]="hide3 ? 'password' : 'text'" >
+                        <button mat-icon-button matSuffix type="button" (click)="hide = !hide3"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
+                            <mat-icon class="white-icon">{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
+                </p>
+
+                <p>
+                    <button button mat-stroked-button style="color:#fffafa" class="btn-block">
+                        Actualizar Contraseña
+                    </button>
+                </p>
+                <br>
+                <br>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

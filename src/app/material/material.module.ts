@@ -22,7 +22,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SwiperModule } from 'swiper/angular';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -57,8 +57,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CarouselModule,
     BrowserAnimationsModule,
     SwiperModule,
-    MatProgressBarModule
-
+    MatProgressBarModule,
+    MatStepperModule
     
   ], exports:[
     MatButtonModule,
@@ -82,7 +82,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CarouselModule,
     BrowserAnimationsModule,
     SwiperModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatStepperModule
 
   ]
 })

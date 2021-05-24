@@ -1,3 +1,4 @@
+import { RegistroUsuarios } from './../../_model/RegistroUsuarios';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { CryptoService } from './../../_service/crypto.service';
 import { environment } from './../../../environments/environment';
@@ -23,10 +24,15 @@ export class LoginComponent implements OnInit {
    */
   login : Login;
 
+  hide = true;
+  hide2 = true;
+
+
   /**
    * Variable que instancia el objeto FormGroup.
    */
   loginForm: FormGroup;
+  registroForm: FormGroup;
 
   /**
    * Variable que almacena el error.
@@ -53,6 +59,17 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       Usuario:['', [ Validators.required ] ],
       Contrasena:['', [ Validators.required ] ],
+    });
+
+    this.registroForm = this.formBuilder.group({
+      Nombre: ['', [Validators.required]],
+      Apellido: ['', [Validators.required]],
+      Correo: ['', [Validators.required]],
+      Telefono: ['', [Validators.required]],
+      Usuario: ['', [Validators.required]],
+      Contrasena: ['', [Validators.required]],
+      IdEstado: ['', [Validators.required]],
+      FotoPerfil: ['', [Validators.required]],
     })
   }
 
@@ -65,6 +82,12 @@ export class LoginComponent implements OnInit {
     let login = f.value;
     console.log(f.value);
     this.postIngresoLogin(login);
+  }
+
+  onFromSubmit2(f:NgForm){
+    let registroUsuarios = f.value;
+    console.log(f.value);
+    this.postRegistroUsuarios(registroUsuarios);
   }
 
   /**
@@ -89,6 +112,17 @@ export class LoginComponent implements OnInit {
         //this.router.navigate([`/error/${err.status}/${err.statusText}`]);
       }
   })
+  }
+
+  postRegistroUsuarios(registroUsuarios: RegistroUsuarios) {
+    this.progressbarService.barraProgreso.next("1");
+    this.progressbarService.delay();
+    console.log(registroUsuarios);
+    this.loginService.postRegistroUsuarios(registroUsuarios).subscribe(data => {
+      console.log(data);
+      this.progressbarService.barraProgreso.next("2");
+      this.router.navigate(['/login']);
+    })   
   }
 
 }

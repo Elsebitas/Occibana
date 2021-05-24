@@ -18,6 +18,8 @@ import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
+import { RegistroUsuarioComponent } from './pages/registro-usuario/registro-usuario.component';
+import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -35,6 +37,8 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     PerfilComponent,
     Error401Component,
     MisReservasComponent,
+    RegistroUsuarioComponent,
+    ActualizarContrasenaComponent,
         
   ],
   imports: [

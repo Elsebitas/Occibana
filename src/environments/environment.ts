@@ -10,6 +10,7 @@ export const environment = {
    * Variable que indica la URL de la API.
    */
   HOST: 'http://18.230.178.121:8081/api',
+  REALHOST: 'http://18.230.178.121',
 
   /**
    * Variable que indica el token.
