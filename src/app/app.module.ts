@@ -28,6 +28,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoService } from './_service/crypto.service';
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -118,6 +119,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     })
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     Login,
     AppModule,
     RegistroLoginService,
