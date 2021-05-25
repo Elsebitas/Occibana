@@ -5,6 +5,7 @@ import { PerfilService } from './../../_service/perfil.service';
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
+import { AppModule } from 'src/app/app.module';
 
 @Component({
   selector: 'app-perfil',
@@ -17,7 +18,9 @@ export class PerfilComponent implements OnInit {
 
   url: string;
 
-  constructor(private perfilService: PerfilService, private progressbarService:ProgressbarService) {     
+  constructor(private perfilService: PerfilService, 
+              private progressbarService:ProgressbarService,
+              private appModule: AppModule) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 
@@ -30,6 +33,9 @@ export class PerfilComponent implements OnInit {
   postCargarDatosPerfil(){
     
     console.log("entro!!");
+    /*/appModule usuarios
+    console.log("Usuario App Module "+this.appModule.usuario);
+    console.log("Contraseña App Module "+this.appModule.contra);*/
     this.url = environment.HOST;
     
     const helper = new JwtHelperService();
@@ -48,5 +54,5 @@ export class PerfilComponent implements OnInit {
     })
     this.progressbarService.barraProgreso.next("2");
   }
-
+  
 }

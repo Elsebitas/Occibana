@@ -22,9 +22,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material/dialog';
-
-
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 /**
  * Modulo donde se realizan importaciones de AngularMaterial.
@@ -56,7 +56,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     CarouselModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule
     
   ], exports:[
     MatButtonModule,
@@ -80,7 +84,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     CarouselModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule
+
   ]
 })
 export class MaterialModule { }

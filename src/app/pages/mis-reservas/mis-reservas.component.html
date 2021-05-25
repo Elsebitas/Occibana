@@ -1,44 +1,51 @@
 <div class="content">
     <div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <mat-form-field class="filter" appearance="fill">
+            <mat-label>Consultar reservas</mat-label>
+            <input matInput (keyup)="aplicarFiltro($event.target.value)" placeholder="Escriba el campo que desea consultar">
+        </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
         
             <ng-container matColumnDef="num_personas">
-                <th mat-header-cell *matHeaderCellDef> N. personas </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> N. personas </th>
                 <td mat-cell *matCellDef="let element"> {{element.numpersona}} </td>
             </ng-container>
             
             <ng-container matColumnDef="fecha_llegada">
-                <th mat-header-cell *matHeaderCellDef> Fecha llegada </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha llegada </th>
                 <td mat-cell *matCellDef="let element"> {{element.fecha_llegada}} </td>
             </ng-container>
             
             <ng-container matColumnDef="fecha_salida">
-                <th mat-header-cell *matHeaderCellDef> Fecha salida </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha salida </th>
                 <td mat-cell *matCellDef="let element"> {{element.fecha_salida}} </td>
             </ng-container>
             
             <ng-container matColumnDef="nombre">
-                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                 <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
             </ng-container>
     
             <ng-container matColumnDef="apellido">
-                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
                 <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
             </ng-container>
     
             <ng-container matColumnDef="correo">
-                <th mat-header-cell *matHeaderCellDef> Correo electrónico </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo electrónico </th>
                 <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
             </ng-container>
     
             <ng-container matColumnDef="medio_pago">
-                <th mat-header-cell *matHeaderCellDef> Medio de pago </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Medio de pago </th>
                 <td mat-cell *matCellDef="let element"> {{element.mediopago}} </td>
             </ng-container>
     
             <ng-container matColumnDef="nombre_hotel">
-                <th mat-header-cell *matHeaderCellDef> Nombre hotel </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre hotel </th>
                 <td mat-cell *matCellDef="let element"> {{element.nombrehotel}} </td>
             </ng-container>
     
@@ -47,18 +54,13 @@
                 <td mat-cell *matCellDef="let element"> {{element.calificacion}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="calificar">
-                <th mat-header-cell *matHeaderCellDef> Calificar </th>
+            <ng-container matColumnDef="calificar_comentar">
+                <th mat-header-cell *matHeaderCellDef> Calificar/Comentar </th>
                 <td mat-cell *matCellDef="let element">
                     <button mat-button color="primary" >
                         <mat-icon>grade</mat-icon>
                     </button>
-                </td>
-            </ng-container>
 
-            <ng-container matColumnDef="comentar">
-                <th mat-header-cell *matHeaderCellDef> Comentar </th>
-                <td mat-cell *matCellDef="let element">
                     <button mat-button color="primary" >
                         <mat-icon>comment</mat-icon>
                     </button>
@@ -78,6 +80,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             
         </table>
+        
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
     </div>
-    
 </div>

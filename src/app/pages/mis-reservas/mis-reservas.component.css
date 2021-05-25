@@ -4,6 +4,10 @@
     width: 96%;
   }
 
+  .filter{
+    width: 100%;
+  }
+
   .reservaTitle {
     text-align: center;
   }
