@@ -10,5 +10,5 @@ export class ActualizarDatosPerfil {
   UsuarioSession: string;
   TelefonoSession: string;
   CorreoSession: string;
- UsuarioIdSession: string; 
+  UsuarioIdSession: string; 
 }
