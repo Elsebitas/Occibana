@@ -22,9 +22,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
-
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -50,6 +53,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTabsModule,
     MatTableModule,
     FlexLayoutModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
     IvyCarouselModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -59,9 +64,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
     CarouselModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
-    MatExpansionModule,
-    
-    MatGridListModule
+    MatExpansionModule,    
+    MatGridListModule,
+    MatDialogModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatProgressBarModule
 
     
   ], exports:[
@@ -77,6 +88,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTabsModule,
     MatTableModule,
     FlexLayoutModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
     IvyCarouselModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -87,7 +100,13 @@ import {MatGridListModule} from '@angular/material/grid-list';
     BrowserAnimationsModule,
     MatProgressBarModule,
     MatExpansionModule,
-
+    MatDialogModule,
+    MatProgressBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatProgressBarModule,
     MatGridListModule
   ]
 })

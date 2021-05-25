@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { InformacionHotel } from './../../_model/InformacionHotel';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { PanelHotelService } from './../../_service/panel-hotel.service';
@@ -59,6 +60,8 @@ export class HotelComponent implements OnInit {
   
   informacionHotel: InformacionHotel;
 
+  url:string;
+
   constructor(private listasService: ListasService, 
               private router: Router, 
               private progressbarService: ProgressbarService, 
@@ -72,6 +75,7 @@ export class HotelComponent implements OnInit {
   //Creo el array
   public comentarios:any = []; 
   ngOnInit(): void {    
+    this.url = environment.REALHOST;
     info.IdDelHotelSession = this.id;
     this.progressbarService.barraProgreso.next("1");
     this.postObtenerComents();

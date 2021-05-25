@@ -24,17 +24,17 @@
                 <ng-container>
                     <ng-template carouselSlide>
                         <div class="slide">
-                            <img src="{{informacionHotel.imagen}}">
+                            <img src="{{url}}{{informacionHotel.imagen}}">
                         </div>
                     </ng-template>
                     <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
                         <div class="slide">
-                            <img src="{{informacionHotel.imagen_secundaria}}">
+                            <img src="{{url}}{{informacionHotel.imagen_secundaria}}">
                         </div>
                     </ng-template>
                     <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
                         <div class="slide">
-                            <img src="{{informacionHotel.imagen_secundaria2}}">
+                            <img src="{{url}}{{informacionHotel.imagen_secundaria2}}">
                         </div>
                     </ng-template>
                 </ng-container>

@@ -1,0 +1,46 @@
+<div class="h1"><h1>Editar perfil</h1></div>
+<mat-card>
+    <mat-card-content>
+        <form class="example-container" [formGroup]="actualizarform" (ngSubmit)="enviar(f)" #f="ngForm">
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input matInput placeholder="Usuario" formControlName="UsuarioRegistro">
+                <mat-icon class="colorIcon" matPrefix>person</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Nombres</mat-label>
+                <input matInput placeholder="Nombres" formControlName="NombreRegistro">
+                <mat-icon class="colorIcon" matPrefix>person_outline</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Apellidos</mat-label>
+                <input matInput placeholder="Apellidos" formControlName="ApellidoRegistro">
+                <mat-icon class="colorIcon" matPrefix>person_outline</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput placeholder="Correo" formControlName="CorreoRegistro">
+                <mat-icon class="colorIcon" matPrefix>email</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Teléfono</mat-label>
+                <input matInput placeholder="Telefono" formControlName="TelefonoRegistro">
+                <mat-icon class="colorIcon" matPrefix>phone</mat-icon>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="actualizarform.invalid">
+                <mat-icon>update</mat-icon>
+                <span>Actualizar</span>
+            </button>
+            <button mat-raised-button color="warn" class="boton2" type="button" routerLink="/perfil">
+                <mat-icon>close</mat-icon>
+                <span>Cancelar</span>
+            </button>
+        </form>
+    </mat-card-content>
+</mat-card>
