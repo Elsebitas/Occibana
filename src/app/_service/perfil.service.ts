@@ -1,3 +1,5 @@
+import { ActualizarContrasena } from './../_model/ActualizarContrasena';
+import { ActualizarDatosPerfil } from './../_model/ActualizarDatosPerfil';
 import { ProgressbarService } from './progressbar.service';
 import { CargarDatosPerfil } from './../_model/CargarDatosPerfil';
 import { DatosPerfil } from '../_model/DatosPerfil';
@@ -30,5 +32,14 @@ export class PerfilService {
     return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil);
   }
 
+  putActualizarDatos(actualizarContrasena: ActualizarContrasena):Observable<any>{
+    return this.http.put<any>(this.url + 'putActualizarContrasena', actualizarContrasena);
+  }
+
+  postActualizarDatos(actualizarDatosperfil: ActualizarDatosPerfil): Observable<ActualizarDatosPerfil>{
+
+    return this.http.post<ActualizarDatosPerfil>(this.url + 'postActualizarDatos', actualizarDatosperfil);
+
+  }
 
 }

@@ -1,3 +1,4 @@
+import { RegistroUsuarios } from './../../_model/RegistroUsuarios';
 import { AppModule } from './../../app.module';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { CryptoService } from './../../_service/crypto.service';
@@ -5,7 +6,7 @@ import { environment } from './../../../environments/environment';
 import { Login } from './../../_model/Login';
 import { RegistroLoginService } from '../../_service/registroLogin.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 
@@ -24,17 +25,23 @@ export class LoginComponent implements OnInit {
    */
   login : Login;
 
+  hide = true;
+  hide2 = true;
+
+
   /**
    * Variable que instancia el objeto FormGroup.
    */
   loginForm: FormGroup;
+  registroForm: FormGroup;
 
   /**
    * Variable que almacena el error.
    */
   error: string;
+  error2: string;
+  
 
-  hide = true;
   /**
    * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
    * 
@@ -47,17 +54,32 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private crypto: CryptoService,
               private progressbarService: ProgressbarService,
-              private appModule: AppModule) { }
+              private appModule: AppModule) { 
+
+                this.loginForm = new FormGroup({
+                  Usuario: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+                  Contrasena: new FormControl('', Validators.required),
+                });
+            
+                this.registroForm = new FormGroup({
+                  Nombre: new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^[a-zA-Z]+$')]),
+                  Apellido: new FormControl('', [Validators.required, Validators.maxLength(20),Validators.pattern('^[a-zA-Z]+$')]),
+                  Correo: new FormControl('', [Validators.required, Validators.maxLength(30),Validators.email]),
+                  Telefono: new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$')]),
+                  Usuario: new FormControl('', [Validators.required,Validators.maxLength(20)]),
+                  Contrasena: new FormControl('', [Validators.required]),
+                  Actcontrasena: new FormControl('', [Validators.required]),
+                  IdEstado: new FormControl('', ),
+                  FotoPerfil: new FormControl('',),
+                });
+              }
 
   /**
    * Método que instancia el formulario con sus validaciones.
    */
   ngOnInit(): void {
-    this.error = null;
-    this.loginForm = this.formBuilder.group({
-      Usuario:['', [ Validators.required ] ],
-      Contrasena:['', [ Validators.required ] ],
-    })
+    this.error = null;  
+    this.error2 = null;  
   }
 
   /**
@@ -65,10 +87,14 @@ export class LoginComponent implements OnInit {
    * 
    * @param f recibe el NgForm.
    */
-  onFromSubmit(f:NgForm){
-    let login = f.value;
-    console.log(f.value);
-    this.postIngresoLogin(login);
+  onFromSubmit(){
+    let formularioLogin = this.loginForm.value;
+    this.postIngresoLogin(formularioLogin);
+  }
+
+  onFromSubmit2(){
+    let registroUsuarios = this.registroForm.value;
+    this.postRegistroUsuarios(registroUsuarios);
   }
 
   /**
@@ -91,12 +117,28 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/inicio']);
     }, err =>{
       console.log(err);
-      if(err.status == 401) {
+      if(err.status == 400) {
         this.error = 'Usuario y/o cotrasena incorrecta';
+        this.progressbarService.barraProgreso.next("2");
       } else {
         //this.router.navigate([`/error/${err.status}/${err.statusText}`]);
       }
   })
+  }
+
+  postRegistroUsuarios(registroUsuarios: RegistroUsuarios) {
+    this.progressbarService.barraProgreso.next("1");
+    this.progressbarService.delay();
+    console.log(registroUsuarios);
+    this.loginService.postRegistroUsuarios(registroUsuarios).subscribe(data => {
+      console.log(data);
+      this.error2 = data;
+      this.progressbarService.barraProgreso.next("2");
+      this.router.navigate(['/login']);
+    })
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/login']);
+  });   
   }
 
 }

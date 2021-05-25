@@ -21,7 +21,7 @@ table{
     width: 10px;
 }
 .menu{
-    position: absolute;
+    position: relative;
     margin-top: 2%;
     width: 79%;
 }

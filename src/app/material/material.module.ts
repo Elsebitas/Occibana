@@ -25,6 +25,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
+
+
+
 
 /**
  * Modulo donde se realizan importaciones de AngularMaterial.
@@ -47,6 +51,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTabsModule,
     MatTableModule,
     FlexLayoutModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
     IvyCarouselModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -60,7 +66,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressBarModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule,
+    MatProgressBarModule
+
     
   ], exports:[
     MatButtonModule,
@@ -75,6 +84,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTabsModule,
     MatTableModule,
     FlexLayoutModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule,
     IvyCarouselModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -88,7 +99,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressBarModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule,
+    MatProgressBarModule
 
   ]
 })

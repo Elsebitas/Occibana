@@ -1,53 +1,108 @@
-<div>
-    <mat-card class="sombra">
+<div class="main-wrapper">
+    <mat-card>
+        <mat-card-header>
+            <div class="container">
+                <img class="crop" src=".\assets\images\logo_login.png" width="150" height="160">
+            </div>
+        </mat-card-header>
+
         <mat-card-content>
-            <form #myForm="ngForm" (ngSubmit)="onFromSubmit(myForm)">
-                <h2 class="h2">Iniciar Sesión</h2>
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Usuario</mat-label>
-                        <input matInput name="Usuario" placeholder="Usuario" value="" ngModel>
-                    </mat-form-field>
 
-                </p>
-                <p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Ingresar su contraseña</mat-label>
-                        <input matInput name="Contrasena" [type]="hide ? 'password' : 'text'" ngModel>
-                        <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                      </mat-form-field>                    
-                </p>
-                <!--<p>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput name="Contrasena" type="password" placeholder="Contraseña" value="" ngModel>
-                    </mat-form-field>
+            <br>
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="Iniciar sesión">
+                    <form [formGroup]="loginForm" (ngSubmit)="onFromSubmit()">
+                        <p>
+                            <br>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Usuario</mat-label>
+                                <input required matInput formControlName="Usuario" placeholder="Usuario" >
+                                <mat-icon class="white-icon" matSuffix>mail</mat-icon>
+                            </mat-form-field>
 
-                </p>-->
-                <p>
-                    <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
-                </p>
+                        </p>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Ingresar su contraseña</mat-label>
+                                <input required matInput formControlName="Contrasena" [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
+                        </p>
 
-                <p>
-                    <button mat-raised-button style="cursor: pointer" color="primary">
-                        Iniciar Sesión
-                    </button>
-                </p>
+                        <p>
+                            <button button mat-stroked-button style="color:#fffafa" [disabled]="loginForm.invalid" class="btn-block">
+                                Iniciar sesión
+                            </button>
+                        </p>
+                        <p>
+                            <a style="color:#a271fc" href="">¿Olvido su contraseña?</a>
+                        </p>
+                    </form>
+                </mat-tab>
+                <mat-tab label="Registrarse">
+                    <form [formGroup]="registroForm" (ngSubmit)="onFromSubmit2()">
+                        <mat-vertical-stepper>
+                            <mat-step>
+                                <ng-template matStepLabel>Información personal</ng-template>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput formControlName="Nombre" placeholder="Escriba su nombre">
+                                </mat-form-field>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput formControlName="Apellido" placeholder="Escriba su apellido">
+                                </mat-form-field>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Telefono</mat-label>
+                                    <input matInput formControlName="Telefono" placeholder="Escriba su telefono personal">
+                                </mat-form-field>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Correo</mat-label>
+                                    <input matInput formControlName="Correo" placeholder="Escriba su correo personal">
+                                </mat-form-field>
+                                <br>
+                                <button mat-button type="button" matStepperNext>Siguiente</button>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>Datos de usuario</ng-template>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Nombre de usuario</mat-label>
+                                    <input matInput formControlName="Usuario" placeholder="Escriba su nombre de usuario">
+                                </mat-form-field>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input matInput formControlName="Contrasena" [type]="hide ? 'password' : 'text'">
+                                    <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                                <mat-form-field class="textfield">
+                                    <mat-label>Confirme su contraseña</mat-label>
+                                    <input matInput formControlName="Actcontrasena" [type]="hide2 ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix type="button" (click)="hide2 = !hide2"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                                    <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                </mat-form-field>
+                                <br>
+                                <p>
+                                    <mat-error *ngIf="error2 != null">{{error2}}</mat-error>
+                                </p>
+                                <button mat-button type="button" matStepperPrevious>Anterior</button>
+                                <button mat-button [disabled]="registroForm.invalid">!Hecho!</button>
 
-
-            </form>
-            <p>
-                <button mat-raised-button style="cursor: pointer" color="primary">
-                    Olvide mi contraseña
-                </button>
-            </p>
-            <p>
-                <button mat-raised-button style="cursor: pointer" color="primary">
-                    ¿No estas registrado? Registrar Ahora
-                </button>
-            </p>
+                            </mat-step>
+                        </mat-vertical-stepper>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
 
         </mat-card-content>
     </mat-card>
