@@ -21,6 +21,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -58,6 +60,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CarouselModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
+    MatSnackBarModule,
 
     
   ], exports:[
@@ -84,6 +87,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CarouselModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
+    MatSnackBarModule,
 
   ]
 })

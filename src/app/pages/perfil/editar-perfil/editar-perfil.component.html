@@ -1,11 +1,16 @@
-<div class="h1"><h1>Editar perfil</h1></div>
+
 <mat-card>
+    <mat-card-header>
+        <div class="titulo"><h1>Editar perfil</h1></div>
+    </mat-card-header>
+    <mat-divider class="linea"></mat-divider>
+    <br>
     <mat-card-content>
         <form class="example-container" [formGroup]="actualizarform" (ngSubmit)="enviar(f)" #f="ngForm">
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Usuario</mat-label>
-                <input matInput placeholder="Usuario" formControlName="UsuarioRegistro">
+                <input matInput placeholder="Usuario" formControlName="UsuarioRegistro" maxlength="15">
                 <mat-icon class="colorIcon" matPrefix>person</mat-icon>
             </mat-form-field>
 
@@ -29,11 +34,11 @@
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Teléfono</mat-label>
-                <input matInput placeholder="Telefono" formControlName="TelefonoRegistro">
+                <input matInput placeholder="Telefono" formControlName="TelefonoRegistro" type="tel">
                 <mat-icon class="colorIcon" matPrefix>phone</mat-icon>
             </mat-form-field>
 
-            <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="actualizarform.invalid">
+            <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="actualizarform.invalid" >
                 <mat-icon>update</mat-icon>
                 <span>Actualizar</span>
             </button>
