@@ -1,3 +1,5 @@
+import { ListasMunicipios } from './../_model/ListasMunicipios';
+import { ListasZonas } from './../_model/ListasZonas';
 import { MisReservas } from './../_model/MisReservas';
 import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
@@ -7,8 +9,6 @@ import { HotelesDestacados } from './../_model/HotelesDestacados';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Listas } from '../_model/Listas';
-
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,11 @@ export class ListasService {
    * @returns un arreglo del servicio getListasZonas.
    */
   getListasZonas(){
-    return this.http.get<Listas[]>(`${this.url}getListasZonas`);
+    return this.http.get<ListasZonas[]>(`${this.url}getListasZonas`);
+  }
+
+  getListasMunicipios(){
+    return this.http.get<ListasMunicipios[]>(`${this.url}getListasMunicipios`);
   }
 
   /**
@@ -69,6 +73,10 @@ export class ListasService {
 
   postMostrarMisreservas(misReservas: MisReservas): Observable<any> {
     return this.http.post<any>(this.url + 'postMostrarMisreservas', misReservas)
+  }
+
+  postCancelarMireserva(id): Observable<any> {
+    return this.http.post<any>(this.url + 'postCancelarMireserva', id)
   }
 
 }

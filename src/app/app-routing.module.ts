@@ -1,3 +1,4 @@
+import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
   {path: 'perfil', component: PerfilComponent, children: [
+  {path: 'actualizarcontrasena', component: ActualizarContrasenaComponent},
       {path: 'editarperfil', component: EditarPerfilComponent}
   ], canActivate: [GuardianService]}, //Guardian
   {path: 'error401', component: Error401Component},

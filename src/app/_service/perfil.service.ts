@@ -1,4 +1,5 @@
 import { TraerMensajeDatosPerfil } from './../_model/TraerMensajeDatosPerfil';
+import { ActualizarContrasena } from './../_model/ActualizarContrasena';
 import { ActualizarDatosPerfil } from './../_model/ActualizarDatosPerfil';
 import { ProgressbarService } from './progressbar.service';
 import { CargarDatosPerfil } from './../_model/CargarDatosPerfil';
@@ -30,6 +31,11 @@ export class PerfilService {
     //console.log("service "+ usuario);
     
     return this.http.post<CargarDatosPerfil>(this.url + 'postCargarDatosPerfil', datosPerfil);
+  }
+
+  
+  putActualizarDatos(actualizarContrasena: ActualizarContrasena):Observable<any>{
+    return this.http.put<any>(this.url + 'putActualizarContrasena', actualizarContrasena);
   }
 
   postActualizarDatos(actualizarDatosperfil: ActualizarDatosPerfil): Observable<TraerMensajeDatosPerfil>{

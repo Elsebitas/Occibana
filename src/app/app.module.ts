@@ -1,3 +1,5 @@
+import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
+import { ActualizarContrasena } from './_model/ActualizarContrasena';
 import { RegistroLoginService } from './_service/registroLogin.service';
 import { Login } from './_model/Login';
 import { environment } from './../environments/environment';
@@ -19,6 +21,8 @@ import { HotelComponent } from './pages/hotel/hotel.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogoElimReservaComponent } from './pages/mis-reservas/dialogo-elim-reserva/dialogo-elim-reserva.component';
 import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoService } from './_service/crypto.service';
@@ -71,11 +75,15 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
         return null;
       }
     },
-    allowedDomains: ["18.230.178.121:8081"],
+    allowedDomains: ["18.230.178.121:8081"], ///TAMBIEN CAMBIAR IP AQUI
     disallowedRoutes: ["http://18.230.178.121:8081/api/registroLogin/postRegistroUsuario",
       "http://18.230.178.121:8081/api/registroLogin/postIngresoLogin",
       "http://18.230.178.121:8081/api/listas/postHotelesPrincipal",
-      "http://18.230.178.121:8081/api/listas/postObtenerComentarios"
+      "http://18.230.178.121:8081/api/listas/postObtenerComentarios",
+      "http://18.230.178.121:8081/api/panelHotel/postInformacionDelHotel",
+      "http://18.230.178.121:8081/api/panelHotel/postInformacionDelHabitacion",
+      "http://18.230.178.121:8081/api/panelHotel/postBuscarDisponibilidadHotel",
+      "http://18.230.178.121:8081/api/panelHotel/postReservarHospedaje",
     ],
   }
 }
@@ -90,8 +98,9 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     PerfilComponent,
     Error401Component,
     MisReservasComponent,
+    DialogoElimReservaComponent,
     EditarPerfilComponent,
-        
+    ActualizarContrasenaComponent    
 
   ],
   imports: [
@@ -102,6 +111,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     NoopAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
