@@ -39,6 +39,7 @@ export class ActualizarContrasenaComponent implements OnInit {
     private router: Router,
     private progressbarService: ProgressbarService) { 
     this.cargarDatosPerfil = new CargarDatosPerfil(),
+    
     this.profileForm = new FormGroup({
         usuario: new FormControl('',Validators.required),
         Correo: new FormControl('',Validators.required),

@@ -166,6 +166,30 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['/hotel'], { state:{ idhotel: card} });
 
   }
+
+
+ customOptions: OwlOptions = {
+   loop: true,
+   autoplay: true,
+   mouseDrag: true,
+   touchDrag: true,
+   pullDrag: false,
+   dots: true,
+   margin: 40,
+   stagePadding: 30,
+   navSpeed: 600,
+   responsive: {
+     0: {
+       items: 1 
+     },
+     400: {
+      items: 2
+    },
+    760: {
+      items: 3
+    }
+   },
+ }
 }
 
 

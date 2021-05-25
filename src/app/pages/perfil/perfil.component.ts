@@ -23,9 +23,8 @@ export class PerfilComponent implements OnInit {
   url: string;
 
   constructor(private perfilService: PerfilService, 
-              public route: ActivatedRoute,
-              private progressbarService:ProgressbarService,
-              public appModule: AppModule) {     
+              private progressbarService:ProgressbarService,    
+              public route: ActivatedRoute) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 

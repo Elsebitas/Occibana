@@ -1,0 +1,36 @@
+
+.h1{
+  margin-top: 2%;
+  margin-left: 45%;
+    
+}
+.example-full-width{
+    width: 85%;
+}
+mat-card {
+    background-color:white;
+    max-width: 350px;
+    margin: 2em auto;
+    text-align: center;
+    margin-top: 1%;
+  }
+
+  mat-card-header {
+    color: red;
+  }
+
+  mat-card-content {
+    margin: 2em auto;
+    margin-top: 1%;
+  }
+
+.boton {
+    margin-right: 2%;
+    width: 48%;
+}
+.boton2 {
+    width: 48%;
+}
+.colorIcon{
+  color: grey;
+}

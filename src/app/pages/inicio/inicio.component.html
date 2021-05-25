@@ -110,18 +110,24 @@
   <div class="content3">
     <div class="subtitles2">
       Sugerencias y hoteles destacados
-      <carousel height="350px" cellWidth="300px">
+      <owl-carousel-o [options]="customOptions">
+  
         <ng-container *ngFor="let card of listaDeHotelesPrincipales">
-          <mat-card class="card-style2" fxFlex="0 1 calc(25% - 32px)">
-            <img mat-card-image src="{{url}}{{card.imagen}}" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-              <p class="hoteltitle"> {{card.nombre}} </p>
-              <div class="line"></div>
-              <p class="titles2">Precio desde: {{card.precionoche}} $ </p>
-            </mat-card-content>
-          </mat-card>
+          <ng-template carouselSlide >
+            <mat-card>
+              <img mat-card-image src="{{url}}{{card.imagen}}" alt="Photo of a Shiba Inu">
+              <mat-card-content>
+                <p class="hoteltitle"> {{card.nombre}} </p>
+                <div class="line"></div>
+                <p class="titles2">Precio desde: {{card.precionoche}} $ </p>
+              </mat-card-content>
+            </mat-card>
+          </ng-template>
         </ng-container>
-      </carousel>
+      
+      </owl-carousel-o>
     </div>
   </div>
+
 </div>
+
