@@ -1,7 +1,13 @@
+h1{
+  font-size: xx-large;
+}
 
-.h1{
+.titulo{
   margin-top: 2%;
-  margin-left: 45%;
+  margin-bottom: 2%;
+  color: #3f51b5;
+  font-size: xx-large;
+  font-style: bold;
     
 }
 .example-full-width{
@@ -9,14 +15,14 @@
 }
 mat-card {
     background-color:white;
-    max-width: 350px;
+    max-width: 400px;
     margin: 2em auto;
     text-align: center;
     margin-top: 1%;
   }
 
   mat-card-header {
-    color: red;
+    text-align: center;
   }
 
   mat-card-content {
@@ -26,10 +32,10 @@ mat-card {
 
 .boton {
     margin-right: 2%;
-    width: 48%;
+    width: 42%;
 }
 .boton2 {
-    width: 48%;
+    width: 42%;
 }
 .colorIcon{
   color: grey;
