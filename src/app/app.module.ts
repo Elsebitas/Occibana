@@ -80,7 +80,11 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     disallowedRoutes: ["http://18.230.178.121:8081/api/registroLogin/postRegistroUsuario",
       "http://18.230.178.121:8081/api/registroLogin/postIngresoLogin",
       "http://18.230.178.121:8081/api/listas/postHotelesPrincipal",
-      "http://18.230.178.121:8081/api/listas/postObtenerComentarios"
+      "http://18.230.178.121:8081/api/listas/postObtenerComentarios",
+      "http://18.230.178.121:8081/api/panelHotel/postInformacionDelHotel",
+      "http://18.230.178.121:8081/api/panelHotel/postInformacionDelHabitacion",
+      "http://18.230.178.121:8081/api/panelHotel/postBuscarDisponibilidadHotel",
+      "http://18.230.178.121:8081/api/panelHotel/postReservarHospedaje",
     ],
   }
 }
