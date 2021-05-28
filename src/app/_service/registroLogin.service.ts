@@ -55,7 +55,7 @@ export class RegistroLoginService {
    * @returns la respuesta del servicio.
    */
   postCerrarSesion(usuario: string) {
-    return this.http.post(this.url2 + 'postCerrarSesion', usuario);
+    return this.http.post(this.url2 + 'postCerrarSesion', usuario, httpOptions);
   }
 
   estaLogueado(): number {

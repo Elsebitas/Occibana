@@ -8,7 +8,8 @@ import { InicioComponent } from './../inicio/inicio.component';
 import { ObtenerComentarios } from './../../_model/ObtenerComentarios';
 import { ListasService } from './../../_service/listas.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HabitacionesHotel } from 'src/app/_model/HabitacionesHotel';
 
 
 
@@ -17,6 +18,10 @@ const info ={
 };
 const habitacion ={
   IdHabitacionSession: 1
+};
+const habitacionHotel ={
+  idHotel:72,
+  numPersonas:null
 };
 const dispo ={
   IdDelHotelSession: 73,
@@ -60,17 +65,22 @@ export class HotelComponent implements OnInit {
   
   informacionHotel: InformacionHotel;
 
+  public habitacionesHotel :HabitacionesHotel[]; 
+
   url:string;
 
   constructor(private listasService: ListasService, 
               private router: Router, 
               private progressbarService: ProgressbarService, 
-              private panelHotelService: PanelHotelService) {
+              private panelHotelService: PanelHotelService,
+              public route: ActivatedRoute) {
   
     this.id = this.router.getCurrentNavigation().extras.state.idhotel;
     this.informacionHotel = new InformacionHotel();
 
    }
+
+  
   
   //Creo el array
   public comentarios:any = []; 
@@ -82,6 +92,7 @@ export class HotelComponent implements OnInit {
     this.postObtenerInformacion();
     this.postInformacionDelHabitacion();
     this.postBuscarDisponibilidadHotel();
+    this.postHabitacionesHotel();
     this.progressbarService.barraProgreso.next("2");
   }
   
@@ -114,6 +125,15 @@ export class HotelComponent implements OnInit {
     })
   }
 
+  postHabitacionesHotel(){
+    habitacionHotel.idHotel = this.id;
+    this.listasService.postHabitacionesHotel(habitacionHotel).subscribe(data =>{
+      console.log("Habitaciones hotel");
+      this.habitacionesHotel = data;
+      console.log(data);
+    });
+  }
+
   postObtenerComents(){
     this.hotelesPrincipales = new HotelesPrincipales();
     this.hotelesPrincipales.idhotel = this.id;
@@ -122,6 +142,7 @@ export class HotelComponent implements OnInit {
       console.log(data);
     });
   }
+
   
   scroll(el: HTMLElement){
     el.scrollIntoView();
