@@ -18,17 +18,21 @@
 
 .content3{
   margin: 2em auto;
-  width: 1000px;
+  width: 1200px;
 }
 
 .hoteltitle{
-  font-weight: bold;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing: normal;
+    text-rendering: auto;
   text-transform: uppercase;
   font-size: 16px;
 } 
 
 .titles{
-  font-weight: bold;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing: normal;
+  text-rendering: auto;
   font-size: 15px;
 }
 
@@ -42,9 +46,24 @@
 }
 
 .subtitles2{
-  font-weight: bold;
-  font-size: 20px;
-  color:#3f51b5;
+  text-align: center;
+  margin-top: 5px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.subtitles3{
+  position: relative;
+  text-align: center;
+  margin-top: 25px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .line{
@@ -62,6 +81,69 @@
   margin-top: 16px;
   margin-left: 30px;
 }
+
+
+.personass{
+  width: 35%;
+}
+
+mat-card img{
+  opacity: 0.8;
+  object-fit: cover;
+  width: 112.2%; 
+  }
+
+  
+mat-card img:hover {
+    opacity: 1.0;
+  }
+
+  .carusell{
+    position: relative;
+  }
+  .content1{
+    position: relative;
+  }
+
+  .opacidad {
+    opacity: 0.5;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0.1px;
+    color: #fff;
+    text-align: center;
+    padding-top: 1em;
+  }
+
+  .prueba{
+    position: absolute;
+  }
+
+  .tituloBanner{
+    margin-top: -14%;
+    margin-left: 42%;
+    position: absolute;
+    overflow: visible;
+    text-align: center;
+    font-size: 50px;
+    font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 800;
+    color:white;
+  }
+
+  .subtituloBanner{
+    margin-top: -11.8%;
+    margin-left: 27%;
+    position: absolute;
+    overflow: visible;
+    text-align: center;
+    font-size: 32px;
+    font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    color:white;
+  }
 
 
 /*
@@ -104,4 +186,17 @@ input[type="radio"]:checked ~ label {
 }
 */
 /*///////////////////////////////////////////////////////////////////////*/
+
+
+.texto-encima{
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 72%);
+  z-index: 1;
+  position: absolute;
+  top: 65%;
+  left: 5.8%;
+}
+
 

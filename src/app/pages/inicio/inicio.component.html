@@ -1,3 +1,60 @@
+
+<div class="content1">
+    <owl-carousel-o [options]="customOptions2">
+      <ng-template carouselSlide>
+        <div class="slide">
+          <img src="./assets/images/Subachoque2.jpg" alt="img 1">
+          <div class="opacidad"></div>
+          <p class="tituloBanner">OCCIBANA</p>
+          <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="slide">
+          <img src="./assets/images/Zipacon1.jpg" alt="img 2">
+          <div class="opacidad"></div>
+          <p class="tituloBanner">OCCIBANA</p>
+          <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="slide">
+          <img src="./assets/images/Funza2.jpg" alt="img 3">
+          <div class="opacidad"></div>
+          <p class="tituloBanner">OCCIBANA</p>
+          <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="slide">
+          <img src="./assets/images/Madrid1.jpg" alt="img 4">
+          <div class="opacidad"></div>
+          <p class="tituloBanner">OCCIBANA</p>
+          <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="slide">
+          <img src="./assets/images/Zipacon2.jpg" alt="img 5">
+          <div class="opacidad"></div>
+          <p class="tituloBanner">OCCIBANA</p>
+          <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="slide">
+          <img src="./assets/images/Subachoque1.jpg" alt="img 6">
+          <div class="opacidad"></div>
+          <p class="tituloBanner">OCCIBANA</p>
+          <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        </div>
+      </ng-template>
+    </owl-carousel-o>  
+</div>
+
+
+
+
 <div class="content2">
   <div>
     <table>
@@ -5,7 +62,7 @@
         <td>
           <mat-form-field class="filter" appearance="fill">
             <mat-label>Consultar hotel por nombre</mat-label>
-            <input matInput [(ngModel)]="searchTerm" >
+            <input matInput [(ngModel)]="searchTerm">
             <mat-icon matSuffix></mat-icon>
           </mat-form-field>
         </td>
@@ -26,18 +83,35 @@
     <table>
       <tr>
         <td>
-          <div>
             <mat-form-field appearance="fill">
               <mat-label>Municipio</mat-label>
               <mat-select [(ngModel)]="searchMun">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let municipio of listasMunicipios" [value]="municipio.nombre">{{municipio.nombre}}</mat-option>
+                <mat-option *ngFor="let municipio of listasMunicipios" [value]="municipio.nombre">{{municipio.nombre}}
+                </mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
+        </td>       
+        <td>
+            <mat-form-field appearance="fill" class="menubar">
+              <mat-label>Zonas</mat-label>
+              <mat-select [(ngModel)]="searchMun">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let zonas of listasZonas" [value]="zonas.nombre">{{zonas.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
         </td>
         <td>
-          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Tipo de Habitación</mat-label>
+              <mat-select>
+                <mat-option value="1">Basica</mat-option>
+                <mat-option value="2">Doble</mat-option>
+                <mat-option value="3">Premium</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </td>
+        <td>
             <mat-form-field appearance="fill">
               <mat-label>Introduzca un rango</mat-label>
               <mat-date-range-input [rangePicker]="picker">
@@ -47,87 +121,59 @@
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
-          </div>
-        </td>
-
-        <td>
-          <div>
-            <mat-form-field appearance="fill" class="menubar">
-              <mat-label>Zonas</mat-label>
-              <mat-select [(ngModel)]="searchMun">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let zonas of listasZonas" [value]="zonas.nombre">{{zonas.nombre}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-        </td>
-
-        <td>
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Tipo de Habitación</mat-label>
-              <mat-select>
-                <mat-option value="1">Basica</mat-option>
-                <mat-option value="2">Doble</mat-option>
-                <mat-option value="3">Premium</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
         </td>
         <td>
-          <div>
-            <form class="example-form">
-              <mat-form-field class="example-full-width" appearance="fill" class="numPersonas">
+            <form >
+              <mat-form-field class="personass" appearance="fill" >
                 <mat-label>personas</mat-label>
                 <input type="number" step="1" matInput placeholder="Ex. 4" value="">
               </mat-form-field>
             </form>
-          </div>
         </td>
       </tr>
     </table>
+  </div>
+
+  <div class="subtitles2">
+    Descubre los hoteles principales en la sabana de occidente
   </div>
 
 
   <div>
     <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
       <ng-container *ngFor="let card of listaDeHotelesPrincipalesFiltrados">
-        <mat-card style="cursor: pointer;" class="card-style" fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" (click)="mostrarHotel(card.idhotel)">
+        <mat-card style="cursor: pointer;" class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
+          fxFlex.lt-md="0 1 calc(50% - 32px)" (click)="mostrarHotel(card.idhotel)">
           <img mat-card-image src="{{url}}{{card.imagen}}">
           <mat-card-content>
-            <p class="hoteltitle"> {{card.nombre}} </p>
-            <div class="line"></div>
-            <p class="titles">Precio desde: {{card.precionoche}}$ </p>
-            <p class="subtitles">Ubicado en: {{card.municipio}}</p>
+            <div class="hoteltitle"> {{card.nombre}} </div>
+            <div class="titles">Precios desde: {{card.precionoche}}$ </div>
+            <div class="texto-encima">{{card.municipio}}</div>
           </mat-card-content>
         </mat-card>
       </ng-container>
     </div>
   </div>
-
-
-  <div class="content3">
-    <div class="subtitles2">
-      Sugerencias y hoteles destacados
-      <owl-carousel-o [options]="customOptions">
-  
-        <ng-container *ngFor="let card of listaDeHotelesPrincipales">
-          <ng-template carouselSlide >
-            <mat-card>
-              <img mat-card-image src="{{url}}{{card.imagen}}" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p class="hoteltitle"> {{card.nombre}} </p>
-                <div class="line"></div>
-                <p class="titles2">Precio desde: {{card.precionoche}} $ </p>
-              </mat-card-content>
-            </mat-card>
-          </ng-template>
-        </ng-container>
-      
-      </owl-carousel-o>
-    </div>
-  </div>
-
 </div>
 
+
+<div class="subtitles3">
+  Descubre nuestras sugerencias y hoteles destacados
+</div>
+
+<div class="content3">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let card of listaDeHotelesPrincipales">
+        <ng-template carouselSlide>
+          <mat-card>
+            <img mat-card-image src="{{url}}{{card.imagen}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p class="hoteltitle"> {{card.nombre}} </p>
+              <div class="line"></div>
+              <p class="titles2">Precio desde: {{card.precionoche}} $ </p>
+            </mat-card-content>
+          </mat-card>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+</div>

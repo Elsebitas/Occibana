@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { fadeInItems } from '@angular/material/menu';
 
 
 @Component({
@@ -172,11 +173,8 @@ export class InicioComponent implements OnInit {
    loop: true,
    autoplay: true,
    mouseDrag: true,
-   touchDrag: true,
-   pullDrag: false,
    dots: true,
    margin: 40,
-   stagePadding: 30,
    navSpeed: 600,
    responsive: {
      0: {
@@ -187,9 +185,25 @@ export class InicioComponent implements OnInit {
     },
     760: {
       items: 3
-    }
+    },
    },
  }
+
+ customOptions2: OwlOptions = {
+  loop: true,
+  autoplay: true,
+  mouseDrag: false,
+  dots: false,
+  animateOut: 'fadeOut',
+  responsive: {
+    0: {
+      items: 1 
+    },
+  },
+  nav: false,
+}
+
+
 }
 
 
