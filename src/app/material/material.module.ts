@@ -22,6 +22,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -75,7 +76,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSortModule,
     MatSnackBarModule,
     MatStepperModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatRadioModule
 
     
   ], exports:[
@@ -111,7 +113,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSnackBarModule,
     MatStepperModule,
     MatProgressBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }

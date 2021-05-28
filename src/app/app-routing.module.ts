@@ -1,3 +1,4 @@
+import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
@@ -23,7 +24,9 @@ const routes: Routes = [
   ], canActivate: [GuardianService]}, //Guardian
   {path: 'error401', component: Error401Component},
   {path: 'mis_reservas', component: MisReservasComponent},
-  {path: 'hotel', component: HotelComponent},
+  {path: 'hotel', component: HotelComponent, children: [
+      {path: 'reservar', component: ReservarComponent}
+  ]},
   {path: '', component: InicioComponent},
   {path: '**', component: Error404Component},
 ];

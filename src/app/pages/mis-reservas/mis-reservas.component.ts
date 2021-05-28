@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { DialogoElimReservaComponent } from './dialogo-elim-reserva/dialogo-elim-reserva.component';
 import { ProgressbarService } from './../../_service/progressbar.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MisReservas } from './../../_model/MisReservas';
@@ -81,9 +81,7 @@ export class MisReservasComponent implements OnInit {
 
   cancelarReserva(id) {
     this.listaService.postCancelarMireserva(id).subscribe(data => {
-        this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/perfil']);
-        });
+        this.mostrarMisReservas();
         console.log(data);
     })
   }
