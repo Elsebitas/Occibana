@@ -28,6 +28,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoService } from './_service/crypto.service';
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
+import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -100,7 +101,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     MisReservasComponent,
     DialogoElimReservaComponent,
     EditarPerfilComponent,
-    ActualizarContrasenaComponent    
+    ActualizarContrasenaComponent,
+    ComentarCalificarComponent    
 
   ],
   imports: [

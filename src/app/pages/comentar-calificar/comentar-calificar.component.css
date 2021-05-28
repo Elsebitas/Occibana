@@ -1,0 +1,13 @@
+.content {
+    margin: 2em auto;
+    width: 1525px;
+  }
+
+  .comment{
+    width: 100%;
+  }
+
+  .textArea {
+    text-align: justify;
+    height: 200px;
+  }
