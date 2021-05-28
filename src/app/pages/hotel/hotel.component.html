@@ -1,185 +1,160 @@
-<div class="container">
-    <div>
-        <h2>Ubicacion</h2>
-        <p>{{informacionHotel.municipio}}</p>
+<div [hidden]="route.children.length !== 0">
+    <div class="container">
+        <div>
+            <h2>Ubicacion</h2>
+            <p>{{informacionHotel.municipio}}</p>
+        </div>
+        <div>
+            <h2>Check in:</h2>
+            <p>{{informacionHotel.checkin}}</p>
+        </div>
+        <div>
+            <h2>Check-out</h2>
+            <p>{{informacionHotel.checkout}}</p>
+        </div>
+        <div>
+            <h2>Ocupacion</h2>
+            <p>{{informacionHotel.condicion}}</p>
+        </div>
     </div>
-    <div>
-        <h2>Check in:</h2>
-        <p>{{informacionHotel.checkin}}</p>
-    </div>
-    <div>
-        <h2>Check-out</h2>
-        <p>{{informacionHotel.checkout}}</p>
-    </div>
-    <div>
-        <h2>Ocupacion</h2>
-        <p>{{informacionHotel.condicion}}</p>
-    </div>
+    
+    <mat-grid-list cols="4" rowHeight="100px">
+        <mat-grid-tile [colspan]="3" [rowspan]="5">
+            <div class="carrusel">
+                <owl-carousel-o [options]="customOptions">
+                    <ng-container>
+                        <ng-template carouselSlide>
+                            <div class="slide">
+                                <img src="{{url}}{{informacionHotel.imagen}}">
+                            </div>
+                        </ng-template>
+                        <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
+                            <div class="slide">
+                                <img src="{{url}}{{informacionHotel.imagen_secundaria}}">
+                            </div>
+                        </ng-template>
+                        <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
+                            <div class="slide">
+                                <img src="{{url}}{{informacionHotel.imagen_secundaria2}}">
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+            <div class="tableTitulo">
+                <h1>{{informacionHotel.nombre}}</h1>
+                <h3>desde:</h3>
+                <h2>${{informacionHotel.precionoche}} pesos</h2>
+                <button mat-raised-button style="cursor: pointer" color="primary" (click)="scroll(habitacion)">
+                    Reservar Habitación
+                </button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <table>
+        <td class="tableCarrusel">
+            <div class="info">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Información sobre el hotel
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Información sobre el hotel {{panelOpenState ? 'open' : 'closed'}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <p>Descripción</p>
+                        <h3>{{informacionHotel.descripcion}}</h3>
+                        <p>Información del hotel</p>
+                        <div class="infohotel">
+                            <div>
+                                <mat-icon class="icon">av_timer</mat-icon>
+                                <h3>Check-in y Check-out</h3>
+                                <p>Check-in: {{informacionHotel.checkin}}</p>
+                                <p>Check-out: {{informacionHotel.checkin}}</p>
+                            </div>
+                            <div>
+                                <mat-icon class="icon">location_city</mat-icon>
+                                <h3>Dirección</h3>
+                                <p>{{informacionHotel.direccion}}</p>
+                            </div>
+                            <div>
+                                <mat-icon class="icon">warning</mat-icon>
+                                <h3>Advertencias</h3>
+                                <p>{{informacionHotel.condicion}}</p>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div #habitacion class="habitacion">
+                <h2>Elige tu habitación</h2>
+                <div class="linea"></div>
+                <div class="habitacion2">
+                    <ng-container *ngFor="let habitacion of habitacionesHotel">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <mat-card-title>Habitación</mat-card-title>
+                                <mat-card-subtitle>{{habitacion.tipo}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>Numero de personas: {{habitacion.numpersonas}}</p>
+                                <p>Camas: {{habitacion.numcamas}}</p>
+                                <p>Baños: {{habitacion.numbanio}}</p>
+                                <p>Precio: ${{habitacion.previo}}</p>
+                                <button mat-raised-button style="cursor: pointer" color="primary" routerLink="/hotel/reservar">Selecionar</button>
+                            </mat-card-content>
+                        </mat-card>
+                    </ng-container>
+                </div>
+            </div>
+        </td>
+        <td>
+            <ng-container *ngFor="let coment of comentarios">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <!--<div mat-card-avatar class="example-header-image"></div>-->
+                        <mat-card-title>AQUI HOTEL</mat-card-title>
+                        <mat-card-subtitle>Comentarios acerca del hotel...</mat-card-subtitle>
+                    </mat-card-header>
+                    <!--<img mat-card-image src="http://static1.eskypartners.com/travelguide/vancouver-hotels.jpg"
+                        alt="Photo of a Shiba Inu">-->
+                    <mat-card-content>
+                        <div>
+                            <p>
+                                <b>ID usuario: </b> {{coment.id_usuario}}
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Nombre de usuario: </b> {{coment.nombre_usuario}}
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Comentario: </b> {{coment.comentario}}
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Fecha del Comentario: </b> {{coment.fecha_comentario}}
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Fecha de salida: </b> {{coment.fecha_salida}}
+                            </p>
+                        </div>
+    
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </td>
+    </table>
 </div>
 
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile [colspan]="3" [rowspan]="5">
-        <div class="carrusel">
-            <owl-carousel-o [options]="customOptions">
-                <ng-container>
-                    <ng-template carouselSlide>
-                        <div class="slide">
-                            <img src="{{url}}{{informacionHotel.imagen}}">
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
-                        <div class="slide">
-                            <img src="{{url}}{{informacionHotel.imagen_secundaria}}">
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
-                        <div class="slide">
-                            <img src="{{url}}{{informacionHotel.imagen_secundaria2}}">
-                        </div>
-                    </ng-template>
-                </ng-container>
-            </owl-carousel-o>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
-        <div class="tableTitulo">
-            <h1>{{informacionHotel.nombre}}</h1>
-            <h3>desde:</h3>
-            <h2>${{informacionHotel.precionoche}} pesos</h2>            
-            <button mat-raised-button style="cursor: pointer" color="primary" (click)="scroll(habitacion)">
-                Reservar Habitación
-            </button>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
-<table>
-    <td class="tableCarrusel">
-        <div class="info">
-            <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Información sobre el hotel
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Información sobre el hotel {{panelOpenState ? 'open' : 'closed'}}
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>Descripción</p>
-                    <h3>{{informacionHotel.descripcion}}</h3>
-                    <p>Información del hotel</p>
-                    <div class="infohotel">
-                        <div>
-                            <mat-icon class="icon">av_timer</mat-icon>
-                            <h3>Check-in y Check-out</h3>
-                            <p>Check-in: {{informacionHotel.checkin}}</p>
-                            <p>Check-out: {{informacionHotel.checkin}}</p>
-                        </div>
-                        <div>
-                            <mat-icon class="icon">location_city</mat-icon>
-                            <h3>Dirección</h3>
-                            <p>{{informacionHotel.direccion}}</p>
-                        </div>
-                        <div>
-                            <mat-icon class="icon">warning</mat-icon>
-                            <h3>Advertencias</h3>
-                            <p>{{informacionHotel.condicion}}</p>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
-        <div #habitacion class="habitacion">
-            <h2>Elige tu habitación</h2>
-            <div class="linea"></div>
-            <div class="habitacion2">
-                <h2>Habitación</h2>
-                <p>Numero de personas:</p>
-                <p>Camas:</p>
-                <p>Baños</p>
-                <p>Precio</p>
-                <button mat-raised-button style="cursor: pointer" color="primary">Selecionar</button>
-            </div>
-        </div>
-    </td>
-    <td>
-        <ng-container *ngFor="let coment of comentarios">
-            <mat-card class="example-card">
-                <mat-card-header>
-                    <!--<div mat-card-avatar class="example-header-image"></div>-->
-                    <mat-card-title>AQUI HOTEL</mat-card-title>
-                    <mat-card-subtitle>Comentarios acerca del hotel...</mat-card-subtitle>
-                </mat-card-header>
-                <!--<img mat-card-image src="http://static1.eskypartners.com/travelguide/vancouver-hotels.jpg"
-                    alt="Photo of a Shiba Inu">-->
-                <mat-card-content>
-                    <div>
-                        <p>
-                            <b>ID usuario: </b> {{coment.id_usuario}}
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <b>Nombre de usuario: </b> {{coment.nombre_usuario}}
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <b>Comentario: </b> {{coment.comentario}}
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <b>Fecha del Comentario: </b> {{coment.fecha_comentario}}
-                        </p>
-                    </div>
-                    <div>
-                        <p>
-                            <b>Fecha de salida: </b> {{coment.fecha_salida}}
-                        </p>
-                    </div>
 
-                </mat-card-content>
-            </mat-card>
-        </ng-container>
-    </td>
-</table>
-<!--<ng-container *ngFor="let coment of comentarios">
-    <mat-card class="example-card">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>AQUI HOTEL</mat-card-title>
-            <mat-card-subtitle>Comentarios acerca del hotel...</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="http://static1.eskypartners.com/travelguide/vancouver-hotels.jpg"
-            alt="Photo of a Shiba Inu">
-        <mat-card-content>
-            <div>
-                <p>
-                    <b>ID usuario: </b> {{coment.id_usuario}}
-                </p>
-            </div>
-            <div>
-                <p>
-                    <b>Nombre de usuario: </b> {{coment.nombre_usuario}}
-                </p>
-            </div>
-            <div>
-                <p>
-                    <b>Comentario: </b> {{coment.comentario}}
-                </p>
-            </div>
-            <div>
-                <p>
-                    <b>Fecha del Comentario: </b> {{coment.fecha_comentario}}
-                </p>
-            </div>
-            <div>
-                <p>
-                    <b>Fecha de salida: </b> {{coment.fecha_salida}}
-                </p>
-            </div>
-
-        </mat-card-content>
-    </mat-card>
-</ng-container>-->
+<router-outlet></router-outlet>

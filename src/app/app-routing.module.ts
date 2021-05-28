@@ -1,4 +1,5 @@
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
+import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
 import { Error401Component } from './pages/error401/error401.component';
@@ -26,6 +27,9 @@ const routes: Routes = [
   {path: 'mis_reservas', component: MisReservasComponent},
   {path: 'comentar-calificar', component: ComentarCalificarComponent},
   {path: 'hotel', component: HotelComponent},
+  {path: 'hotel', component: HotelComponent, children: [
+      {path: 'reservar', component: ReservarComponent}
+  ]},
   {path: '', component: InicioComponent},
   {path: '**', component: Error404Component},
 ];

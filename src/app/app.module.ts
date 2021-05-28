@@ -29,6 +29,8 @@ import { CryptoService } from './_service/crypto.service';
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -81,6 +83,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
       "http://18.230.178.121:8081/api/registroLogin/postIngresoLogin",
       "http://18.230.178.121:8081/api/listas/postHotelesPrincipal",
       "http://18.230.178.121:8081/api/listas/postObtenerComentarios",
+      "http://18.230.178.121:8081/api/listas/postHabitacionesHotel",
       "http://18.230.178.121:8081/api/panelHotel/postInformacionDelHotel",
       "http://18.230.178.121:8081/api/panelHotel/postInformacionDelHabitacion",
       "http://18.230.178.121:8081/api/panelHotel/postBuscarDisponibilidadHotel",
@@ -102,7 +105,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     DialogoElimReservaComponent,
     EditarPerfilComponent,
     ActualizarContrasenaComponent,
-    ComentarCalificarComponent    
+    ComentarCalificarComponent,
+    ReservarComponent
 
   ],
   imports: [
@@ -124,6 +128,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     })
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     Login,
     AppModule,
     RegistroLoginService,

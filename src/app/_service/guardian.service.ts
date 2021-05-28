@@ -52,7 +52,7 @@ export class GuardianService implements CanActivate {
       let rol = decodedToken.role;
 
       let url = state.url;
-      if (url.includes('/perfil') && rol == 1)
+      if (url.includes('/perfil') && rol == 1 || rol == 0)
         return true;
       else {
         this.router.navigate(['/login']);

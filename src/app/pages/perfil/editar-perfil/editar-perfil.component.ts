@@ -1,3 +1,6 @@
+import { Login } from './../../../_model/Login';
+import { RegistroLoginService } from './../../../_service/registroLogin.service';
+import { CryptoService } from './../../../_service/crypto.service';
 import { ProgressbarService } from './../../../_service/progressbar.service';
 import { TraerMensajeDatosPerfil } from './../../../_model/TraerMensajeDatosPerfil';
 import { CargarDatosPerfil } from './../../../_model/CargarDatosPerfil';
@@ -6,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ActualizarDatosPerfil } from './../../../_model/ActualizarDatosPerfil';
 import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilService } from 'src/app/_service/perfil.service';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -24,13 +27,17 @@ export class EditarPerfilComponent implements OnInit {
   cargarDatosPerfil: CargarDatosPerfil;
   datosPerfil: DatosPerfil;
   traerMensajeDatosPerfil: TraerMensajeDatosPerfil;
+  login: Login;
 
   url: string;
 
   constructor(private perfilService: PerfilService,
-    private progressbarService: ProgressbarService,
-    public route: ActivatedRoute,
-    private _snackBar: MatSnackBar) {
+              private progressbarService: ProgressbarService,
+              private router: Router,
+              public route: ActivatedRoute,
+              private _snackBar: MatSnackBar,
+              private cryptoService: CryptoService,
+              private registroLoginService: RegistroLoginService) {
     this.datosPerfil = new DatosPerfil();
     this.actualizarDatosPerfil = new ActualizarDatosPerfil();
     this.actualizarform = new FormGroup({
@@ -82,7 +89,11 @@ export class EditarPerfilComponent implements OnInit {
       console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
+      if (this.traerMensajeDatosPerfil.mensaje != "Utiliza otro usuario, este ya existe o esta registrado") {
+        this.router.navigate(['/perfil']);
+      }
       this.openSnackBar(this.traerMensajeDatosPerfil.mensaje,'ACEPTAR');
+      this.relogin(actDatosPerf);
       this.progressbarService.barraProgreso.next("2");
     })
   }
@@ -112,6 +123,17 @@ export class EditarPerfilComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
+
+  relogin(actDatosPerf: ActualizarDatosPerfil){
+    this.login = new Login();
+    this.cryptoService.encryptUsingAES256("user",actDatosPerf.UsuarioRegistro);
+    this.login.Usuario = actDatosPerf.UsuarioRegistro;
+    this.login.Contrasena = this.cryptoService.decryptUsingAES256("userpassword");;
+    this.registroLoginService.postIngresoLogin(this.login).subscribe(data=>{
+      sessionStorage.setItem(environment.TOKEN, data);
+    })
+  }
+
 
 
 }

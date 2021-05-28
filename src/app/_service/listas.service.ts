@@ -5,6 +5,7 @@ import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
 import { HotelesPrincipales } from './../_model/HotelesPrincipales';
 import { HotelesDestacados } from './../_model/HotelesDestacados';
+import { HabitacionesHotel } from './../_model/HabitacionesHotel';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
@@ -77,6 +78,10 @@ export class ListasService {
 
   postCancelarMireserva(id: number): Observable<any> {
     return this.http.post<any>(this.url + 'postCancelarMireserva', id)
+  }
+
+  postHabitacionesHotel(id): Observable<HabitacionesHotel[]> {
+    return this.http.post<HabitacionesHotel[]>(this.url + 'postHabitacionesHotel', id)
   }
 
 }
