@@ -1,3 +1,4 @@
+import { RecuperarContrasena } from './../_model/RecuperarContrasena';
 import { RegistroUsuarios } from './../_model/RegistroUsuarios';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Login } from '../_model/Login';
@@ -30,6 +31,10 @@ export class RegistroLoginService {
 
   //Variable provicional
   private url2: string = `${environment.HOST}/perfil/`;
+
+
+  private url3: string = `${environment.HOST}/admin/`;
+
 
   /**
    * Constructor que inicializa el objeto http.
@@ -78,6 +83,11 @@ export class RegistroLoginService {
   postRegistroUsuarios(registroUsuarios: RegistroUsuarios): Observable<any> {
     return this.http.post<any>(this.url + 'postRegistroUsuario', registroUsuarios, httpOptions);
   }
+
+  postRecuperarConstrasena(recuperarContrasena: RecuperarContrasena): Observable<any> {
+    return this.http.post<any>(this.url3 + 'postCorreoRecuperacion', recuperarContrasena, httpOptions);
+  }
+
   
 }
 

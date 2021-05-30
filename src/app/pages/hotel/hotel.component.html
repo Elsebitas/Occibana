@@ -17,42 +17,42 @@
             <p>{{informacionHotel.condicion}}</p>
         </div>
     </div>
-    
-    <mat-grid-list cols="4" rowHeight="100px">
-        <mat-grid-tile [colspan]="3" [rowspan]="5">
-            <div class="carrusel">
-                <owl-carousel-o [options]="customOptions">
-                    <ng-container>
-                        <ng-template carouselSlide>
-                            <div class="slide">
-                                <img src="{{url}}{{informacionHotel.imagen}}">
-                            </div>
-                        </ng-template>
-                        <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
-                            <div class="slide">
-                                <img src="{{url}}{{informacionHotel.imagen_secundaria}}">
-                            </div>
-                        </ng-template>
-                        <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
-                            <div class="slide">
-                                <img src="{{url}}{{informacionHotel.imagen_secundaria2}}">
-                            </div>
-                        </ng-template>
-                    </ng-container>
-                </owl-carousel-o>
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="2">
-            <div class="tableTitulo">
-                <h1>{{informacionHotel.nombre}}</h1>
-                <h3>desde:</h3>
-                <h2>${{informacionHotel.precionoche}} pesos</h2>
-                <button mat-raised-button style="cursor: pointer" color="primary" (click)="scroll(habitacion)">
-                    Reservar Habitación
-                </button>
-            </div>
-        </mat-grid-tile>
-    </mat-grid-list>
+
+    <div class="informacion">
+        <div class="carrusel">
+            <owl-carousel-o [options]="customOptions">
+                <ng-container>
+                    <ng-template carouselSlide>
+                        <div class="slide">
+                            <img src="{{url}}{{informacionHotel.imagen}}">
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
+                        <div class="slide">
+                            <img src="{{url}}{{informacionHotel.imagen_secundaria}}">
+                        </div>
+                    </ng-template>
+                    <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
+                        <div class="slide">
+                            <img src="{{url}}{{informacionHotel.imagen_secundaria2}}">
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+        </div>
+        <div class="tableTitulo">
+            <h1>{{informacionHotel.nombre}}</h1>
+            <h3>desde:</h3>
+            <h2>${{informacionHotel.precionoche}} pesos</h2>
+            <button mat-raised-button style="cursor: pointer" color="primary" (click)="scroll(habitacion)">
+                Reservar Habitación
+            </button>
+        </div>
+    </div>
+
+
+
+
     <table>
         <td class="tableCarrusel">
             <div class="info">
@@ -95,7 +95,7 @@
                 <div class="linea"></div>
                 <div class="habitacion2">
                     <ng-container *ngFor="let habitacion of habitacionesHotel">
-                        <mat-card class="example-card">
+                        <mat-card class="example-card2">
                             <mat-card-header>
                                 <mat-card-title>Habitación</mat-card-title>
                                 <mat-card-subtitle>{{habitacion.tipo}}</mat-card-subtitle>
@@ -148,7 +148,7 @@
                                 <b>Fecha de salida: </b> {{coment.fecha_salida}}
                             </p>
                         </div>
-    
+
                     </mat-card-content>
                 </mat-card>
             </ng-container>

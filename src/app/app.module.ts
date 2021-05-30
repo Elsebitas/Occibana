@@ -1,3 +1,5 @@
+import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
+import { ServerErrorInterceptorService } from './_service/server-error-interceptor.service';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 import { ActualizarContrasena } from './_model/ActualizarContrasena';
 import { RegistroLoginService } from './_service/registroLogin.service';
@@ -12,7 +14,7 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
@@ -104,7 +106,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     DialogoElimReservaComponent,
     EditarPerfilComponent,
     ActualizarContrasenaComponent,
-    ReservarComponent
+    ReservarComponent,
+    RecuperarConstrasenaComponent,
 
   ],
   imports: [
@@ -131,7 +134,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     AppModule,
     RegistroLoginService,
     ProgressbarService,
-    CryptoService
+    CryptoService,
+    {provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptorService, multi : true}
   ],
   bootstrap: [AppComponent]
 })

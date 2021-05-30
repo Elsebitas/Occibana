@@ -1,3 +1,4 @@
+import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfil.component';
@@ -16,12 +17,15 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
  * Constante para definir las rutas de la página.
  */
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, children: [
+    {path : 'recuperarConstrasena', component: RecuperarConstrasenaComponent}
+  ]},
   {path: 'inicio', component: InicioComponent},
   {path: 'perfil', component: PerfilComponent, children: [
   {path: 'actualizarcontrasena', component: ActualizarContrasenaComponent},
       {path: 'editarperfil', component: EditarPerfilComponent}
   ], canActivate: [GuardianService]}, //Guardian
+
   {path: 'error401', component: Error401Component},
   {path: 'mis_reservas', component: MisReservasComponent},
   {path: 'hotel', component: HotelComponent, children: [

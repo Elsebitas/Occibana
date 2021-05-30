@@ -16,35 +16,53 @@
                             <br>
                             <mat-form-field appearance="outline">
                                 <mat-label>Usuario</mat-label>
-                                <input required matInput formControlName="Usuario" placeholder="Usuario" >
+                                <input required #entradaUsuario matInput formControlName="Usuario"
+                                    placeholder="Usuario">
+                                <mat-hint align="end">{{entradaUsuario.value?.length || 0}}/20</mat-hint>
                                 <mat-icon class="white-icon" matSuffix>mail</mat-icon>
+                                <mat-error *ngIf="loginForm.get('Usuario').hasError('required')">
+                                    Usuario es <strong>requerido</strong>
+                                </mat-error>
                             </mat-form-field>
 
+
                         </p>
-                        <p>
+                        <div>
                             <mat-form-field appearance="outline">
                                 <mat-label>Ingresar su contraseña</mat-label>
-                                <input required matInput formControlName="Contrasena" [type]="hide ? 'password' : 'text'">
+                                <input required matInput formControlName="Contrasena"
+                                    [type]="hide ? 'password' : 'text'">
                                 <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
                                     [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                     <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
+                                <mat-error *ngIf="loginForm.get('Contrasena').hasError('required')">
+                                    Contraseña es <strong>requerida</strong>
+                                </mat-error>
                             </mat-form-field>
-                        </p>
+
+
+
+                        </div>
                         <p>
                             <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
                         </p>
 
                         <p>
-                            <button button mat-stroked-button style="color:#fffafa" [disabled]="loginForm.invalid" class="btn-block">
+                            <button button mat-stroked-button style="color:#fffafa" [disabled]="loginForm.invalid"
+                                class="btn-block">
                                 Iniciar sesión
                             </button>
                         </p>
                         <p>
-                            <a style="color:#a271fc" href="">¿Olvido su contraseña?</a>
+                            <a style="color:#a271fc" style="cursor: pointer;" (click)="dialogoRecuperarContrasena()">¿Olvido su contraseña?</a>
                         </p>
                     </form>
                 </mat-tab>
+
+
+
+
                 <mat-tab label="Registrarse">
                     <form [formGroup]="registroForm" (ngSubmit)="onFromSubmit2()">
                         <mat-vertical-stepper>
@@ -52,19 +70,56 @@
                                 <ng-template matStepLabel>Información personal</ng-template>
                                 <mat-form-field class="textfield">
                                     <mat-label>Nombre</mat-label>
-                                    <input matInput formControlName="Nombre" placeholder="Escriba su nombre">
+                                    <input matInput #entradaNombre formControlName="Nombre"
+                                        placeholder="Escriba su nombre">
+                                    <mat-hint align="end">{{entradaNombre.value?.length || 0}}/20</mat-hint>
+                                    <mat-error
+                                        *ngIf="registroForm.get('Nombre').hasError('pattern') && !registroForm.get('Nombre').hasError('required')">
+                                        Porfavor introduzca un nombre valido
+                                    </mat-error>
+                                    <mat-error *ngIf="registroForm.get('Nombre').hasError('required')">
+                                        Nombre es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
+
                                 <mat-form-field class="textfield">
                                     <mat-label>Apellido</mat-label>
-                                    <input matInput formControlName="Apellido" placeholder="Escriba su apellido">
+                                    <input matInput #entradaApellido formControlName="Apellido"
+                                        placeholder="Escriba su apellido">
+                                    <mat-hint align="end">{{entradaApellido.value?.length || 0}}/20</mat-hint>
+                                    <mat-error
+                                        *ngIf="registroForm.get('Apellido').hasError('pattern') && !registroForm.get('Apellido').hasError('required')">
+                                        Porfavor introduzca un apellido valido
+                                    </mat-error>
+                                    <mat-error *ngIf="registroForm.get('Apellido').hasError('required')">
+                                        Apellido es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
                                     <mat-label>Telefono</mat-label>
-                                    <input matInput formControlName="Telefono" placeholder="Escriba su telefono personal">
+                                    <input matInput #entradaTelefono formControlName="Telefono"
+                                        placeholder="Escriba su telefono personal">
+                                    <mat-hint align="end">{{entradaTelefono.value?.length || 0}}/10</mat-hint>
+                                    <mat-error
+                                        *ngIf="registroForm.get('Telefono').hasError('pattern') && !registroForm.get('Telefono').hasError('required')">
+                                        Porfavor introduzca un telefono valido
+                                    </mat-error>
+                                    <mat-error *ngIf="registroForm.get('Telefono').hasError('required')">
+                                        Telefono es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
                                     <mat-label>Correo</mat-label>
-                                    <input matInput formControlName="Correo" placeholder="Escriba su correo personal">
+                                    <input matInput #entradaCorreo formControlName="Correo"
+                                        placeholder="Escriba su correo personal">
+                                    <mat-hint align="end">{{entradaCorreo.value?.length || 0}}/50</mat-hint>
+                                    <mat-error
+                                        *ngIf="registroForm.get('Correo').hasError('email') && !registroForm.get('Correo').hasError('required')">
+                                        Porfavor introduzca un correo valido
+                                    </mat-error>
+                                    <mat-error *ngIf="registroForm.get('Correo').hasError('required')">
+                                        Correo es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <br>
                                 <button mat-button type="button" matStepperNext>Siguiente</button>
@@ -73,23 +128,37 @@
                                 <ng-template matStepLabel>Datos de usuario</ng-template>
                                 <mat-form-field class="textfield">
                                     <mat-label>Nombre de usuario</mat-label>
-                                    <input matInput formControlName="Usuario" placeholder="Escriba su nombre de usuario">
+                                    <input matInput #entradaUsuarioo formControlName="Usuario"
+                                        placeholder="Escriba su nombre de usuario">
+                                    <mat-hint align="end">{{entradaUsuarioo.value?.length || 0}}/20</mat-hint>
+                                    <mat-error *ngIf="registroForm.get('Usuario').hasError('required')">
+                                        Usuario es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
                                     <mat-label>Contraseña</mat-label>
                                     <input matInput formControlName="Contrasena" [type]="hide ? 'password' : 'text'">
                                     <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
                                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                        <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}
+                                        </mat-icon>
                                     </button>
+                                    <mat-error *ngIf="registroForm.get('Contrasena').hasError('required')">
+                                        Contraseña es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
                                     <mat-label>Confirme su contraseña</mat-label>
-                                    <input matInput formControlName="Actcontrasena" [type]="hide2 ? 'password' : 'text'">
-                                <button mat-icon-button matSuffix type="button" (click)="hide2 = !hide2"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
-                                    <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </button>
+                                    <input matInput formControlName="Actcontrasena"
+                                        [type]="hide2 ? 'password' : 'text'">
+                                    <button mat-icon-button matSuffix type="button" (click)="hide2 = !hide2"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                                        <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}
+                                        </mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="registroForm.get('Actcontrasena').hasError('required')">
+                                        Confirmar su contraseña es <strong>requerido</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <br>
                                 <p>

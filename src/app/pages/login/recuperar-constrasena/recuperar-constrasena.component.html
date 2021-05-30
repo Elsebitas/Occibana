@@ -1,0 +1,39 @@
+<div mat-dialog-content>
+  <div>
+    <img src="./assets/images/logo_login.png" width="55" height="60">
+  </div>
+  <div class="text-title">Necesitamos comprobar tu identidad</div>
+</div>
+
+<p>
+  Para verificar que tus credenciales son correctas, completa el formulario con tu dirección de correo y usuario. Luego haz clic en "Aceptar" para recibir tu código.
+</p>
+
+<form [formGroup]="recuperarForm" (ngSubmit)="onFromSubmit()">
+  <mat-form-field class="textfield">
+    <mat-label>Usuario</mat-label>
+    <input matInput #entradaNombre formControlName="usuario" placeholder="Escriba su nombre de usuario">
+    <mat-hint align="end">{{entradaNombre.value?.length || 0}}/20</mat-hint>
+    <mat-error *ngIf="recuperarForm.get('usuario').hasError('required')">
+      Usuario es <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="textfield">
+    <mat-label>Correo</mat-label>
+    <input matInput #entradaCorreo formControlName="correo" placeholder="Escriba su dirección de correo">
+    <mat-hint align="end">{{entradaCorreo.value?.length || 0}}/50</mat-hint>
+    <mat-error
+      *ngIf="recuperarForm.get('correo').hasError('email') && !recuperarForm.get('correo').hasError('required')">
+      Porfavor introduzca un correo valido
+    </mat-error>
+    <mat-error *ngIf="recuperarForm.get('correo').hasError('required')">
+      Correo es <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button [disabled]="recuperarForm.invalid" (click)="aceptar()">Aceptar</button>
+    <button mat-button cdkFocusInitial (click)="cancelar()">Cancelar</button>
+  </div>
+</form>
+

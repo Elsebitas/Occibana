@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { RegistroUsuarios } from './../../_model/RegistroUsuarios';
 import { AppModule } from './../../app.module';
 import { ProgressbarService } from './../../_service/progressbar.service';
@@ -9,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { RecuperarConstrasenaComponent } from './recuperar-constrasena/recuperar-constrasena.component';
 
 @Component({
   selector: 'app-login',
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
    */
   error: string;
   error2: string;
+
+  
   
 
   /**
@@ -54,7 +58,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private crypto: CryptoService,
               private progressbarService: ProgressbarService,
-              private appModule: AppModule) { 
+              private appModule: AppModule,
+              private dialogo : MatDialog) { 
 
                 this.loginForm = new FormGroup({
                   Usuario: new FormControl('', [Validators.required, Validators.maxLength(20)]),
@@ -64,8 +69,8 @@ export class LoginComponent implements OnInit {
                 this.registroForm = new FormGroup({
                   Nombre: new FormControl('', [Validators.required,Validators.maxLength(20),Validators.pattern('^[a-zA-Z]+$')]),
                   Apellido: new FormControl('', [Validators.required, Validators.maxLength(20),Validators.pattern('^[a-zA-Z]+$')]),
-                  Correo: new FormControl('', [Validators.required, Validators.maxLength(30),Validators.email]),
-                  Telefono: new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$')]),
+                  Correo: new FormControl('', [Validators.required, Validators.maxLength(50),Validators.email]),
+                  Telefono: new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$'),Validators.minLength(10)]),
                   Usuario: new FormControl('', [Validators.required,Validators.maxLength(20)]),
                   Contrasena: new FormControl('', [Validators.required]),
                   Actcontrasena: new FormControl('', [Validators.required]),
@@ -139,6 +144,23 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/login']);
   });   
+  }
+
+  dialogoRecuperarContrasena(){
+    //usuario: string, correo: string
+    const dialogRef = this.dialogo.open(RecuperarConstrasenaComponent, {
+      width: '400px',
+//      data: {idReserva: idReserva}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.opcion == "Aceptar") {
+          //console.log("se llama el servicio de para eliminar reserva");
+          //id.idReserva = idReserva;
+          //this.cancelarReserva(id);
+          //this.abrirSnackBar('Reserva cancelada con éxito', 'Aceptar');
+      }
+    });
   }
 
 }

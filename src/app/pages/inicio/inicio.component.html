@@ -95,7 +95,7 @@
         <td>
             <mat-form-field appearance="fill" class="menubar">
               <mat-label>Zonas</mat-label>
-              <mat-select [(ngModel)]="searchMun">
+              <mat-select [(ngModel)]="searchZona">
                 <mat-option>None</mat-option>
                 <mat-option *ngFor="let zonas of listasZonas" [value]="zonas.nombre">{{zonas.nombre}}</mat-option>
               </mat-select>
@@ -104,10 +104,10 @@
         <td>
             <mat-form-field appearance="fill">
               <mat-label>Tipo de Habitación</mat-label>
-              <mat-select>
-                <mat-option value="1">Basica</mat-option>
-                <mat-option value="2">Doble</mat-option>
-                <mat-option value="3">Premium</mat-option>
+              <mat-select [(ngModel)]="searchHab">
+                <mat-option value="Basica">Basica</mat-option>
+                <mat-option value="Doble">Doble</mat-option>
+                <mat-option value="Premium">Premium</mat-option>
               </mat-select>
             </mat-form-field>
         </td>
@@ -123,12 +123,10 @@
             </mat-form-field>
         </td>
         <td>
-            <form >
               <mat-form-field class="personass" appearance="fill" >
                 <mat-label>personas</mat-label>
-                <input type="number" step="1" matInput placeholder="Ex. 4" value="">
+                <input type="number" step="1" matInput placeholder="Ex. 4" [(ngModel)]="searchPer">
               </mat-form-field>
-            </form>
         </td>
       </tr>
     </table>
@@ -144,7 +142,7 @@
       <ng-container *ngFor="let card of listaDeHotelesPrincipalesFiltrados">
         <mat-card style="cursor: pointer;" class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
           fxFlex.lt-md="0 1 calc(50% - 32px)" (click)="mostrarHotel(card.idhotel)">
-          <img mat-card-image src="{{url}}{{card.imagen}}">
+          <img mat-card-image class="tamanoImagen" src="{{url}}{{card.imagen}}">
           <mat-card-content>
             <div class="hoteltitle"> {{card.nombre}} </div>
             <div class="titles">Precios desde: {{card.precionoche}}$ </div>
@@ -163,17 +161,18 @@
 
 <div class="content3">
     <owl-carousel-o [options]="customOptions">
-      <ng-container *ngFor="let card of listaDeHotelesPrincipales">
+      <ng-container *ngFor="let hotelesDes of hotelesDestacados">
         <ng-template carouselSlide>
-          <mat-card>
-            <img mat-card-image src="{{url}}{{card.imagen}}" alt="Photo of a Shiba Inu">
+          <mat-card style="cursor: pointer;"  (click)="mostrarHotel(hotelesDes.idhotel)">
+            <img mat-card-image class="tamanoImagen2" src="{{url}}{{hotelesDes.imagen}}">
             <mat-card-content>
-              <p class="hoteltitle"> {{card.nombre}} </p>
+              <p class="hoteltitle"> {{hotelesDes.nombre}} </p>
               <div class="line"></div>
-              <p class="titles2">Precio desde: {{card.precionoche}} $ </p>
+              <p class="titles2">Precio desde: {{hotelesDes.precionoche}} $ </p>
             </mat-card-content>
           </mat-card>
         </ng-template>
       </ng-container>
     </owl-carousel-o>
 </div>
+
