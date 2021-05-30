@@ -1,6 +1,7 @@
 .container{
   margin-top: 3%;
-  margin-left: 5%;
+  margin-left: 18%;
+  margin-right: 18%;
   padding-bottom: 5px;
   border-bottom: 1px solid gainsboro;
   box-shadow: 0px 4px 4px -6px black;
@@ -12,10 +13,13 @@
   border-right: 1px solid gainsboro;  
 }
 .example-card {
-    max-width: 500px;
-    margin: 2em auto;
-
+  margin-top: 1%;
+    max-width: 385px;
   }
+  .example-card2 {
+    margin-top: 1%;
+      max-width: 86.5%;
+    }
   
   .example-header-image {
     background-image: url("https://www.seekpng.com/png/detail/72-729756_how-to-add-a-new-user-to-your.png");
@@ -23,13 +27,9 @@
   }
 
 .carrusel{
-  position: absolute;
-  width: 70%;
   margin-top: 1%;
-  margin-left: 5%;
-}
-.carrusel div{  
-  float: left;
+  width: 62%;
+  
 }
 .owl-demo .item{
   margin: 3px;
@@ -41,17 +41,26 @@
 }
 
 table{
+  margin-left: 15.5%;
+  margin-right: 15.5%;
   width: 100%;
   position: relative;
 }
 .tableCarrusel{
-  width: 80%;
+  width: 45%;
 }
 .botonImg{
   width: 5%;
 }
 .tableTitulo{
+  margin-top: -47%;
   position: relative;
+  float: right;
+}
+
+.informacion{
+  margin-left: 18%;
+  margin-right: 18%;
 }
 
 .infohotel{

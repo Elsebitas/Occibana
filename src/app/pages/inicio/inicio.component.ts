@@ -1,3 +1,4 @@
+import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasZonas } from './../../_model/ListasZonas';
 import { ListasMunicipios } from './../../_model/ListasMunicipios';
 
@@ -33,10 +34,11 @@ export class InicioComponent implements OnInit {
   /**
    * Variable de tipo array que almacena los datos provenientes del servicio postHotelesPrincipales.
    */
-  public listaDeHotelesPrincipales:HotelesPrincipales[]; 
+  public listaDeHotelesPrincipales : HotelesPrincipales[];
+  public hotelesDestacados : HotelesDestacados[];
   public listasMunicipios : ListasMunicipios[];
   public listasZonas : ListasZonas[];
-  listaDeHotelesPrincipalesFiltrados: HotelesPrincipales[];
+  listaDeHotelesPrincipalesFiltrados : HotelesPrincipales[];
 
 
   /**
@@ -47,8 +49,55 @@ export class InicioComponent implements OnInit {
   private _searchMun : string; 
   private _searchMin : number;
   private _searchMax : number;
+  private _searchHab : string;
+  private _searchZona: string; 
+  private _searchPer: number; 
 
 
+  get searchPer(): number{
+    return this._searchPer;
+  }
+
+  set searchPer(value: number){
+    this._searchPer = value; 
+    this.listaDeHotelesPrincipalesFiltrados = this.filteredPerHotel(value); 
+  }
+
+  filteredPerHotel(searchString : number){
+    return this.listaDeHotelesPrincipales.filter(lista => 
+      lista.numpersonas == searchString);
+
+  }
+
+  get searchZona(): string{
+    return this._searchZona;
+  }
+
+  set searchZona(value: string){
+    this._searchZona = value; 
+    this.listaDeHotelesPrincipalesFiltrados = this.filteredZonaHotel(value); 
+  }
+
+  filteredZonaHotel(searchString : string){
+    return this.listaDeHotelesPrincipales.filter(lista => 
+      lista.zona.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+
+  }
+
+  get searchHab(): string{
+    return this._searchHab;
+  }
+
+  set searchHab(value: string){
+    this._searchHab = value; 
+    this.listaDeHotelesPrincipalesFiltrados = this.filteredHabHotel(value); 
+  }
+
+  filteredHabHotel(searchString : string){
+    return this.listaDeHotelesPrincipales.filter(lista => 
+      lista.tipo.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+
+  }
 
   get searchTerm(): string{
     return this._searchTerm;
@@ -158,6 +207,10 @@ export class InicioComponent implements OnInit {
     this.listasService.getListasZonas().subscribe(data =>{
       this.listasZonas = data;
     });
+
+    this.listasService.getHotelesDestacados().subscribe(data => {
+      this.hotelesDestacados = data;
+    });
   }
 
   
@@ -186,6 +239,9 @@ export class InicioComponent implements OnInit {
     760: {
       items: 3
     },
+    1000: {
+      items: 4
+    }
    },
  }
 
