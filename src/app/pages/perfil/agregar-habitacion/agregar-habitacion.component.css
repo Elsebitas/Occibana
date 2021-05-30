@@ -1,0 +1,32 @@
+mat-card {
+    background-color:white;
+    max-width: 320px;
+    margin: 2em auto;
+    text-align: center;
+    margin-top: 5%;
+  }
+
+  .sombra{
+    box-shadow: 1px 1px 1px 1px #aaaaaa;
+  }
+
+  .h2{
+    color: #545454;
+  }
+
+  mat-form-field {
+    display: block;
+  }
+
+  .mat-raised-button{
+    width: 100%;
+  }
+
+  .boton {
+    margin-right: 2%;
+    width: 48%;
+  }
+  .boton2 {
+      width: 48%;
+  }
+  

@@ -1,3 +1,4 @@
+import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
 import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'perfil', component: PerfilComponent, children: [
   {path: 'actualizarcontrasena', component: ActualizarContrasenaComponent},
-      {path: 'editarperfil', component: EditarPerfilComponent}
+      {path: 'editarperfil', component: EditarPerfilComponent},
+      {path: 'agregar_habitacion', component: AgregarHabitacionComponent}
   ], canActivate: [GuardianService]}, //Guardian
 
   {path: 'error401', component: Error401Component},

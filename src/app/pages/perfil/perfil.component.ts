@@ -8,7 +8,7 @@ import { PerfilService } from './../../_service/perfil.service';
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 let id={
   idUsuario:1
@@ -33,7 +33,8 @@ export class PerfilComponent implements OnInit {
   constructor(private perfilService: PerfilService, 
               private progressbarService:ProgressbarService,
               private listasService:ListasService,    
-              public route: ActivatedRoute) {     
+              public route: ActivatedRoute,
+              private router: Router) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 
@@ -78,6 +79,11 @@ export class PerfilComponent implements OnInit {
       console.log(idUser);
       console.log(data);
     })
+  }
+
+  agregarHabitacion(id){
+    console.log(id);
+    this.router.navigate(['/perfil/agregar_habitacion'], { state:{ idhotel: id} });
   }
   
 }
