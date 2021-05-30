@@ -84,4 +84,8 @@ export class ListasService {
     return this.http.post<HabitacionesHotel[]>(this.url + 'postHabitacionesHotel', id)
   }
 
+  postMostrarMisHoteles(id): Observable<HotelesDestacados[]> {
+    return this.http.post<HotelesDestacados[]>(this.url + 'postMostrarMisHoteles', id)
+  }
+
 }

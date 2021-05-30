@@ -23,13 +23,6 @@ const habitacionHotel ={
   idHotel:72,
   numPersonas:null
 };
-const dispo ={
-  IdDelHotelSession: 73,
-  FechaLlegada: "2020-05-22T22:19:36.8335811Z",
-  FechaSalida: "2020-05-29T22:19:36.8335811Z",
-  NumeroDePersonas: 5,
-  HabitacionIdSession: 1
-};
 
 @Component({
   selector: 'app-hotel',
@@ -60,6 +53,7 @@ export class HotelComponent implements OnInit {
   hotelesPrincipales: HotelesPrincipales;
 
   private id: number;
+  private idHabitacion: number;
 
   obtenerComentarios: ObtenerComentarios;
   
@@ -91,7 +85,6 @@ export class HotelComponent implements OnInit {
     this.postObtenerComents();
     this.postObtenerInformacion();
     this.postInformacionDelHabitacion();
-    this.postBuscarDisponibilidadHotel();
     this.postHabitacionesHotel();
     this.progressbarService.barraProgreso.next("2");
   }
@@ -107,20 +100,6 @@ export class HotelComponent implements OnInit {
   postInformacionDelHabitacion(){
     this.panelHotelService.postInformacionDelHabitacion(habitacion).subscribe(data =>{
       console.log("info habitacion");
-      console.log(data);
-    })
-  }
-
-  postBuscarDisponibilidadHotel(){
-    this.panelHotelService.postBuscarDisponibilidadHotel(dispo).subscribe(data =>{
-      console.log("Disponibilidad hotel");
-      console.log(data);
-    })
-  }
-
-  postReservarHospedaje(){    
-    this.panelHotelService.postReservarHospedaje(dispo).subscribe(data =>{
-      console.log("Disponibilidad hotel");
       console.log(data);
     })
   }
@@ -141,6 +120,13 @@ export class HotelComponent implements OnInit {
       this.comentarios = data; 
       console.log(data);
     });
+  }
+
+  reservar(idhabitacion,numpersonas, precio){
+    this.router.navigate(['/hotel/reservar'], { state:{ idhotel: this.id, 
+                                                        idhabitacion: idhabitacion,
+                                                        numPersonas: numpersonas,
+                                                        precio: precio} });
   }
 
   

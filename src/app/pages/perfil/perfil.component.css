@@ -53,6 +53,7 @@
 
 .content{
   margin: 2em auto;
+  width: 100%;
 }
 
 .hoteltitle{
@@ -80,13 +81,27 @@
 
 .card-style{
   margin-top: 16px;  
+  width: 100%;
+}
+
+.imgCard{
+    width: 320px; 
+}
+
+.center{
+    width: 100%;
 }
 
 .boton {
     margin-right: 2%;
-    width: 43.1%;
+    width: 52%;
 }
 .boton2 {
     margin-right: 2%;
-    width: 43.1%;
+    width: 43%;
+}
+.boton3 {
+    position: absolute;
+    margin-top: -2%;
+    margin-left: -10%;
 }

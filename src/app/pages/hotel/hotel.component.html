@@ -104,8 +104,8 @@
                                 <p>Numero de personas: {{habitacion.numpersonas}}</p>
                                 <p>Camas: {{habitacion.numcamas}}</p>
                                 <p>Baños: {{habitacion.numbanio}}</p>
-                                <p>Precio: ${{habitacion.previo}}</p>
-                                <button mat-raised-button style="cursor: pointer" color="primary" routerLink="/hotel/reservar">Selecionar</button>
+                                <p>Precio: ${{habitacion.precio}}</p>
+                                <button mat-raised-button style="cursor: pointer" color="primary" (click)="reservar(habitacion.id, habitacion.numpersonas,habitacion.precio)">Selecionar</button>
                             </mat-card-content>
                         </mat-card>
                     </ng-container>

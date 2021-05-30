@@ -66,26 +66,26 @@
                             <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
                                 <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
                                     fxLayoutAlign="flex-start">
-                                    <ng-container *ngFor="let num of [1,2,3,4,5]">
+                                    <ng-container *ngFor="let hotel of hotelesDestacados">
                                         <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
                                             fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
-                                            <img mat-card-image src=".\assets\images\hotel1.jpg"
-                                                alt="Photo of a Shiba Inu">
+                                            <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}">
+                                            <button mat-mini-fab color="warn" class="boton3"
+                                                aria-label="Example icon button with a delete icon">
+                                                <mat-icon>delete</mat-icon>
+                                            </button>
                                             <mat-card-content>
                                                 <p class="hoteltitle"> </p>
                                                 <div class="line"></div>
-                                                <p class="titles">Precio desde: </p>
-                                                <p class="subtitles">Ubicado en: </p>
+                                                <p class="titles">Precio desde: {{hotel.precionoche}}</p>
+                                                <p class="subtitles">Ubicado en: {{hotel.zona}}</p>
                                                 <div class="center">
                                                     <button mat-raised-button routerLink="/agregar_habitacion"
                                                         class="boton" style="cursor: pointer" color="primary">Agregar
                                                         Habitacion</button>
                                                     <button mat-raised-button routerLink="" class="boton2"
-                                                        style="cursor: pointer" color="primary">Ver reservas</button>
-                                                    <button mat-mini-fab color="warn"
-                                                        aria-label="Example icon button with a delete icon">
-                                                        <mat-icon>delete</mat-icon>
-                                                    </button>
+                                                        style="cursor: pointer" color="primary">Ver
+                                                        reservas</button>
                                                 </div>
                                             </mat-card-content>
                                         </mat-card>

@@ -1,13 +1,18 @@
+import { environment } from 'src/environments/environment';
+import { HotelesDestacados } from './../../_model/HotelesDestacados';
+import { ListasService } from './../../_service/listas.service';
 import { AppModule } from './../../app.module';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { CargarDatosPerfil } from './../../_model/CargarDatosPerfil';
-import { environment } from './../../../environments/environment';
 import { PerfilService } from './../../_service/perfil.service';
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
 import { ActivatedRoute } from '@angular/router';
 
+let id={
+  idUsuario:1
+}
 
 @Component({
   selector: 'app-perfil',
@@ -20,19 +25,23 @@ export class PerfilComponent implements OnInit {
 
   cargarDatosPerfil: CargarDatosPerfil;
 
+  hotelesDestacados:HotelesDestacados[];
+
   url: string;
+  url2: string;
 
   constructor(private perfilService: PerfilService, 
-              private progressbarService:ProgressbarService,    
+              private progressbarService:ProgressbarService,
+              private listasService:ListasService,    
               public route: ActivatedRoute) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 
   ngOnInit(): void {
+    this.url2 = environment.REALHOST;
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.postCargarDatosPerfil();
-
   }
 
   postCargarDatosPerfil(){
@@ -53,11 +62,22 @@ export class PerfilComponent implements OnInit {
 
 
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data =>{
-      this.cargarDatosPerfil = data;  
+      this.cargarDatosPerfil = data;        
+      id.idUsuario = this.cargarDatosPerfil.datos.id;
+      this.postMostrarMisHoteles(id);
       console.log(data);
       //console.log(this.cargarDatosPerfil);
     })
     this.progressbarService.barraProgreso.next("2");
+  }
+
+  postMostrarMisHoteles(idUser){
+    this.listasService.postMostrarMisHoteles(idUser).subscribe(data=>{
+      this.hotelesDestacados = data;
+      console.log("Mis Hoteles");
+      console.log(idUser);
+      console.log(data);
+    })
   }
   
 }
