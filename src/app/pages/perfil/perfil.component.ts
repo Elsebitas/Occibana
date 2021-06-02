@@ -22,6 +22,14 @@ let id={
 export class PerfilComponent implements OnInit {
 
  
+  public imagePath;
+  imgURL: any;
+  public message: string;
+
+  sellersPermitFile: any;
+
+  //base64s
+  sellersPermitString: string;
 
   cargarDatosPerfil: CargarDatosPerfil;
 
@@ -79,5 +87,7 @@ export class PerfilComponent implements OnInit {
       console.log(data);
     })
   }
+
+   
   
 }

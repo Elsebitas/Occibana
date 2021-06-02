@@ -8,7 +8,7 @@ export class HotelesPrincipales{
     preciomax : number;
     preciomin : number; 
     numpersonas : number;
-    calificacion : string;  
+    promediocalificacion : number;  
     municipio : string; 
     zona : string;  
     fecha_antesde : string; 
@@ -18,4 +18,5 @@ export class HotelesPrincipales{
     precioNocheDoble : number;
     precioNochePremium : number;
     imagen: string;
+    
 }

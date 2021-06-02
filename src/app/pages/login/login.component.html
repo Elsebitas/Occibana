@@ -55,7 +55,8 @@
                             </button>
                         </p>
                         <p>
-                            <a style="color:#a271fc" style="cursor: pointer;" (click)="dialogoRecuperarContrasena()">¿Olvido su contraseña?</a>
+                            <a style="color:#a271fc" style="cursor: pointer;"
+                                (click)="dialogoRecuperarContrasena()">¿Olvido su contraseña?</a>
                         </p>
                     </form>
                 </mat-tab>
@@ -100,13 +101,14 @@
                                     <input matInput #entradaTelefono formControlName="Telefono"
                                         placeholder="Escriba su telefono personal">
                                     <mat-hint align="end">{{entradaTelefono.value?.length || 0}}/10</mat-hint>
-                                    <mat-error
-                                        *ngIf="registroForm.get('Telefono').hasError('pattern') && !registroForm.get('Telefono').hasError('required')">
-                                        Porfavor introduzca un telefono valido
-                                    </mat-error>
                                     <mat-error *ngIf="registroForm.get('Telefono').hasError('required')">
                                         Telefono es <strong>requerido</strong>
                                     </mat-error>
+                                    <mat-error
+                                        *ngIf="registroForm.get('Telefono').errors?.validarInicialTelefono && !registroForm.get('Telefono').hasError('required')">
+                                        Porfavor introduzca un telefono valido
+                                    </mat-error>
+
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
                                     <mat-label>Correo</mat-label>
@@ -156,14 +158,31 @@
                                         <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}
                                         </mat-icon>
                                     </button>
-                                    <mat-error *ngIf="registroForm.get('Actcontrasena').hasError('required')">
+
+                                    <mat-error *ngIf="registroForm.controls.Actcontrasena.hasError('required')">
                                         Confirmar su contraseña es <strong>requerido</strong>
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="registroForm.controls.Actcontrasena.hasError('NoPasswordsMatch') && !registroForm.controls.Actcontrasena.hasError('required')">
+                                        Contraseñas no <strong>Coinciden</strong>
                                     </mat-error>
                                 </mat-form-field>
                                 <br>
                                 <p>
                                     <mat-error *ngIf="error2 != null">{{error2}}</mat-error>
                                 </p>
+                                <button mat-button type="button" matStepperPrevious>Anterior</button>
+                                <button mat-button type="button" matStepperNext>Siguiente</button>
+
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>Foto de perfil</ng-template>
+                                <h3>Subir Imagen Angular 10</h3>
+                                <span style="color:red;" *ngIf="message">{{message}}</span>
+                                <input #file type="file" accept='image/*' (change)="preview($event)" />
+                                <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+                                <br>
                                 <button mat-button type="button" matStepperPrevious>Anterior</button>
                                 <button mat-button [disabled]="registroForm.invalid">!Hecho!</button>
 

@@ -4,11 +4,12 @@
             <tr>
                 <div class="tdPicture">
                     <td>
-                        <div class="linea"></div>
                         <div class="imagen">
-                            <img mat-card-image src=".\assets\images\hotel1.jpg">
-                            <!--<img mat-card-image src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">-->
+                            <img src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">
                         </div>
+                        
+
+                        <br>
                         <div *ngIf="cargarDatosPerfil">
                             <h1>{{cargarDatosPerfil.datos.nombre}} {{cargarDatosPerfil.datos.apellido}}</h1>
                             <h2>@{{cargarDatosPerfil.datos.usuario}}</h2>
@@ -61,14 +62,14 @@
                     </td>
                 </div>
                 <td>
-                    <div class="menu">
+                    <div>
                         <mat-tab-group mat-align-tabs="start">
                             <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
                                 <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
                                     fxLayoutAlign="flex-start">
                                     <ng-container *ngFor="let hotel of hotelesDestacados">
                                         <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
-                                            fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+                                            fxFlex.lt-md="0 1 calc(33.3% - 32px)" fxFlex.lt-sm="100%">
                                             <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}">
                                             <button mat-mini-fab color="warn" class="boton3"
                                                 aria-label="Example icon button with a delete icon">

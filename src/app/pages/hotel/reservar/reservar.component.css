@@ -37,6 +37,11 @@ mat-card {
     padding-top: 1em;
 }
 
+.imagenHotel{
+    fill-opacity: initial;
+    opacity: 0.8;
+}
+
 .mat-radio-button ~ .mat-radio-button {
     margin-left: 16px;
 }

@@ -32,6 +32,7 @@ import { ProgressbarService } from './_service/progressbar.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
+import { RatingModule } from 'ng-starrating';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -120,6 +121,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    RatingModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,

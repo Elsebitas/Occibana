@@ -1,5 +1,5 @@
 .contenido{    
-   max-width:100%;
+   width:100%;
 }
 .tdPicture{    
     margin-left: 30px;
@@ -9,22 +9,20 @@
 }
 .imagen{
     margin-top: 10%;
+    
 }
 .imagen img{
     margin-top: 5%;
     width:200px;
     height:200px;
     border-radius:150px;
+    border: 2.5px solid rgba(0, 0, 0, 0.295);
+    
 }
 .linea{
     position: absolute;
     background-color: gray;
     width: 10px;
-}
-.menu{
-    position: relative;
-    margin-top: 2%;
-    width: 98%;
 }
 .correo{
     display: inline;
@@ -81,11 +79,11 @@
 
 .card-style{
   margin-top: 16px;  
-  width: 100%;
+  width: 550px;
 }
 
 .imgCard{
-    width: 320px; 
+    height: 250px;
 }
 
 .center{
