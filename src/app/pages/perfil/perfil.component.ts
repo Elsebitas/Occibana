@@ -16,8 +16,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PerfilComponent implements OnInit {
 
- 
-
   cargarDatosPerfil: CargarDatosPerfil;
 
   url: string;

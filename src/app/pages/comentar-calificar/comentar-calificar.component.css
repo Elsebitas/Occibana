@@ -1,4 +1,4 @@
-.content {
+  .content {
     margin: 2em auto;
     width: 1525px;
   }
@@ -7,7 +7,17 @@
     width: 100%;
   }
 
+  table {
+    width: 100%;
+  }
+
   .textArea {
     text-align: justify;
     height: 200px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
   }
