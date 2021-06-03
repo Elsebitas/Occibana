@@ -94,5 +94,10 @@ export class PerfilComponent implements OnInit {
     console.log(id);
     this.router.navigate(['/perfil/agregar_habitacion'], { state:{ idhotel: id} });
   }
+
+  comprarMembresia(id, user, correo){
+    console.log(id);
+    this.router.navigate(['/perfil/comprarmembresias'], { state:{ id: id, usuario: user, correo: correo} });
+  }
   
 }
