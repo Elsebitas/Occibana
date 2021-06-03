@@ -80,6 +80,10 @@ export class InicioComponent implements OnInit {
     this.listaDeHotelesPrincipalesFiltrados = this.filteredPerHotel(value);
   }
 
+
+
+  
+
   filteredPerHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
       lista.numpersonas == searchString);
@@ -281,11 +285,10 @@ export class InicioComponent implements OnInit {
   }
 
   onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
-    console.log(`Old Value:${$event.oldValue}, 
-    New Value: ${$event.newValue}, 
-    Checked Color: ${$event.starRating.checkedcolor}, 
-    Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+    let numero = $event.newValue;
+    this.searchStr = numero;
   }
+
 }
 
 
