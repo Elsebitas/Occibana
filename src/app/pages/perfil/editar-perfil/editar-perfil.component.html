@@ -1,7 +1,8 @@
-
 <mat-card>
     <mat-card-header>
-        <div class="titulo"><h1>Editar perfil</h1></div>
+        <div class="titulo">
+            <h1>Editar perfil</h1>
+        </div>
     </mat-card-header>
     <mat-divider class="linea"></mat-divider>
     <br>
@@ -10,41 +11,85 @@
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Usuario</mat-label>
-                <input matInput placeholder="Usuario" formControlName="UsuarioRegistro" maxlength="15">
+                <input #entradaUsuario matInput placeholder="Usuario" formControlName="UsuarioRegistro">
                 <mat-icon class="colorIcon" matPrefix>person</mat-icon>
+                <mat-hint align="end">{{entradaUsuario.value?.length || 0}}/15</mat-hint>
+                <mat-error *ngIf="actualizarform.get('UsuarioRegistro').hasError('required')">
+                    Usuario es <strong>requerido</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('UsuarioRegistro').hasError('minlength')">
+                    El número de caracteres mínimo es <strong>3</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('UsuarioRegistro').hasError('maxlength')">
+                    Excedió el número de <strong>caracteres</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Nombres</mat-label>
-                <input matInput placeholder="Nombres" formControlName="NombreRegistro">
+                <input #entradaNombre matInput placeholder="Nombres" formControlName="NombreRegistro">
                 <mat-icon class="colorIcon" matPrefix>person_outline</mat-icon>
+                <mat-hint align="end">{{entradaNombre.value?.length || 0}}/30</mat-hint>
+                <mat-error *ngIf="actualizarform.get('NombreRegistro').hasError('pattern')">
+                    Sólo se permiten letras de <strong>A-Z</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('NombreRegistro').hasError('minlength')">
+                    El número de caracteres mínimo es <strong>3</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('NombreRegistro').hasError('maxlength')">
+                    Excedió el número de <strong>caracteres</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Apellidos</mat-label>
-                <input matInput placeholder="Apellidos" formControlName="ApellidoRegistro">
+                <input #entradaApellido matInput placeholder="Apellidos" formControlName="ApellidoRegistro">
                 <mat-icon class="colorIcon" matPrefix>person_outline</mat-icon>
+                <mat-hint align="end">{{entradaApellido.value?.length || 0}}/30</mat-hint>
+                <mat-error *ngIf="actualizarform.get('ApellidoRegistro').hasError('pattern')">
+                    Sólo se permiten letras de <strong>A-Z</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('ApellidoRegistro').hasError('minlength')">
+                    El número de caracteres mínimo es <strong>3</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('ApellidoRegistro').hasError('maxlength')">
+                    Excedió el número de <strong>caracteres</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Correo electrónico</mat-label>
-                <input matInput placeholder="Correo" formControlName="CorreoRegistro">
+                <input #entradaCorreo matInput placeholder="Correo" formControlName="CorreoRegistro">
                 <mat-icon class="colorIcon" matPrefix>email</mat-icon>
+                <mat-error *ngIf="actualizarform.get('CorreoRegistro').hasError('email')">
+                    Ingresa un correo <strong>válido</strong>
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Teléfono</mat-label>
                 <input matInput placeholder="Telefono" formControlName="TelefonoRegistro" type="tel">
                 <mat-icon class="colorIcon" matPrefix>phone</mat-icon>
+                <mat-error *ngIf="actualizarform.get('TelefonoRegistro').hasError('pattern')">
+                    Sólo se permiten <strong>números</strong>
+                </mat-error>
+                <mat-error *ngIf="actualizarform.get('TelefonoRegistro').hasError('maxlength')">
+                    Excedió el cantidad de <strong>números</strong>
+                </mat-error>
+                <mat-error
+                    *ngIf="actualizarform.get('TelefonoRegistro').errors?.validarInicialTelefono && !actualizarform.get('TelefonoRegistro').hasError('required')">
+                    Por favor ingresa un teléfono válido
+                </mat-error>
+
             </mat-form-field>
 
             <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="actualizarform.invalid">
                 <mat-icon>update</mat-icon>
-                <span>Actualizar</span>
+                <span> Actualizar</span>
             </button>
             <button mat-raised-button color="warn" class="boton2" type="button" routerLink="/perfil">
                 <mat-icon>close</mat-icon>
-                <span>Cancelar</span>
+                <span> Cancelar</span>
             </button>
         </form>
     </mat-card-content>

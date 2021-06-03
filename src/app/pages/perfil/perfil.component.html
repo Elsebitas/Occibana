@@ -43,20 +43,21 @@
                         <div>
                             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
                                 (click)="postCargarDatosPerfil()">Actualizar
-                                Membresia</button>
+                                Membresía</button>
                             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1"
-                                color="primary">Comprar
-                                Membresia</button>
+                                color="primary"><mat-icon>credit_card</mat-icon> Comprar Membresía</button>
                         </div>
                         <br>
                         <div>
-                            <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">Editar
-                                Perfil</button>
+                            <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">
+                                <mat-icon>account_box</mat-icon> Editar Perfíl  </button>
+                                
 
                         </div><br>
                         <div>
-                            <button mat-raised-button color="primary" routerLink="/perfil/actualizarcontrasena">Editar
-                                Contraseña</button>
+                            <button mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
+                                <mat-icon>lock</mat-icon> Editar Contraseña </button>
+                                
 
                         </div>
                     </td>

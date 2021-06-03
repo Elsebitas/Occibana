@@ -52,7 +52,7 @@ export class AgregarHabitacionComponent implements OnInit {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.agregarHabitacionService.postAgregarHabitacion(agregarH).subscribe(data =>{
-      this.openSnackBar('Habitacion registrada exitosamente', 'Ok');
+      this.openSnackBar('Habitación registrada exitosamente', 'Aceptar');
       this.progressbarService.barraProgreso.next("2");
       this.router.navigate(['/perfil']);
     })
