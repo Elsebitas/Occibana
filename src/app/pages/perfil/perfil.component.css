@@ -1,5 +1,5 @@
 .contenido{    
-   max-width:100%;
+   width:100%;
 }
 .tdPicture{    
     margin-left: 30px;
@@ -9,22 +9,20 @@
 }
 .imagen{
     margin-top: 10%;
+    
 }
 .imagen img{
     margin-top: 5%;
     width:200px;
     height:200px;
     border-radius:150px;
+    border: 2.5px solid rgba(0, 0, 0, 0.295);
+    
 }
 .linea{
     position: absolute;
     background-color: gray;
     width: 10px;
-}
-.menu{
-    position: relative;
-    margin-top: 2%;
-    width: 98%;
 }
 .correo{
     display: inline;
@@ -53,6 +51,7 @@
 
 .content{
   margin: 2em auto;
+  width: 100%;
 }
 
 .hoteltitle{
@@ -80,13 +79,27 @@
 
 .card-style{
   margin-top: 16px;  
+  width: 550px;
+}
+
+.imgCard{
+    height: 250px;
+}
+
+.center{
+    width: 100%;
 }
 
 .boton {
     margin-right: 2%;
-    width: 43.1%;
+    width: 52%;
 }
 .boton2 {
     margin-right: 2%;
-    width: 43.1%;
+    width: 43%;
+}
+.boton3 {
+    position: absolute;
+    margin-top: -2%;
+    margin-left: -10%;
 }

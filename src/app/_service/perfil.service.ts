@@ -1,3 +1,4 @@
+import { AgregarHabitacion } from './../_model/AgregarHabitacion';
 import { TraerMensajeDatosPerfil } from './../_model/TraerMensajeDatosPerfil';
 import { ActualizarContrasena } from './../_model/ActualizarContrasena';
 import { ActualizarDatosPerfil } from './../_model/ActualizarDatosPerfil';
@@ -23,6 +24,7 @@ import { Observable } from 'rxjs';
 export class PerfilService {
   
   private url: string = `${environment.HOST}/perfil/`;
+  private url2: string = `${environment.HOST}/agregar_habitacion/`;
 
   constructor(private http: HttpClient) { }
 
@@ -42,6 +44,10 @@ export class PerfilService {
 
     return this.http.post<TraerMensajeDatosPerfil>(this.url + 'postActualizarDatos', actualizarDatosperfil);
 
+  }
+
+  postAgregarHabitacion(agregarH: AgregarHabitacion){
+    return this.http.post<string>(this.url + 'postAgregarhabitacion', agregarH);
   }
 
 }

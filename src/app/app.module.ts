@@ -1,3 +1,5 @@
+import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
+import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
 import { ActualizarContrasena } from './_model/ActualizarContrasena';
 import { RegistroLoginService } from './_service/registroLogin.service';
@@ -31,6 +33,7 @@ import { Router, RouterStateSnapshot } from '@angular/router';
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
+import { RatingModule } from 'ng-starrating';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -106,7 +109,10 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     EditarPerfilComponent,
     ActualizarContrasenaComponent,
     ComentarCalificarComponent,
-    ReservarComponent
+    ReservarComponent,
+    AgregarHabitacionComponent,
+    ReservarComponent,
+    RecuperarConstrasenaComponent
 
   ],
   imports: [
@@ -119,6 +125,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    RatingModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,

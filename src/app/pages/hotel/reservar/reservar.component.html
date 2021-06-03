@@ -1,69 +1,73 @@
 <mat-card>
     <mat-card-header>
-
     </mat-card-header>
     <mat-card-content>
         <div class="flex-row">
             <div class="izquierda">
                 <!--<img src="./assets/images/252-2520411_my-community-buildings-set-02-clipart-hotel-icon.png" >-->
+                <img src="./assets/images/hotel1.jpg" width="100%" height="100%" class="imagenHotel">
+                <!--<p class="opacidad"></p>-->
             </div>
             <div class="derecha">
                 <br><br>
-                <div class="flex-row">
-                    
-                    <mat-form-field appearance="fill" class="fecha">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="picker1">
-                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                    </mat-form-field>
-                    
-                    <mat-form-field appearance="fill" class="fecha">
-                        <mat-label>Choose a date</mat-label>
-                        <input matInput [matDatepicker]="picker2">
-                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field>
-                </div>
-                <div class="flex-row">
+                <form [formGroup]="reservaForm" (ngSubmit)="onFromSubmit()">
+                    <div class="flex-row">
+                        <mat-form-field appearance="fill" class="fecha">
+                            <mat-label>Fecha de llegada...</mat-label>
+                            <input matInput [matDatepicker]="picker1" formControlName="FechaLlegada" [(ngModel)]="fechaInicio">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
 
-                    <mat-form-field appearance="fill" class="field">
-                        <mat-label>Nombre</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                        <mat-form-field appearance="fill" class="fecha">
+                            <mat-label>Fecha de salida...</mat-label>
+                            <input matInput [matDatepicker]="picker2" formControlName="FechaSalida" [(ngModel)]="fechaFin">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex-row">
 
-                    <mat-form-field appearance="fill" class="field">
-                        <mat-label>Apellido</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                        <mat-form-field appearance="fill" class="field">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput formControlName="Nombre">
+                        </mat-form-field>
 
-                </div>
-                <div class="flex-row">
+                        <mat-form-field appearance="fill" class="field">
+                            <mat-label>Apellido</mat-label>
+                            <input matInput formControlName="Apellido">
+                        </mat-form-field>
 
-                    <mat-form-field appearance="fill" class="field">
-                        <mat-label>Correo</mat-label>
-                        <input matInput>
-                    </mat-form-field>
+                    </div>
+                    <div class="flex-row">
 
-                    <mat-form-field appearance="fill" class="field">
-                        <mat-label>Confirmar correo</mat-label>
-                        <input matInput>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button value="1">Efectivo</mat-radio-button>
-                        <mat-radio-button value="2">Tarjeta</mat-radio-button>
-                    </mat-radio-group>
-                </div>
-                <div class="boton">                    
-                    <button mat-raised-button style="cursor: pointer" color="primary">Disponibilidad</button>
-                </div>
+                        <mat-form-field appearance="fill" class="field">
+                            <mat-label>Correo</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="field">
+                            <mat-label>Confirmar correo</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-radio-group aria-label="Select an option" formControlName="ModoDePago">
+                            <mat-radio-button value="Efectivo">Efectivo</mat-radio-button>
+                            <mat-radio-button value="Tarjeta">Tarjeta</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="boton">
+                        <p>{{mensaje}}</p>
+                        <button mat-raised-button style="cursor: pointer" color="primary" type="button" (click)="dataDisponibilidad()">Disponibilidad</button>
+                    </div>
+                </form>
             </div>
         </div>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button style="cursor: pointer" color="primary" [disabled]="boton">Reservar</button>
+        <p *ngIf="logeado">Inicia sesion para reservar</p>
+        <button mat-raised-button style="cursor: pointer" color="primary" [disabled]="boton" (click)="onFromSubmit()">Reservar</button>
         <button mat-raised-button style="cursor: pointer" color="warn" routerLink="/hotel">Cancelar</button>
     </mat-card-actions>
 </mat-card>

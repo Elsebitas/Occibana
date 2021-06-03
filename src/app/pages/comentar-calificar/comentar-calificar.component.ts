@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TraerMensajeDatosPerfil } from './../../_model/TraerMensajeDatosPerfil';
 import { ComentarCalificarService } from './../../_service/comentar-calificar.service';
 import { Router } from '@angular/router';
@@ -26,6 +27,8 @@ export class ComentarCalificarComponent implements OnInit {
   starColor:StarRatingColor = StarRatingColor.accent;
   starColorP:StarRatingColor = StarRatingColor.primary;
   starColorW:StarRatingColor = StarRatingColor.warn;
+
+  commentForm: FormGroup;
 
   private snackBarDuration: number = 2000;
   public ratingArr = [];
@@ -58,6 +61,10 @@ export class ComentarCalificarComponent implements OnInit {
               private progressbarService: ProgressbarService,
               private snackBar: MatSnackBar,
               private router: Router) { 
+                this.commentForm = new FormGroup({
+                  comentario: new FormControl('', [Validators.required, Validators.maxLength(150), Validators.minLength(5)]),
+                });
+
                 this.idHotel = this.router.getCurrentNavigation().extras.state.idhotel;
                 this.idUsuario = this.router.getCurrentNavigation().extras.state.idusuario;
                 this.nombreHotel = this.router.getCurrentNavigation().extras.state.nombre;
@@ -101,6 +108,9 @@ export class ComentarCalificarComponent implements OnInit {
       console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
+      /*if (this.traerMensajeDatosPerfil.mensaje != "No puede comentar, inicie sesion o verifique si ha pasado mucho tiempo desde esta reserva") {
+
+      }*/
       this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje,'Aceptar');
       this.progressbarService.barraProgreso.next("2");
     })

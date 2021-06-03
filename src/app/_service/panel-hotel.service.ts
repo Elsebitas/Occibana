@@ -1,3 +1,4 @@
+import { Reserva } from './../_model/Reserva';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -31,7 +32,7 @@ export class PanelHotelService {
     return this.http.post<any>(this.url + 'postBuscarDisponibilidadHotel', datos);
   }
 
-  postReservarHospedaje(data): Observable<InformacionHotel>{    
-    return this.http.post<InformacionHotel>(this.url + 'postReservarHospedaje', data);
+  postReservarHospedaje(reserva:Reserva): Observable<any>{    
+    return this.http.post<any>(this.url + 'postReservarHospedaje', reserva);
   }
 }
