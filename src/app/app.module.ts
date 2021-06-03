@@ -34,6 +34,7 @@ import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
+import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -112,7 +113,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     ReservarComponent,
     AgregarHabitacionComponent,
     ReservarComponent,
-    RecuperarConstrasenaComponent
+    RecuperarConstrasenaComponent,
+    ComprarMembresiasComponent
 
   ],
   imports: [

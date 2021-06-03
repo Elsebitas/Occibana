@@ -225,7 +225,7 @@ export class LoginComponent implements OnInit {
     var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
     //this.imageSrc = base64result;
     this.sellersPermitString = base64result;
-    
+    this.log();
   }
 
   log() { 

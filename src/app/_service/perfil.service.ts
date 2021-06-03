@@ -1,4 +1,5 @@
 import { AgregarHabitacion } from './../_model/AgregarHabitacion';
+import { ComprarMembresias } from './../_model/ComprarMembresias';
 import { TraerMensajeDatosPerfil } from './../_model/TraerMensajeDatosPerfil';
 import { ActualizarContrasena } from './../_model/ActualizarContrasena';
 import { ActualizarDatosPerfil } from './../_model/ActualizarDatosPerfil';
@@ -48,6 +49,10 @@ export class PerfilService {
 
   postAgregarHabitacion(agregarH: AgregarHabitacion){
     return this.http.post<string>(this.url + 'postAgregarhabitacion', agregarH);
+  }
+
+  postComprarMembresias(comprarMembresias: ComprarMembresias):Observable<any>{
+    return this.http.post<any>(this.url + 'postComprarMembresias', comprarMembresias);
   }
 
 }

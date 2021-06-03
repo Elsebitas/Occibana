@@ -37,8 +37,11 @@ export class ReservarComponent implements OnInit {
 
   private id: number;
   private idhabita: number;
-  private numPersonas: number;
-  private precioHa: number;
+  public numPersonas: number;
+  public precioHa: number;
+  public nombreHotel: string; 
+  public numeroCam: string; 
+  public numeroBan: string; 
   
   reservaForm: FormGroup;
 
@@ -54,6 +57,10 @@ export class ReservarComponent implements OnInit {
     this.idhabita = this.router.getCurrentNavigation().extras.state.idhabitacion;
     this.numPersonas = this.router.getCurrentNavigation().extras.state.numPersonas;
     this.precioHa = this.router.getCurrentNavigation().extras.state.precio;
+    this.nombreHotel = this.router.getCurrentNavigation().extras.state.nombre;
+    this.numeroCam = this.router.getCurrentNavigation().extras.state.numcamas;
+    this.numeroBan = this.router.getCurrentNavigation().extras.state.numbanio;
+
     
     this.reservaForm = new FormGroup({
       UsuarioSession: new FormControl(),
