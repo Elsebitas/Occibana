@@ -106,7 +106,7 @@ export class ReservarComponent implements OnInit {
   onFromSubmit(){
     //let formularioLogin = this.reservaForm.value;
     //dispo = this.reservaForm.value;
-    console.log(this.reservaForm.value);
+    //console.log(this.reservaForm.value);
     let formularioReserva = this.reservaForm.value;
     this.postReservarHospedaje(formularioReserva);
   }  
@@ -117,8 +117,8 @@ export class ReservarComponent implements OnInit {
       console.log(data);
       rep = data;
       this.mensaje = rep.mensaje;  
-      console.log("data almacenada");    
-      console.log(rep);
+      //console.log("data almacenada");    
+      //console.log(rep);
       let log = this.registroLoginService.estaLogueado();
       if (rep.aviso && log == 1) {
         this.boton = false;
@@ -128,8 +128,8 @@ export class ReservarComponent implements OnInit {
 
   postReservarHospedaje(reserva: Reserva){    
     this.panelHotelService.postReservarHospedaje(reserva).subscribe(data =>{
-      console.log("Reserva hotel");
-      console.log(data);
+      //console.log("Reserva hotel");
+      //console.log(data);
     })
   }
 

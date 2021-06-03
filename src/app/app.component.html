@@ -1,25 +1,36 @@
 <div class="example-container">
   <div [hidden]="barraProgreso">
-    <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
   <mat-toolbar color="primary" class="example-toolbar">
-
-    <img src="assets/logo.png" width="100" style="margin-left: 20px;">
+    <img src="assets/images/logo_notitle.png" class="tituloOccImg">
+    <p class="tituloOcci">OCCIBANA</p>
     <!--<span>Occibana</span>-->
     <span class="example-spacer"></span>
 
-    <button mat-raised-button routerLink="/inicio" style="cursor: pointer" color="primary">
+    <button mat-raised-button routerLink="/inicio" *ngIf="usuario == null" class="botonInicio" style="cursor: pointer"
+      color="primary">
       Inicio
     </button>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
+    <button mat-raised-button class="botonLog" *ngIf="usuario == null" routerLink="/login" color="primary">
+      <mat-icon>account_box</mat-icon>
+      <span>Iniciar Sesión</span>
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="usuario != null" class="botonMenu">
+      <img src="assets/images/cheems.jpg">
+      <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngIf="usuario == null" routerLink="/login">
         <mat-icon>account_box</mat-icon>
-        <span>Login</span>
+        <span>Iniciar Sesión</span>
+      </button>
+      <button mat-menu-item *ngIf="usuario != null" routerLink="/inicio">
+        <mat-icon>home</mat-icon>
+        <span>Inicio</span>
       </button>
       <button mat-menu-item *ngIf="usuario != null" routerLink="/perfil">
         <mat-icon>account_circle</mat-icon>
@@ -55,8 +66,12 @@
       <div class="ft-main-item">
         <h2 class="ft-title">Contactanos</h2>
         <ul>
-          <li><mat-icon> email</mat-icon><a href="#"> Occibana@gmail.com</a></li>
-          <li><mat-icon> phone</mat-icon><a href="#"> +57 1234567</a></li>
+          <li>
+            <mat-icon> email</mat-icon><a href="#"> Occibana@gmail.com</a>
+          </li>
+          <li>
+            <mat-icon> phone</mat-icon><a href="#"> +57 1234567</a>
+          </li>
           <li><a href="#"></a></li>
         </ul>
       </div>
@@ -78,7 +93,7 @@
         </div>
       </div>
     </section>
-  
+
     <!-- Footer social -->
     <section class="ft-social">
       <ul class="ft-social-list">
@@ -90,7 +105,7 @@
         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
       </ul>
     </section>
-  
+
     <!-- Footer legal -->
     <section class="ft-legal">
       <ul class="ft-legal-list">

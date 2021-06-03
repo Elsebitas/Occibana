@@ -29,8 +29,8 @@ export class ServerErrorInterceptorService implements HttpInterceptor {
                     }*/
         }
       })).pipe(catchError((err) => {
-        console.log("Entro por interceptor: ");
-        console.log(err);
+        //console.log("Entro por interceptor: ");
+        //console.log(err);
         this.progressbarService.barraProgreso.next("2");
 
         if (err.status == 400 && err.error.message === "Usuario o contraseña incorrecto") {
