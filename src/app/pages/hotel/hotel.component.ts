@@ -122,11 +122,14 @@ export class HotelComponent implements OnInit {
     });
   }
 
-  reservar(idhabitacion,numpersonas, precio){
+  reservar(idhabitacion,numpersonas, precio, nombre, numcamas, numbanio){
     this.router.navigate(['/hotel/reservar'], { state:{ idhotel: this.id, 
                                                         idhabitacion: idhabitacion,
                                                         numPersonas: numpersonas,
-                                                        precio: precio} });
+                                                        precio: precio,
+                                                        nombre: nombre,
+                                                        numcamas: numcamas,
+                                                        numbanio: numbanio} });
   }
 
   
