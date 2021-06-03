@@ -3,13 +3,13 @@ import { TraerMensajeDatosPerfil } from './../../_model/TraerMensajeDatosPerfil'
 import { ComentarCalificarService } from './../../_service/comentar-calificar.service';
 import { Router } from '@angular/router';
 import { ObtenerComentarios } from './../../_model/ObtenerComentarios';
-import { ListasService } from './../../_service/listas.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { ProgressbarService } from './../../_service/progressbar.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Comentar } from 'src/app/_model/Comentar';
+import { Calificar } from './../../_model/Calificar';
 import { RegistroLoginService } from 'src/app/_service/registroLogin.service';
 
 @Component({
@@ -19,23 +19,13 @@ import { RegistroLoginService } from 'src/app/_service/registroLogin.service';
 })
 export class ComentarCalificarComponent implements OnInit {
 
-  @Input('rating') public rating: number = 3;
-  @Input('starCount') public starCount: number = 5;
-  @Input('color') private color: string = 'accent';
-  @Output() public ratingUpdated = new EventEmitter();
-
-  starColor:StarRatingColor = StarRatingColor.accent;
-  starColorP:StarRatingColor = StarRatingColor.primary;
-  starColorW:StarRatingColor = StarRatingColor.warn;
-
-  commentForm: FormGroup;
-
-  private snackBarDuration: number = 2000;
-  public ratingArr = [];
-
   boton: boolean = true;
 
   mensaje: string;
+
+  rating: any;
+
+  idReserva: number;
 
   idHotel: number;
 
@@ -47,6 +37,8 @@ export class ComentarCalificarComponent implements OnInit {
 
   comentar: Comentar;
 
+  calificar: Calificar;
+
   traerMensajeDatosPerfil: TraerMensajeDatosPerfil;
 
   displayedColumns: string[] = ['id_usuario', 'nombre_usuario', 'comentario'];
@@ -55,8 +47,9 @@ export class ComentarCalificarComponent implements OnInit {
 
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
+  commentForm: FormGroup;
+
   constructor(private login: RegistroLoginService,
-              private listaService: ListasService,
               private comentarCalificarService: ComentarCalificarService,
               private progressbarService: ProgressbarService,
               private snackBar: MatSnackBar,
@@ -66,36 +59,17 @@ export class ComentarCalificarComponent implements OnInit {
                 });
 
                 this.idHotel = this.router.getCurrentNavigation().extras.state.idhotel;
+                this.idReserva = this.router.getCurrentNavigation().extras.state.idreserva;
                 this.idUsuario = this.router.getCurrentNavigation().extras.state.idusuario;
                 this.nombreHotel = this.router.getCurrentNavigation().extras.state.nombre;
               }
 
   ngOnInit(): void {
-    for (let index = 0; index < this.starCount; index++) {
-      this.ratingArr.push(index);
-    }
 
     if (this.login.estaLogueado() == 1) {
       this.boton = false;
     }
 
-  }
-
-  onClick(rating: number) {
-    this.snackBar.open('Has calificado ' + rating + ' / ' + this.starCount + ' estrellas', 'Aceptar', {
-      duration: this.snackBarDuration,
-      verticalPosition: this.verticalPosition
-    });
-    this.ratingUpdated.emit(rating);
-    return false;
-  }
-
-  showIcon(index:number) {
-    if (this.rating >= index + 1) {
-      return 'star';
-    } else {
-      return 'star_border';
-    }
   }
 
   comentarHotel() {
@@ -105,7 +79,7 @@ export class ComentarCalificarComponent implements OnInit {
     this.comentar.IdHotelSession = this.idHotel;
     this.comentar.IdSession = this.idUsuario;
     this.comentarCalificarService.postComentar(this.comentar).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
       /*if (this.traerMensajeDatosPerfil.mensaje != "No puede comentar, inicie sesion o verifique si ha pasado mucho tiempo desde esta reserva") {
@@ -116,14 +90,26 @@ export class ComentarCalificarComponent implements OnInit {
     })
   }
 
-  
-
-  /*
   calificarHotel() {
-    this.comentarCalificarService.postCalificar().subscribe(data => {
-      
+    this.progressbarService.barraProgreso.next("1");
+    this.calificar = new Calificar();
+    this.calificar.Calificacion = this.rating;
+    this.calificar.IdHotelSession = this.idHotel;
+    this.calificar.IdSession = this.idUsuario;
+    this.calificar.IdReserva = this.idReserva;
+    this.comentarCalificarService.postCalificar(this.calificar).subscribe(data => {
+      this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
+      this.traerMensajeDatosPerfil = data;
+
+      this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje,'Aceptar');
+      this.progressbarService.barraProgreso.next("2");
     })
-  }*/
+  }
+
+  onRate($event: { oldValue: number, newValue: number }) {
+    //console.log(`Old Value:${$event.oldValue}, New Value: ${$event.newValue}`);
+    this.rating = $event.newValue;
+  }
 
   abrirSnackBar(mensaje: string, accion: string) {
     this.snackBar.open(mensaje, accion, {
@@ -132,10 +118,4 @@ export class ComentarCalificarComponent implements OnInit {
     });
   }
 
-}
-
-export enum StarRatingColor {
-  primary = "primary",
-  accent = "accent",
-  warn = "warn"
 }

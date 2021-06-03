@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { DialogoElimReservaComponent } from './dialogo-elim-reserva/dialogo-elim-reserva.component';
 import { ProgressbarService } from './../../_service/progressbar.service';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MisReservas } from './../../_model/MisReservas';
@@ -50,7 +50,7 @@ export class MisReservasComponent implements OnInit {
   mostrarMisReservas() {
     this.progressbarService.barraProgreso.next("1");
     this.misReservas = new MisReservas();
-    this.misReservas.id = 39;
+    this.misReservas.id = this.idUsuario;
     this.listaService.postMostrarMisreservas(this.misReservas).subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
@@ -61,8 +61,8 @@ export class MisReservasComponent implements OnInit {
     });
   }
 
-  comCalifPorId(idHotel, nombreHotel){
-    this.router.navigate(['/comentar-calificar'], { state:{ idhotel: idHotel, nombre: nombreHotel, idusuario: this.idUsuario } });
+  comCalifPorId(idHotel, nombreHotel, idReserva){
+    this.router.navigate(['/comentar-calificar'], { state:{ idhotel: idHotel, nombre: nombreHotel, idusuario: this.idUsuario, idreserva: idReserva} });
   }
 
   aplicarFiltro(filtro: string) {
@@ -88,7 +88,7 @@ export class MisReservasComponent implements OnInit {
   cancelarReserva(id) {
     this.listaService.postCancelarMireserva(id).subscribe(data => {
       this.mostrarMisReservas();
-      console.log(data);
+      //console.log(data);
     })
   }
 

@@ -1,7 +1,7 @@
 <div class="main-wrapper">
     <mat-card>
         <mat-card-title>
-            <div style="text-align: center;">HOTEL: {{ nombreHotel}}</div>
+            <div class="title">HOTEL: {{ nombreHotel}}</div>
         </mat-card-title>
         <br>
         <mat-card-content>
@@ -10,22 +10,21 @@
                 <br>
                 <tr>
                     <td style="width: 20%; text-align: center;">
-                        <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1" matTooltipPosition="above">
-                        <mat-icon>
-                            {{ showIcon(i) }}
-                        </mat-icon>
-                        </button>
-                        <mat-error *ngIf="starCount == null || starCount == 0">
-                            Star count is <strong>required</strong> and cannot be zero
-                        </mat-error>
-                        <p class="body-2">
-                            Your rated <span class="body-2"> {{rating}} </span> / <span class="body-2"> {{starCount}} </span>
-                        </p>
+                        <div>Calificar</div>
+                        <div style="text-align:center">
+                            <star-rating value="5" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                        </div>
+                        <br>
+                        <div>
+                            <button mat-raised-button (click)="calificarHotel()" [disabled]="boton" style="cursor: pointer" color="primary"> 
+                                <mat-icon>grade</mat-icon> Calificar 
+                            </button>
+                        </div>
                     </td>
     
                     <td class="content">
                         <form [formGroup]="commentForm">
-                            <mat-form-field class="comment" appearance="fill">
+                            <mat-form-field class="comment" appearance="outline">
                                 <mat-label>Comentar</mat-label>
                                 <textarea maxlength #comentario formControlName="comentario" class="textArea" matInput placeholder="Escriba un comentario para el hotel" [(ngModel)]="mensaje" maxlength="151"></textarea>
                                 <mat-hint align="end">{{comentario.value?.length || 0}}/150</mat-hint>

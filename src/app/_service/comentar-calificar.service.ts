@@ -1,3 +1,4 @@
+import { Calificar } from './../_model/Calificar';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
@@ -17,9 +18,8 @@ export class ComentarCalificarService {
     return this.http.post<any>(this.url + 'postComentar', comentar);
   }
 
-  /*
-  postCalificar(): Observable<any> {
-    return this.http.post<any>(this.url + 'postCalificar');
-  }*/
+  postCalificar(calificar: Calificar): Observable<any> {
+    return this.http.post<any>(this.url + 'postCalificar', calificar);
+  }
 
 }
