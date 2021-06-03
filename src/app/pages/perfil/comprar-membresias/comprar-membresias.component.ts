@@ -74,7 +74,9 @@ export class ComprarMembresiasComponent implements OnInit {
       console.log(data);
       this._snackBar.open(comprarMembresias.error,'ACEPTAR');
       this.progressbarService.barraProgreso.next("2");
-      this.router.navigate(['/perfil']);
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/perfil']);
+    });
     })
   }
 
