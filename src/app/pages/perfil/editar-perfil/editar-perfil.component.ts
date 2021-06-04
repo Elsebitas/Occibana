@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilService } from 'src/app/_service/perfil.service';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -41,11 +42,11 @@ export class EditarPerfilComponent implements OnInit {
     this.datosPerfil = new DatosPerfil();
     this.actualizarDatosPerfil = new ActualizarDatosPerfil();
     this.actualizarform = new FormGroup({
-      UsuarioRegistro: new FormControl('', [Validators.required, Validators.maxLength(15)]),
-      NombreRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$')]),
-      ApellidoRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$')]),
+      UsuarioRegistro: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+      NombreRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
+      ApellidoRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
       CorreoRegistro: new FormControl('', [Validators.email]),
-      TelefonoRegistro: new FormControl('', [Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]),
+      TelefonoRegistro: new FormControl('', [Validators.pattern('^[0-9]+$'), Validators.maxLength(10), ValidacionesPropias.validarTelefono]),
 
       UsuarioSession: new FormControl(''),
       NombreSession: new FormControl(''),

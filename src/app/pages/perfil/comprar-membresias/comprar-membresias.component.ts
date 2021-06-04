@@ -33,10 +33,10 @@ export class ComprarMembresiasComponent implements OnInit {
 
     this.membresiaForm = new FormGroup({
       Cedula: new FormControl('',[Validators.required]),
-      CodigoDeSeguridad: new FormControl('',[Validators.required,Validators.maxLength(3),Validators.minLength(3)]),
+      CodigoDeSeguridad: new FormControl('',[Validators.required,Validators.maxLength(3),Validators.minLength(3), Validators.pattern('^[0-9]+$')]),
       DireccionPropietario: new FormControl('',[Validators.required]),
-      NombreDelPropietario: new FormControl('',[Validators.required]),
-      NumeroTarjeta: new FormControl('',[Validators.required, Validators.maxLength(16),Validators.minLength(16)]),
+      NombreDelPropietario: new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+      NumeroTarjeta: new FormControl('',[Validators.required, Validators.maxLength(16),Validators.minLength(16), Validators.pattern('^[0-9]+$')]),
       Usuario: new FormControl(),
       Contrasena: new FormControl(),
       Id: new FormControl(),

@@ -1,3 +1,4 @@
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ValidacionesPropias } from './../../_clase/ValidacionesPropias';
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroUsuarios } from './../../_model/RegistroUsuarios';
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
 
 
   
-  
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   /**
    * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
@@ -61,7 +62,8 @@ export class LoginComponent implements OnInit {
               private crypto: CryptoService,
               private progressbarService: ProgressbarService,
               private appModule: AppModule,
-              private dialogo : MatDialog) { 
+              private dialogo : MatDialog,
+              private _snackBar: MatSnackBar) { 
 
                 this.loginForm = new FormGroup({
                   Usuario: new FormControl('', [Validators.required, Validators.maxLength(20)]),
@@ -74,8 +76,8 @@ export class LoginComponent implements OnInit {
                   Correo: new FormControl('', [Validators.required, Validators.maxLength(50),Validators.email]),
                   Telefono: new FormControl('', [Validators.required,Validators.maxLength(10),Validators.pattern('^[0-9]+$'),Validators.minLength(10), ValidacionesPropias.validarTelefono]),
                   Usuario: new FormControl('', [Validators.required,Validators.maxLength(20)]),
-                  Contrasena: new FormControl('', [Validators.required]),
-                  Actcontrasena: new FormControl('', [Validators.required]),
+                  Contrasena: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')]),
+                  Actcontrasena: new FormControl('', [Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')]),
                   IdEstado: new FormControl('', ),
                   FotoPerfil: new FormControl('',),
                 },{validators : ValidacionesPropias.validarIgualdadContrasena});
@@ -121,6 +123,7 @@ export class LoginComponent implements OnInit {
       this.appModule.usuario = login.Usuario;
       this.appModule.contra = login.Contrasena;*/
       this.progressbarService.barraProgreso.next("2");
+      //this.abrirSnackBar('¡Bienvenido! gracias por iniciar sesión','Aceptar');
       this.router.navigate(['/inicio']);
     }, err =>{
       console.log(err);
