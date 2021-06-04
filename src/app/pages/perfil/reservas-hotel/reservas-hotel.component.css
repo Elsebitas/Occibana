@@ -1,0 +1,46 @@
+.total{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 5%;
+}
+.content {
+    align-items: center;
+    margin: 2em auto;
+    width: 100%;
+  }
+
+  .filter{
+    width: 100%;
+  }
+
+  .reservaTitle {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  div.center {
+    text-align: center;
+  }
+
+.titulo{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 100%;
+  text-align: center;
+}
+
+.titulo p{  
+  color: gray;
+  font-size: 2em;
+  font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 600;
+}
+
+.line{
+  margin-bottom: 8px;
+  background-color: #3f51b5;
+  height: 1.5px;
+}

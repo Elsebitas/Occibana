@@ -34,6 +34,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
+import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -111,7 +112,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     AgregarHabitacionComponent,
     ReservarComponent,
     RecuperarConstrasenaComponent,
-    ComprarMembresiasComponent
+    ComprarMembresiasComponent,
+    ReservasHotelComponent
 
   ],
   imports: [
@@ -143,7 +145,10 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  usuario: string;
+  contra: string;
+ }
 function delay(arg0: number) {
   return new Promise(resolve => setTimeout(resolve, arg0));
 }

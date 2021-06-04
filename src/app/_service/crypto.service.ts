@@ -1,3 +1,4 @@
+import { AppModule } from './../app.module';
 import { Observable } from 'rxjs';
 import { Injectable, Pipe } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
@@ -14,7 +15,7 @@ export class CryptoService {
 
   request: string;
   responce: string;
-  constructor() {
+  constructor(private appModule: AppModule) {
     
   }
   
@@ -29,10 +30,25 @@ export class CryptoService {
         mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7
       });
-    this.encrypted = encrypted.toString();
+    this.encrypted = encrypted.toString();  
+    // intento de variable app module
+    /*if (titulo == 'user') {
+      this.appModule.usuario = this.encrypted;
+    }else if(titulo == 'userpassword'){
+      this.appModule.contra = this.encrypted;
+    }*/
     sessionStorage.setItem(titulo, this.encrypted);
   }
-  decryptUsingAES256(titulo: string){
+  decryptUsingAES256(titulo: string){    
+    // intento de variable app module
+    /*let datosEncrypt = '';
+    if (titulo == 'user') {      
+      datosEncrypt = this.appModule.usuario;
+      this.encrypted = this.appModule.usuario;
+    }else if(titulo == 'userpassword'){
+      datosEncrypt = this.appModule.contra;
+      this.encrypted = this.appModule.contra;
+    }*/
     let datosEncrypt = sessionStorage.getItem(titulo);
     let _key = CryptoJS.enc.Utf8.parse(this.tokenFromUI);
     let _iv = CryptoJS.enc.Utf8.parse(this.tokenFromUI);

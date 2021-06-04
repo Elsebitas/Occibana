@@ -1,6 +1,7 @@
 import { ListasMunicipios } from './../_model/ListasMunicipios';
 import { ListasZonas } from './../_model/ListasZonas';
 import { MisReservas } from './../_model/MisReservas';
+import { MostrarReservasHotel } from './../_model/MostrarReservasHotel';
 import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
 import { HotelesPrincipales } from './../_model/HotelesPrincipales';
@@ -86,6 +87,14 @@ export class ListasService {
 
   postMostrarMisHoteles(id): Observable<HotelesDestacados[]> {
     return this.http.post<HotelesDestacados[]>(this.url + 'postMostrarMisHoteles', id)
+  }
+  
+  getMostrarReservas(idHotel:number){
+    return this.http.get<MostrarReservasHotel[]>(`${this.url}getMostrarReservas?idHotel=`+idHotel);
+  }
+  
+  getMostrarReservasCompletadas(idHotel:number){
+    return this.http.get<MostrarReservasHotel[]>(`${this.url}getMostrarReservasCompletadas?idHotel=`+idHotel);
   }
 
 }

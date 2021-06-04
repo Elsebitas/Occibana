@@ -39,6 +39,7 @@ export class PerfilComponent implements OnInit {
   url2: string;
 
   constructor(private perfilService: PerfilService, 
+              private appModule: AppModule,
               private progressbarService:ProgressbarService,
               private listasService:ListasService,    
               public route: ActivatedRoute,
@@ -54,9 +55,9 @@ export class PerfilComponent implements OnInit {
   }
 
   postCargarDatosPerfil(){
-    /*/appModule usuarios
-    console.log("Usuario App Module "+this.appModule.usuario);
-    console.log("Contraseña App Module "+this.appModule.contra);*/
+    //appModule usuarios
+    //console.log("Usuario App Module "+this.appModule.usuario);
+    //console.log("Contraseña App Module "+this.appModule.contra);
     this.url = environment.HOST;
     
     const helper = new JwtHelperService();
@@ -96,6 +97,10 @@ export class PerfilComponent implements OnInit {
   comprarMembresia(id, user, correo){
     //console.log(id);
     this.router.navigate(['/perfil/comprarmembresias'], { state:{ id: id, usuario: user, correo: correo} });
+  }
+
+  mostrarReservasHotel(id){    
+    this.router.navigate(['/perfil/reservashotel'], { state:{ idhotel: id} });
   }
   
 }
