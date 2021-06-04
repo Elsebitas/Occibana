@@ -68,3 +68,14 @@ mat-card {
   background-color: #3f51b5;
   height: 1px;
 }
+
+.boton {
+  margin-right: 2%;
+  width: 42%;
+}
+.boton2 {
+  width: 42%;
+}
+.alinear{
+  text-align: center;
+}

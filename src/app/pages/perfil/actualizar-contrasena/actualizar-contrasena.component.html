@@ -19,6 +19,9 @@
                             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon class="white-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error *ngIf="profileForm.controls.contrasenaAct.hasError('required')">
+                            La contraseña actual es <strong>requerida</strong>
+                        </mat-error>
                     </mat-form-field>
                 </p>
                 <div>Ingrese la nueva contraseña.</div>
@@ -30,17 +33,40 @@
                             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
                             <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        <mat-error *ngIf="profileForm.get('contrasenaNueva').hasError('required')">
+                            La nueva contraseña es <strong>requerida</strong>
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.get('contrasenaNueva').hasError('pattern')">
+                            La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                        </mat-error>      
+                        <mat-error *ngIf="profileForm.get('contrasenaNueva').hasError('minlength')">
+                            El número de caracteres mínimo es <strong>5</strong>
+                        </mat-error>  
                     </mat-form-field>
                 </p>
 
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Confirmar nueva contraseña</mat-label>
-                        <input matInput  [type]="hide3 ? 'password' : 'text'" >
+                        <input matInput formControlName="confContrasenaNueva" [type]="hide3 ? 'password' : 'text'" >
                         <button mat-icon-button matSuffix type="button" (click)="hide3 = !hide3"
                             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
                             <mat-icon class="white-icon">{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
+                        
+                        <mat-error *ngIf="profileForm.get('confContrasenaNueva').hasError('required')">
+                            Confirmar la nueva contraseña es <strong>requerido</strong>
+                        </mat-error> 
+                        <mat-error
+                            *ngIf="profileForm.controls.confContrasenaNueva.hasError('NoPasswordsMatch') && !profileForm.get('confContrasenaNueva').hasError('required')">
+                            Las contraseñas no <strong>coinciden</strong>
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.get('confContrasenaNueva').hasError('minlength')">
+                            El número de caracteres mínimo es <strong>5</strong>
+                        </mat-error>  
+                        <mat-error *ngIf="profileForm.get('confContrasenaNueva').hasError('pattern')">
+                            La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                        </mat-error>
                     </mat-form-field>
                 </p>
 
@@ -48,9 +74,15 @@
                     <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
                 </p>
 
-                <p>
-                    <button button mat-stroked-button style="color:#fffafa" class="btn-block">
-                        Actualizar Contraseña
+                <p class="alinear">
+                    
+                    <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="profileForm.invalid">
+                        <mat-icon>update</mat-icon>
+                        <span> Actualizar Contraseña</span>
+                    </button>
+                    <button mat-raised-button color="warn" class="boton2" type="button" routerLink="/perfil">
+                        <mat-icon>close</mat-icon>
+                        <span> Cancelar</span>
                     </button>
                 </p>
                 <br>

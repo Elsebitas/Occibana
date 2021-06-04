@@ -7,7 +7,12 @@
                         <div class="imagen">
                             <img src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">
                         </div>
-
+                        <div>
+                            <h3>Subir Imagen Angular 10</h3>
+                            <span style="color:red;" *ngIf="message">{{message}}</span>
+                            <input #file type="file" accept='image/*' (change)="preview($event)" />
+                            <img [src]="imgURL" height="200" *ngIf="imgURL">
+                        </div>
 
                         <br>
                         <div *ngIf="cargarDatosPerfil">
@@ -43,20 +48,22 @@
                         <div>
                             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
                                 (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">Actualizar
-                                Membresia</button>
+                                Membresía</button>
                             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
                                 (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">Comprar
-                                Membresia</button>
+                                Membresía</button>
                         </div>
                         <br>
                         <div>
-                            <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">Editar
-                                Perfil</button>
+                            <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">
+                                <mat-icon>account_box</mat-icon> Editar Perfíl  </button>
+                                
 
                         </div><br>
                         <div>
-                            <button mat-raised-button color="primary" routerLink="/perfil/actualizarcontrasena">Editar
-                                Contraseña</button>
+                            <button mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
+                                <mat-icon>lock</mat-icon> Editar Contraseña </button>
+                                
 
                         </div>
                     </td>
@@ -76,7 +83,7 @@
                                                 <mat-icon>delete</mat-icon>
                                             </button>
                                             <mat-card-content>
-                                                <p class="hoteltitle"> </p>
+                                                <p class="hoteltitle">{{hotel.nombre}} </p>
                                                 <div class="line"></div>
                                                 <p class="titles">Precio desde: {{hotel.precionoche}}</p>
                                                 <p class="subtitles">Ubicado en: {{hotel.zona}}</p>

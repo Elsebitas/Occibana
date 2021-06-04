@@ -15,7 +15,7 @@ h1{
 }
 mat-card {
     background-color:white;
-    max-width: 400px;
+    max-width: 70%;
     margin: 2em auto;
     text-align: center;
     margin-top: 1%;
@@ -39,4 +39,99 @@ mat-card {
 }
 .colorIcon{
   color: grey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.flex-row div{
+  flex: 50%;
+}
+
+.izquierda{
+  position: relative;
+  width: 100%;
+  
+}
+
+.derecha{  
+  position: relative;  
+  background: rgba(0,0,0,0.1);
+}
+
+.imagenHotel{
+  background: rgb(6,0,110);
+  background: linear-gradient(90deg, rgba(6,0,110,1) 5%, rgba(63,81,181,1) 84%, rgba(92,18,254,1) 100%);
+
+}
+
+
+
+.subtitles2{
+  text-align: center;
+  margin-top: 5px;
+  color:#3d3d3d;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.precioHab{
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  margin-top: 5px;
+  color:white;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 35px;
+  font-weight: 550;
+}
+
+
+.nombreHot{
+  top: 58%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  margin-top: 5px;
+  color:white;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+
+.fotoperfil{
+  top: 5%;
+  left: 35%;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  margin-top: 5px;
+  border-radius: 150px;
 }

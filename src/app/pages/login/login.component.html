@@ -76,7 +76,7 @@
                                     <mat-hint align="end">{{entradaNombre.value?.length || 0}}/20</mat-hint>
                                     <mat-error
                                         *ngIf="registroForm.get('Nombre').hasError('pattern') && !registroForm.get('Nombre').hasError('required')">
-                                        Porfavor introduzca un nombre valido
+                                        Por favor introduzca un nombre valido
                                     </mat-error>
                                     <mat-error *ngIf="registroForm.get('Nombre').hasError('required')">
                                         Nombre es <strong>requerido</strong>
@@ -90,7 +90,7 @@
                                     <mat-hint align="end">{{entradaApellido.value?.length || 0}}/20</mat-hint>
                                     <mat-error
                                         *ngIf="registroForm.get('Apellido').hasError('pattern') && !registroForm.get('Apellido').hasError('required')">
-                                        Porfavor introduzca un apellido valido
+                                        Por favor introduzca un apellido valido
                                     </mat-error>
                                     <mat-error *ngIf="registroForm.get('Apellido').hasError('required')">
                                         Apellido es <strong>requerido</strong>
@@ -106,7 +106,7 @@
                                     </mat-error>
                                     <mat-error
                                         *ngIf="registroForm.get('Telefono').errors?.validarInicialTelefono && !registroForm.get('Telefono').hasError('required')">
-                                        Porfavor introduzca un telefono valido
+                                        Por favor introduzca un telefono valido
                                     </mat-error>
 
                                 </mat-form-field>
@@ -117,7 +117,7 @@
                                     <mat-hint align="end">{{entradaCorreo.value?.length || 0}}/50</mat-hint>
                                     <mat-error
                                         *ngIf="registroForm.get('Correo').hasError('email') && !registroForm.get('Correo').hasError('required')">
-                                        Porfavor introduzca un correo valido
+                                        Por favor introduzca un correo valido
                                     </mat-error>
                                     <mat-error *ngIf="registroForm.get('Correo').hasError('required')">
                                         Correo es <strong>requerido</strong>
@@ -148,6 +148,9 @@
                                     <mat-error *ngIf="registroForm.get('Contrasena').hasError('required')">
                                         Contraseña es <strong>requerido</strong>
                                     </mat-error>
+                                    <mat-error *ngIf="registroForm.get('Contrasena').hasError('pattern')">
+                                        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
                                     <mat-label>Confirme su contraseña</mat-label>
@@ -166,27 +169,18 @@
                                         *ngIf="registroForm.controls.Actcontrasena.hasError('NoPasswordsMatch') && !registroForm.controls.Actcontrasena.hasError('required')">
                                         Contraseñas no <strong>Coinciden</strong>
                                     </mat-error>
+                                    <mat-error *ngIf="registroForm.get('Actcontrasena').hasError('pattern')">
+                                        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                                    </mat-error>
                                 </mat-form-field>
                                 <br>
                                 <p>
                                     <mat-error *ngIf="error2 != null">{{error2}}</mat-error>
                                 </p>
                                 <button mat-button type="button" matStepperPrevious>Anterior</button>
-                                <button mat-button type="button" matStepperNext>Siguiente</button>
-
-                            </mat-step>
-                            <mat-step>
-                                <ng-template matStepLabel>Foto de perfil</ng-template>
-                                <h3>Subir Imagen Angular 10</h3>
-                                <span style="color:red;" *ngIf="message">{{message}}</span>
-                                <input #file type="file" accept='image/*' (change)="preview($event)" />
-                                <img [src]="imgURL" height="200" *ngIf="imgURL">
-
-                                <br>
-                                <button mat-button type="button" matStepperPrevious>Anterior</button>
                                 <button mat-button [disabled]="registroForm.invalid">!Hecho!</button>
 
-                            </mat-step>
+                            </mat-step>                          
                         </mat-vertical-stepper>
                     </form>
                 </mat-tab>
