@@ -143,9 +143,9 @@ export class LoginComponent implements OnInit {
   postRegistroUsuarios(registroUsuarios: RegistroUsuarios) {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
-    console.log(registroUsuarios);
+    //console.log(registroUsuarios);
     this.loginService.postRegistroUsuarios(registroUsuarios).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.error2 = data;
       this.progressbarService.barraProgreso.next("2");
       this.router.navigate(['/login']);
@@ -208,15 +208,15 @@ export class LoginComponent implements OnInit {
 
   handleInputChange(files) {
     var file = files;
-    console.log(file.type);
+    //console.log(file.type);
     var pattern = /image-*/;
     var reader = new FileReader();
     if (!file.type.match(pattern)) {
       alert('invalid format');
       return;
     }
-    console.log(pattern);
-    console.log(file.type);
+    //console.log(pattern);
+    //console.log(file.type);
     reader.onloadend = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
   }
@@ -230,7 +230,7 @@ export class LoginComponent implements OnInit {
 
   log() { 
     // for debug
-    console.log('base64', this.sellersPermitString);
+    //console.log('base64', this.sellersPermitString);
 
   }
 

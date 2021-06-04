@@ -62,7 +62,7 @@ export class ComprarMembresiasComponent implements OnInit {
   }
 
   onFromSubmit() {
-    console.log(this.membresiaForm.value);
+    //console.log(this.membresiaForm.value);
     let formularioMembresia = this.membresiaForm.value;
     this.postComprarMembresias(formularioMembresia);
   }
@@ -71,7 +71,7 @@ export class ComprarMembresiasComponent implements OnInit {
     this.progressbarService.barraProgreso.next("1");
     this.perfilService.postComprarMembresias(comprarMembresias).subscribe(data => {
       comprarMembresias = data;
-      console.log(data);
+      //console.log(data);
       this._snackBar.open(comprarMembresias.error,'ACEPTAR');
       this.progressbarService.barraProgreso.next("2");
       this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {

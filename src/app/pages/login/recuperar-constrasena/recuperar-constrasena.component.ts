@@ -31,7 +31,6 @@ export class RecuperarConstrasenaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log();
   }
 
   aceptar(): void {
@@ -48,9 +47,9 @@ export class RecuperarConstrasenaComponent implements OnInit {
   }
 
   recuperarContrasena(recuperar: RecuperarContrasena) {
-    console.log(recuperar);
+    //console.log(recuperar);
     this.loginService.postRecuperarConstrasena(recuperar).subscribe(data => {
-      console.log(data);
+      //console.log(data);
 
     });   
   }

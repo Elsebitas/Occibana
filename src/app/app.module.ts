@@ -55,7 +55,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
           login.Usuario = crypto.decryptUsingAES256("user");
           login.Contrasena = crypto.decryptUsingAES256("userpassword");
           RegistroLoginService.postIngresoLogin(login).subscribe(data => {
-            console.log(data);
+            //console.log(data);
             sessionStorage.setItem(environment.TOKEN, data);
           });
           //////////////

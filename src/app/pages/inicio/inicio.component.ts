@@ -80,6 +80,10 @@ export class InicioComponent implements OnInit {
     this.listaDeHotelesPrincipalesFiltrados = this.filteredPerHotel(value);
   }
 
+
+
+  
+
   filteredPerHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
       lista.numpersonas == searchString);
@@ -218,7 +222,7 @@ export class InicioComponent implements OnInit {
     this.listasService.postHolelesPrincipales(this.hotelesPrincipales).subscribe(data => {
       this.listaDeHotelesPrincipales = data;
       this.listaDeHotelesPrincipalesFiltrados = data;
-      console.log(data);
+      //console.log(data);
     });
 
     this.listasService.getListasMunicipios().subscribe(data => {
@@ -281,11 +285,10 @@ export class InicioComponent implements OnInit {
   }
 
   onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
-    console.log(`Old Value:${$event.oldValue}, 
-    New Value: ${$event.newValue}, 
-    Checked Color: ${$event.starRating.checkedcolor}, 
-    Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+    let numero = $event.newValue;
+    this.searchStr = numero;
   }
+
 }
 
 

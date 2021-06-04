@@ -120,24 +120,30 @@
   }
 
   .tituloBanner{
-    margin-top: -14%;
     position: absolute;
     overflow: visible;
-    left: 50%;
-    margin-left: -10%;
-    font-size: 50px;
+    top: 36%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 4em;
     font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 800;
     color:white;
   }
 
   .subtituloBanner{
-    margin-top: -11.2%;
     position: absolute;
     overflow: visible;
-    left: 50%;
-    margin-left: -25%;
-    font-size: 32px;
+    top: 46%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 2.5em;
     font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     color:white;

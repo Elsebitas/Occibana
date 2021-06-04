@@ -3,7 +3,6 @@ import { TraerMensajeDatosPerfil } from './../../_model/TraerMensajeDatosPerfil'
 import { ComentarCalificarService } from './../../_service/comentar-calificar.service';
 import { Router } from '@angular/router';
 import { ObtenerComentarios } from './../../_model/ObtenerComentarios';
-import { MatTableDataSource } from '@angular/material/table';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { Component, OnInit } from '@angular/core';
@@ -40,10 +39,6 @@ export class ComentarCalificarComponent implements OnInit {
   calificar: Calificar;
 
   traerMensajeDatosPerfil: TraerMensajeDatosPerfil;
-
-  displayedColumns: string[] = ['id_usuario', 'nombre_usuario', 'comentario'];
-
-  dataSource = new MatTableDataSource<ObtenerComentarios>();
 
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
@@ -100,7 +95,9 @@ export class ComentarCalificarComponent implements OnInit {
     this.comentarCalificarService.postCalificar(this.calificar).subscribe(data => {
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
+      /*if (this.traerMensajeDatosPerfil.mensaje != "No es posible realizar aun esta calificación") {
 
+      }*/
       this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje,'Aceptar');
       this.progressbarService.barraProgreso.next("2");
     })

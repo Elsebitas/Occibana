@@ -77,16 +77,16 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   enviar(f: NgForm) {
-    console.log("Los datos son: ");
-    console.log(f.value);
+    //console.log("Los datos son: ");
+    //console.log(f.value);
     this.actualizarDatos(this.actualizarform.value);
   }
 
   actualizarDatos(actDatosPerf: ActualizarDatosPerfil) {
     this.progressbarService.barraProgreso.next("1");
     this.perfilService.postActualizarDatos(actDatosPerf).subscribe(data => {
-      console.log("TRAIDOS: ");
-      console.log(data);
+      //console.log("TRAIDOS: ");
+      //console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
       if (this.traerMensajeDatosPerfil.mensaje != "Utiliza otro usuario, este ya existe o esta registrado") {
@@ -104,14 +104,14 @@ export class EditarPerfilComponent implements OnInit {
 
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
-    console.log(decodedToken.name);
+    //console.log(decodedToken.name);
 
     this.datosPerfil.usuario = decodedToken.name;
 
     this.perfilService.postCargarDatosPerfil(this.datosPerfil).subscribe(data => {
       this.cargarDatosPerfil = data;
-      console.log(data);
-      console.log(this.cargarDatosPerfil);
+      //console.log(data);
+      //console.log(this.cargarDatosPerfil);
       this.setearDatos();
       //this.asignarDatosDefecto();
 
