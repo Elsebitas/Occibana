@@ -5,5 +5,6 @@ export class ActualizarContrasena{
     usuario: string;
     Correo: string;
     contrasenaAct: string;
-    contrasenaNueva: string; 
+    contrasenaNueva: string;
+    mensaje: string;
 }

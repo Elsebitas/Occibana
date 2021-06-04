@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { ActualizarContrasena } from './../../../_model/ActualizarContrasena';
 import { FormGroup, Validators, NgForm, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-actualizar-contrasena',
@@ -21,6 +23,9 @@ export class ActualizarContrasenaComponent implements OnInit {
   hide2 = true;
   hide3 = true;
   error: string;
+  
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
 
 
   cargarDatosPerfil: CargarDatosPerfil;
@@ -37,15 +42,18 @@ export class ActualizarContrasenaComponent implements OnInit {
     private constrasenaService: PerfilService,
     private perfilService: PerfilService,
     private router: Router,
-    private progressbarService: ProgressbarService) { 
+    private progressbarService: ProgressbarService,
+    private _snackBar: MatSnackBar) { 
     this.cargarDatosPerfil = new CargarDatosPerfil(),
     
     this.profileForm = new FormGroup({
         usuario: new FormControl('',Validators.required),
         Correo: new FormControl('',Validators.required),
         contrasenaAct: new FormControl('',Validators.required),
-        contrasenaNueva: new FormControl('',Validators.required)
-      })
+        contrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')]),
+        confContrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')])
+
+      },{validators : ValidacionesPropias.cambiarContrasena});
     }
 
     cargarDatos(){
@@ -103,10 +111,23 @@ export class ActualizarContrasenaComponent implements OnInit {
     this.progressbarService.delay();
     //console.log(actualizarContrasena);
     this.constrasenaService.putActualizarDatos(actualizarContrasena).subscribe(data => {
+      actualizarContrasena = data;
+      this.abrirSnackBar(actualizarContrasena.mensaje, 'Aceptar');
+      console.log(data);
       //console.log(data);
       this.progressbarService.barraProgreso.next("2");
+      if(actualizarContrasena.mensaje != "Verifica tus datos.\n La contraseña no coinside con tu usuario"){
+        this.router.navigate(['/perfil']);
+      }
       
     })   
+  }
+
+  abrirSnackBar(mensaje: string, accion: string) {
+    this._snackBar.open(mensaje, accion, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 
 }

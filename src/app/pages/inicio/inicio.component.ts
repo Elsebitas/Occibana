@@ -54,6 +54,14 @@ export class InicioComponent implements OnInit {
   private _searchZona: string;
   private _searchPer: number;
   private _searchStr: number;
+  public filtroNull: boolean;
+
+
+  recargarHoteles(){
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/inicio']);
+  });
+  }
 
 
   get searchStr(): number {
@@ -63,12 +71,13 @@ export class InicioComponent implements OnInit {
   set searchStr(value: number) {
     this._searchStr = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredStrHotel(value);
+    this.verificarNull();
   }
+
 
   filteredStrHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
-      lista.promediocalificacion == searchString);
-
+      lista.promediocalificacion == searchString);    
   }
 
   get searchPer(): number {
@@ -78,11 +87,9 @@ export class InicioComponent implements OnInit {
   set searchPer(value: number) {
     this._searchPer = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredPerHotel(value);
+    this.verificarNull();
   }
 
-
-
-  
 
   filteredPerHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
@@ -97,7 +104,10 @@ export class InicioComponent implements OnInit {
   set searchZona(value: string) {
     this._searchZona = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredZonaHotel(value);
+    this.verificarNull();
   }
+
+
 
   filteredZonaHotel(searchString: string) {
     return this.listaDeHotelesPrincipales.filter(lista =>
@@ -112,6 +122,7 @@ export class InicioComponent implements OnInit {
   set searchHab(value: string) {
     this._searchHab = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredHabHotel(value);
+    this.verificarNull();
   }
 
 
@@ -129,6 +140,7 @@ export class InicioComponent implements OnInit {
   set searchTerm(value: string) {
     this._searchTerm = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredNameHotel(value);
+    this.verificarNull();
   }
 
 
@@ -147,6 +159,7 @@ export class InicioComponent implements OnInit {
   set searchText(value: string) {
     this._searchText = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredZoneHotel(value);
+    this.verificarNull();
   }
 
 
@@ -163,6 +176,7 @@ export class InicioComponent implements OnInit {
   set searchMun(value: string) {
     this._searchMun = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredMunHotel(value);
+    this.verificarNull();
   }
 
 
@@ -179,6 +193,7 @@ export class InicioComponent implements OnInit {
   set searchMin(value: number) {
     this._searchMin = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredMinHotel(value);
+    this.verificarNull();
   }
 
 
@@ -195,6 +210,7 @@ export class InicioComponent implements OnInit {
   set searchMax(value: number) {
     this._searchMax = value;
     this.listaDeHotelesPrincipalesFiltrados = this.filteredMaxHotel(value);
+    this.verificarNull();
   }
 
 
@@ -203,6 +219,19 @@ export class InicioComponent implements OnInit {
       listaa.precioNochePremium <= searchString);
 
   }
+
+
+
+  verificarNull(){
+    if(this.listaDeHotelesPrincipalesFiltrados.length != 0){
+      this.filtroNull = false;
+      console.log(this.filtroNull);
+    }else{
+      this.filtroNull = true;
+    }
+  }
+
+  
 
   /**
    * Constructor que inicializa el Forms y el servicio ListasService.

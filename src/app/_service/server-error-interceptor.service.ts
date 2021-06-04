@@ -34,7 +34,7 @@ export class ServerErrorInterceptorService implements HttpInterceptor {
         this.progressbarService.barraProgreso.next("2");
 
         if (err.status == 400 && err.error.message === "Usuario o contraseña incorrecto") {
-          this.snackBar.open('Usuario y/o cotraseña inconrrecta', 'Advertrencia', {
+          this.snackBar.open('Usuario y/o contraseña incorrecta', 'Advertencia', {
             duration: 3000,
           });
         } 
