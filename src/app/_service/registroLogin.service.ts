@@ -69,10 +69,10 @@ export class RegistroLoginService {
       const helper = new JwtHelperService();
       const isExpired = helper.isTokenExpired(token);
       if(isExpired == true){
-        console.log("TOKEN EXPIRADO");
+        //console.log("TOKEN EXPIRADO");
         return 2;
       }else{
-        console.log("TOKEN VALIDO");
+        //console.log("TOKEN VALIDO");
         return 1;
       }
     }else{

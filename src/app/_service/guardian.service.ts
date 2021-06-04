@@ -39,7 +39,7 @@ export class GuardianService implements CanActivate {
           intentos++;
           if (intentos == 3) {
             this.progressbarService.barraProgreso.next("2");
-            console.log("INTENTO 3");
+            //console.log("INTENTO 3");
             this.RegistroLoginService.postCerrarSesion(usuario);
             return false;
           }
@@ -52,7 +52,7 @@ export class GuardianService implements CanActivate {
       let rol = decodedToken.role;
 
       let url = state.url;
-      if (url.includes('/perfil') && rol == 1 || rol == 0)
+      if (url.includes('/perfil') && (rol == 1 || rol == 0))
         return true;
       else {
         this.router.navigate(['/login']);
@@ -68,10 +68,10 @@ export class GuardianService implements CanActivate {
     this.login.Usuario = this.crypto.decryptUsingAES256("user");
     this.login.Contrasena = this.crypto.decryptUsingAES256("userpassword");
     this.RegistroLoginService.postIngresoLogin(this.login).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       sessionStorage.setItem(environment.TOKEN, data);
     });
-    console.log("TOKEN RENOVADO");
+    //console.log("TOKEN RENOVADO");
   }
 
   private delay(ms: number) {

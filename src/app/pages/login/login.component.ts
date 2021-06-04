@@ -136,9 +136,9 @@ export class LoginComponent implements OnInit {
   postRegistroUsuarios(registroUsuarios: RegistroUsuarios) {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
-    console.log(registroUsuarios);
+    //console.log(registroUsuarios);
     this.loginService.postRegistroUsuarios(registroUsuarios).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.error2 = data;
       this.progressbarService.barraProgreso.next("2");
       this.router.navigate(['/login']);
@@ -164,11 +164,5 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
-
-
-  
-
-  
 
 }

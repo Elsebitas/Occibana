@@ -62,7 +62,7 @@ export class RegistroUsuarioComponent implements OnInit {
    */
   onFromSubmit(f: NgForm) {
     let registroUsuarios = f.value;
-    console.log(f.value);
+    //console.log(f.value);
     this.postRegistroUsuarios(registroUsuarios);
   }
 
@@ -74,9 +74,9 @@ export class RegistroUsuarioComponent implements OnInit {
   postRegistroUsuarios(registroUsuarios: RegistroUsuarios) {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
-    console.log(registroUsuarios);
+    //console.log(registroUsuarios);
     this.registroService.postRegistroUsuarios(registroUsuarios).subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.progressbarService.barraProgreso.next("2");
       this.router.navigate(['/inicio']);
     })   

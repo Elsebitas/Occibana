@@ -7,14 +7,12 @@
                         <div class="imagen">
                             <img src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">
                         </div>
-                            <ng-template matStepLabel>Foto de perfil</ng-template>
+                        <div>
                             <h3>Subir Imagen Angular 10</h3>
                             <span style="color:red;" *ngIf="message">{{message}}</span>
                             <input #file type="file" accept='image/*' (change)="preview($event)" />
                             <img [src]="imgURL" height="200" *ngIf="imgURL">
-
-                            <br>
-                            <button mat-button type="button" matStepperPrevious>Anterior</button>
+                        </div>
 
                         <br>
                         <div *ngIf="cargarDatosPerfil">
@@ -83,7 +81,7 @@
                                                 <mat-icon>delete</mat-icon>
                                             </button>
                                             <mat-card-content>
-                                                <p class="hoteltitle"> </p>
+                                                <p class="hoteltitle">{{hotel.nombre}} </p>
                                                 <div class="line"></div>
                                                 <p class="titles">Precio desde: {{hotel.precionoche}}</p>
                                                 <p class="subtitles">Ubicado en: {{hotel.zona}}</p>
