@@ -33,6 +33,7 @@ import { Router, RouterStateSnapshot } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
+import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -53,7 +54,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
           login.Usuario = crypto.decryptUsingAES256("user");
           login.Contrasena = crypto.decryptUsingAES256("userpassword");
           RegistroLoginService.postIngresoLogin(login).subscribe(data => {
-            console.log(data);
+            //console.log(data);
             sessionStorage.setItem(environment.TOKEN, data);
           });
           //////////////
@@ -109,7 +110,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     ActualizarContrasenaComponent,
     AgregarHabitacionComponent,
     ReservarComponent,
-    RecuperarConstrasenaComponent
+    RecuperarConstrasenaComponent,
+    ComprarMembresiasComponent
 
   ],
   imports: [

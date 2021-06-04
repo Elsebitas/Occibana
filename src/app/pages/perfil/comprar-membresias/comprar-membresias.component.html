@@ -1,0 +1,100 @@
+<mat-card>
+    <mat-card-header>
+        <p>Comprar Membresía</p>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <form [formGroup]="membresiaForm" (ngSubmit)="onFromSubmit()">
+                <div class="flex-row">
+
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Numero de Tarjeta</mat-label>
+                        <input #numeroTar matInput formControlName="NumeroTarjeta">
+                        <mat-icon class="colorIcon" matPrefix>credit_card</mat-icon>
+                        <mat-hint align="end">{{numeroTar.value?.length || 0}}/16</mat-hint>
+                        <mat-error *ngIf="membresiaForm.get('NumeroTarjeta').hasError('required')">
+                            El número de tarjeta es <strong>Requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('NumeroTarjeta').hasError('maxlength')">
+                            El número de caracteres máximos son <strong>16</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('NumeroTarjeta').hasError('minlength')">
+                            El número de caracteres mínimos son <strong>16</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('NumeroTarjeta').hasError('pattern')">
+                            Número de tarjeta <strong>inválido</strong>
+                        </mat-error>
+                        <mat-error
+                            *ngIf="membresiaForm.get('NumeroTarjeta').hasError('pattern') && !membresiaForm.get('NumeroTarjeta').hasError('minlength')">
+                            <strong>Cedula Inválida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Código de Seguridad</mat-label>
+                        <input #codigoDeSeg matInput formControlName="CodigoDeSeguridad">
+                        <mat-icon class="colorIcon" matPrefix>lock</mat-icon>
+                        <mat-hint align="end">{{codigoDeSeg.value?.length || 0}}/3</mat-hint>
+                        <mat-error *ngIf="membresiaForm.get('CodigoDeSeguridad').hasError('required')">
+                            El codigo de seguridad es <strong>Requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('CodigoDeSeguridad').hasError('maxlength')">
+                            El número de caracteres máximos son <strong>3</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('CodigoDeSeguridad').hasError('minlength')">
+                            El número de caracteres mínimos son <strong>3</strong>
+                        </mat-error>
+                        <mat-error
+                            *ngIf="membresiaForm.get('CodigoDeSeguridad').hasError('pattern') && !membresiaForm.get('CodigoDeSeguridad').hasError('minlength')">
+                            <strong>CCV inválido</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+                <div class="flex-row">
+
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="NombreDelPropietario">
+                        <mat-icon class="colorIcon" matPrefix>person</mat-icon>
+                        <mat-error *ngIf="membresiaForm.get('NombreDelPropietario').hasError('required')">
+                            El nombre del propietario es <strong>Requerido</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('NombreDelPropietario').hasError('pattern')">
+                            <strong>Nombre Inválido</strong> 
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Dirección de residencia</mat-label>
+                        <input matInput formControlName="DireccionPropietario">
+                        <mat-icon class="colorIcon" matPrefix>place</mat-icon>
+                        <mat-error *ngIf="membresiaForm.get('DireccionPropietario').hasError('required')">
+                            La dirección de residencia es <strong>Requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+                <div>
+
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Cedula de cuidadania</mat-label>
+                        <input matInput formControlName="Cedula" type="number">
+                        <mat-icon class="colorIcon" matPrefix>perm_identity</mat-icon>
+                        <mat-error *ngIf="membresiaForm.get('Cedula').hasError('required')">
+                            La cedula de ciudadania es <strong>Requerida</strong>
+                        </mat-error>
+                        <mat-error *ngIf="membresiaForm.get('Cedula').hasError('pattern')">
+                            <strong>Cédula inválida</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button style="cursor: pointer" color="primary" [disabled]="membresiaForm.invalid"
+            (click)="onFromSubmit()">Comprar</button>
+        <button mat-raised-button style="cursor: pointer" color="warn" type="button"
+            routerLink="/perfil">Cancelar</button>
+    </mat-card-actions>
+</mat-card>

@@ -74,7 +74,7 @@ export class ActualizarContrasenaComponent implements OnInit {
     
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
-    console.log(decodedToken.name);
+    //console.log(decodedToken.name);
 
     let datosPerfil: DatosPerfil;
     datosPerfil = new DatosPerfil();
@@ -82,7 +82,7 @@ export class ActualizarContrasenaComponent implements OnInit {
 
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data =>{ 
       this.cargarDatosPerfil = data; 
-      console.log(data);
+      //console.log(data);
       this.cargarDatos();
     })
    
@@ -109,11 +109,12 @@ export class ActualizarContrasenaComponent implements OnInit {
    actualizarContrasena(actualizarContrasena: ActualizarContrasena) {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
-    console.log(actualizarContrasena);
+    //console.log(actualizarContrasena);
     this.constrasenaService.putActualizarDatos(actualizarContrasena).subscribe(data => {
       actualizarContrasena = data;
       this.abrirSnackBar(actualizarContrasena.mensaje, 'Aceptar');
       console.log(data);
+      //console.log(data);
       this.progressbarService.barraProgreso.next("2");
       if(actualizarContrasena.mensaje != "Verifica tus datos.\n La contraseña no coinside con tu usuario"){
         this.router.navigate(['/perfil']);

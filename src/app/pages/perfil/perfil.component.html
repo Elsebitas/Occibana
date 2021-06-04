@@ -7,7 +7,7 @@
                         <div class="imagen">
                             <img src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">
                         </div>
-                        
+
 
                         <br>
                         <div *ngIf="cargarDatosPerfil">
@@ -42,10 +42,11 @@
                         </div><br><br>
                         <div>
                             <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
-                                (click)="postCargarDatosPerfil()">Actualizar
+                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">Actualizar
                                 Membresía</button>
-                            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1"
-                                color="primary"><mat-icon>credit_card</mat-icon> Comprar Membresía</button>
+                            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
+                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">Comprar
+                                Membresía</button>
                         </div>
                         <br>
                         <div>
@@ -82,8 +83,9 @@
                                                 <p class="titles">Precio desde: {{hotel.precionoche}}</p>
                                                 <p class="subtitles">Ubicado en: {{hotel.zona}}</p>
                                                 <div class="center">
-                                                    <button mat-raised-button routerLink="/perfil/agregar_habitacion" (click)="agregarHabitacion(hotel.idhotel)"
-                                                        class="boton" style="cursor: pointer" color="primary">Agregar
+                                                    <button mat-raised-button routerLink="/perfil/agregar_habitacion"
+                                                        (click)="agregarHabitacion(hotel.idhotel)" class="boton"
+                                                        style="cursor: pointer" color="primary">Agregar
                                                         Habitacion</button>
                                                     <button mat-raised-button routerLink="" class="boton2"
                                                         style="cursor: pointer" color="primary">Ver

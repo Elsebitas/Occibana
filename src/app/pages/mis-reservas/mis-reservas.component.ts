@@ -54,7 +54,7 @@ export class MisReservasComponent implements OnInit {
           this.dataSource.sort = this.sort;
           this.dataSource.paginator = this.paginator;
           this.listaMisReservas = data;
-          console.log(data);
+          //console.log(data);
           this.progressbarService.barraProgreso.next("2");
       });
   }
@@ -82,7 +82,7 @@ export class MisReservasComponent implements OnInit {
   cancelarReserva(id) {
     this.listaService.postCancelarMireserva(id).subscribe(data => {
         this.mostrarMisReservas();
-        console.log(data);
+        //console.log(data);
     })
   }
 
