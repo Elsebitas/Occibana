@@ -39,6 +39,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
 import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
 import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
+import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -119,7 +120,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     ComprarMembresiasComponent,
     DialogMisionComponent,
     DialogVisionComponent,
-    DialogLemaComponent
+    DialogLemaComponent,
+    ReservasHotelComponent
 
   ],
   imports: [
@@ -155,7 +157,10 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  usuario: string;
+  contra: string;
+ }
 function delay(arg0: number) {
   return new Promise(resolve => setTimeout(resolve, arg0));
 }
