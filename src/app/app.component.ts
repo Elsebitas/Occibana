@@ -1,8 +1,14 @@
+import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
+import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
+import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
+import { DiagMisionComponent } from './pages/diag-mision/diag-mision.component';
+
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router } from '@angular/router';
 import { environment } from './../environments/environment';
 import { Component, DoCheck } from '@angular/core';
 import { RegistroLoginService } from './../app/_service/registroLogin.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +37,7 @@ export class AppComponent implements DoCheck{
    * @param registroLogin recibe el objeto RegistroLoginService.
    * @param router recibe el objeto Router.
    */
-  constructor(private registroLogin: RegistroLoginService, progressbarService: ProgressbarService, private router: Router) {
+  constructor(private registroLogin: RegistroLoginService, progressbarService: ProgressbarService, private router: Router, public dialogo: MatDialog) {
     progressbarService.barraProgreso.subscribe(data =>{
       if(data == "1")
          this.barraProgreso = false;
@@ -60,4 +66,35 @@ export class AppComponent implements DoCheck{
     sessionStorage.removeItem('userpassword');
     this.router.navigate(['/login']);
   }
+
+  openDialogMision(){
+    const dialogRef = this.dialogo.open(DialogMisionComponent, {
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
+  openDialogVision(){
+    const dialogRef = this.dialogo.open(DialogVisionComponent, {
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
+  openDialogLema(){
+    const dialogRef = this.dialogo.open(DialogLemaComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+  
 }

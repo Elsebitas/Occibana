@@ -1,3 +1,4 @@
+import { ServerErrorInterceptorService } from './_service/server-error-interceptor.service';
 import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
 import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
@@ -34,6 +35,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
+import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
+import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -111,7 +116,10 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     AgregarHabitacionComponent,
     ReservarComponent,
     RecuperarConstrasenaComponent,
-    ComprarMembresiasComponent
+    ComprarMembresiasComponent,
+    DialogMisionComponent,
+    DialogVisionComponent,
+    DialogLemaComponent
 
   ],
   imports: [
@@ -135,7 +143,11 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    Login,
+    Login,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptorService,
+      multi: true
+    },
     AppModule,
     RegistroLoginService,
     ProgressbarService,

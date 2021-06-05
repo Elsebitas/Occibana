@@ -41,11 +41,11 @@
                             </div>
                         </div><br><br>
                         <div>
-                            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
-                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">Actualizar
+                            <button mat-raised-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
+                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)"> <mat-icon>autorenew</mat-icon> Actualizar
                                 Membresía</button>
-                            <button mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
-                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">Comprar
+                            <button mat-raised-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
+                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)"> <mat-icon>add_shopping_cart</mat-icon> Comprar
                                 Membresía</button>
                         </div>
                         <br>
@@ -56,7 +56,7 @@
 
                         </div><br>
                         <div>
-                            <button mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
+                            <button mat-raised-button color="primary" routerLink="/perfil/actualizarcontrasena">
                                 <mat-icon>lock</mat-icon> Editar Contraseña </button>
                                 
 
