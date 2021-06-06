@@ -1,4 +1,5 @@
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
+import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
 import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
 import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path: 'actualizarcontrasena', component: ActualizarContrasenaComponent},
       {path: 'editarperfil', component: EditarPerfilComponent},
       {path: 'agregar_habitacion', component: AgregarHabitacionComponent},
-      {path: 'comprarmembresias', component: ComprarMembresiasComponent}
+      {path: 'comprarmembresias', component: ComprarMembresiasComponent},
+      {path: 'reservashotel', component: ReservasHotelComponent}
   ], canActivate: [GuardianService]}, //Guardian
 
   {path: 'error401', component: Error401Component},

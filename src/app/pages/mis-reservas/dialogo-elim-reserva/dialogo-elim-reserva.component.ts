@@ -26,7 +26,6 @@ export class DialogoElimReservaComponent implements OnInit {
     this.dialogRef.close({
       opcion: "Cancelar"
     });
-    
   }
 
 }

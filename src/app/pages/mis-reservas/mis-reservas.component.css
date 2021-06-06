@@ -1,5 +1,4 @@
   .content {
-    align-items: center;
     margin: 2em auto;
     width: 100%;
   }
@@ -11,11 +10,22 @@
   .reservaTitle {
     text-align: center;
   }
-
-  table {
-    width: 100%;
-  }
   
   div.center {
     text-align: center;
+  }
+
+  .star_icon {
+    color: rgb(255, 208, 0);
+    margin: auto;
+    font-size: 30px;
+  }
+
+  .star_img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .calif {
+    position: absolute;
   }

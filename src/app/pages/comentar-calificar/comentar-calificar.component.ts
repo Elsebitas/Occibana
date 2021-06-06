@@ -1,3 +1,4 @@
+import { MisReservasComponent } from './../mis-reservas/mis-reservas.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TraerMensajeDatosPerfil } from './../../_model/TraerMensajeDatosPerfil';
 import { ComentarCalificarService } from './../../_service/comentar-calificar.service';
@@ -33,6 +34,8 @@ export class ComentarCalificarComponent implements OnInit {
   nombreHotel: string;
 
   hotelesPrincipales: HotelesPrincipales;
+
+  reservas: MisReservasComponent;
 
   comentar: Comentar;
 
@@ -74,14 +77,16 @@ export class ComentarCalificarComponent implements OnInit {
     this.comentar.IdHotelSession = this.idHotel;
     this.comentar.IdSession = this.idUsuario;
     this.comentarCalificarService.postComentar(this.comentar).subscribe(data => {
-      //console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
-      /*if (this.traerMensajeDatosPerfil.mensaje != "No puede comentar, inicie sesion o verifique si ha pasado mucho tiempo desde esta reserva") {
 
-      }*/
-      this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje,'Aceptar');
-      this.progressbarService.barraProgreso.next("2");
+      if (this.traerMensajeDatosPerfil.mensaje == "Comentario Agregado.") {
+        this.cargarsnackBar();
+        this.returnPerfil();
+      } else {
+        this.cargarsnackBar();
+      }
+      
     })
   }
 
@@ -92,19 +97,27 @@ export class ComentarCalificarComponent implements OnInit {
     this.calificar.IdHotelSession = this.idHotel;
     this.calificar.IdSession = this.idUsuario;
     this.calificar.IdReserva = this.idReserva;
-    this.comentarCalificarService.postCalificar(this.calificar).subscribe(data => {
+    if (this.calificar.Calificacion != null) {
+      this.comentarCalificarService.postCalificar(this.calificar).subscribe(data => {
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
-      /*if (this.traerMensajeDatosPerfil.mensaje != "No es posible realizar aun esta calificación") {
 
-      }*/
-      this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje,'Aceptar');
+      if (this.traerMensajeDatosPerfil.mensaje == "Calificacion realizada con exito") {
+        this.cargarsnackBar();
+        this.returnPerfil();
+      } else {
+        this.cargarsnackBar();
+      }
+
+      })
+    } else {
+      this.abrirSnackBar('Primero debe seleccionar una calificación para el hotel','Aceptar');
       this.progressbarService.barraProgreso.next("2");
-    })
+    }
+    
   }
 
   onRate($event: { oldValue: number, newValue: number }) {
-    //console.log(`Old Value:${$event.oldValue}, New Value: ${$event.newValue}`);
     this.rating = $event.newValue;
   }
 
@@ -112,6 +125,17 @@ export class ComentarCalificarComponent implements OnInit {
     this.snackBar.open(mensaje, accion, {
       verticalPosition: this.verticalPosition,
       duration: 4000,
+    });
+  }
+
+  cargarsnackBar() {
+    this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje,'Aceptar');
+    this.progressbarService.barraProgreso.next("2");
+  }
+
+  returnPerfil() {
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/perfil']);
     });
   }
 

@@ -119,8 +119,7 @@ export class LoginComponent implements OnInit {
       //appModule usuarios
       this.crypto.encryptUsingAES256('user',login.Usuario);
       this.crypto.encryptUsingAES256('userpassword',login.Contrasena);
-      /*
-      this.appModule.usuario = login.Usuario;
+      /*this.appModule.usuario = login.Usuario;
       this.appModule.contra = login.Contrasena;*/
       this.progressbarService.barraProgreso.next("2");
       //this.abrirSnackBar('¡Bienvenido! gracias por iniciar sesión','Aceptar');
