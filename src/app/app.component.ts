@@ -1,7 +1,6 @@
 import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
 import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
 import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
-import { DiagMisionComponent } from './pages/diag-mision/diag-mision.component';
 
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router } from '@angular/router';

@@ -1,6 +1,8 @@
 .alinear{
     text-align: center;
     font-weight: bold;
+    color: #3f51b5;
+    
 }
 
 .marginboton{
@@ -9,4 +11,6 @@
 
 .centrarText{
     text-align: center;
+    font-style: oblique;
+    font-weight: 700; 
 }
