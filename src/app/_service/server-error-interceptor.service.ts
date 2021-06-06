@@ -1,7 +1,7 @@
 import { ProgressbarService } from './progressbar.service';
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, pipe } from 'rxjs';
@@ -13,9 +13,12 @@ import { tap, catchError, retry } from 'rxjs/operators';
 })
 export class ServerErrorInterceptorService implements HttpInterceptor {
 
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(private snackBar: MatSnackBar,
     private router: Router,
-    private progressbarService: ProgressbarService) { }
+    private progressbarService: ProgressbarService,
+    private _snackBar: MatSnackBar) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -30,16 +33,25 @@ export class ServerErrorInterceptorService implements HttpInterceptor {
         }
       })).pipe(catchError((err) => {
         //console.log("Entro por interceptor: ");
-        //console.log(err);
+        console.log('-----El error es: ');
+        console.log(err);
         this.progressbarService.barraProgreso.next("2");
 
         if (err.status == 400 && err.error.message === "Usuario o contraseña incorrecto") {
-          this.snackBar.open('Usuario y/o contraseña incorrecta', 'Advertencia', {
-            duration: 3000,
-          });
-        } 
+          this.abrirSnackBar('Usuario o contraseña incorrectos','Aceptar');
+        }
+        else if (err.status == 404) {
+          this.router.navigate(['/error404/Recurso no encontrado']);
+        }
+        
         return EMPTY;
       }));
+  }
+  abrirSnackBar(mensaje: string, accion: string) {
+    this._snackBar.open(mensaje, accion, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 }
 
