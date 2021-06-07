@@ -5,15 +5,11 @@
                 <div class="tdPicture">
                     <td>
                         <div class="imagen">
-                            <img src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">
-                        </div>
-                        <div>
-                            <h3>Subir Imagen Angular 10</h3>
                             <span style="color:red;" *ngIf="message">{{message}}</span>
                             <input #file type="file" accept='image/*' (change)="preview($event)" />
-                            <img [src]="imgURL" height="200" *ngIf="imgURL">
+                            <!--<img src="{{url2}}{{cargarDatosPerfil.datos.fotoperfil}}" fallimg>-->
+                            <img [src]="imgURL" height="200" *ngIf="imgURL" fallimg>
                         </div>
-
                         <br>
                         <div *ngIf="cargarDatosPerfil">
                             <h1>{{cargarDatosPerfil.datos.nombre}} {{cargarDatosPerfil.datos.apellido}}</h1>
@@ -56,56 +52,56 @@
                         <br>
                         <div>
                             <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">
-                                <mat-icon>account_box</mat-icon> Editar Perfíl  </button>
-                                
+                                <mat-icon>account_box</mat-icon> Editar Perfíl
+                            </button>
+
 
                         </div><br>
                         <div>
                             <button mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
-                                <mat-icon>lock</mat-icon> Editar Contraseña </button>
-                                
+                                <mat-icon>lock</mat-icon> Editar Contraseña
+                            </button>
+
 
                         </div>
                     </td>
                 </div>
                 <td>
-                    <div>
-                        <mat-tab-group mat-align-tabs="start">
-                            <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
-                                <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
-                                    fxLayoutAlign="flex-start">
-                                    <ng-container *ngFor="let hotel of hotelesDestacados">
-                                        <mat-card class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
-                                            fxFlex.lt-md="0 1 calc(33.3% - 32px)" fxFlex.lt-sm="100%">
-                                            <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}">
-                                            <button mat-mini-fab color="warn" class="boton3"
-                                                aria-label="Example icon button with a delete icon">
-                                                <mat-icon>delete</mat-icon>
-                                            </button>
-                                            <mat-card-content>
-                                                <p class="hoteltitle">{{hotel.nombre}} </p>
-                                                <div class="line"></div>
-                                                <p class="titles">Precio desde: {{hotel.precionoche}}</p>
-                                                <p class="subtitles">Ubicado en: {{hotel.zona}}</p>
-                                                <div class="center">
-                                                    <button mat-raised-button routerLink="/perfil/agregar_habitacion"
-                                                        (click)="agregarHabitacion(hotel.idhotel)" class="boton"
-                                                        style="cursor: pointer" color="primary">Agregar
-                                                        Habitacion</button>
-                                                    <button mat-raised-button routerLink="" class="boton2"
-                                                        style="cursor: pointer" color="primary" (click)="mostrarReservasHotel(hotel.idhotel)">Ver
-                                                        reservas</button>
-                                                </div>
-                                            </mat-card-content>
-                                        </mat-card>
-                                    </ng-container>
-                                </div>
-                            </mat-tab>
-                            <mat-tab label="Mis Reservas">
-                                <app-mis-reservas></app-mis-reservas>
-                            </mat-tab>
-                        </mat-tab-group>
-                    </div>
+                    <mat-tab-group mat-align-tabs="start">
+                        <mat-tab label="Mis Hoteles" *ngIf="cargarDatosPerfil.b_mishoteles1">
+                            <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px"
+                                fxLayoutAlign="flex-start">
+                                <ng-container *ngFor="let hotel of hotelesDestacados">
+                                    <mat-card class="card-style">
+                                        <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}">
+                                        <button mat-mini-fab color="warn" class="boton3"
+                                            aria-label="Example icon button with a delete icon">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                        <mat-card-content>
+                                            <p class="hoteltitle">{{hotel.nombre}} </p>
+                                            <div class="line"></div>
+                                            <p class="titles">Precio desde: {{hotel.precionoche}}</p>
+                                            <p class="subtitles">Ubicado en: {{hotel.zona}}</p>
+                                            <div class="center">
+                                                <button mat-raised-button routerLink="/perfil/agregar_habitacion"
+                                                    (click)="agregarHabitacion(hotel.idhotel)" class="boton"
+                                                    style="cursor: pointer" color="primary">Agregar
+                                                    Habitacion</button>
+                                                <button mat-raised-button routerLink="" class="boton2"
+                                                    style="cursor: pointer" color="primary"
+                                                    (click)="mostrarReservasHotel(hotel.idhotel)">Ver
+                                                    reservas</button>
+                                            </div>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </ng-container>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Mis Reservas">
+                            <app-mis-reservas></app-mis-reservas>
+                        </mat-tab>
+                    </mat-tab-group>
                 </td>
             </tr>
         </table>

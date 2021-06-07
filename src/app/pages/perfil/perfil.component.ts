@@ -1,3 +1,5 @@
+import { FormControl, FormGroup } from '@angular/forms';
+import { AgregarImagen } from './../../_model/AgregarImagen';
 import { environment } from 'src/environments/environment';
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
@@ -9,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 
-let id={
-  idUsuario:1
+let id = {
+  idUsuario: 1
 }
 
 @Component({
@@ -21,10 +24,11 @@ let id={
 })
 export class PerfilComponent implements OnInit {
 
- 
+
   public imagePath;
   imgURL: any;
   public message: string;
+  public extension: any;
 
   sellersPermitFile: any;
 
@@ -33,18 +37,50 @@ export class PerfilComponent implements OnInit {
 
   cargarDatosPerfil: CargarDatosPerfil;
 
-  hotelesDestacados:HotelesDestacados[];
+  agregarImagen : AgregarImagen;
+
+  hotelesDestacados: HotelesDestacados[];
 
   url: string;
   url2: string;
 
-  constructor(private perfilService: PerfilService, 
-              private appModule: AppModule,
-              private progressbarService:ProgressbarService,
-              private listasService:ListasService,    
-              public route: ActivatedRoute,
-              private router: Router) {     
+
+  form: FormGroup;
+
+  constructor(private perfilService: PerfilService,
+    private appModule: AppModule,
+    private progressbarService: ProgressbarService,
+    private listasService: ListasService,
+    public route: ActivatedRoute,
+    private router: Router) {
+
+      this.form = new FormGroup({
+        usuario: new FormControl(''),
+        imagen: new FormControl('', ),
+        extension: new FormControl('', ),
+      });
+
     this.cargarDatosPerfil = new CargarDatosPerfil();
+
+    
+  }
+
+
+  cargarDatos(){
+
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
+
+
+    this.form.controls['usuario'].setValue(decodedToken.name);
+    this.form.controls['imagen'].setValue(this.sellersPermitString);
+    this.form.controls['extension'].setValue(this.extension);
+    console.log(this.form.value);
+    let fotoDePerfil = this.form.value;
+
+    this.perfilService.postAgregarImagen(fotoDePerfil).subscribe(data => {
+      console.log(data);
+    })
   }
 
   ngOnInit(): void {
@@ -52,14 +88,15 @@ export class PerfilComponent implements OnInit {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.postCargarDatosPerfil();
+    
   }
 
-  postCargarDatosPerfil(){
+  postCargarDatosPerfil() {
     //appModule usuarios
     //console.log("Usuario App Module "+this.appModule.usuario);
     //console.log("Contraseña App Module "+this.appModule.contra);
     this.url = environment.HOST;
-    
+
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
     //console.log(decodedToken.name);
@@ -67,20 +104,22 @@ export class PerfilComponent implements OnInit {
     let datosPerfil: DatosPerfil;
     datosPerfil = new DatosPerfil();
     datosPerfil.usuario = decodedToken.name;
+    
 
 
-    this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data =>{
-      this.cargarDatosPerfil = data;        
+    this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
+      this.cargarDatosPerfil = data;
       id.idUsuario = this.cargarDatosPerfil.datos.id;
       this.postMostrarMisHoteles(id);
-      //console.log(data);
+      console.log(data);
       //console.log(this.cargarDatosPerfil);
     })
     this.progressbarService.barraProgreso.next("2");
   }
 
-  postMostrarMisHoteles(idUser){
-    this.listasService.postMostrarMisHoteles(idUser).subscribe(data=>{
+
+  postMostrarMisHoteles(idUser) {
+    this.listasService.postMostrarMisHoteles(idUser).subscribe(data => {
       this.hotelesDestacados = data;
       /*console.log("Mis Hoteles");
       console.log(idUser);
@@ -88,63 +127,67 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-   
-  agregarHabitacion(id){
+
+  agregarHabitacion(id) {
     //console.log(id);
-    this.router.navigate(['/perfil/agregar_habitacion'], { state:{ idhotel: id} });
+    this.router.navigate(['/perfil/agregar_habitacion'], { state: { idhotel: id } });
   }
 
-  comprarMembresia(id, user, correo){
+  comprarMembresia(id, user, correo) {
     //console.log(id);
-    this.router.navigate(['/perfil/comprarmembresias'], { state:{ id: id, usuario: user, correo: correo} });
+    this.router.navigate(['/perfil/comprarmembresias'], { state: { id: id, usuario: user, correo: correo } });
   }
 
-  mostrarReservasHotel(id){    
-    this.router.navigate(['/perfil/reservashotel'], { state:{ idhotel: id} });
+  mostrarReservasHotel(id) {
+    this.router.navigate(['/perfil/reservashotel'], { state: { idhotel: id } });
   }
+
+
+
   preview(event: any): void {
     let files: FileList = event.target.files;
-    
-    if(files.length == 0)
+
+    if (files.length == 0)
       return;
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
 
-      var mimeType = files[0].type;
-      if (mimeType.match(/image\/*/) == null) {
-        this.message = "Only images are supported.";
-        return;
-      }
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    }
 
-      var reader = new FileReader();
-      this.imagePath = files;
-      reader.readAsDataURL(files[0]); 
-      reader.onload = (_event) => { 
-        this.imgURL = reader.result; 
-      }
-
-      this.picked(event);
+    this.picked(event);
   }
 
 
   public picked(event) {
-        let fileList: FileList = event.target.files;
-        const file: File = fileList[0];
-        this.sellersPermitFile = file;
-        this.handleInputChange(file); //turn into base64   
+    let fileList: FileList = event.target.files;
+    const file: File = fileList[0];
+    this.sellersPermitFile = file;
+    this.handleInputChange(file); //turn into base64   
   }
 
   handleInputChange(files) {
     var file = files;
-    console.log(file.type);
     var pattern = /image-*/;
     var reader = new FileReader();
     if (!file.type.match(pattern)) {
       alert('invalid format');
       return;
     }
-    console.log(pattern);
-    console.log(file.type);
+    console.log(file);
     reader.onloadend = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
+    
+    
+    let extensioNueva = this.valiadarFormato(file.type);
+    console.log(extensioNueva);
   }
   _handleReaderLoaded(e) {
     let reader = e.target;
@@ -152,12 +195,31 @@ export class PerfilComponent implements OnInit {
     //this.imageSrc = base64result;
     this.sellersPermitString = base64result;
     this.log();
+    
+    
   }
 
-  log() { 
-    // for debug
-    console.log('base64', this.sellersPermitString);
+  log() {
+    this.cargarDatos();
 
   }
-  
+
+  valiadarFormato(exten: string) {
+    console.log(exten);
+    if (exten == "image/jpeg") {
+      this.extension = ".jpeg"
+    }
+    else if (exten == "image/png") {
+      this.extension = ".png"
+    }
+    else if (exten == "image/jpg") {
+      this.extension = ".jpg"
+    }
+    else {
+      this.extension = "Extension no valida";
+    }
+    
+    this.agregarImagen.extension = this.extension;    
+  }
+
 }

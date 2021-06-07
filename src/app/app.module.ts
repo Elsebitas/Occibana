@@ -35,6 +35,7 @@ import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
+import { NgFallimgModule } from 'ng-fallimg';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -133,7 +134,11 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
         useFactory: jwtOptionsFactory,
         deps: [RegistroLoginService, ProgressbarService, Login, CryptoService]
       }
+    }),
+    NgFallimgModule.forRoot({
+      default: 'assets/images/perfilDefault.jpg',
     })
+
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

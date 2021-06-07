@@ -1,3 +1,5 @@
+import { ReactivarCuenta } from './../_model/ReactivarCuenta';
+import { AgregarImagen } from './../_model/AgregarImagen';
 import { AgregarHabitacion } from './../_model/AgregarHabitacion';
 import { ComprarMembresias } from './../_model/ComprarMembresias';
 import { TraerMensajeDatosPerfil } from './../_model/TraerMensajeDatosPerfil';
@@ -55,4 +57,9 @@ export class PerfilService {
     return this.http.post<any>(this.url + 'postComprarMembresias', comprarMembresias);
   }
 
+  postAgregarImagen(agregarImagen: AgregarImagen){
+    return this.http.post<any>(this.url + 'postSubirFoto', agregarImagen);
+  }
+
+  
 }
