@@ -4,6 +4,8 @@ mat-card {
     margin: 2em auto;
     text-align: left;
     margin-top: 5%;
+    
+   
   }
 
 
@@ -16,10 +18,11 @@ mat-card {
   }
   
   
-  .main-wrapper .example-form {
+  .main-wrapper{
     min-width: 100%;
     max-width: 300px;
     width: 100%;
+   
   }
   
   .main-wrapper .example-full-width,
@@ -78,4 +81,16 @@ mat-card {
 }
 .alinear{
   text-align: center;
+}
+.tituloStyle{
+  color: #3f51b5;
+}
+.candadoStyle{
+  height: 35px;
+  width: 35px;
+}
+.styleTitulos{
+  
+  color:black;
+  font-size: larger;
 }

@@ -8,7 +8,6 @@
                             <img src="{{url}}{{cargarDatosPerfil.datos.fotoperfil}}">
                         </div>
                         <div>
-                            <h3>Subir Imagen Angular 10</h3>
                             <span style="color:red;" *ngIf="message">{{message}}</span>
                             <input #file type="file" accept='image/*' (change)="preview($event)" />
                             <img [src]="imgURL" height="200" *ngIf="imgURL">
@@ -16,15 +15,16 @@
 
                         <br>
                         <div *ngIf="cargarDatosPerfil">
-                            <h1>{{cargarDatosPerfil.datos.nombre}} {{cargarDatosPerfil.datos.apellido}}</h1>
-                            <h2>@{{cargarDatosPerfil.datos.usuario}}</h2>
+                            <p class="barraIzquierdaNombre">{{cargarDatosPerfil.datos.nombre}} {{cargarDatosPerfil.datos.apellido}}</p>
+                            
+                            <p class="barraIzquierda"><mat-icon>person</mat-icon> {{cargarDatosPerfil.datos.usuario}}</p>
                         </div>
                         <div class="correo">
                             <div>
                                 <mat-icon>email</mat-icon>
                             </div>
                             <div class="correoTx">
-                                <p>{{cargarDatosPerfil.datos.correo}}</p>
+                                <p class="barraIzquierda" >{{cargarDatosPerfil.datos.correo}}</p>
                             </div>
                         </div><br><br>
                         <div class="correo">
@@ -42,28 +42,34 @@
                                 </mat-icon>
                             </div>
                             <div class="correoTx">
-                                <h3>Membresia</h3>
+                                <p class="barraIzquierda">Membresía</p>
                             </div>
                         </div><br><br>
                         <div>
-                            <button mat-raised-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
-                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)"> <mat-icon>autorenew</mat-icon> Actualizar
-                                Membresía</button>
-                            <button mat-raised-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
-                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)"> <mat-icon>add_shopping_cart</mat-icon> Comprar
-                                Membresía</button>
+                            <button class="styleboton" mat-stroked-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
+                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">
+                                <mat-icon>autorenew</mat-icon> Actualizar
+                                Membresía
+                            </button>
+                            <button class="styleboton" mat-stroked-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
+                                (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">
+                                <mat-icon>add_shopping_cart</mat-icon> Comprar
+                                Membresía
+                            </button>
                         </div>
                         <br>
                         <div>
-                            <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">
-                                <mat-icon>account_box</mat-icon> Editar Perfíl  </button>
-                                
+                            <button class="styleboton" mat-stroked-button color="primary" routerLink="/perfil/editarperfil">
+                                <mat-icon>account_box</mat-icon> Editar Perfíl
+                            </button>
+
 
                         </div><br>
                         <div>
-                            <button mat-raised-button color="primary" routerLink="/perfil/actualizarcontrasena">
-                                <mat-icon>lock</mat-icon> Editar Contraseña </button>
-                                
+                            <button class="styleboton" mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
+                                <mat-icon>lock</mat-icon> Editar Contraseña
+                            </button>
+
 
                         </div>
                     </td>
@@ -93,7 +99,8 @@
                                                         style="cursor: pointer" color="primary">Agregar
                                                         Habitacion</button>
                                                     <button mat-raised-button routerLink="" class="boton2"
-                                                        style="cursor: pointer" color="primary" (click)="mostrarReservasHotel(hotel.idhotel)">Ver
+                                                        style="cursor: pointer" color="primary"
+                                                        (click)="mostrarReservasHotel(hotel.idhotel)">Ver
                                                         reservas</button>
                                                 </div>
                                             </mat-card-content>
