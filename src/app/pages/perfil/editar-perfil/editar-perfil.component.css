@@ -94,7 +94,7 @@ mat-card {
 }
 
 .precioHab{
-  top: 50%;
+  top: 55%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -110,7 +110,7 @@ mat-card {
 
 
 .nombreHot{
-  top: 58%;
+  top: 63%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -126,12 +126,11 @@ mat-card {
 
 
 .fotoperfil{
-  top: 5%;
-  left: 35%;
-  right: 0;
-  bottom: 0;
+  top: 10%;
+  left: 0px;
+  right: 0px;
   position: absolute;
+  margin: auto;
   text-align: center;
-  margin-top: 5px;
   border-radius: 150px;
 }

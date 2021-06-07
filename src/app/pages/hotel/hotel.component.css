@@ -19,16 +19,21 @@
   .example-card2 {
     margin-top: 1%;
       max-width: 86.5%;
+      background-image: url("/assets/images/cardStyle.jpg");
+      height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   
   .example-header-image {
-    background-image: url("https://www.seekpng.com/png/detail/72-729756_how-to-add-a-new-user-to-your.png");
+    background-image: url("/assets/images/perfilDefault.jpg");
     background-size: cover;
   }
 
 .carrusel{
   margin-top: 1%;
-  width: 62%;
+  width: 75%;
   
 }
 .owl-demo .item{
@@ -53,7 +58,6 @@ table{
   width: 5%;
 }
 .tableTitulo{
-  margin-top: -47%;
   position: relative;
   float: right;
 }
@@ -68,8 +72,15 @@ table{
   box-shadow: 0px 0px 3px 0px gray;
 }
 
+.contenidoInformacion{
+  margin-top: 15px;
+  margin-left: 10px;
+ 
+}
+
 .infohotel div{
-  display: inline-block;
+
+  display: inline-table;
   margin-left: 5%;  
 }
 
@@ -100,4 +111,119 @@ table{
 }
 .habitacion2 button{
   margin-left: 41%;
+}
+
+
+.subtitles{
+  margin-top: 20px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.subtitles2{
+  margin-top: 10px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.subtitles3{
+  margin-top: 8px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 500;
+}
+.subtitles4{
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.error-container{
+  color:#555555;
+  font-size: 15px;
+  font-weight: 20;
+  margin-top: 50px;
+}
+
+.textos{
+  color:#555555;
+  font-size: 20px;
+  font-weight: 20;
+  font-weight: bold;
+}
+
+.textos2{
+  color:#555555;
+  font-size: 15px;
+  font-weight: 20;
+}
+
+.lema{
+  color:#555555;
+  font-size: 18px;
+  font-weight: 20;
+}
+
+.error-container > span {
+  display: inline-block;
+  line-height: 0.7;
+  position: relative;
+  color: #5271ff;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.error-container > span:nth-of-type(1) {
+  margin-left: 3px;
+  perspective: 1000px;
+  perspective-origin: 500% 50%;
+  color: #3ab5f8;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.error-container > span:nth-of-type(3) {
+  perspective: none;
+  perspective-origin: 50% 50%;
+  color: #e32a27;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.botonReservar{
+  margin-top: 25px;
+  width: 100%;
+}
+
+.direccion{
+  text-transform: uppercase;
+  margin-top: 15px;
+  text-align: center;
+  color:#3f51b5;
+  font-size: 18px;
+  font-weight: 20;
+}
+
+.direccion2{
+  text-align: center;
+  color:#3f51b5;
+  font-size: 15px;
+  font-weight: 20;
+}
+
+.line{
+  margin-bottom: 8px;
+  background-color: #fad15b;
+  height: 2px;
 }

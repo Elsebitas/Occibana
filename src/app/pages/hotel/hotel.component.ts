@@ -39,13 +39,12 @@ export class HotelComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 600,
-    navText: ['', ''],
     responsive: {
       0: {
         items: 1 
       }
     },
-    nav: true
+    nav: false
   }
 
   panelOpenState = false;

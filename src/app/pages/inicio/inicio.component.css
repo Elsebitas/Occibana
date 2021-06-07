@@ -79,13 +79,12 @@
 }
 
 .card-style2{
-  margin-top: 16px;
-  margin-left: 30px;
+  padding: 0px;
 }
 
 
 .personass{
-  width: 35%;
+  width: 100%;
 }
 
 .tamanoImagen{
@@ -93,8 +92,10 @@
 }
 
 .tamanoImagen2{
+  margin: 0px;
+  display: block;
+  width: 250px;; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
   height: 200px;
-  width: 400px;
 }
 
   .carusell{
@@ -160,6 +161,9 @@
   top: 65%;
   left: 5.8%;
 }
+
+
+
 
 
 /*//////////////////////////////////////////////////////////////////////////////////////*/

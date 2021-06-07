@@ -1,3 +1,4 @@
+import { ReactivarCuenta } from './../_model/ReactivarCuenta';
 import { RecuperarContrasena } from './../_model/RecuperarContrasena';
 import { RegistroUsuarios } from './../_model/RegistroUsuarios';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -88,6 +89,9 @@ export class RegistroLoginService {
     return this.http.post<any>(this.url3 + 'postCorreoRecuperacion', recuperarContrasena, httpOptions);
   }
 
-  
+  putReactivarCuenta(reactivarCuenta: ReactivarCuenta){
+    return this.http.put<any>(this.url3 + 'putReactivarCuenta', reactivarCuenta);
+  }
+
 }
 
