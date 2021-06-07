@@ -1,3 +1,4 @@
+import { AgregarHotel } from './../_model/AgregarHotel';
 import { Reserva } from './../_model/Reserva';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
@@ -34,5 +35,9 @@ export class PanelHotelService {
 
   postReservarHospedaje(reserva:Reserva): Observable<any>{    
     return this.http.post<any>(this.url + 'postReservarHospedaje', reserva);
+  }
+
+  postAgregarHotel(agregarHotel:AgregarHotel): Observable<any>{   
+    return this.http.post<any>(this.url + 'postAgregarHotel', agregarHotel); 
   }
 }

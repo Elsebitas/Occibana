@@ -56,14 +56,16 @@
                         <br>
                         <div>
                             <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">
-                                <mat-icon>account_box</mat-icon> Editar Perfíl  </button>
-                                
+                                <mat-icon>account_box</mat-icon> Editar Perfíl
+                            </button>
+
 
                         </div><br>
                         <div>
                             <button mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
-                                <mat-icon>lock</mat-icon> Editar Contraseña </button>
-                                
+                                <mat-icon>lock</mat-icon> Editar Contraseña
+                            </button>
+
 
                         </div>
                     </td>
@@ -79,7 +81,7 @@
                                             fxFlex.lt-md="0 1 calc(33.3% - 32px)" fxFlex.lt-sm="100%">
                                             <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}">
                                             <button mat-mini-fab color="warn" class="boton3"
-                                                aria-label="Example icon button with a delete icon">
+                                                aria-label="Example icon button with a delete icon" (click)="postEliminarHotelTabla(hotel.idhotel, cargarDatosPerfil.datos.id)">
                                                 <mat-icon>delete</mat-icon>
                                             </button>
                                             <mat-card-content>
@@ -93,12 +95,16 @@
                                                         style="cursor: pointer" color="primary">Agregar
                                                         Habitacion</button>
                                                     <button mat-raised-button routerLink="" class="boton2"
-                                                        style="cursor: pointer" color="primary" (click)="mostrarReservasHotel(hotel.idhotel)">Ver
+                                                        style="cursor: pointer" color="primary"
+                                                        (click)="mostrarReservasHotel(hotel.idhotel)">Ver
                                                         reservas</button>
                                                 </div>
                                             </mat-card-content>
                                         </mat-card>
                                     </ng-container>
+                                    <button mat-mini-fab color="primary" class="botonAdd" (click)="agregarHotel()">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
                                 </div>
                             </mat-tab>
                             <mat-tab label="Mis Reservas">

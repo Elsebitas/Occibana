@@ -19,7 +19,8 @@
     </button>
 
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="usuario != null" class="botonMenu">
-      <img src="assets/images/cheems.jpg">
+      <!--<img src="assets/images/cheems.jpg">-->
+      <img src="{{url2}}{{cargarDatosPerfil.datos.fotoperfil}}">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
 

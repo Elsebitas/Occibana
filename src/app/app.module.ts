@@ -35,6 +35,7 @@ import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
+import { AgregarHotelComponent } from './pages/perfil/agregar-hotel/agregar-hotel.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -113,7 +114,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     ReservarComponent,
     RecuperarConstrasenaComponent,
     ComprarMembresiasComponent,
-    ReservasHotelComponent
+    ReservasHotelComponent,
+    AgregarHotelComponent
 
   ],
   imports: [

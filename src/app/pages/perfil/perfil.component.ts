@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
@@ -43,7 +44,8 @@ export class PerfilComponent implements OnInit {
               private progressbarService:ProgressbarService,
               private listasService:ListasService,    
               public route: ActivatedRoute,
-              private router: Router) {     
+              private router: Router,
+              private _snackBar: MatSnackBar) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
   }
 
@@ -88,6 +90,13 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  postEliminarHotelTabla(idHotel, idUser){
+    this.listasService.postEliminarHotelTabla(idHotel).subscribe(data=>{
+      this._snackBar.open(data,'ACEPTAR');
+      this.postMostrarMisHoteles(idUser);
+    })
+  }
+
    
   agregarHabitacion(id){
     //console.log(id);
@@ -102,6 +111,11 @@ export class PerfilComponent implements OnInit {
   mostrarReservasHotel(id){    
     this.router.navigate(['/perfil/reservashotel'], { state:{ idhotel: id} });
   }
+
+  agregarHotel(){    
+    this.router.navigate(['/perfil/agregarhotel'], { state:{ idhotel: id.idUsuario} });
+  }
+
   preview(event: any): void {
     let files: FileList = event.target.files;
     
