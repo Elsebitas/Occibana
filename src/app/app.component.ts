@@ -3,10 +3,15 @@ import { CargarDatosPerfil } from './_model/CargarDatosPerfil';
 import { PerfilService } from 'src/app/_service/perfil.service';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
+import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
+import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
+
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router } from '@angular/router';
 import { environment } from './../environments/environment';
 import { Component, DoCheck } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +51,8 @@ export class AppComponent implements DoCheck {
               private progressbarService: ProgressbarService,
               private router: Router,
               private perfilService: PerfilService,
-              private registroLoginService:RegistroLoginService) {
+              private registroLoginService:RegistroLoginService,
+              public dialogo: MatDialog) {
     this.url2 = environment.REALHOST;
     progressbarService.barraProgreso.subscribe(data => {
       if (data == "1")
@@ -104,4 +110,35 @@ export class AppComponent implements DoCheck {
     sessionStorage.removeItem('userpassword');
     this.router.navigate(['/login']);
   }
+
+  openDialogMision(){
+    const dialogRef = this.dialogo.open(DialogMisionComponent, {
+      width: '700px', height: '245px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
+  openDialogVision(){
+    const dialogRef = this.dialogo.open(DialogVisionComponent, {
+      width: '700px', height: '245px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
+  openDialogLema(){
+    const dialogRef = this.dialogo.open(DialogLemaComponent, {
+      width: '700px', height: '220px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+  
 }

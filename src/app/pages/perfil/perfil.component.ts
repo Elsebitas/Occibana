@@ -14,6 +14,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 let id={
   idUsuario:1
 }
+let idH={
+  idhotel:1
+}
 
 @Component({
   selector: 'app-perfil',
@@ -91,9 +94,13 @@ export class PerfilComponent implements OnInit {
   }
 
   postEliminarHotelTabla(idHotel, idUser){
-    this.listasService.postEliminarHotelTabla(idHotel).subscribe(data=>{
+    idH.idhotel = idHotel;
+    this.listasService.postEliminarHotelTabla(idH).subscribe(data=>{
       this._snackBar.open(data,'ACEPTAR');
       this.postMostrarMisHoteles(idUser);
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/perfil']);
+      });
     })
   }
 

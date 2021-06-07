@@ -1,3 +1,4 @@
+import { ServerErrorInterceptorService } from './_service/server-error-interceptor.service';
 import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
 import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
@@ -30,10 +31,15 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoService } from './_service/crypto.service';
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
+import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
+import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
+import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
 import { AgregarHotelComponent } from './pages/perfil/agregar-hotel/agregar-hotel.component';
 
@@ -110,12 +116,17 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     DialogoElimReservaComponent,
     EditarPerfilComponent,
     ActualizarContrasenaComponent,
+    ComentarCalificarComponent,
+    ReservarComponent,
     AgregarHabitacionComponent,
     ReservarComponent,
     RecuperarConstrasenaComponent,
     ComprarMembresiasComponent,
     ReservasHotelComponent,
-    AgregarHotelComponent
+    AgregarHotelComponent,
+    DialogVisionComponent,
+    DialogLemaComponent,
+    ReservasHotelComponent
 
   ],
   imports: [
@@ -139,7 +150,11 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    Login,
+    Login,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptorService,
+      multi: true
+    },
     AppModule,
     RegistroLoginService,
     ProgressbarService,

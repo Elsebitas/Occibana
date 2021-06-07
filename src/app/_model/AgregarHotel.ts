@@ -15,9 +15,10 @@ export class AgregarHotel {
     Condicionesbioseguridad:string;
     Direccion:string;
     imagenPrincipal:string;
-    imagenPrincipalExtension:string;
+    'imagenPrincipal-extension':string;
     imagen2:string;
-    imagen2Extension:string;
+    'imagen2-extension':string;
     imagen3:string;
-    imagen3Extension:string
+    'imagen3-extension':string
+    mensaje: string;
  }

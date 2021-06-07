@@ -1,4 +1,5 @@
 import { AgregarHotelComponent } from './pages/perfil/agregar-hotel/agregar-hotel.component';
+import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
 import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
@@ -36,6 +37,8 @@ const routes: Routes = [
 
   {path: 'error401', component: Error401Component},
   {path: 'mis_reservas', component: MisReservasComponent},
+  {path: 'comentar-calificar', component: ComentarCalificarComponent},
+  {path: 'hotel', component: HotelComponent},
   {path: 'hotel', component: HotelComponent, children: [
       {path: 'reservar', component: ReservarComponent}
   ]},

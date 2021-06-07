@@ -51,21 +51,21 @@
     <!-- Footer main -->
     <section class="ft-main">
       <div class="ft-main-item">
-        <h2 class="ft-title">Nosotros</h2>
+        <h2 class="ft-title"><strong>Nosotros</strong></h2>
         <ul>
-          <li><a href="#">Mision</a></li>
-          <li><a href="#">Vision</a></li>
-          <li><a href="#">Lema</a></li>
+          <li><a style="cursor:pointer" (click)="openDialogMision()" >Misión</a></li>
+          <li><a style="cursor:pointer" (click)="openDialogVision()" >Visión</a></li>
+          <li><a style="cursor:pointer" (click)="openDialogLema()" >Lema</a></li>
         </ul>
       </div>
       <div class="ft-main-item">
-        <h2 class="ft-title">Recursos</h2>
+        <h2 class="ft-title"><strong>Recursos</strong></h2>
         <ul>
-          <li><a href="#">Manual de usuario</a></li>
+          <li><a href="https://drive.google.com/file/d/1Qe0pdKkkGwYtIuNSlGKGYyXOAf_fwyMF/view">Manual de usuario</a></li>
         </ul>
       </div>
       <div class="ft-main-item">
-        <h2 class="ft-title">Contactanos</h2>
+        <h2 class="ft-title">Contáctanos</h2>
         <ul>
           <li>
             <mat-icon> email</mat-icon><a href="#"> Occibana@gmail.com</a>
@@ -77,13 +77,10 @@
         </ul>
       </div>
       <div class="ft-main-item">
-        <h2 class="ft-title">Siguenos</h2>
+        <h2 class="ft-title">Síguenos</h2>
         <div class="example-button-container">
           <button mat-fab disabled class="boton">
             <mat-icon>facebook</mat-icon>
-          </button>
-          <button mat-fab disabled class="boton">
-            <mat-icon>http</mat-icon>
           </button>
           <button mat-fab disabled class="boton">
             <mat-icon>http</mat-icon>
@@ -110,8 +107,8 @@
     <!-- Footer legal -->
     <section class="ft-legal">
       <ul class="ft-legal-list">
-        <li><a href="#">Terms &amp; Conditions</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Términos &amp; Condiciones</a></li>
+        <li><a href="#">Política de privacidad</a></li>
         <li>&copy; 2021 Copyright Occibana</li>
       </ul>
     </section>

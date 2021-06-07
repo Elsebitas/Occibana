@@ -1,3 +1,4 @@
+import { ProgressbarService } from './../../../_service/progressbar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { element } from 'protractor';
 import { ListasMunicipios } from './../../../_model/ListasMunicipios';
@@ -44,6 +45,7 @@ export class AgregarHotelComponent implements OnInit {
 
   constructor(private panelHotelService: PanelHotelService,
               private listasService: ListasService,
+              private progressbarService: ProgressbarService,
               private router:Router,
               private snackBar: MatSnackBar) {
 
@@ -66,11 +68,11 @@ export class AgregarHotelComponent implements OnInit {
       Condicionesbioseguridad:new FormControl('',[Validators.required]),
       Direccion:new FormControl('',[Validators.required]),
       imagenPrincipal:new FormControl('',[Validators.required]),
-      imagenPrincipalExtension:new FormControl(),
+      'imagenPrincipal-extension':new FormControl(),
       imagen2:new FormControl(),
-      imagen2Extension:new FormControl(),
+      'imagen2-extension':new FormControl(),
       imagen3:new FormControl(),
-      imagen3Extension:new FormControl(),
+      'imagen3-extension':new FormControl(),
     });
    }
 
@@ -82,11 +84,8 @@ export class AgregarHotelComponent implements OnInit {
 
   onFromSubmit(){
     let formularioAgregarHotel = this.agregarHotelForm.value;
-    console.log(formularioAgregarHotel);
+    //console.log(formularioAgregarHotel);
     this.postAgregarHotel(formularioAgregarHotel);
-    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/perfil']);
-    });
   } 
 
 
@@ -96,23 +95,31 @@ export class AgregarHotelComponent implements OnInit {
   }
 
   postAgregarHotel(agregarHotel: AgregarHotel){
+    this.progressbarService.barraProgreso.next("1");
     this.panelHotelService.postAgregarHotel(agregarHotel).subscribe(data=>{
-      console.log(data);
-      this.openSnackBar(data,'ACEPTAR');
+      //console.log(data);
+      agregarHotel = data; 
+      if(agregarHotel.mensaje == "*Imagen aceptada"){
+        this.openSnackBar('Hotel agregado','ACEPTAR');        
+        this.progressbarService.barraProgreso.next("2");
+        this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/perfil']);
+        });        
+      }
     })
   }
 
   getListasZonas(){
     this.listasService.getListasZonas().subscribe(data=>{
       this.listasZonas = data;
-      console.log(data)
+      //console.log(data)
     })
   }
 
   getListasMunicipios(){
     this.listasService.getListasMunicipios().subscribe(data =>{
       this.listasMunicipios = data;
-      console.log(data)
+      //console.log(data)
     })
   }    
 
@@ -227,7 +234,7 @@ export class AgregarHotelComponent implements OnInit {
     //console.log(pattern);
     //console.log(file.type);
     let extensioNueva = this.valiadarFormato(file.type);
-    this.agregarHotelForm.controls['imagenPrincipalExtension'].setValue(extensioNueva);
+    this.agregarHotelForm.controls['imagenPrincipal-extension'].setValue(extensioNueva);
     //console.log(extensioNueva);
     reader.onloadend = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
@@ -245,7 +252,7 @@ export class AgregarHotelComponent implements OnInit {
     //console.log(pattern);
     //console.log(file.type);
     let extensioNueva = this.valiadarFormato(file.type);
-    this.agregarHotelForm.controls['imagen2Extension'].setValue(extensioNueva);
+    this.agregarHotelForm.controls['imagen2-extension'].setValue(extensioNueva);
     //console.log(extensioNueva);
     reader.onloadend = this._handleReaderLoaded2.bind(this);
     reader.readAsDataURL(file);
@@ -263,7 +270,7 @@ export class AgregarHotelComponent implements OnInit {
     //console.log(pattern);
     //console.log(file.type);
     let extensioNueva = this.valiadarFormato(file.type);    
-    this.agregarHotelForm.controls['imagen3Extension'].setValue(extensioNueva);
+    this.agregarHotelForm.controls['imagen3-extension'].setValue(extensioNueva);
     //console.log(extensioNueva);
     reader.onloadend = this._handleReaderLoaded3.bind(this);
     reader.readAsDataURL(file);
