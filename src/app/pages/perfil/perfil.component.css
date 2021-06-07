@@ -5,14 +5,12 @@
     margin-left: 30px;
     margin-right: 100px;
     padding-left: 2%;
-    width:30%;
+    width:250px;
 }
 .imagen{
-    margin-top: 10%;
-    
+    position: relative;
 }
 .imagen img{
-    margin-top: 5%;
     width:200px;
     height:200px;
     border-radius:150px;
@@ -114,3 +112,66 @@
     height: 50px;
     border-radius: 50px;
 }
+
+
+.subtitles{
+    margin-top: 20px;
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .subtitles2{
+    margin-top: 10px;
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .subtitles3{
+    margin-top: 8px;
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .subtitles4{
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .error-container{
+    color:#555555;
+    font-size: 15px;
+    font-weight: 20;
+    margin-top: 50px;
+  }
+  
+  .textos{
+    color:#555555;
+    font-size: 20px;
+    font-weight: 20;
+    font-weight: bold;
+  }
+  
+  .textos2{
+    color:#555555;
+    font-size: 15px;
+    font-weight: 20;
+  }
+  
+  .lema{
+    color:#555555;
+    font-size: 18px;
+    font-weight: 20;
+  }
+  
