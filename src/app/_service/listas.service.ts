@@ -77,7 +77,7 @@ export class ListasService {
     return this.http.post<any>(this.url + 'postMostrarMisreservas', misReservas)
   }
 
-  postCancelarMireserva(id): Observable<any> {
+  postCancelarMireserva(id: number): Observable<any> {
     return this.http.post<any>(this.url + 'postCancelarMireserva', id)
   }
 
@@ -97,4 +97,7 @@ export class ListasService {
     return this.http.get<MostrarReservasHotel[]>(`${this.url}getMostrarReservasCompletadas?idHotel=`+idHotel);
   }
 
+  postEliminarHotelTabla(id): Observable<any> {
+    return this.http.post<any>(this.url + 'postEliminarHotelTabla', id)
+  }
 }

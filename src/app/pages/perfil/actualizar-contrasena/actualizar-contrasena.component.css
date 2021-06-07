@@ -27,13 +27,6 @@ mat-card {
     width: 100%;
   }
   
-  .main-wrapper mat-card-header {
-    text-align: left;
-    width: 100%;
-    display: block;
-    font-weight: 700;
-  }
-  
   .main-wrapper mat-card-header mat-card-title {
     font-size: 30px;
     margin: 0;

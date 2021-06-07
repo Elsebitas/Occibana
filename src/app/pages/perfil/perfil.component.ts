@@ -1,5 +1,6 @@
 import { FormControl, FormGroup } from '@angular/forms';
 import { AgregarImagen } from './../../_model/AgregarImagen';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
@@ -15,6 +16,9 @@ import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 
 let id = {
   idUsuario: 1
+}
+let idH={
+  idhotel:1
 }
 
 @Component({
@@ -47,21 +51,21 @@ export class PerfilComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private perfilService: PerfilService,
-    private appModule: AppModule,
-    private progressbarService: ProgressbarService,
-    private listasService: ListasService,
-    public route: ActivatedRoute,
-    private router: Router) {
+    
 
-      this.form = new FormGroup({
-        usuario: new FormControl(''),
-        imagen: new FormControl('', ),
-        extension: new FormControl('', ),
-      });
-
+  constructor(private perfilService: PerfilService, 
+              private appModule: AppModule,
+              private progressbarService:ProgressbarService,
+              private listasService:ListasService,    
+              public route: ActivatedRoute,
+              private router: Router,
+              private _snackBar: MatSnackBar) {     
     this.cargarDatosPerfil = new CargarDatosPerfil();
-
+    this.form = new FormGroup({
+      usuario: new FormControl(''),
+      imagen: new FormControl('', ),
+      extension: new FormControl('', ),
+    });
     
   }
 
@@ -128,9 +132,21 @@ export class PerfilComponent implements OnInit {
   }
 
 
-  agregarHabitacion(id) {
+  postEliminarHotelTabla(idHotel, idUser){
+    idH.idhotel = idHotel;
+    this.listasService.postEliminarHotelTabla(idH).subscribe(data=>{
+      this._snackBar.open(data,'ACEPTAR');
+      this.postMostrarMisHoteles(idUser);
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/perfil']);
+      });
+    })
+  }
+
+   
+  agregarHabitacion(id, nombre, precio){
     //console.log(id);
-    this.router.navigate(['/perfil/agregar_habitacion'], { state: { idhotel: id } });
+    this.router.navigate(['/perfil/agregar_habitacion'], { state:{ idhotel: id, nombreHotel: nombre} });
   }
 
   comprarMembresia(id, user, correo) {
@@ -143,6 +159,9 @@ export class PerfilComponent implements OnInit {
   }
 
 
+  agregarHotel(){    
+    this.router.navigate(['/perfil/agregarhotel'], { state:{ idhotel: id.idUsuario} });
+  }
 
   preview(event: any): void {
     let files: FileList = event.target.files;

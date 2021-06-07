@@ -1,0 +1,16 @@
+.alinear{
+    text-align: center;
+    font-weight: bold;
+    color: #3f51b5;
+}
+
+.marginboton {
+    margin: 0 auto;
+}
+
+.description{
+    text-align: center;
+    font-style: oblique;
+    font-weight: 700; 
+    font-size: medium; 
+}

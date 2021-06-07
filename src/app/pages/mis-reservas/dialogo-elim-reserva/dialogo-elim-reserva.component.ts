@@ -1,4 +1,3 @@
-import { MisReservasComponent } from './../mis-reservas.component';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -8,8 +7,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./dialogo-elim-reserva.component.css']
 })
 export class DialogoElimReservaComponent implements OnInit {
-
-  misReservasComp: MisReservasComponent;
 
   constructor(
       public dialogRef: MatDialogRef<DialogoElimReservaComponent>,
@@ -29,7 +26,6 @@ export class DialogoElimReservaComponent implements OnInit {
     this.dialogRef.close({
       opcion: "Cancelar"
     });
-    
   }
 
 }

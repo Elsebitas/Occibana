@@ -79,7 +79,7 @@
           </td>
         </tr>
       </table>
-      <table>
+      <table style="margin: auto; margin-left: 6%;">
         <tr>
           <td>
             <mat-form-field appearance="fill">
@@ -108,17 +108,6 @@
                 <mat-option value="Doble">Doble</mat-option>
                 <mat-option value="Premium">Premium</mat-option>
               </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Introduzca un rango</mat-label>
-              <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate placeholder="Start date">
-                <input matEndDate placeholder="End date">
-              </mat-date-range-input>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker></mat-date-range-picker>
             </mat-form-field>
           </td>
           <td>
@@ -153,9 +142,6 @@
                 <mat-option value="9"><strong>9</strong>
                   <mat-icon>people</mat-icon>
                 </mat-option>
-                <mat-option value="10"><strong>10</strong>
-                  <mat-icon>people</mat-icon>
-                </mat-option>
               </mat-select>
             </mat-form-field>
           </td>
@@ -164,7 +150,7 @@
     </div>
 
     <div style="text-align:center">
-      <star-rating value="5" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly="false"
+      <star-rating value="5" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="35px" readonly="false"
         (rate)="onRate($event)"></star-rating>
     </div>
 

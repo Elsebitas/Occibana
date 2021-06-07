@@ -13,15 +13,18 @@ import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angula
 })
 export class AgregarHabitacionComponent implements OnInit {
   selected;
+  banios;
   agregarhform: FormGroup;
   error: string;
   id: number;
+  nombre: string;
   
   constructor(private agregarHabitacionService: PerfilService,
               private snackBar: MatSnackBar,
               private router: Router,
               private progressbarService: ProgressbarService,) { 
                 this.id = this.router.getCurrentNavigation().extras.state.idhotel;
+                this.nombre = this.router.getCurrentNavigation().extras.state.nombreHotel;
               }
 
 
@@ -37,17 +40,19 @@ export class AgregarHabitacionComponent implements OnInit {
 
   agregarHabitacion(){
     let agregarH = new AgregarHabitacion();
-    if(this.agregarhform.value['tipo'] == "Básica"){
+    if(this.agregarhform.value['tipo'] == "10000"){
       agregarH.tipoHabitacionNumero = 1;
-    }if(this.agregarhform.value['tipo'] == "Doble"){
+      agregarH.TipoHabitacion = "Básica";
+    }if(this.agregarhform.value['tipo'] == "20000"){
       agregarH.tipoHabitacionNumero = 2;
-    }if(this.agregarhform.value['tipo'] == "Premium"){
+      agregarH.TipoHabitacion = "Doble";
+    }if(this.agregarhform.value['tipo'] == "40000"){
       agregarH.tipoHabitacionNumero = 3;
+      agregarH.TipoHabitacion = "Premium";
     }
     agregarH.NumeroMaximoDePersonas = this.agregarhform.value['cantpersonas'];
     agregarH.NumeroDeBanos = this.agregarhform.value['numbanios']; 
     agregarH.IdHotel = this.id;
-    agregarH.TipoHabitacion = this.agregarhform.value['tipo'];
     agregarH.NumeroDeCamas = this.agregarhform.value['cantcamas'];
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();

@@ -52,6 +52,7 @@
 .content{
   margin: 2em auto;
   width: 100%;
+  position: relative;
 }
 
 .hoteltitle{
@@ -102,4 +103,14 @@
     position: absolute;
     margin-top: -2%;
     margin-left: -10%;
+}
+
+.botonAdd{
+    display: scroll;
+    position: absolute;
+    bottom:20px;
+    right:30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
 }

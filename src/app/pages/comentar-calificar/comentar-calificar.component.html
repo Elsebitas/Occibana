@@ -1,0 +1,52 @@
+<div class="main-wrapper">
+    <mat-card>
+        <mat-card-title>
+            <div class="title">HOTEL: {{ nombreHotel}}</div>
+        </mat-card-title>
+        <br>
+        <mat-card-content>
+            <div class="line"></div>
+            <table>
+                <br>
+                <tr>
+                    <td style="width: 20%; text-align: center;">
+                        <div>Calificar</div>
+                        <div style="text-align:center">
+                            <star-rating value="5" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                        </div>
+                        <br>
+                        <div>
+                            <button mat-raised-button (click)="calificarHotel()" style="cursor: pointer" color="primary"> 
+                                <mat-icon>grade</mat-icon> Calificar 
+                            </button>
+                        </div>
+                    </td>
+    
+                    <td class="content">
+                        <form [formGroup]="commentForm">
+                            <mat-form-field class="comment" appearance="outline">
+                                <mat-label>Comentar</mat-label>
+                                <textarea maxlength #comentario formControlName="comentario" class="textArea" matInput placeholder="Escriba un comentario para el hotel" [(ngModel)]="mensaje" maxlength="151"></textarea>
+                                <mat-hint align="end">{{comentario.value?.length || 0}}/150</mat-hint>
+                                <mat-error *ngIf="commentForm.get('comentario').hasError('required')">
+                                    Si quiere realizar un comentario, este es <strong>requerido</strong>
+                                </mat-error>
+                                <mat-error *ngIf="commentForm.get('comentario').hasError('maxlength')">
+                                    El número de caracteres máximos son de <strong>150</strong>
+                                </mat-error>
+                                <mat-error *ngIf="commentForm.get('comentario').hasError('minlength')">
+                                    El número de caracteres mínimos son de <strong>5</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </form>
+                        <div>
+                            <button mat-raised-button (click)="comentarHotel()" [disabled]="boton" [disabled]="commentForm.invalid" style="cursor: pointer" color="primary"> 
+                                <mat-icon>comment</mat-icon> Comentar 
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>
