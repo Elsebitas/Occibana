@@ -2,7 +2,7 @@
     <mat-card-header>
     </mat-card-header>
     <mat-card-content>
-       
+
         <div class="flex-row">
             <div class="izquierda">
                 <!--<img src="./assets/images/252-2520411_my-community-buildings-set-02-clipart-hotel-icon.png" >-->
@@ -12,30 +12,35 @@
                 <div class="precioHab">{{precioHa}}</div>
                 <div class="numeroCam"><strong>{{nombreHotel}}</strong>$/noche</div>
                 <div class="numeroBanios">Número de baños: <strong>{{numeroBan}}</strong> baños</div>
-                <button mat-raised-button style="cursor: pointer" color="primary" class="botonReservar" [disabled]="boton" (click)="onFromSubmit()">¡Reservar!</button>
+                <button mat-raised-button style="cursor: pointer" color="primary" class="botonReservar"
+                    [disabled]="boton" (click)="onFromSubmit()">¡Reservar!</button>
                 <img src="./assets/images/hotel1.jpg" width="100%" height="100%" class="imagenHotel">
-               
+
             </div>
             <div class="derecha">
-                <button mat-fab style="cursor: pointer" class="botonCerrar" color="warn" routerLink="/hotel"><mat-icon>clear</mat-icon></button>
-                
+                <button mat-fab style="cursor: pointer" class="botonCerrar" color="warn" (click)="hotel()">
+                    <mat-icon>clear</mat-icon>
+                </button>
+
                 <br>
                 <div class="subtitles2">
                     Reserva tu habitación
-                  </div>
+                </div>
                 <br><br>
                 <form [formGroup]="reservaForm" (ngSubmit)="onFromSubmit()">
                     <div class="flex-row">
                         <mat-form-field appearance="fill" class="fecha">
                             <mat-label>Fecha de llegada...</mat-label>
-                            <input matInput [matDatepicker]="picker1" formControlName="FechaLlegada" [(ngModel)]="fechaInicio">
+                            <input matInput [matDatepicker]="picker1" formControlName="FechaLlegada"
+                                [(ngModel)]="fechaInicio">
                             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                             <mat-datepicker #picker1></mat-datepicker>
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" class="fecha">
                             <mat-label>Fecha de salida...</mat-label>
-                            <input matInput [matDatepicker]="picker2" formControlName="FechaSalida" [(ngModel)]="fechaFin">
+                            <input matInput [matDatepicker]="picker2" formControlName="FechaSalida"
+                                [(ngModel)]="fechaFin">
                             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                             <mat-datepicker #picker2></mat-datepicker>
                         </mat-form-field>
@@ -73,11 +78,12 @@
                     </div>
                     <div class="boton">
                         <p>{{mensaje}}</p>
-                        <button mat-raised-button style="cursor: pointer" color="primary" type="button" (click)="dataDisponibilidad()">Disponibilidad</button>
+                        <button mat-raised-button style="cursor: pointer" color="primary" type="button"
+                            (click)="dataDisponibilidad()">Disponibilidad</button>
                     </div>
                 </form>
-                
-                
+
+
             </div>
         </div>
     </mat-card-content>

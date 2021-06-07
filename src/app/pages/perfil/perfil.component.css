@@ -103,16 +103,55 @@
     margin-left: -10%;
 }
 
+.divBoton{
+    height: 80px;
+}
 .botonAdd{
     display: scroll;
     position: absolute;
-    bottom:20px;
-    right:30px;
+    bottom:30px;
+    right:20px;
     width: 50px;
     height: 50px;
     border-radius: 50px;
 }
 
+/* Boton subir foto */
+.file-select {          
+    position: relative;
+    display: inline-block;
+  }
+   
+  .file-select::before {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: 600;
+    display: flex;            
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;                
+  }
+   
+  .file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;            
+  }
+   
+  #src-file1::before {
+    content: 'Seleccionar Archivo 1';
+  }
+   
+  #src-file2::before {
+    content: 'Seleccionar Archivo 2';
+  }
 
 .subtitles{
     margin-top: 20px;

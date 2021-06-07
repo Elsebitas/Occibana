@@ -98,7 +98,7 @@ export class PerfilComponent implements OnInit {
   postCargarDatosPerfil() {
     //appModule usuarios
     //console.log("Usuario App Module "+this.appModule.usuario);
-    //console.log("Contraseña App Module "+this.appModule.contra);
+    //console.log("ContraseÃ±a App Module "+this.appModule.contra);
     this.url = environment.HOST;
 
     const helper = new JwtHelperService();

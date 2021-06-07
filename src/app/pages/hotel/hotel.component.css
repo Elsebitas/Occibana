@@ -1,7 +1,7 @@
 .container{
   margin-top: 3%;
-  margin-left: 18%;
-  margin-right: 18%;
+  margin: auto;
+  width: 80%;
   padding-bottom: 5px;
   border-bottom: 1px solid gainsboro;
   box-shadow: 0px 4px 4px -6px black;
@@ -33,7 +33,7 @@
 
 .carrusel{
   margin-top: 1%;
-  width: 75%;
+  width: 70%;
   
 }
 .owl-demo .item{
@@ -46,13 +46,12 @@
 }
 
 table{
-  margin-left: 15.5%;
-  margin-right: 15.5%;
+  margin-left: 6.5%;
   width: 100%;
   position: relative;
 }
 .tableCarrusel{
-  width: 45%;
+  width: 60%;
 }
 .botonImg{
   width: 5%;
@@ -63,8 +62,8 @@ table{
 }
 
 .informacion{
-  margin-left: 18%;
-  margin-right: 18%;
+  margin: auto;
+  width: 80%;
 }
 
 .infohotel{

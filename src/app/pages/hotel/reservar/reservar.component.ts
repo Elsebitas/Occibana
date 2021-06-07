@@ -133,4 +133,8 @@ export class ReservarComponent implements OnInit {
     })
   }
 
+  hotel(){    
+    this.router.navigate(['/hotel'], { state: { idhotel: this.id } });
+  }
+
 }
