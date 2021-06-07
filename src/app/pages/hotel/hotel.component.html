@@ -1,4 +1,5 @@
 <div [hidden]="route.children.length !== 0">
+    <br><br>
     <div class="container">
         <div>
             <h2 class="textos">Ubicacion</h2>
@@ -32,17 +33,17 @@
                 <ng-container>
                     <ng-template carouselSlide>
                         <div class="slide">
-                            <img height="450px" src="{{url}}{{informacionHotel.imagen}}">
+                            <img height="550px" src="{{url}}{{informacionHotel.imagen}}">
                         </div>
                     </ng-template>
                     <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
                         <div class="slide">
-                            <img height="450px" src="{{url}}{{informacionHotel.imagen_secundaria}}">
+                            <img height="550px" src="{{url}}{{informacionHotel.imagen_secundaria}}">
                         </div>
                     </ng-template>
                     <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
                         <div class="slide">
-                            <img height="450px" src="{{url}}{{informacionHotel.imagen_secundaria2}}">
+                            <img height="550px" src="{{url}}{{informacionHotel.imagen_secundaria2}}">
                         </div>
                     </ng-template>
                 </ng-container>
@@ -149,37 +150,40 @@
             </div>
         </td>
         <td>
-            <h2 class="textos">Comentarios de usuarios</h2>
-            <ng-container *ngFor="let coment of comentarios">
-                
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
-                        <mat-card-title class="textos">{{coment.nombre_usuario}}</mat-card-title>
-                        <mat-card-subtitle>Usuario de OCCIBANA</mat-card-subtitle>
-                    </mat-card-header>
-                    <!--<img mat-card-image src="http://static1.eskypartners.com/travelguide/vancouver-hotels.jpg"
-                        alt="Photo of a Shiba Inu">-->
-                    <mat-card-content>
-                        <div class="textos2"> 
-                           <strong> Comentario: </strong>
-                            {{coment.comentario}}                  
-                        </div>
-                        <div class="textos2">
-                            <strong>Fecha del Comentario:</strong>
-                            
-                            {{coment.fecha_comentario}}
-                        </div>
-                        <div class="textos2">
-                            <strong>Fecha de salida: </strong>
-                            
-                           {{coment.fecha_salida}}
+            <div>
+                <h2 class="textos">Comentarios de usuarios</h2>
+                <ng-container *ngFor="let coment of comentarios" style="padding: 50%;">
+                    
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title class="textos">{{coment.nombre_usuario}}</mat-card-title>
+                            <mat-card-subtitle>Usuario de OCCIBANA</mat-card-subtitle>
+                        </mat-card-header>
+                        <!--<img mat-card-image src="http://static1.eskypartners.com/travelguide/vancouver-hotels.jpg"
+                            alt="Photo of a Shiba Inu">-->
+                        <mat-card-content>
+                            <div class="textos2"> 
+                               <strong> Comentario: </strong>
+                                {{coment.comentario}}                  
+                            </div>
+                            <div class="textos2">
+                                <strong>Fecha del Comentario:</strong>
+                                
+                                {{coment.fecha_comentario}}
+                            </div>
+                            <div class="textos2">
+                                <strong>Fecha de salida: </strong>
+                                
+                               {{coment.fecha_salida}}
+    
+                            </div>
+    
+                        </mat-card-content>
+                    </mat-card>
+                </ng-container>
 
-                        </div>
-
-                    </mat-card-content>
-                </mat-card>
-            </ng-container>
+            </div>
         </td>
     </table>
 </div>
