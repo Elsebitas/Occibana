@@ -68,7 +68,7 @@ export class AppComponent implements DoCheck{
 
   openDialogMision(){
     const dialogRef = this.dialogo.open(DialogMisionComponent, {
-      width: '700px',
+      width: '700px', height: '245px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -78,7 +78,7 @@ export class AppComponent implements DoCheck{
 
   openDialogVision(){
     const dialogRef = this.dialogo.open(DialogVisionComponent, {
-      width: '700px',
+      width: '700px', height: '245px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -88,7 +88,7 @@ export class AppComponent implements DoCheck{
 
   openDialogLema(){
     const dialogRef = this.dialogo.open(DialogLemaComponent, {
-      width: '500px',
+      width: '700px', height: '220px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
