@@ -1,14 +1,14 @@
 import { Router } from '@angular/router';
 import { DialogoElimReservaComponent } from './dialogo-elim-reserva/dialogo-elim-reserva.component';
 import { ProgressbarService } from './../../_service/progressbar.service';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MisReservas } from './../../_model/MisReservas';
 import { ListasService } from './../../_service/listas.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {MatSnackBar, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 const id ={
   idReserva: 0
@@ -20,6 +20,8 @@ const id ={
   styleUrls: ['./mis-reservas.component.css']
 })
 export class MisReservasComponent implements OnInit {
+
+  @Input() idUsuario: number;
 
   misReservas: MisReservas;
 
@@ -46,17 +48,21 @@ export class MisReservasComponent implements OnInit {
   }
 
   mostrarMisReservas() {
-      this.progressbarService.barraProgreso.next("1");
-      this.misReservas = new MisReservas();
-      this.misReservas.id = 39;
-      this.listaService.postMostrarMisreservas(this.misReservas).subscribe(data => {
-          this.dataSource = new MatTableDataSource(data);
-          this.dataSource.sort = this.sort;
-          this.dataSource.paginator = this.paginator;
-          this.listaMisReservas = data;
-          //console.log(data);
-          this.progressbarService.barraProgreso.next("2");
-      });
+    this.progressbarService.barraProgreso.next("1");
+    this.misReservas = new MisReservas();
+    this.misReservas.id = this.idUsuario;
+    this.listaService.postMostrarMisreservas(this.misReservas).subscribe(data => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.listaMisReservas = data;
+        //console.log(data);
+        this.progressbarService.barraProgreso.next("2");
+    });
+  }
+
+  comCalifPorId(idHotel, nombreHotel, idReserva){
+    this.router.navigate(['/comentar-calificar'], { state:{ idhotel: idHotel, nombre: nombreHotel, idusuario: this.idUsuario, idreserva: idReserva} });
   }
 
   aplicarFiltro(filtro: string) {
@@ -64,31 +70,32 @@ export class MisReservasComponent implements OnInit {
   }
 
   dialogoCancelarReserva(idReserva: number) {
-      const dialogRef = this.dialogo.open(DialogoElimReservaComponent, {
-        width: '250px',
-        data: {idReserva: idReserva}
-      });
+    const dialogRef = this.dialogo.open(DialogoElimReservaComponent, {
+      width: '250px',
+      data: {idReserva: idReserva}
+    });
 
-      dialogRef.afterClosed().subscribe(result => {
-        if(result.opcion == "Aceptar") {
-            //console.log("se llama el servicio de para eliminar reserva");
-            id.idReserva = idReserva;
-            this.cancelarReserva(id);
-            this.abrirSnackBar('Reserva cancelada con éxito', 'Aceptar');
-        }
-      });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.opcion == "Aceptar") {
+        //console.log("se llama el servicio de para eliminar reserva");
+        id.idReserva = idReserva;
+        this.cancelarReserva(id);
+        this.abrirSnackBar('Reserva cancelada con éxito', 'Aceptar');
+      }
+    });
   }
 
   cancelarReserva(id) {
     this.listaService.postCancelarMireserva(id).subscribe(data => {
-        this.mostrarMisReservas();
-        //console.log(data);
+      this.mostrarMisReservas();
+      //console.log(data);
     })
   }
 
   abrirSnackBar(mensaje: string, accion: string) {
     this.snackBar.open(mensaje, accion, {
-      verticalPosition: this.verticalPosition
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
     });
   }
 

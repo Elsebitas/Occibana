@@ -31,6 +31,7 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoService } from './_service/crypto.service';
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
+import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
 import { RatingModule } from 'ng-starrating';
@@ -114,6 +115,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     DialogoElimReservaComponent,
     EditarPerfilComponent,
     ActualizarContrasenaComponent,
+    ComentarCalificarComponent,
+    ReservarComponent,
     AgregarHabitacionComponent,
     ReservarComponent,
     RecuperarConstrasenaComponent,

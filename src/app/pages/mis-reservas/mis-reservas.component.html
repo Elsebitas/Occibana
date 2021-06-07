@@ -50,26 +50,31 @@
             </ng-container>
     
             <ng-container matColumnDef="calificacion">
-                <th mat-header-cell *matHeaderCellDef> Calificación </th>
-                <td mat-cell *matCellDef="let element"> {{element.calificacion}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Calificación </th>
+                <td style="text-align: center;" mat-cell *matCellDef="let element">
+                    <div>
+                        <img class="star_img" src=".\assets\images\star_zero.png" *ngIf="element.calificacion == null">
+                        <img class="star_img" src=".\assets\images\star_one.png" *ngIf="element.calificacion == 1">
+                        <img class="star_img" src=".\assets\images\star_two.png" *ngIf="element.calificacion == 2">
+                        <img class="star_img" src=".\assets\images\star_three.png" *ngIf="element.calificacion == 3">
+                        <img class="star_img" src=".\assets\images\star_four.png" *ngIf="element.calificacion == 4">
+                        <img class="star_img" src=".\assets\images\star_five.png" *ngIf="element.calificacion == 5">
+                    </div>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="calificar_comentar">
-                <th mat-header-cell *matHeaderCellDef> Calificar/Comentar </th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-button color="primary" >
-                        <mat-icon>grade</mat-icon>
-                    </button>
-
-                    <button mat-button color="primary" >
-                        <mat-icon>comment</mat-icon>
+                <th mat-header-cell *matHeaderCellDef> Calificar y Comentar </th>
+                <td style="text-align: center;" mat-cell *matCellDef="let element">
+                    <button (click)="comCalifPorId(element.idhotel, element.nombrehotel, element.id)" mat-button color="primary" >
+                        <mat-icon>add</mat-icon>
                     </button>
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="cancelar_reserva">
                 <th mat-header-cell *matHeaderCellDef> Cancelar reserva </th>
-                <td mat-cell *matCellDef="let element">
+                <td style="text-align: center;" mat-cell *matCellDef="let element">
                     <button mat-button color="primary" (click)="dialogoCancelarReserva(element.id)">
                         <mat-icon>disabled_by_default</mat-icon>
                     </button>

@@ -1,0 +1,48 @@
+  .content {
+    margin: 2em auto;
+    text-align: center;
+    width: 1525px;
+  }
+
+  .comment{
+    width: 95%;
+  }
+
+  .textArea {
+    text-align: justify;
+    height: 100px;
+    resize: none;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  mat-card {
+    background-color:white;
+    max-width: 1300px;
+    margin: 2em auto;
+    text-align: left;
+    margin-top: 2%;
+  }
+
+  .main-wrapper mat-card-header {
+    text-align: left;
+    width: 100%;
+    display: block;
+    font-weight: 700;
+  }
+  
+  .main-wrapper mat-card-header mat-card-title {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .line{
+    margin-top: -10px;
+    margin-bottom: 8px;
+    background-color: #3f51b5;
+    height: 1px;
+  }

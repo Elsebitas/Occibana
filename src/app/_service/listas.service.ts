@@ -77,7 +77,7 @@ export class ListasService {
     return this.http.post<any>(this.url + 'postMostrarMisreservas', misReservas)
   }
 
-  postCancelarMireserva(id): Observable<any> {
+  postCancelarMireserva(id: number): Observable<any> {
     return this.http.post<any>(this.url + 'postCancelarMireserva', id)
   }
 
