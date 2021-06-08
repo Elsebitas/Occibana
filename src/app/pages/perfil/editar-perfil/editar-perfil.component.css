@@ -15,10 +15,10 @@ h1{
 }
 mat-card {
     background-color:white;
-    max-width: 70%;
+    max-width: 80%;
     margin: 2em auto;
     text-align: center;
-    margin-top: 1%;
+    margin-top: 4%;
   }
 
   mat-card-header {
@@ -63,8 +63,8 @@ mat-card {
 }
 
 .imagenHotel{
-  background: rgb(6,0,110);
-  background: linear-gradient(90deg, rgba(6,0,110,1) 5%, rgba(63,81,181,1) 84%, rgba(92,18,254,1) 100%);
+  background: rgb(141,154,227);
+  background: linear-gradient(180deg, rgba(141,154,227,1) 5%, rgba(63,81,181,1) 74%, rgba(63,81,181,1) 100%);
 
 }
 
