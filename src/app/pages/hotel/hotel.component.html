@@ -33,17 +33,17 @@
                 <ng-container>
                     <ng-template carouselSlide>
                         <div class="slide">
-                            <img height="550px" src="{{url}}{{informacionHotel.imagen}}">
+                            <img height="470px" src="{{url}}{{informacionHotel.imagen}}">
                         </div>
                     </ng-template>
                     <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria">
                         <div class="slide">
-                            <img height="550px" src="{{url}}{{informacionHotel.imagen_secundaria}}">
+                            <img height="470px" src="{{url}}{{informacionHotel.imagen_secundaria}}">
                         </div>
                     </ng-template>
                     <ng-template carouselSlide *ngIf="informacionHotel.imagen_secundaria2">
                         <div class="slide">
-                            <img height="550px" src="{{url}}{{informacionHotel.imagen_secundaria2}}">
+                            <img height="470px" src="{{url}}{{informacionHotel.imagen_secundaria2}}">
                         </div>
                     </ng-template>
                 </ng-container>
@@ -141,7 +141,7 @@
                                 <p class="textos2"><strong>Baños:</strong> {{habitacion.numbanio}}</p>
                                 <p class="textos2"><strong>Precio:</strong> ${{habitacion.precio}}</p>
                                 <button mat-raised-button style="cursor: pointer" color="primary"
-                                    (click)="reservar(habitacion.id, habitacion.numpersonas, informacionHotel.nombre,habitacion.precio, habitacion.numcamas, habitacion.numbanio)">Selecionar</button>
+                                    (click)="reservar(habitacion.id, habitacion.numpersonas, habitacion.precio, informacionHotel.nombre, habitacion.numcamas, habitacion.numbanio)">Selecionar</button>
                                 </div>            
                             </mat-card-content>
                         </mat-card>

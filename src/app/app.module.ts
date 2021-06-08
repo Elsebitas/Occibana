@@ -150,6 +150,8 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     }),
     NgFallimgModule.forRoot({
       default: 'assets/images/perfilDefault.jpg',
+      picture1: 'assets/images/hotel3.jpg',
+      picture2: 'assets/images/hotel3-1.jpg',
     })
 
   ],
