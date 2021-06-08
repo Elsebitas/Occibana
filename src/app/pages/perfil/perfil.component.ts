@@ -17,8 +17,8 @@ import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 let id = {
   idUsuario: 1
 }
-let idH={
-  idhotel:1
+let idH = {
+  idhotel: 1
 }
 
 @Component({
@@ -41,7 +41,7 @@ export class PerfilComponent implements OnInit {
 
   cargarDatosPerfil: CargarDatosPerfil;
 
-  agregarImagen : AgregarImagen;
+  agregarImagen: AgregarImagen;
 
   hotelesDestacados: HotelesDestacados[];
 
@@ -51,26 +51,25 @@ export class PerfilComponent implements OnInit {
 
   form: FormGroup;
 
-    
 
-  constructor(private perfilService: PerfilService, 
-              private appModule: AppModule,
-              private progressbarService:ProgressbarService,
-              private listasService:ListasService,    
-              public route: ActivatedRoute,
-              private router: Router,
-              private _snackBar: MatSnackBar) {     
+  constructor(private perfilService: PerfilService,
+    private appModule: AppModule,
+    private progressbarService: ProgressbarService,
+    private listasService: ListasService,
+    public route: ActivatedRoute,
+    private router: Router,
+    private _snackBar: MatSnackBar) {
     this.cargarDatosPerfil = new CargarDatosPerfil();
     this.form = new FormGroup({
       usuario: new FormControl(''),
-      imagen: new FormControl('', ),
-      extension: new FormControl('', ),
+      imagen: new FormControl('',),
+      extension: new FormControl('',),
     });
-    
+
   }
 
 
-  cargarDatos(){
+  cargarDatos() {
 
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
@@ -92,7 +91,6 @@ export class PerfilComponent implements OnInit {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.postCargarDatosPerfil();
-    
   }
 
   postCargarDatosPerfil() {
@@ -108,7 +106,7 @@ export class PerfilComponent implements OnInit {
     let datosPerfil: DatosPerfil;
     datosPerfil = new DatosPerfil();
     datosPerfil.usuario = decodedToken.name;
-    
+
 
 
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
@@ -132,10 +130,10 @@ export class PerfilComponent implements OnInit {
   }
 
 
-  postEliminarHotelTabla(idHotel, idUser){
+  postEliminarHotelTabla(idHotel, idUser) {
     idH.idhotel = idHotel;
-    this.listasService.postEliminarHotelTabla(idH).subscribe(data=>{
-      this._snackBar.open(data,'ACEPTAR');
+    this.listasService.postEliminarHotelTabla(idH).subscribe(data => {
+      this._snackBar.open(data, 'ACEPTAR');
       this.postMostrarMisHoteles(idUser);
       this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/perfil']);
@@ -143,10 +141,10 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-   
-  agregarHabitacion(id, nombre, precio){
+
+  agregarHabitacion(id, nombre, precio) {
     //console.log(id);
-    this.router.navigate(['/perfil/agregar_habitacion'], { state:{ idhotel: id, nombreHotel: nombre} });
+    this.router.navigate(['/perfil/agregar_habitacion'], { state: { idhotel: id, nombreHotel: nombre } });
   }
 
   comprarMembresia(id, user, correo) {
@@ -159,8 +157,8 @@ export class PerfilComponent implements OnInit {
   }
 
 
-  agregarHotel(){    
-    this.router.navigate(['/perfil/agregarhotel'], { state:{ idhotel: id.idUsuario} });
+  agregarHotel() {
+    this.router.navigate(['/perfil/agregarhotel'], { state: { idhotel: id.idUsuario } });
   }
 
   preview(event: any): void {
@@ -203,8 +201,8 @@ export class PerfilComponent implements OnInit {
     console.log(file);
     reader.onloadend = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
-    
-    
+
+
     let extensioNueva = this.valiadarFormato(file.type);
     console.log(extensioNueva);
   }
@@ -214,8 +212,8 @@ export class PerfilComponent implements OnInit {
     //this.imageSrc = base64result;
     this.sellersPermitString = base64result;
     this.log();
-    
-    
+
+
   }
 
   log() {
@@ -237,8 +235,8 @@ export class PerfilComponent implements OnInit {
     else {
       this.extension = "Extension no valida";
     }
-    
-    this.agregarImagen.extension = this.extension;    
+
+    this.agregarImagen.extension = this.extension;
   }
 
 }
