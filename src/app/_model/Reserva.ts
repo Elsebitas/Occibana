@@ -9,4 +9,5 @@ export class Reserva{
     NumPersonas:number;
     ModoDePago:string;
     PrecioNoche:number;
+    Correo:string;
 }

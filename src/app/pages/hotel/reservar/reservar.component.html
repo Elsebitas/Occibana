@@ -35,6 +35,9 @@
                                 [(ngModel)]="fechaInicio">
                             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                             <mat-datepicker #picker1></mat-datepicker>
+                            <mat-error *ngIf="reservaForm.get('FechaLlegada').hasError('required')">
+                                La fecha de llegada es <strong>Requerida</strong>
+                            </mat-error>
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" class="fecha">
@@ -43,6 +46,9 @@
                                 [(ngModel)]="fechaFin">
                             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                             <mat-datepicker #picker2></mat-datepicker>
+                            <mat-error *ngIf="reservaForm.get('FechaSalida').hasError('required')">
+                                La fecha de salida es <strong>Requerida</strong>
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="flex-row">
@@ -50,11 +56,17 @@
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Nombre</mat-label>
                             <input matInput formControlName="Nombre">
+                            <mat-error *ngIf="reservaForm.get('Nombre').hasError('required')">
+                                El nombre es <strong>Requerido</strong>
+                            </mat-error>
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Apellido</mat-label>
                             <input matInput formControlName="Apellido">
+                            <mat-error *ngIf="reservaForm.get('Apellido').hasError('required')">
+                                El apellido es <strong>Requerido</strong>
+                            </mat-error>
                         </mat-form-field>
 
                     </div>
@@ -62,18 +74,21 @@
 
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Correo</mat-label>
-                            <input matInput>
+                            <input matInput required>
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Confirmar correo</mat-label>
-                            <input matInput>
+                            <input matInput required>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-radio-group aria-label="Select an option" formControlName="ModoDePago">
                             <mat-radio-button value="Efectivo">Efectivo</mat-radio-button>
                             <mat-radio-button value="Tarjeta">Tarjeta</mat-radio-button>
+                            <mat-error *ngIf="reservaForm.get('ModoDePago').hasError('required')">
+                                El nombre es <strong>Requerido</strong>
+                            </mat-error>
                         </mat-radio-group>
                     </div>
                     <div class="boton">
