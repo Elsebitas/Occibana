@@ -1,4 +1,3 @@
-import { PruebapagoComponent } from './pages/pruebapago/pruebapago.component';
 import { AgregarHotelComponent } from './pages/perfil/agregar-hotel/agregar-hotel.component';
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';

@@ -142,6 +142,8 @@
 .file-select {          
     position: relative;
     display: inline-block;
+    cursor: pointer;
+    
   }
    
   .file-select::before {
@@ -157,7 +159,12 @@
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;                
+    bottom: 0;        
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;      
+    cursor: pointer;  
   }
    
   .file-select input[type="file"] {
@@ -236,3 +243,6 @@
     font-weight: 20;
   }
   
+  .iconoColor{
+    color: #3f51b5;
+  }
