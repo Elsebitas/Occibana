@@ -41,6 +41,8 @@ import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.compo
 import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
 import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
+import { NgFallimgModule } from 'ng-fallimg';
+import { AgregarHotelComponent } from './pages/perfil/agregar-hotel/agregar-hotel.component';
 
 /**
  * Modulo donde se realizan importaciones de funcionalidad.
@@ -121,10 +123,11 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     ReservarComponent,
     RecuperarConstrasenaComponent,
     ComprarMembresiasComponent,
-    DialogMisionComponent,
+    ReservasHotelComponent,
+    AgregarHotelComponent,
     DialogVisionComponent,
     DialogLemaComponent,
-    ReservasHotelComponent
+    ReservasHotelComponent,
 
   ],
   imports: [
@@ -144,7 +147,11 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
         useFactory: jwtOptionsFactory,
         deps: [RegistroLoginService, ProgressbarService, Login, CryptoService]
       }
+    }),
+    NgFallimgModule.forRoot({
+      default: 'assets/images/perfilDefault.jpg',
     })
+
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

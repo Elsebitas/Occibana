@@ -19,7 +19,8 @@
     </button>
 
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="usuario != null" class="botonMenu">
-      <img src="assets/images/cheems.jpg">
+      <!--<img src="assets/images/cheems.jpg">-->
+      <img src="{{url2}}{{cargarDatosPerfil.datos.fotoperfil}}">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
 
@@ -60,17 +61,17 @@
       <div class="ft-main-item">
         <h2 class="ft-title"><strong>Recursos</strong></h2>
         <ul>
-          <li><a href="https://drive.google.com/file/d/1Qe0pdKkkGwYtIuNSlGKGYyXOAf_fwyMF/view">Manual de usuario</a></li>
+          <li><a href="https://drive.google.com/file/d/1Qe0pdKkkGwYtIuNSlGKGYyXOAf_fwyMF/view" target="_blank">Manual de usuario</a></li>
         </ul>
       </div>
       <div class="ft-main-item">
         <h2 class="ft-title">Contáctanos</h2>
         <ul>
           <li>
-            <mat-icon> email</mat-icon><a href="#"> Occibana@gmail.com</a>
+            <mat-icon> email</mat-icon><a href="https://accounts.google.com/" target="_blank" > Occibana@gmail.com</a>
           </li>
           <li>
-            <mat-icon> phone</mat-icon><a href="#"> +57 1234567</a>
+            <mat-icon> phone</mat-icon><a href="https://www.google.com/" target="_blank"> +57 1234567</a>
           </li>
           <li><a href="#"></a></li>
         </ul>
@@ -78,15 +79,15 @@
       <div class="ft-main-item">
         <h2 class="ft-title">Síguenos</h2>
         <div class="example-button-container">
-          <button mat-fab disabled class="boton">
+          <a mat-fab  class="boton" color="primary" href="https://www.facebook.com/" target="_blank">
             <mat-icon>facebook</mat-icon>
-          </button>
-          <button mat-fab disabled class="boton">
-            <mat-icon>http</mat-icon>
-          </button>
-          <button mat-fab disabled class="boton">
-            <mat-icon>linkedin</mat-icon>
-          </button>
+          </a>
+          <a mat-fab  class="boton" color="primary" href="https://co.linkedin.com/" target="_blank">
+            <mat-icon>whatshot</mat-icon>
+          </a>
+          <a mat-fab  class="boton" color="primary" href="https://github.com/Elsebitas/Occibana" target="_blank">
+            <mat-icon>device_hub</mat-icon>
+          </a>
         </div>
       </div>
     </section>
@@ -106,8 +107,8 @@
     <!-- Footer legal -->
     <section class="ft-legal">
       <ul class="ft-legal-list">
-        <li><a href="#">Términos &amp; Condiciones</a></li>
-        <li><a href="#">Política de privacidad</a></li>
+        <li><a></a></li>
+        <li><a></a></li>
         <li>&copy; 2021 Copyright Occibana</li>
       </ul>
     </section>

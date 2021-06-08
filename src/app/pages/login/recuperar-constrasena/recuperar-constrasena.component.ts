@@ -1,3 +1,5 @@
+import { ReactivarCuenta } from './../../../_model/ReactivarCuenta';
+import { ValidacionesPropias } from './../../../_clase/ValidacionesPropias';
 import { RegistroLoginService } from './../../../_service/registroLogin.service';
 import { RecuperarContrasena } from './../../../_model/RecuperarContrasena';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,47 +13,96 @@ import { Component, Inject, OnInit } from '@angular/core';
 })
 export class RecuperarConstrasenaComponent implements OnInit {
 
+  reactivarForm: FormGroup;
   recuperarForm: FormGroup;
+  public mostrar: boolean = true;
+  public mostrar2: boolean = false;
+  
+  public hide2: boolean;
+  public hide3: boolean;
+
 
   constructor(
-      private loginService : RegistroLoginService,
-      public dialogRef: MatDialogRef<RecuperarConstrasenaComponent>,
-      @Inject(MAT_DIALOG_DATA) public correo : string,
-      ) { 
-        
-        this.recuperarForm = new FormGroup({
-          usuario: new FormControl('', [Validators.required, Validators.maxLength(20)]),
-          correo: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(50)]),
-        });
-      }
+    private loginService: RegistroLoginService,
+    public dialogRef: MatDialogRef<RecuperarConstrasenaComponent>,
+    @Inject(MAT_DIALOG_DATA) public correo: string,
+  ) {
 
-  onFromSubmit(){
+    this.recuperarForm = new FormGroup({
+      usuario: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      correo: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(50)]),
+    });
+
+    this.reactivarForm = new FormGroup({
+      usuario : new FormControl('',),
+      codigo: new FormControl('', [Validators.required]),
+      contrasena: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')])
+      //confContrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')])
+    });
+  }
+  
+
+  cargarDatos(){
+    this.reactivarForm.controls['usuario'].setValue("Heiner");
+    console.log(this.recuperarForm.get("usuario").value);
+  }
+
+
+
+
+  onFromSubmit() {
     let formularioLogin = this.recuperarForm.value;
     this.recuperarContrasena(formularioLogin);
+    console.log("jeje");
+    this.aceptar();   
   }
+
+  onFromSubmit2() {
+    this.cargarDatos();
+    let formularioReactivar = this.reactivarForm.value;
+    this.reactivarCuentaE(formularioReactivar);
+    this.hecho();
+  }
+
+
 
   ngOnInit(): void {
   }
 
   aceptar(): void {
-    this.dialogRef.close({
-        opcion: "Aceptar"
-    });
+    this.mostrar = false;
+    this.mostrar2 = true;
   }
 
   cancelar(): void {
     this.dialogRef.close({
       opcion: "Cancelar"
     });
-    
+
+  }
+
+  hecho(): void {
+    this.dialogRef.close({
+      opcion: "Hecho"
+    });
   }
 
   recuperarContrasena(recuperar: RecuperarContrasena) {
-    //console.log(recuperar);
+    console.log(recuperar);
     this.loginService.postRecuperarConstrasena(recuperar).subscribe(data => {
-      //console.log(data);
+      console.log(data);
 
-    });   
+    });
+
+  }
+
+  reactivarCuentaE(reactivar: ReactivarCuenta) {
+    console.log(reactivar);
+    this.loginService.putReactivarCuenta(reactivar).subscribe(data => {
+      console.log(data);
+
+    });
+
   }
 
 }

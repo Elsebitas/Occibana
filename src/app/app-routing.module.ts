@@ -1,3 +1,5 @@
+import { PruebapagoComponent } from './pages/pruebapago/pruebapago.component';
+import { AgregarHotelComponent } from './pages/perfil/agregar-hotel/agregar-hotel.component';
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { ReservasHotelComponent } from './pages/perfil/reservas-hotel/reservas-hotel.component';
 import { ComprarMembresiasComponent } from './pages/perfil/comprar-membresias/comprar-membresias.component';
@@ -30,7 +32,8 @@ const routes: Routes = [
       {path: 'editarperfil', component: EditarPerfilComponent},
       {path: 'agregar_habitacion', component: AgregarHabitacionComponent},
       {path: 'comprarmembresias', component: ComprarMembresiasComponent},
-      {path: 'reservashotel', component: ReservasHotelComponent}
+      {path: 'reservashotel', component: ReservasHotelComponent},
+      {path: 'agregarhotel', component: AgregarHotelComponent}
   ], canActivate: [GuardianService]}, //Guardian
 
   {path: 'error401', component: Error401Component},

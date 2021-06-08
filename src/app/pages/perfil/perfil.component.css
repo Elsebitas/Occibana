@@ -8,15 +8,12 @@
     margin-left: 30px;
     margin-right: 100px;
     padding-left: 2%;
-    width:80%;
-    
+    width:250px;
 }
 .imagen{
-    margin-top: 10%;
-    
+    position: relative;
 }
 .imagen img{
-    margin-top: 5%;
     width:200px;
     height:200px;
     border-radius:150px;
@@ -56,6 +53,7 @@
 .content{
   margin: 2em auto;
   width: 100%;
+  position: relative;
 }
 
 .hoteltitle{
@@ -83,7 +81,7 @@
 
 .card-style{
   margin-top: 16px;  
-  width: 550px;
+  width: 400px;
 }
 
 .imgCard{
@@ -126,3 +124,115 @@
     border-bottom-left-radius: 20px;
     
 }
+
+.divBoton{
+    height: 80px;
+}
+.botonAdd{
+    display: scroll;
+    position: absolute;
+    bottom:30px;
+    right:20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+/* Boton subir foto */
+.file-select {          
+    position: relative;
+    display: inline-block;
+  }
+   
+  .file-select::before {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: 600;
+    display: flex;            
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;                
+  }
+   
+  .file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;            
+  }
+   
+  #src-file1::before {
+    content: 'Seleccionar Archivo 1';
+  }
+   
+  #src-file2::before {
+    content: 'Seleccionar Archivo 2';
+  }
+
+.subtitles{
+    margin-top: 20px;
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .subtitles2{
+    margin-top: 10px;
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  
+  .subtitles3{
+    margin-top: 8px;
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .subtitles4{
+    color:#555555;
+    letter-spacing: normal;
+    text-rendering: auto;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .error-container{
+    color:#555555;
+    font-size: 15px;
+    font-weight: 20;
+    margin-top: 50px;
+  }
+  
+  .textos{
+    color:#555555;
+    font-size: 20px;
+    font-weight: 20;
+    font-weight: bold;
+  }
+  
+  .textos2{
+    color:#555555;
+    font-size: 15px;
+    font-weight: 20;
+  }
+  
+  .lema{
+    color:#555555;
+    font-size: 18px;
+    font-weight: 20;
+  }
+  

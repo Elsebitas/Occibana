@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PanelHotelService } from './../../../_service/panel-hotel.service';
 import { Component, OnInit } from '@angular/core';
+import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
 
 
 let dispo ={
@@ -73,7 +74,10 @@ export class ReservarComponent implements OnInit {
       NumPersonas: new FormControl(),
       ModoDePago: new FormControl(),
       PrecioNoche: new FormControl(),
-    });
+      Correo: new FormControl('',[Validators.email]),
+      ConfCorreo: new FormControl('',[Validators.email]),
+      
+    },{validators : ValidacionesPropias.verficarCorreos});
 
    }
 
@@ -131,6 +135,10 @@ export class ReservarComponent implements OnInit {
       //console.log("Reserva hotel");
       //console.log(data);
     })
+  }
+
+  hotel(){    
+    this.router.navigate(['/hotel'], { state: { idhotel: this.id } });
   }
 
 }

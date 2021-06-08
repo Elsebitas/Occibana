@@ -1,9 +1,10 @@
 mat-card {
     background-color:white;
     max-width: 600px;
+    height: 400px;
     margin: 2em auto;
     text-align: left;
-    margin-top: 5%;
+    margin-top: 4%;
     
    
   }
@@ -19,10 +20,9 @@ mat-card {
   
   
   .main-wrapper{
-    min-width: 100%;
-    max-width: 300px;
     width: 100%;
-   
+    height: 100%;
+    
   }
   
   .main-wrapper .example-full-width,
@@ -90,7 +90,9 @@ mat-card {
   width: 35px;
 }
 .styleTitulos{
-  
-  color:black;
+  color:#555555;
+  font-size: 18px;
+  font-weight: 20;
   font-size: larger;
+  font-weight: inherit;
 }
