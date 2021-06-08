@@ -82,7 +82,7 @@
                                     fxLayoutAlign="flex-start">
                                     <ng-container *ngFor="let hotel of hotelesDestacados">
                                         <mat-card class="card-style">
-                                            <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}">
+                                            <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}" fallimg="picture1">
                                             <button mat-mini-fab color="warn" class="boton3"
                                                 aria-label="Example icon button with a delete icon"
                                                 (click)="postEliminarHotelTabla(hotel.idhotel, cargarDatosPerfil.datos.id)">
