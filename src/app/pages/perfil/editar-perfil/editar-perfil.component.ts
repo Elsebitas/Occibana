@@ -33,12 +33,12 @@ export class EditarPerfilComponent implements OnInit {
   url: string;
 
   constructor(private perfilService: PerfilService,
-              private progressbarService: ProgressbarService,
-              private router: Router,
-              public route: ActivatedRoute,
-              private _snackBar: MatSnackBar,
-              private cryptoService: CryptoService,
-              private registroLoginService: RegistroLoginService) {
+    private progressbarService: ProgressbarService,
+    private router: Router,
+    public route: ActivatedRoute,
+    private _snackBar: MatSnackBar,
+    private cryptoService: CryptoService,
+    private registroLoginService: RegistroLoginService) {
     this.datosPerfil = new DatosPerfil();
     this.actualizarDatosPerfil = new ActualizarDatosPerfil();
     this.actualizarform = new FormGroup({
@@ -90,11 +90,10 @@ export class EditarPerfilComponent implements OnInit {
       //console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
-      if (this.traerMensajeDatosPerfil.mensaje != "Utiliza otro usuario, este ya existe o esta registrado") {
-        this.router.navigate(['/perfil']);
+      this.openSnackBar(this.traerMensajeDatosPerfil.mensaje, 'ACEPTAR');
+      if (this.traerMensajeDatosPerfil.mensaje != "Utiliza otro usuario, este ya existe o esta registrado") {        
+        this.relogin(actDatosPerf);
       }
-      this.openSnackBar(this.traerMensajeDatosPerfil.mensaje,'ACEPTAR');
-      this.relogin(actDatosPerf);
       this.progressbarService.barraProgreso.next("2");
     })
   }
@@ -125,13 +124,16 @@ export class EditarPerfilComponent implements OnInit {
     this._snackBar.open(message, action);
   }
 
-  relogin(actDatosPerf: ActualizarDatosPerfil){
+  relogin(actDatosPerf: ActualizarDatosPerfil) {
     this.login = new Login();
-    this.cryptoService.encryptUsingAES256("user",actDatosPerf.UsuarioRegistro);
+    this.cryptoService.encryptUsingAES256("user", actDatosPerf.UsuarioRegistro);
     this.login.Usuario = actDatosPerf.UsuarioRegistro;
-    this.login.Contrasena = this.cryptoService.decryptUsingAES256("userpassword");;
-    this.registroLoginService.postIngresoLogin(this.login).subscribe(data=>{
-      sessionStorage.setItem(environment.TOKEN, data);
+    this.login.Contrasena = this.cryptoService.decryptUsingAES256("userpassword");
+    this.registroLoginService.postIngresoLogin(this.login).subscribe(data => {
+      sessionStorage.setItem(environment.TOKEN, data);      
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/perfil']);
+      });
     })
   }
 
