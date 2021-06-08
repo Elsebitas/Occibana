@@ -1,6 +1,10 @@
 .contenido{    
    width:100%;
 }
+
+.contenedor2{
+  width: 75%;
+}
 .tdPicture{    
     margin-left: 30px;
     margin-right: 100px;
