@@ -90,8 +90,8 @@ export class HotelComponent implements OnInit {
   
   postObtenerInformacion(){
     this.panelHotelService.postInformacionDelHotel(info).subscribe(data =>{
-      //console.log("info hotel");
-      //console.log(data);
+      console.log("info hotel");
+      console.log(data);
       this.informacionHotel = data;
     })
   }
@@ -106,9 +106,9 @@ export class HotelComponent implements OnInit {
   postHabitacionesHotel(){
     habitacionHotel.idHotel = this.id;
     this.listasService.postHabitacionesHotel(habitacionHotel).subscribe(data =>{
-      //console.log("Habitaciones hotel");
+      console.log("Habitaciones hotel");
       this.habitacionesHotel = data;
-      //console.log(data);
+      console.log(data);
     });
   }
 
