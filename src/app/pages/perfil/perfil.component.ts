@@ -144,11 +144,15 @@ export class PerfilComponent implements OnInit {
 
   agregarHabitacion(id, nombre, precio) {
     //console.log(id);
+    localStorage.setItem("idhotel",id);
+    localStorage.setItem("nombreHotel",nombre);
     this.router.navigate(['/perfil/agregar_habitacion'], { state: { idhotel: id, nombreHotel: nombre } });
   }
 
   comprarMembresia(id, user, correo) {
     //console.log(id);
+    localStorage.setItem("iduser",id);
+    localStorage.setItem("correo",correo);
     this.router.navigate(['/perfil/comprarmembresias'], { state: { id: id, usuario: user, correo: correo } });
   }
 

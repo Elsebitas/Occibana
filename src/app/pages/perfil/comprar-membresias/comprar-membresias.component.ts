@@ -16,7 +16,7 @@ export class ComprarMembresiasComponent implements OnInit {
 
   membresiaForm: FormGroup;
 
-  id:number;
+  id:any;
   usuario:string;
   correo:string;
 
@@ -27,9 +27,13 @@ export class ComprarMembresiasComponent implements OnInit {
               private progressbarService: ProgressbarService,
               private _snackBar: MatSnackBar) {
     
-    this.id = this.router.getCurrentNavigation().extras.state.id;
+    /*this.id = this.router.getCurrentNavigation().extras.state.id;
     this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-    this.correo = this.router.getCurrentNavigation().extras.state.correo;
+    this.correo = this.router.getCurrentNavigation().extras.state.correo;*/
+    
+    this.id = localStorage.getItem("iduser");
+    this.usuario = cryptoService.decryptUsingAES256("user");
+    this.correo = localStorage.getItem("correo");
 
     this.membresiaForm = new FormGroup({
       Cedula: new FormControl('',[Validators.required]),

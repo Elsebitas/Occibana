@@ -51,7 +51,7 @@ export class HotelComponent implements OnInit {
 
   hotelesPrincipales: HotelesPrincipales;
 
-  private id: number;
+  private id: any;
   private idHabitacion: number;
 
   obtenerComentarios: ObtenerComentarios;
@@ -68,7 +68,8 @@ export class HotelComponent implements OnInit {
               private panelHotelService: PanelHotelService,
               public route: ActivatedRoute) {
   
-    this.id = this.router.getCurrentNavigation().extras.state.idhotel;
+    //this.id = this.router.getCurrentNavigation().extras.state.idhotel;
+    this.id = localStorage.getItem("idhotel");
     this.informacionHotel = new InformacionHotel();
 
    }
@@ -122,6 +123,8 @@ export class HotelComponent implements OnInit {
   }
 
   reservar(idhabitacion,numpersonas, precio, nombre, numcamas, numbanio){
+    localStorage.setItem("idhabitacion",idhabitacion);
+    localStorage.setItem("nombreHotel",nombre);
     this.router.navigate(['/hotel/reservar'], { state:{ idhotel: this.id, 
                                                         idhabitacion: idhabitacion,
                                                         numPersonas: numpersonas,
