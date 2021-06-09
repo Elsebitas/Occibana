@@ -1,3 +1,4 @@
+import { TraerMensajeDatosPerfil } from './../../_model/TraerMensajeDatosPerfil';
 import { Router } from '@angular/router';
 import { DialogoElimReservaComponent } from './dialogo-elim-reserva/dialogo-elim-reserva.component';
 import { ProgressbarService } from './../../_service/progressbar.service';
@@ -24,6 +25,8 @@ export class MisReservasComponent implements OnInit {
   @Input() idUsuario: number;
 
   misReservas: MisReservas;
+
+  traerMensajeDatosPerfil: TraerMensajeDatosPerfil;
 
   public listaMisReservas:any = [];
 
@@ -52,17 +55,21 @@ export class MisReservasComponent implements OnInit {
     this.misReservas = new MisReservas();
     this.misReservas.id = this.idUsuario;
     this.listaService.postMostrarMisreservas(this.misReservas).subscribe(data => {
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.listaMisReservas = data;
-        //console.log(data);
-        this.progressbarService.barraProgreso.next("2");
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.listaMisReservas = data;
+      //console.log(data);
+      this.progressbarService.barraProgreso.next("2");
     });
   }
 
-  comCalifPorId(idHotel, nombreHotel, idReserva){
-    this.router.navigate(['/comentar-calificar'], { state:{ idhotel: idHotel, nombre: nombreHotel, idusuario: this.idUsuario, idreserva: idReserva} });
+  comCalifPorId(idHotel, nombreHotel, idReserva, idUsuario){
+    localStorage.setItem('idhotel', idHotel);
+    localStorage.setItem('nombre', nombreHotel);
+    localStorage.setItem('idreserva', idReserva);
+    localStorage.setItem('idusuario', idUsuario);
+    this.router.navigate(['/comentar-calificar'], { state:{ idhotel: idHotel, nombre: nombreHotel, idusuario: idUsuario, idreserva: idReserva} });
   }
 
   aplicarFiltro(filtro: string) {
@@ -79,15 +86,24 @@ export class MisReservasComponent implements OnInit {
       if(result.opcion == "Aceptar") {
         //console.log("se llama el servicio de para eliminar reserva");
         id.idReserva = idReserva;
+
         this.cancelarReserva(id);
-        this.abrirSnackBar('Reserva cancelada con éxito', 'Aceptar');
       }
     });
   }
 
   cancelarReserva(id) {
     this.listaService.postCancelarMireserva(id).subscribe(data => {
-      this.mostrarMisReservas();
+      this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
+      this.traerMensajeDatosPerfil = data;
+
+      if (this.traerMensajeDatosPerfil.mensaje == 'Reserva cancelada con exito') {
+        this.abrirSnackBar('Reserva cancelada con éxito', 'Aceptar');
+        this.mostrarMisReservas();
+      } else {
+        this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje, 'Aceptar');
+      }
+      
       //console.log(data);
     })
   }
