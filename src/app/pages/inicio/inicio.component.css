@@ -188,6 +188,100 @@ mat-icon{
   left: 5.8%;
 }
 
+.texto-encima2{
+  padding-left: 5px;
+  padding-right: 7.5px;
+  background: #00ff80;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 72%);
+  z-index: 1;
+  position: absolute;
+  top: 5%;
+  left: 62%;
+}
+
+.esquina1{
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  content: '';
+  height: 0;
+  width: 0;
+  border-bottom: 8px solid transparent;
+  border-left: 15px solid #67d683;
+}
+
+.cuadro1{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  content: '';
+  height: 0;
+  width: 0;
+  border-bottom: 20px solid #00ff80;
+  border-left: 15px solid #00ff80;
+}
+
+.cuadro2{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  content: '';
+  height: 0;
+  width: 0;
+  border-bottom: 20px solid rgb(255, 0, 0);
+  border-left: 15px solid rgb(255, 0, 0);
+}
+
+.esquina2{
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  content: '';
+  height: 0;
+  width: 0;
+  border-bottom: 8px solid transparent;
+  border-left: 15px solid #f85d5d;
+}
+
+.esquina3{
+  position: absolute;
+  top: 0;
+  left: -10px;
+  content: '';
+  height: 0;
+  width: 0;
+  border-bottom: 20px solid transparent;
+  border-right: 10px solid #00ff80;
+}
+
+.esquina4{
+  position: absolute;
+  top: 0;
+  left: -10px;
+  content: '';
+  height: 0;
+  width: 0;
+  border-bottom: 20px solid transparent;
+  border-right: 10px solid rgb(255, 0, 0);
+}
+
+
+.texto-encima3{
+  padding-left: 5px;
+  padding-right: 12.05px;
+  background: rgb(255, 0, 0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 72%);
+  z-index: 1;
+  position: absolute;
+  top: 5%;
+  left: 62%;
+}
 
 
 

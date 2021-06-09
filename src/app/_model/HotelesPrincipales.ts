@@ -9,6 +9,7 @@ export class HotelesPrincipales{
     preciomin : number; 
     numpersonas : number;
     promediocalificacion : number;  
+    numHabitDisponibles : number;
     municipio : string; 
     zona : string;  
     fecha_antesde : string; 

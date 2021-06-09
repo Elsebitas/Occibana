@@ -16,15 +16,15 @@ export class AgregarHabitacionComponent implements OnInit {
   banios;
   agregarhform: FormGroup;
   error: string;
-  id: number;
+  id: any;
   nombre: string;
   
   constructor(private agregarHabitacionService: PerfilService,
               private snackBar: MatSnackBar,
               private router: Router,
-              private progressbarService: ProgressbarService,) { 
-                this.id = this.router.getCurrentNavigation().extras.state.idhotel;
-                this.nombre = this.router.getCurrentNavigation().extras.state.nombreHotel;
+              private progressbarService: ProgressbarService,) {           
+                this.id = localStorage.getItem("idhotel");
+                this.nombre = localStorage.getItem("idhotel");
               }
 
 
