@@ -27,10 +27,6 @@ export class ComprarMembresiasComponent implements OnInit {
               private progressbarService: ProgressbarService,
               private _snackBar: MatSnackBar) {
     
-    /*this.id = this.router.getCurrentNavigation().extras.state.id;
-    this.usuario = this.router.getCurrentNavigation().extras.state.usuario;
-    this.correo = this.router.getCurrentNavigation().extras.state.correo;*/
-    
     this.id = localStorage.getItem("iduser");
     this.usuario = cryptoService.decryptUsingAES256("user");
     this.correo = localStorage.getItem("correo");
@@ -39,7 +35,7 @@ export class ComprarMembresiasComponent implements OnInit {
       Cedula: new FormControl('',[Validators.required]),
       CodigoDeSeguridad: new FormControl('',[Validators.required,Validators.maxLength(3),Validators.minLength(3), Validators.pattern('^[0-9]+$')]),
       DireccionPropietario: new FormControl('',[Validators.required]),
-      NombreDelPropietario: new FormControl('',[Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+      NombreDelPropietario: new FormControl('',[Validators.required, Validators.pattern('^[a-z A-Z]+$')]),
       NumeroTarjeta: new FormControl('',[Validators.required, Validators.maxLength(16),Validators.minLength(16), Validators.pattern('^[0-9]+$')]),
       Usuario: new FormControl(),
       Contrasena: new FormControl(),

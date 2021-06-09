@@ -4,7 +4,7 @@
         <div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
             <div class="tdPicture">
                 <div class="imagen">
-                    <img src="{{url2}}{{cargarDatosPerfil.datos.fotoperfil}}" fallimg>
+                    <img src="{{url4}}{{cargarDatosPerfil.datos.fotoperfil}}" fallimg>
                     <span style="color:red;" *ngIf="message">{{message}}</span>
                     <div class="file-select">
                         <input #file type="file" accept='image/*' (change)="preview($event)" />
@@ -44,12 +44,12 @@
                     </div>
                 </div><br><br>
                 <div>
-                    <button mat-raised-button *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
+                    <button mat-stroked-button class="styleboton"  *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
                         (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">
                         <mat-icon>autorenew</mat-icon> Actualizar
                         Membresía
                     </button>
-                    <button mat-raised-button *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
+                    <button mat-stroked-button class="styleboton"  *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
                         (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">
                         <mat-icon>add_shopping_cart</mat-icon> Comprar
                         Membresía
@@ -58,14 +58,14 @@
                 <br>
                 <div>
 
-                    <button mat-raised-button color="primary" routerLink="/perfil/editarperfil">
+                    <button mat-stroked-button class="styleboton" color="primary" routerLink="/perfil/editarperfil">
                         <mat-icon>account_box</mat-icon> Editar Perfíl
                     </button>
 
 
                 </div><br>
                 <div>
-                    <button mat-stroked-button color="primary" routerLink="/perfil/actualizarcontrasena">
+                    <button mat-stroked-button class="styleboton" color="primary" routerLink="/perfil/actualizarcontrasena">
                         <mat-icon>lock</mat-icon> Editar Contraseña
                     </button>
 
@@ -79,7 +79,7 @@
                             fxLayoutAlign="flex-start">
                             <ng-container *ngFor="let hotel of hotelesDestacados">
                                 <mat-card class="card-style">
-                                    <img mat-card-image class="imgCard" src="{{url2}}{{hotel.imagen}}"
+                                    <img mat-card-image class="imgCard" src="{{url3}}{{hotel.imagen}}"
                                         fallimg="picture1">
                                     <button mat-mini-fab color="warn" class="boton3"
                                         aria-label="Example icon button with a delete icon"

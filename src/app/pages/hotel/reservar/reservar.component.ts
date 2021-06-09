@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PanelHotelService } from './../../../_service/panel-hotel.service';
 import { Component, OnInit } from '@angular/core';
+import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
 
 
 let dispo = {
@@ -47,11 +48,7 @@ export class ReservarComponent implements OnInit {
 
   private id: any;
   private idhabita: any;
-  public numPersonas: number;
-  public precioHa: number;
   public nombreHotel: string;
-  public numeroCam: any;
-  public numeroBan: any;
 
   reservaForm: FormGroup;
 
@@ -64,31 +61,27 @@ export class ReservarComponent implements OnInit {
     private cryptoService: CryptoService,
     private registroLoginService: RegistroLoginService,
     private listasService: ListasService) {
-    //this.id = this.router.getCurrentNavigation().extras.state.idhotel;
     this.id = localStorage.getItem("idhotel");
-    //this.idhabita = this.router.getCurrentNavigation().extras.state.idhabitacion;
     this.idhabita = localStorage.getItem("idhabitacion");
     this.nombreHotel = localStorage.getItem("nombreHotel");
-    /*this.numPersonas = this.router.getCurrentNavigation().extras.state.numPersonas;
-    this.precioHa = this.router.getCurrentNavigation().extras.state.precio;
-    this.nombreHotel = this.router.getCurrentNavigation().extras.state.nombre;
-    this.numeroCam = this.router.getCurrentNavigation().extras.state.numcamas;
-    this.numeroBan = this.router.getCurrentNavigation().extras.state.numbanio;*/
 
     habitacionHotel.idHotel = this.id;
 
     this.reservaForm = new FormGroup({
       UsuarioSession: new FormControl(),
       IdDelHotelSession: new FormControl(),
-      Nombre: new FormControl('', [Validators.required]),
-      Apellido: new FormControl('', [Validators.required]),
-      IdHabitacion: new FormControl('', [Validators.required]),
-      FechaLlegada: new FormControl('', [Validators.required]),
-      FechaSalida: new FormControl('', [Validators.required]),
-      NumPersonas: new FormControl('', [Validators.required]),
-      ModoDePago: new FormControl('', [Validators.required]),
-      PrecioNoche: new FormControl('', [Validators.required]),
-    });
+      Nombre: new FormControl('',[Validators.required]),
+      Apellido: new FormControl('',[Validators.required]),
+      IdHabitacion: new FormControl('',[Validators.required]),
+      FechaLlegada: new FormControl('',[Validators.required]),
+      FechaSalida: new FormControl('',[Validators.required]),
+      NumPersonas: new FormControl('',[Validators.required]),
+      ModoDePago: new FormControl('',[Validators.required]),
+      PrecioNoche: new FormControl('',[Validators.required]),
+      Correo: new FormControl('',[Validators.email]),
+      ConfCorreo: new FormControl('',[Validators.email]),
+      
+    },{validators : ValidacionesPropias.verficarCorreos});
 
   }
 
@@ -98,15 +91,14 @@ export class ReservarComponent implements OnInit {
       this.logeado = false;
     }
     this.postHabitacionesHotel();
-    //this.select();
     this.setData();
   }
 
   setData() {
     this.reservaForm.controls['IdDelHotelSession'].setValue(this.id);
     this.reservaForm.controls['IdHabitacion'].setValue(this.idhabita);
-    this.reservaForm.controls['NumPersonas'].setValue(this.numPersonas);
-    this.reservaForm.controls['PrecioNoche'].setValue(this.precioHa);
+    this.reservaForm.controls['NumPersonas'].setValue(this.habitacionesH.numpersonas);
+    this.reservaForm.controls['PrecioNoche'].setValue(this.habitacionesH.precio);
     this.reservaForm.controls['UsuarioSession'].setValue(this.cryptoService.decryptUsingAES256("user"));
   }
 
@@ -116,13 +108,11 @@ export class ReservarComponent implements OnInit {
     dispo.FechaSalida = this.fechaFin;
     dispo.IdDelHotelSession = this.id;
     dispo.HabitacionIdSession = this.idhabita;
-    dispo.NumeroDePersonas = this.numPersonas;
+    dispo.NumeroDePersonas = this.habitacionesH.numpersonas;
     this.postBuscarDisponibilidadHotel(dispo);
   }
 
   onFromSubmit() {
-    //let formularioLogin = this.reservaForm.value;
-    //dispo = this.reservaForm.value;
     console.log(this.reservaForm.value);
     let formularioReserva = this.reservaForm.value;
     this.postReservarHospedaje(formularioReserva);
@@ -130,12 +120,12 @@ export class ReservarComponent implements OnInit {
 
   postBuscarDisponibilidadHotel(disponibilidad) {
     this.panelHotelService.postBuscarDisponibilidadHotel(disponibilidad).subscribe(data => {
-      console.log("Disponibilidad hotel");
-      console.log(data);
+      //console.log("Disponibilidad hotel");
+      //console.log(data);
       rep = data;
       this.mensaje = rep.mensaje;
-      console.log("data almacenada");
-      console.log(rep);
+      //console.log("data almacenada");
+      //console.log(rep);
       let log = this.registroLoginService.estaLogueado();
       if (rep.aviso && log == 1) {
         this.boton = false;
@@ -145,36 +135,31 @@ export class ReservarComponent implements OnInit {
 
   postReservarHospedaje(reserva: Reserva) {
     this.panelHotelService.postReservarHospedaje(reserva).subscribe(data => {
-      console.log("Reserva hotel");
-      console.log(data);
+      //console.log("Reserva hotel");
+      //console.log(data);
     })
   }
 
   postHabitacionesHotel() {
     habitacionHotel.idHotel = this.id;
     this.listasService.postHabitacionesHotel(habitacionHotel).subscribe(data => {
-      console.log("Habitaciones hotel");
+      //console.log("Habitaciones hotel");
       this.habitacionesHotel = data;
-      console.log(data);
+      //console.log(data);
       this.selectHabitacionesHotel();
     });
   }
-
 
   selectHabitacionesHotel() {
     this.habitacionesHotel.forEach(element => {
       if (this.idhabita == element.id) {
         this.habitacionesH = element;
-        this.numPersonas = element.numpersonas;
-        this.precioHa = element.precio;
-        this.numeroCam = element.numcamas;
-        this.numeroBan = element.numbanio;
       }
     });
   }
 
   hotel() {
-    this.router.navigate(['/hotel'], { state: { idhotel: this.id } });
+    this.router.navigate(['/hotel']);
   }
 
 }

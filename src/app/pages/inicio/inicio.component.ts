@@ -23,7 +23,7 @@ import { StarRatingComponent } from 'ng-starrating';
  * Clase del componente Inicio que implementa OnInit.
  */
 export class InicioComponent implements OnInit {
-  url: string = environment.REALHOST;
+  url: string = environment.URLPHOTOS2;
 
 
   /**
@@ -273,8 +273,7 @@ export class InicioComponent implements OnInit {
     this.hotelesPrincipales = new HotelesPrincipales();
     this.hotelesPrincipales.idhotel = card;
     localStorage.setItem("idhotel",card);
-    this.router.navigate(['/hotel'], { state: { idhotel: card } });
-
+    this.router.navigate(['/hotel']);
   }
 
 

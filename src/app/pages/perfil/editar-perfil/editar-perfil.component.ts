@@ -31,6 +31,7 @@ export class EditarPerfilComponent implements OnInit {
   login: Login;
 
   url: string;
+  url2: string;
 
   constructor(private perfilService: PerfilService,
     private progressbarService: ProgressbarService,
@@ -74,6 +75,7 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.url2 = environment.URLPHOTOS;
     this.postCargarDatosPerfil();
   }
 

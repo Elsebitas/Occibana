@@ -34,4 +34,15 @@ export class ValidacionesPropias{
             return null;
         }
     }
+
+    static verficarCorreos(control: FormControl): ValidationErrors{
+        let contrasena = control.get('Correo').value; 
+        let actcontrasena = control.get('ConfCorreo').value; 
+
+        if (contrasena !== actcontrasena){
+            control.get('ConfCorreo').setErrors({NoEmailMatch : true});
+        }else{
+            return null;
+        }
+    }
 }

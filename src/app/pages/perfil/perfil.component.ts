@@ -47,6 +47,8 @@ export class PerfilComponent implements OnInit {
 
   url: string;
   url2: string;
+  url3: string; 
+  url4: string;
 
 
   form: FormGroup;
@@ -88,6 +90,8 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.url2 = environment.REALHOST;
+    this.url3 = environment.URLPHOTOS2;
+    this.url4 = environment.URLPHOTOS;
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.postCargarDatosPerfil();
@@ -112,9 +116,11 @@ export class PerfilComponent implements OnInit {
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
       this.cargarDatosPerfil = data;
       id.idUsuario = this.cargarDatosPerfil.datos.id;
+      let iduser:any = this.cargarDatosPerfil.datos.id;
+      localStorage.setItem("iduser",iduser);
       this.postMostrarMisHoteles(id);
       console.log(data);
-      //console.log(this.cargarDatosPerfil);
+      console.log(this.cargarDatosPerfil);
     })
     this.progressbarService.barraProgreso.next("2");
   }
@@ -146,23 +152,24 @@ export class PerfilComponent implements OnInit {
     //console.log(id);
     localStorage.setItem("idhotel",id);
     localStorage.setItem("nombreHotel",nombre);
-    this.router.navigate(['/perfil/agregar_habitacion'], { state: { idhotel: id, nombreHotel: nombre } });
+    this.router.navigate(['/perfil/agregar_habitacion']);
   }
 
   comprarMembresia(id, user, correo) {
     //console.log(id);
     localStorage.setItem("iduser",id);
     localStorage.setItem("correo",correo);
-    this.router.navigate(['/perfil/comprarmembresias'], { state: { id: id, usuario: user, correo: correo } });
+    this.router.navigate(['/perfil/comprarmembresias']);
   }
 
   mostrarReservasHotel(id) {
-    this.router.navigate(['/perfil/reservashotel'], { state: { idhotel: id } });
+    localStorage.setItem("idhotel",id);
+    this.router.navigate(['/perfil/reservashotel']);
   }
 
 
   agregarHotel() {
-    this.router.navigate(['/perfil/agregarhotel'], { state: { idhotel: id.idUsuario } });
+    this.router.navigate(['/perfil/agregarhotel']);
   }
 
   preview(event: any): void {
