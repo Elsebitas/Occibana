@@ -28,7 +28,7 @@ export class ReservasHotelComponent implements OnInit {
 
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  idHotel: number;
+  idHotel: any;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,7 +36,7 @@ export class ReservasHotelComponent implements OnInit {
   constructor(private listasService:ListasService, 
               private progressbarService:ProgressbarService,
               private router: Router) {
-    this.idHotel = this.router.getCurrentNavigation().extras.state.idhotel;
+    this.idHotel = localStorage.getItem("idhotel");
    }
 
   ngOnInit(): void {

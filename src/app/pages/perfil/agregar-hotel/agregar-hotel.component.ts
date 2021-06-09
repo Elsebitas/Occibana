@@ -41,7 +41,7 @@ export class AgregarHotelComponent implements OnInit {
   
   agregarHotelForm: FormGroup;
 
-  private id: number;
+  private id: any;
 
   constructor(private panelHotelService: PanelHotelService,
               private listasService: ListasService,
@@ -49,7 +49,7 @@ export class AgregarHotelComponent implements OnInit {
               private router:Router,
               private snackBar: MatSnackBar) {
 
-    this.id = this.router.getCurrentNavigation().extras.state.idhotel;
+    this.id = localStorage.getItem("iduser");
 
     this.agregarHotelForm = new FormGroup({
       nombreH: new FormControl('',[Validators.required,Validators.maxLength(30),Validators.minLength(5)]),

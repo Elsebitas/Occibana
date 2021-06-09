@@ -116,6 +116,8 @@ export class PerfilComponent implements OnInit {
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
       this.cargarDatosPerfil = data;
       id.idUsuario = this.cargarDatosPerfil.datos.id;
+      let iduser:any = this.cargarDatosPerfil.datos.id;
+      localStorage.setItem("iduser",iduser);
       this.postMostrarMisHoteles(id);
       console.log(data);
       console.log(this.cargarDatosPerfil);
@@ -148,21 +150,26 @@ export class PerfilComponent implements OnInit {
 
   agregarHabitacion(id, nombre, precio) {
     //console.log(id);
-    this.router.navigate(['/perfil/agregar_habitacion'], { state: { idhotel: id, nombreHotel: nombre } });
+    localStorage.setItem("idhotel",id);
+    localStorage.setItem("nombreHotel",nombre);
+    this.router.navigate(['/perfil/agregar_habitacion']);
   }
 
   comprarMembresia(id, user, correo) {
     //console.log(id);
-    this.router.navigate(['/perfil/comprarmembresias'], { state: { id: id, usuario: user, correo: correo } });
+    localStorage.setItem("iduser",id);
+    localStorage.setItem("correo",correo);
+    this.router.navigate(['/perfil/comprarmembresias']);
   }
 
   mostrarReservasHotel(id) {
-    this.router.navigate(['/perfil/reservashotel'], { state: { idhotel: id } });
+    localStorage.setItem("idhotel",id);
+    this.router.navigate(['/perfil/reservashotel']);
   }
 
 
   agregarHotel() {
-    this.router.navigate(['/perfil/agregarhotel'], { state: { idhotel: id.idUsuario } });
+    this.router.navigate(['/perfil/agregarhotel']);
   }
 
   preview(event: any): void {

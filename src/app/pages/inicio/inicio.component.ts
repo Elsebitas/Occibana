@@ -272,8 +272,8 @@ export class InicioComponent implements OnInit {
   mostrarHotel(card) {
     this.hotelesPrincipales = new HotelesPrincipales();
     this.hotelesPrincipales.idhotel = card;
-    this.router.navigate(['/hotel'], { state: { idhotel: card } });
-
+    localStorage.setItem("idhotel",card);
+    this.router.navigate(['/hotel']);
   }
 
 
