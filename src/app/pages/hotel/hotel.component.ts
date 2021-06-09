@@ -61,6 +61,7 @@ export class HotelComponent implements OnInit {
   public habitacionesHotel :HabitacionesHotel[]; 
 
   url:string;
+  url2:string;
 
   constructor(private listasService: ListasService, 
               private router: Router, 
@@ -79,6 +80,7 @@ export class HotelComponent implements OnInit {
   public comentarios:any = []; 
   ngOnInit(): void {    
     this.url = environment.REALHOST;
+    this.url2 = environment.URLPHOTOS2; 
     info.IdDelHotelSession = this.id;
     this.progressbarService.barraProgreso.next("1");
     this.postObtenerComents();

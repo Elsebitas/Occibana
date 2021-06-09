@@ -47,6 +47,8 @@ export class PerfilComponent implements OnInit {
 
   url: string;
   url2: string;
+  url3: string; 
+  url4: string;
 
 
   form: FormGroup;
@@ -88,6 +90,8 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.url2 = environment.REALHOST;
+    this.url3 = environment.URLPHOTOS2;
+    this.url4 = environment.URLPHOTOS;
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.postCargarDatosPerfil();
@@ -114,7 +118,7 @@ export class PerfilComponent implements OnInit {
       id.idUsuario = this.cargarDatosPerfil.datos.id;
       this.postMostrarMisHoteles(id);
       console.log(data);
-      //console.log(this.cargarDatosPerfil);
+      console.log(this.cargarDatosPerfil);
     })
     this.progressbarService.barraProgreso.next("2");
   }

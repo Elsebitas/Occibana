@@ -53,7 +53,7 @@ export class AppComponent implements DoCheck {
               private perfilService: PerfilService,
               private registroLoginService:RegistroLoginService,
               public dialogo: MatDialog) {
-    this.url2 = environment.REALHOST;
+    this.url2 = environment.URLPHOTOS;
     progressbarService.barraProgreso.subscribe(data => {
       if (data == "1")
         this.barraProgreso = false;
@@ -105,6 +105,7 @@ export class AppComponent implements DoCheck {
     this.registroLogin.postCerrarSesion(usuario).subscribe(data => {
       //console.log("cerrar sesion: "+data);
     });
+    this.bandera = 2;
     sessionStorage.removeItem(environment.TOKEN);
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('userpassword');

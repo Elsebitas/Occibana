@@ -25,9 +25,19 @@
 .hoteltitle{
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   letter-spacing: normal;
-    text-rendering: auto;
+  text-rendering: auto;
   text-transform: uppercase;
   font-size: 16px;
+} 
+
+.hoteltitle2{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing: normal;
+  text-rendering: auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
 } 
 
 .titles{
@@ -37,10 +47,26 @@
   font-size: 15px;
 }
 
+mat-icon{
+  fill: gold;
+  color: gold;
+}
+
 .titles2{
   font-weight: bold;
   font-size: 12px;
 }
+
+.titles3{
+  text-align: center;
+  
+}
+
+.titles4{
+  margin-left: 60px;
+  margin-top: -9.8px;
+}
+
 
 .subtitles{
   color:#3f51b5;

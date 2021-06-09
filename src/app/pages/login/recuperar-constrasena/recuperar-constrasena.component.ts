@@ -1,3 +1,4 @@
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ReactivarCuenta } from './../../../_model/ReactivarCuenta';
 import { ValidacionesPropias } from './../../../_clase/ValidacionesPropias';
 import { RegistroLoginService } from './../../../_service/registroLogin.service';
@@ -21,10 +22,13 @@ export class RecuperarConstrasenaComponent implements OnInit {
   public hide2: boolean;
   public hide3: boolean;
 
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
 
   constructor(
     private loginService: RegistroLoginService,
     public dialogRef: MatDialogRef<RecuperarConstrasenaComponent>,
+    private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public correo: string,
   ) {
 
@@ -43,8 +47,8 @@ export class RecuperarConstrasenaComponent implements OnInit {
   
 
   cargarDatos(){
-    this.reactivarForm.controls['usuario'].setValue("Heiner");
-    console.log(this.recuperarForm.get("usuario").value);
+    this.reactivarForm.controls['usuario'].setValue(this.recuperarForm.get("usuario").value);
+    //console.log(this.recuperarForm.get("usuario").value);
   }
 
 
@@ -84,6 +88,14 @@ export class RecuperarConstrasenaComponent implements OnInit {
   hecho(): void {
     this.dialogRef.close({
       opcion: "Hecho"
+    });
+    this.abrirSnackBar("Se actualizo la contraseña correctamente","Aceptar");
+  }
+
+  abrirSnackBar(mensaje: string, accion: string) {
+    this._snackBar.open(mensaje, accion, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
     });
   }
 
