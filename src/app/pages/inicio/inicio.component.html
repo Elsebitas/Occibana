@@ -60,6 +60,7 @@
         <tr>
           <td>
             <mat-form-field class="filter" appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> search </mat-icon>
               <mat-label>Consultar hotel por nombre</mat-label>
               <input matInput [(ngModel)]="searchTerm">
               <mat-icon matSuffix></mat-icon>
@@ -67,12 +68,14 @@
           </td>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
               <mat-label>Precio minimo </mat-label>
               <input matInput type="number" [(ngModel)]="searchMin">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
               <mat-label>Precio maximo</mat-label>
               <input matInput type="number" [(ngModel)]="searchMax">
             </mat-form-field>
@@ -83,6 +86,7 @@
         <tr>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> my_location </mat-icon>
               <mat-label>Municipio</mat-label>
               <mat-select [(ngModel)]="searchMun">
                 <mat-option>None</mat-option>
@@ -93,6 +97,7 @@
           </td>
           <td>
             <mat-form-field appearance="fill" class="menubar">
+              <mat-icon class="colorIcon" matPrefix> location_searching </mat-icon>
               <mat-label>Zonas</mat-label>
               <mat-select [(ngModel)]="searchZona">
                 <mat-option>None</mat-option>
@@ -102,6 +107,7 @@
           </td>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> hotel </mat-icon>
               <mat-label>Tipo de Habitación</mat-label>
               <mat-select [(ngModel)]="searchHab">
                 <mat-option value="Basica">Basica</mat-option>
@@ -112,6 +118,7 @@
           </td>
           <td>
             <mat-form-field class="personass" appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> people </mat-icon>
               <mat-label>personas</mat-label>
               <mat-select [(ngModel)]="searchPer">
                 <mat-option># de personas</mat-option>
