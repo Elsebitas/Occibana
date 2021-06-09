@@ -185,9 +185,12 @@
     <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
       <ng-container *ngFor="let card of listaDeHotelesPrincipalesFiltrados">
         <mat-card style="cursor: pointer;" class="card-style" fxFlex="0 1 calc(33.3% - 32px)"
-          fxFlex.lt-md="0 1 calc(50% - 32px)" (click)="mostrarHotel(card.idhotel)">
+          fxFlex.lt-md="0 1 calc(33% - 32px)" (click)="mostrarHotel(card.idhotel)">
           <img mat-card-image class="tamanoImagen" src="{{url}}{{card.imagen}}" fallimg="picture1">
           <mat-card-content>
+            
+            <div class="texto-encima3" *ngIf="card.numHabitDisponibles == 0" >Sin disponibilidad  <div class="esquina4"> </div><div class="cuadro2"></div><div class="esquina2"></div></div>
+            <div class="texto-encima2" *ngIf="card.numHabitDisponibles != 0">Con disponibilidad   <div class="esquina3"> </div><div class="cuadro1"></div><div class="esquina1"></div></div>
             <div class="hoteltitle"> {{card.nombre}} </div>
             <div class="titles">Precios desde: {{card.precionoche}}$ </div>
             <div class="texto-encima">{{card.municipio}}</div>
