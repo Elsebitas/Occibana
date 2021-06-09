@@ -23,7 +23,7 @@ import { StarRatingComponent } from 'ng-starrating';
  * Clase del componente Inicio que implementa OnInit.
  */
 export class InicioComponent implements OnInit {
-  url: string = environment.REALHOST;
+  url: string = environment.URLPHOTOS2;
 
 
   /**
