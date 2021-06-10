@@ -62,7 +62,7 @@
             <mat-form-field class="filter" appearance="fill">
               <mat-icon class="colorIcon" matPrefix> search </mat-icon>
               <mat-label>Consultar hotel por nombre</mat-label>
-              <input matInput [(ngModel)]="searchTerm">
+              <input matInput [(ngModel)]="searchTerm" class="colorLetra">
               <mat-icon matSuffix></mat-icon>
             </mat-form-field>
           </td>
@@ -70,14 +70,14 @@
             <mat-form-field appearance="fill">
               <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
               <mat-label>Precio minimo </mat-label>
-              <input matInput type="number" [(ngModel)]="searchMin">
+              <input matInput type="number" [(ngModel)]="searchMin" class="colorLetra">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field appearance="fill">
               <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
               <mat-label>Precio maximo</mat-label>
-              <input matInput type="number" [(ngModel)]="searchMax">
+              <input matInput type="number" [(ngModel)]="searchMax" class="colorLetra">
             </mat-form-field>
           </td>
         </tr>
@@ -123,31 +123,31 @@
               <mat-select [(ngModel)]="searchPer">
                 <mat-option># de personas</mat-option>
                 <mat-option value="1"><strong>1</strong>
-                  <mat-icon>person</mat-icon>
+                  <mat-icon matPrefix> person</mat-icon>
                 </mat-option>
                 <mat-option value="2"><strong>2</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="3"><strong>3</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="4"><strong>4</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="5"><strong>5</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="6"><strong>6</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="7"><strong>7</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="8"><strong>8</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="9"><strong>9</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
               </mat-select>
             </mat-form-field>
