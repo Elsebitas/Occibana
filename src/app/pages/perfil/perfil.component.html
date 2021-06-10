@@ -89,8 +89,8 @@
                                     <mat-card-content>
                                         <p class="hoteltitle">{{hotel.nombre}} </p>
                                         <div class="line"></div>
-                                        <p class="titles">Precio desde: {{hotel.precionoche}}</p>
-                                        <p>Ubicado en: {{hotel.zona}}</p>
+                                        <p class="titles">Precio desde: {{hotel.precionoche}}$</p>
+                                        <b><p>Ubicado en: {{hotel.direccion}}</p></b>
                                         <div class="center">
                                             <button mat-raised-button routerLink="/perfil/agregar_habitacion"
                                                 (click)="agregarHabitacion(hotel.idhotel, hotel.nombre)" class="boton"

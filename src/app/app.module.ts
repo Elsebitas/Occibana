@@ -128,6 +128,7 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
     DialogVisionComponent,
     DialogLemaComponent,
     ReservasHotelComponent,
+    DialogMisionComponent
 
   ],
   imports: [

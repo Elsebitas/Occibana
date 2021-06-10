@@ -135,9 +135,9 @@ export class PerfilComponent implements OnInit {
   postMostrarMisHoteles(idUser) {
     this.listasService.postMostrarMisHoteles(idUser).subscribe(data => {
       this.hotelesDestacados = data;
-      /*console.log("Mis Hoteles");
+      console.log("Mis Hoteles");
       console.log(idUser);
-      console.log(data);*/
+      console.log(data);
     })
   }
 
