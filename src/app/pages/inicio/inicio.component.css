@@ -48,8 +48,8 @@
 }
 
 mat-icon{
-  fill: gold;
-  color: gold;
+  fill: gray;
+  color: gray;
 }
 
 .titles2{
@@ -419,5 +419,12 @@ a.more-link {
   letter-spacing: 1px;
 }
 
+.colorIcon{
+  color: grey;
+}
+
+.colorLetra{
+  color:black;
+}
 
 

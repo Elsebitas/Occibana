@@ -10,12 +10,13 @@
 
     <button mat-raised-button routerLink="/inicio" *ngIf="usuario == null" class="botonInicio" style="cursor: pointer"
       color="primary">
-      Inicio
+      <mat-icon>apartment</mat-icon>
+       Inicio
     </button>
 
     <button mat-raised-button class="botonLog" *ngIf="usuario == null" routerLink="/login" color="primary">
       <mat-icon>account_box</mat-icon>
-      <span>Iniciar Sesión</span>
+      <span> Iniciar Sesión</span>
     </button>
 
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="usuario != null" class="botonMenu">
