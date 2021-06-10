@@ -226,3 +226,48 @@ table{
   background-color: #fad15b;
   height: 2px;
 }
+
+.comentarios{
+  margin-top: 3%;
+  font-size: 2em;
+  font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  color: rgb(126, 126, 126);
+}
+
+.comentarios2{
+  text-align: center;
+  margin-top: 3%;
+  font-size: 2em;
+  font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  color: rgb(126, 126, 126);
+}
+
+.comentarios3{
+  text-align: center;
+  margin-top: 1%;
+  font-size: 1.5em;
+  font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  color: rgb(180, 180, 180);
+}
+
+.coments{
+  font-size: 180px;
+  margin-top: 20px;
+  margin-left: 100px;
+  color: rgb(180, 180, 180);
+}
+
+.coments2{
+  margin-left: -130px;
+  font-size: 180px;
+  text-align: center;
+  color: rgb(180, 180, 180);
+}
+
+.centrar{
+ 
+  text-align: center;
+}

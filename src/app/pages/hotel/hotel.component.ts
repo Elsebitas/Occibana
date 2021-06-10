@@ -63,6 +63,7 @@ export class HotelComponent implements OnInit {
   url:string;
   url2:string;
 
+
   constructor(private listasService: ListasService, 
               private router: Router, 
               private progressbarService: ProgressbarService, 
