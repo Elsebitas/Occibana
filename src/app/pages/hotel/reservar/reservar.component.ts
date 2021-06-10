@@ -120,8 +120,8 @@ export class ReservarComponent implements OnInit {
     console.log(this.reservaForm.value);
     this.fechaInicio = formatDate(this.fechaInicio,'yyyy-MM-dd','en-Us');
     this.fechaFin = formatDate(this.fechaFin,'yyyy-MM-dd','en-Us');
-    console.log(this.fechaInicio);
-    console.log(this.fechaFin);
+    //console.log(this.fechaInicio);
+    //console.log(this.fechaFin);
     this.reservaForm.controls['FechaLlegada'].setValue(this.fechaInicio);
     this.reservaForm.controls['Fechasalida'].setValue(this.fechaFin);
     let formularioReserva = this.reservaForm.value;
@@ -130,8 +130,8 @@ export class ReservarComponent implements OnInit {
 
   postBuscarDisponibilidadHotel(disponibilidad) {
     this.panelHotelService.postBuscarDisponibilidadHotel(disponibilidad).subscribe(data => {
-      console.log("Disponibilidad hotel");
-      console.log(data);
+      //console.log("Disponibilidad hotel");
+      //console.log(data);
       rep = data;
       this.mensaje = rep.mensaje;
       //console.log("data almacenada");
@@ -145,11 +145,11 @@ export class ReservarComponent implements OnInit {
 
   postReservarHospedaje(reserva: Reserva) {
     this.progressbarService.barraProgreso.next("1");
-    console.log("Reserva Objeto");
-    console.log(reserva);
+    //console.log("Reserva Objeto");
+    //console.log(reserva);
     this.panelHotelService.postReservarHospedaje(reserva).subscribe(data => {
-      console.log("Reserva hotel");
-      console.log(data);
+      //console.log("Reserva hotel");
+      //console.log(data);
       reserva = data;
       if (!reserva.boton) {        
         this.snackBar.open('Reserva realizada!!!','ACEPTAR');
