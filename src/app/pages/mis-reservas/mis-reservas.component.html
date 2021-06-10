@@ -1,6 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="listaMisReservas.length != 0">
     <div>
         <mat-form-field class="filter" appearance="fill">
+            <mat-icon class="iconSearch" matPrefix> search </mat-icon>
             <mat-label>Consultar reservas</mat-label>
             <input matInput (keyup)="aplicarFiltro($event.target.value)" placeholder="Escriba el campo que desea consultar">
         </mat-form-field>
@@ -66,7 +67,7 @@
             <ng-container matColumnDef="calificar_comentar">
                 <th mat-header-cell *matHeaderCellDef> Calificar y Comentar </th>
                 <td style="text-align: center;" mat-cell *matCellDef="let element">
-                    <button (click)="comCalifPorId(element.idhotel, element.nombrehotel, element.id)" mat-button color="primary" >
+                    <button (click)="comCalifPorId(element.idhotel, element.nombrehotel, element.id, element.idusuario)" mat-button color="primary" >
                         <mat-icon>add</mat-icon>
                     </button>
                 </td>
@@ -88,4 +89,14 @@
         
         <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
     </div>
+</div>
+
+<div class="content2" *ngIf="listaMisReservas.length == 0">
+    <section class="error-container">
+        <span><span>¡</span></span>
+        <span>OOPS</span>
+        <span><span>!</span></span>
+    </section>
+    <p class="zoom-area"><b>Sin reservas</b></p>
+    <p class="zoom-area"><b>No se encontraron reservas realizadas</b></p>
 </div>

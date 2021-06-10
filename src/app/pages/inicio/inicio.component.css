@@ -67,6 +67,10 @@ mat-icon{
   margin-top: -9.8px;
 }
 
+.starColor{
+  color: gold;
+}
+
 
 .subtitles{
   color:#3f51b5;
@@ -281,7 +285,6 @@ mat-icon{
   border-bottom: 20px solid transparent;
   border-right: 10px solid rgb(255, 0, 0);
 }
-
 
 
 

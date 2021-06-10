@@ -25,11 +25,11 @@ export class ComentarCalificarComponent implements OnInit {
 
   rating: any;
 
-  idReserva: number;
+  idHotel: any;
 
-  idHotel: number;
+  idReserva: any;
 
-  idUsuario: number;
+  idUsuario: any;
 
   nombreHotel: string;
 
@@ -56,10 +56,18 @@ export class ComentarCalificarComponent implements OnInit {
                   comentario: new FormControl('', [Validators.required, Validators.maxLength(150), Validators.minLength(5)]),
                 });
 
+                this.idHotel = localStorage.getItem('idhotel');
+                this.nombreHotel = localStorage.getItem('nombre');
+                this.idUsuario = localStorage.getItem('idreserva');
+                this.idReserva = localStorage.getItem('idusuario');
+
+                /*
                 this.idHotel = this.router.getCurrentNavigation().extras.state.idhotel;
                 this.idReserva = this.router.getCurrentNavigation().extras.state.idreserva;
                 this.idUsuario = this.router.getCurrentNavigation().extras.state.idusuario;
                 this.nombreHotel = this.router.getCurrentNavigation().extras.state.nombre;
+                */
+
               }
 
   ngOnInit(): void {

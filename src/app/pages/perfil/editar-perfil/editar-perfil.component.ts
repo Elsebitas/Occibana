@@ -43,7 +43,7 @@ export class EditarPerfilComponent implements OnInit {
     this.datosPerfil = new DatosPerfil();
     this.actualizarDatosPerfil = new ActualizarDatosPerfil();
     this.actualizarform = new FormGroup({
-      UsuarioRegistro: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+      UsuarioRegistro: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
       NombreRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
       ApellidoRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
       CorreoRegistro: new FormControl('', [Validators.email]),
@@ -59,11 +59,7 @@ export class EditarPerfilComponent implements OnInit {
     })
   }
   setearDatos() {
-    this.actualizarform.controls['UsuarioRegistro'].setValue(this.cargarDatosPerfil.datos.usuario);
-    this.actualizarform.controls['NombreRegistro'].setValue(this.cargarDatosPerfil.datos.nombre);
-    this.actualizarform.controls['ApellidoRegistro'].setValue(this.cargarDatosPerfil.datos.apellido);
-    this.actualizarform.controls['CorreoRegistro'].setValue(this.cargarDatosPerfil.datos.correo);
-    this.actualizarform.controls['TelefonoRegistro'].setValue(this.cargarDatosPerfil.datos.telefono);
+
 
     this.actualizarform.controls['UsuarioSession'].setValue(this.cargarDatosPerfil.datos.usuario);
     this.actualizarform.controls['NombreSession'].setValue(this.cargarDatosPerfil.datos.nombre);
@@ -81,20 +77,20 @@ export class EditarPerfilComponent implements OnInit {
 
   enviar(f: NgForm) {
     //console.log("Los datos son: ");
-    //console.log(f.value);
-    this.actualizarDatos(this.actualizarform.value);
+    console.log(f.value);
+    this.actualizarDatos(f.value);
   }
 
   actualizarDatos(actDatosPerf: ActualizarDatosPerfil) {
     this.progressbarService.barraProgreso.next("1");
     this.perfilService.postActualizarDatos(actDatosPerf).subscribe(data => {
       //console.log("TRAIDOS: ");
-      //console.log(data);
+      console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
       this.openSnackBar(this.traerMensajeDatosPerfil.mensaje, 'ACEPTAR');
       if (this.traerMensajeDatosPerfil.mensaje != "Utiliza otro usuario, este ya existe o esta registrado") {        
-        this.relogin(actDatosPerf);
+        this.relogin(this.traerMensajeDatosPerfil);
       }
       this.progressbarService.barraProgreso.next("2");
     })
@@ -126,10 +122,10 @@ export class EditarPerfilComponent implements OnInit {
     this._snackBar.open(message, action);
   }
 
-  relogin(actDatosPerf: ActualizarDatosPerfil) {
+  relogin(actDatosPerf: TraerMensajeDatosPerfil) {
     this.login = new Login();
-    this.cryptoService.encryptUsingAES256("user", actDatosPerf.UsuarioRegistro);
-    this.login.Usuario = actDatosPerf.UsuarioRegistro;
+    this.cryptoService.encryptUsingAES256("user", actDatosPerf.actusuario);
+    this.login.Usuario = actDatosPerf.actusuario;
     this.login.Contrasena = this.cryptoService.decryptUsingAES256("userpassword");
     this.registroLoginService.postIngresoLogin(this.login).subscribe(data => {
       sessionStorage.setItem(environment.TOKEN, data);      

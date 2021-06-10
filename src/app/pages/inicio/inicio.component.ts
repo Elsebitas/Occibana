@@ -225,7 +225,7 @@ export class InicioComponent implements OnInit {
   verificarNull(){
     if(this.listaDeHotelesPrincipalesFiltrados.length != 0){
       this.filtroNull = false;
-      console.log(this.filtroNull);
+      //console.log(this.filtroNull);
     }else{
       this.filtroNull = true;
     }
@@ -264,7 +264,7 @@ export class InicioComponent implements OnInit {
 
     this.listasService.getHotelesDestacados().subscribe(data => {
       this.hotelesDestacados = data;
-      console.log(data);
+      //console.log(data);
     });
   }
 
