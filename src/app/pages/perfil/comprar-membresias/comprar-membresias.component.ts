@@ -27,7 +27,7 @@ export class ComprarMembresiasComponent implements OnInit {
               private progressbarService: ProgressbarService,
               private _snackBar: MatSnackBar) {
     
-    this.id = localStorage.getItem("iduser");
+    this.id = +localStorage.getItem("iduser");
     this.usuario = cryptoService.decryptUsingAES256("user");
     this.correo = localStorage.getItem("correo");
 

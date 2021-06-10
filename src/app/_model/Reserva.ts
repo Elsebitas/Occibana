@@ -5,9 +5,10 @@ export class Reserva{
     Apellido:string;
     IdHabitacion:number;
     FechaLlegada:string;
-    FechaSalida:string;
+    Fechasalida:string;
     NumPersonas:number;
     ModoDePago:string;
     PrecioNoche:number;
     Correo:string;
+    boton: boolean;
 }

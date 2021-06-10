@@ -36,7 +36,7 @@ export class ReservasHotelComponent implements OnInit {
   constructor(private listasService:ListasService, 
               private progressbarService:ProgressbarService,
               private router: Router) {
-    this.idHotel = localStorage.getItem("idhotel");
+    this.idHotel = +localStorage.getItem("idhotel");
    }
 
   ngOnInit(): void {

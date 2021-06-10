@@ -49,7 +49,7 @@ export class AgregarHotelComponent implements OnInit {
               private router:Router,
               private snackBar: MatSnackBar) {
 
-    this.id = localStorage.getItem("iduser");
+    this.id = +localStorage.getItem("iduser");
 
     this.agregarHotelForm = new FormGroup({
       nombreH: new FormControl('',[Validators.required,Validators.maxLength(30),Validators.minLength(5)]),
