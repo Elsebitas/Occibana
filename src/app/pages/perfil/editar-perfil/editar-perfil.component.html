@@ -16,8 +16,8 @@
                 <form class="example-container" [formGroup]="actualizarform" (ngSubmit)="enviar(f)" #f="ngForm">
 
                     <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Usuario</mat-label>
-                        <input #entradaUsuario matInput placeholder="Usuario" formControlName="UsuarioRegistro">
+                        <mat-label>{{cargarDatosPerfil.datos.usuario}}</mat-label>
+                        <input #entradaUsuario matInput placeholder="Nuevo usuario" formControlName="UsuarioRegistro">
                         <mat-icon class="colorIcon" matPrefix>person</mat-icon>
                         <mat-hint align="end">{{entradaUsuario.value?.length || 0}}/15</mat-hint>
                         <mat-error *ngIf="actualizarform.get('UsuarioRegistro').hasError('required')">
@@ -32,8 +32,8 @@
                     </mat-form-field>
         
                     <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Nombres</mat-label>
-                        <input #entradaNombre matInput placeholder="Nombres" formControlName="NombreRegistro">
+                        <mat-label>{{cargarDatosPerfil.datos.nombre}}</mat-label>
+                        <input #entradaNombre matInput placeholder="Nuevo nombre" formControlName="NombreRegistro">
                         <mat-icon class="colorIcon" matPrefix>person_outline</mat-icon>
                         <mat-hint align="end">{{entradaNombre.value?.length || 0}}/30</mat-hint>
                         <mat-error *ngIf="actualizarform.get('NombreRegistro').hasError('pattern')">
@@ -48,8 +48,8 @@
                     </mat-form-field>
         
                     <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Apellidos</mat-label>
-                        <input #entradaApellido matInput placeholder="Apellidos" formControlName="ApellidoRegistro">
+                        <mat-label>{{cargarDatosPerfil.datos.apellido}}</mat-label>
+                        <input #entradaApellido matInput placeholder="Nuevo apellido" formControlName="ApellidoRegistro">
                         <mat-icon class="colorIcon" matPrefix>person_outline</mat-icon>
                         <mat-hint align="end">{{entradaApellido.value?.length || 0}}/30</mat-hint>
                         <mat-error *ngIf="actualizarform.get('ApellidoRegistro').hasError('pattern')">
@@ -64,8 +64,8 @@
                     </mat-form-field>
         
                     <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Correo electrónico</mat-label>
-                        <input #entradaCorreo matInput placeholder="Correo" formControlName="CorreoRegistro">
+                        <mat-label>{{cargarDatosPerfil.datos.correo}}</mat-label>
+                        <input #entradaCorreo matInput placeholder="Nuevo correo" formControlName="CorreoRegistro">
                         <mat-icon class="colorIcon" matPrefix>email</mat-icon>
                         <mat-error *ngIf="actualizarform.get('CorreoRegistro').hasError('email')">
                             Ingresa un correo <strong>válido</strong>
@@ -73,8 +73,8 @@
                     </mat-form-field>
         
                     <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Teléfono</mat-label>
-                        <input matInput placeholder="Telefono" formControlName="TelefonoRegistro" type="tel">
+                        <mat-label>{{cargarDatosPerfil.datos.telefono}}</mat-label>
+                        <input matInput placeholder="Nuevo telefono" formControlName="TelefonoRegistro" type="tel">
                         <mat-icon class="colorIcon" matPrefix>phone</mat-icon>
                         <mat-error *ngIf="actualizarform.get('TelefonoRegistro').hasError('pattern')">
                             Sólo se permiten <strong>números</strong>
@@ -89,7 +89,7 @@
         
                     </mat-form-field>
         
-                    <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="actualizarform.invalid">
+                    <button mat-raised-button color="primary" class="boton" type="submit">
                         <mat-icon>update</mat-icon>
                         <span> Actualizar</span>
                     </button>

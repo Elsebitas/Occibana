@@ -206,6 +206,20 @@ mat-icon{
   left: 61.22%;
 }
 
+.texto-encima3{
+  padding-left: 5px;
+  padding-right: 12.05px;
+  background: rgb(255, 0, 0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgb(0 0 0 / 72%);
+  z-index: 1;
+  position: absolute;
+  top: 5%;
+  left: 61.17%;
+}
+
 .esquina1{
   position: absolute;
   top: 100%;
@@ -273,19 +287,6 @@ mat-icon{
 }
 
 
-.texto-encima3{
-  padding-left: 5px;
-  padding-right: 12.05px;
-  background: rgb(255, 0, 0);
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgb(0 0 0 / 72%);
-  z-index: 1;
-  position: absolute;
-  top: 5%;
-  left: 61.17%;
-}
 
 
 

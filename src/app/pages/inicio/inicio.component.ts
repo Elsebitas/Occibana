@@ -251,7 +251,7 @@ export class InicioComponent implements OnInit {
     this.listasService.postHolelesPrincipales(this.hotelesPrincipales).subscribe(data => {
       this.listaDeHotelesPrincipales = data;
       this.listaDeHotelesPrincipalesFiltrados = data;
-      //console.log(data);
+      console.log(data);
     });
 
     this.listasService.getListasMunicipios().subscribe(data => {

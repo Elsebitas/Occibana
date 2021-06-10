@@ -95,7 +95,7 @@ export class HotelComponent implements OnInit {
   postObtenerInformacion(){
     this.panelHotelService.postInformacionDelHotel(info).subscribe(data =>{
       //console.log("info hotel");
-      //console.log(data);
+      console.log(data);
       this.informacionHotel = data;
     })
   }
