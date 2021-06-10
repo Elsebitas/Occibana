@@ -6,12 +6,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dialog-lema.component.html',
   styleUrls: ['./dialog-lema.component.css']
 })
+
 export class DialogLemaComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogLemaComponent>) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   aceptar(): void {
     this.dialogRef.close({

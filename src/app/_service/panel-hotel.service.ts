@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 import { InformacionHotel } from '../_model/InformacionHotel';
 import { Observable } from 'rxjs';
 
-
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 }
@@ -14,8 +13,8 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PanelHotelService {
 
+export class PanelHotelService {
 
   private url: string = `${environment.HOST}/panelHotel/`;
 

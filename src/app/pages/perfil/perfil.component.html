@@ -40,36 +40,31 @@
                         </mat-icon>
                     </div>
                     <div class="correoTx">
-                        <h3 class="lema">Membresia</h3>
+                        <h3 class="lema">Membresía</h3>
                     </div>
                 </div><br><br>
                 <div>
                     <button mat-stroked-button class="styleboton"  *ngIf="cargarDatosPerfil.b_ActualizarMembresia1" color="primary"
                         (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">
                         <mat-icon>autorenew</mat-icon> Actualizar
-                        Membresía
+                        membresía
                     </button>
                     <button mat-stroked-button class="styleboton"  *ngIf="cargarDatosPerfil.b_ComprarMembresia1" color="primary"
                         (click)="comprarMembresia(cargarDatosPerfil.datos.id, cargarDatosPerfil.datos.usuario,cargarDatosPerfil.datos.correo)">
                         <mat-icon>add_shopping_cart</mat-icon> Comprar
-                        Membresía
+                        membresía
                     </button>
                 </div>
                 <br>
                 <div>
-
                     <button mat-stroked-button class="styleboton" color="primary" routerLink="/perfil/editarperfil">
-                        <mat-icon>account_box</mat-icon> Editar Perfíl
+                        <mat-icon>account_box</mat-icon> Editar perfíl
                     </button>
-
-
                 </div><br>
                 <div>
                     <button mat-stroked-button class="styleboton" color="primary" routerLink="/perfil/actualizarcontrasena">
-                        <mat-icon>lock</mat-icon> Editar Contraseña
+                        <mat-icon>lock</mat-icon> Cambiar contraseña
                     </button>
-
-
                 </div>
             </div>
             <div class="contenedor2">
@@ -95,7 +90,7 @@
                                             <button mat-raised-button routerLink="/perfil/agregar_habitacion"
                                                 (click)="agregarHabitacion(hotel.idhotel, hotel.nombre)" class="boton"
                                                 style="cursor: pointer" color="primary">Agregar
-                                                Habitacion</button>
+                                                habitación</button>
                                             <button mat-raised-button routerLink="" class="boton2"
                                                 style="cursor: pointer" color="primary"
                                                 (click)="mostrarReservasHotel(hotel.idhotel)">Ver
@@ -106,11 +101,9 @@
                             </ng-container>
                         </div>
                         <div class="divBoton">
-
                             <button mat-mini-fab color="primary" class="botonAdd" (click)="agregarHotel()">
                                 <mat-icon>add</mat-icon>
                             </button>
-
                         </div>
                     </mat-tab>
                     <mat-tab label="Mis Reservas">
@@ -121,6 +114,4 @@
         </div>
     </div>
 </div>
-
-
 <router-outlet></router-outlet>

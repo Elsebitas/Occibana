@@ -1,15 +1,13 @@
-import { ReactivarCuenta } from './../_model/ReactivarCuenta';
 import { AgregarImagen } from './../_model/AgregarImagen';
 import { AgregarHabitacion } from './../_model/AgregarHabitacion';
 import { ComprarMembresias } from './../_model/ComprarMembresias';
 import { TraerMensajeDatosPerfil } from './../_model/TraerMensajeDatosPerfil';
 import { ActualizarContrasena } from './../_model/ActualizarContrasena';
 import { ActualizarDatosPerfil } from './../_model/ActualizarDatosPerfil';
-import { ProgressbarService } from './progressbar.service';
 import { CargarDatosPerfil } from './../_model/CargarDatosPerfil';
 import { DatosPerfil } from '../_model/DatosPerfil';
 import { environment } from './../../environments/environment';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -24,9 +22,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PerfilService {
   
   private url: string = `${environment.HOST}/perfil/`;
+
   private url2: string = `${environment.HOST}/agregar_habitacion/`;
 
   constructor(private http: HttpClient) { }

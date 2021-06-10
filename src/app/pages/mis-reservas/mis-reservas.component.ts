@@ -20,6 +20,7 @@ const id ={
   templateUrl: './mis-reservas.component.html',
   styleUrls: ['./mis-reservas.component.css']
 })
+
 export class MisReservasComponent implements OnInit {
 
   @Input() idUsuario: number;
@@ -86,7 +87,6 @@ export class MisReservasComponent implements OnInit {
       if(result.opcion == "Aceptar") {
         //console.log("se llama el servicio de para eliminar reserva");
         id.idReserva = idReserva;
-
         this.cancelarReserva(id);
       }
     });
@@ -103,7 +103,6 @@ export class MisReservasComponent implements OnInit {
       } else {
         this.abrirSnackBar(this.traerMensajeDatosPerfil.mensaje, 'Aceptar');
       }
-      
       //console.log(data);
     })
   }

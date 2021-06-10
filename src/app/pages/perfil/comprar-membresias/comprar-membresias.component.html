@@ -4,7 +4,6 @@
             <div class="izquierda">
                 <img class="fotoperfil" width="350px" height="350px" src="./assets/images/creditCard.png">
             </div>
-
             <div class="derecha">
                 <br><br>
                 <div class="tituloTarjeta">Datos de tarjeta</div>
@@ -18,7 +17,7 @@
                             <mat-icon class="colorIcon" matPrefix>credit_card</mat-icon>
                             <mat-hint align="end">{{numeroTar.value?.length || 0}}/16</mat-hint>
                             <mat-error *ngIf="membresiaForm.get('NumeroTarjeta').hasError('required')">
-                                El número de tarjeta es <strong>Requerido</strong>
+                                El número de tarjeta es <strong>requerido</strong>
                             </mat-error>
                             <mat-error *ngIf="membresiaForm.get('NumeroTarjeta').hasError('maxlength')">
                                 El número de caracteres máximos son <strong>16</strong>
@@ -31,13 +30,11 @@
                             </mat-error>
                             <mat-error
                                 *ngIf="membresiaForm.get('NumeroTarjeta').hasError('pattern') && !membresiaForm.get('NumeroTarjeta').hasError('minlength')">
-                                <strong>Cedula Inválida</strong>
+                                <strong>Cedula inválida</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
                     <div class="flex-row">
-                        
                         <div>
                             <div class="textos2">Número de cédula</div>
                             <mat-form-field appearance="fill" class="field2">
@@ -45,15 +42,13 @@
                                 <input matInput formControlName="Cedula" type="number">
                                 <mat-icon class="colorIcon" matPrefix>perm_identity</mat-icon>
                                 <mat-error *ngIf="membresiaForm.get('Cedula').hasError('required')">
-                                    La cedula de ciudadania es <strong>Requerida</strong>
+                                    La cedula de ciudadania es <strong>requerida</strong>
                                 </mat-error>
                                 <mat-error *ngIf="membresiaForm.get('Cedula').hasError('pattern')">
                                     <strong>Cédula inválida</strong>
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        
-
                         <div>
                             <div class="textos2">CCV</div>
                             <mat-form-field appearance="fill" class="field2">
@@ -62,7 +57,7 @@
                                 <mat-icon class="colorIcon" matPrefix>lock</mat-icon>
                                 <mat-hint align="end">{{codigoDeSeg.value?.length || 0}}/3</mat-hint>
                                 <mat-error *ngIf="membresiaForm.get('CodigoDeSeguridad').hasError('required')">
-                                    El codigo de seguridad es <strong>Requerido</strong>
+                                    El codigo de seguridad es <strong>requerido</strong>
                                 </mat-error>
                                 <mat-error *ngIf="membresiaForm.get('CodigoDeSeguridad').hasError('maxlength')">
                                     El número de caracteres máximos son <strong>3</strong>
@@ -75,12 +70,8 @@
                                     <strong>CCV inválido</strong>
                                 </mat-error>
                             </mat-form-field>
-                            
-    
                         </div>
                     </div>
-                    
-                   
                     <div class="flex-row">
                         <div>
                             <div class="textos2">Nombre del propietario</div>
@@ -89,26 +80,24 @@
                                 <input matInput formControlName="NombreDelPropietario">
                                 <mat-icon class="colorIcon" matPrefix>person</mat-icon>
                                 <mat-error *ngIf="membresiaForm.get('NombreDelPropietario').hasError('required')">
-                                    El nombre del propietario es <strong>Requerido</strong>
+                                    El nombre del propietario es <strong>requerido</strong>
                                 </mat-error>
                                 <mat-error *ngIf="membresiaForm.get('NombreDelPropietario').hasError('pattern')">
-                                    <strong>Nombre Inválido</strong>
+                                    <strong>Nombre inválido</strong>
                                 </mat-error>
                             </mat-form-field>
                         </div>
                         <div>
-                            <div class="textos2">Direccion de residencia</div>
+                            <div class="textos2">Dirección de residencia</div>
                             <mat-form-field appearance="fill" class="field2">
                                 <mat-label></mat-label>
                                 <input matInput formControlName="DireccionPropietario">
                                 <mat-icon class="colorIcon" matPrefix>place</mat-icon>
                                 <mat-error *ngIf="membresiaForm.get('DireccionPropietario').hasError('required')">
-                                    La dirección de residencia es <strong>Requerida</strong>
+                                    La dirección de residencia es <strong>requerida</strong>
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        
-
                     </div>
                     <br>
                     <button mat-raised-button class="botonForm"  color="primary" [disabled]="membresiaForm.invalid"
@@ -120,8 +109,5 @@
                 </form>
             </div>
         </div>
-        
     </mat-card-content>
 </mat-card>
-
-

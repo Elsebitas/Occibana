@@ -6,14 +6,14 @@
         <div class="opacidad"></div>
       </div>
       <p class="tituloBanner">OCCIBANA</p>
-      <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+      <p class="subtituloBanner">Los mejores hoteles de la Sabana Occidente a un solo clic</p>
     </ng-template>
     <ng-template carouselSlide>
       <div class="slide">
         <img src="./assets/images/Zipacon1.jpg" alt="img 2">
         <div class="opacidad"></div>
         <p class="tituloBanner">OCCIBANA</p>
-        <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        <p class="subtituloBanner">Los mejores hoteles de la Sabana Occidente a un solo clic</p>
       </div>
     </ng-template>
     <ng-template carouselSlide>
@@ -21,7 +21,7 @@
         <img src="./assets/images/Funza2.jpg" alt="img 3">
         <div class="opacidad"></div>
         <p class="tituloBanner">OCCIBANA</p>
-        <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        <p class="subtituloBanner">Los mejores hoteles de la Sabana Occidente a un solo clic</p>
       </div>
     </ng-template>
     <ng-template carouselSlide>
@@ -29,7 +29,7 @@
         <img src="./assets/images/Madrid1.jpg" alt="img 4">
         <div class="opacidad"></div>
         <p class="tituloBanner">OCCIBANA</p>
-        <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        <p class="subtituloBanner">Los mejores hoteles de la Sabana Occidente a un solo clic</p>
       </div>
     </ng-template>
     <ng-template carouselSlide>
@@ -37,7 +37,7 @@
         <img src="./assets/images/Zipacon2.jpg" alt="img 5">
         <div class="opacidad"></div>
         <p class="tituloBanner">OCCIBANA</p>
-        <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        <p class="subtituloBanner">Los mejores hoteles de la Sabana Occidente a un solo clic</p>
       </div>
     </ng-template>
     <ng-template carouselSlide>
@@ -45,128 +45,121 @@
         <img src="./assets/images/Subachoque1.jpg" alt="img 6">
         <div class="opacidad"></div>
         <p class="tituloBanner">OCCIBANA</p>
-        <p class="subtituloBanner">Los mejores hoteles de la sabana occidente a un solo clic</p>
+        <p class="subtituloBanner">Los mejores hoteles de la Sabana Occidente a un solo clic</p>
       </div>
     </ng-template>
   </owl-carousel-o>
 </div>
 
-
-
-
 <div class="content2">
-    <div>
-      <table>
-        <tr>
-          <td>
-            <mat-form-field class="filter" appearance="fill">
-              <mat-icon class="colorIcon" matPrefix> search </mat-icon>
-              <mat-label>Consultar hotel por nombre</mat-label>
-              <input matInput [(ngModel)]="searchTerm" class="colorLetra">
-              <mat-icon matSuffix></mat-icon>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
-              <mat-label>Precio minimo </mat-label>
-              <input matInput type="number" [(ngModel)]="searchMin" class="colorLetra">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
-              <mat-label>Precio maximo</mat-label>
-              <input matInput type="number" [(ngModel)]="searchMax" class="colorLetra">
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-      <table style="margin: auto; margin-left: 4%;">
-        <tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-icon class="colorIcon" matPrefix> my_location </mat-icon>
-              <mat-label>Municipio</mat-label>
-              <mat-select [(ngModel)]="searchMun">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let municipio of listasMunicipios" [value]="municipio.nombre">{{municipio.nombre}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field appearance="fill" class="menubar">
-              <mat-icon class="colorIcon" matPrefix> location_searching </mat-icon>
-              <mat-label>Zonas</mat-label>
-              <mat-select [(ngModel)]="searchZona">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let zonas of listasZonas" [value]="zonas.nombre">{{zonas.nombre}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-icon class="colorIcon" matPrefix> hotel </mat-icon>
-              <mat-label>Tipo de Habitación</mat-label>
-              <mat-select [(ngModel)]="searchHab">
-                <mat-option value="Basica">Basica</mat-option>
-                <mat-option value="Doble">Doble</mat-option>
-                <mat-option value="Premium">Premium</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="personass" appearance="fill">
-              <mat-icon class="colorIcon" matPrefix> people </mat-icon>
-              <mat-label>personas</mat-label>
-              <mat-select [(ngModel)]="searchPer">
-                <mat-option># de personas</mat-option>
-                <mat-option value="1"><strong>1</strong>
-                  <mat-icon matPrefix> person</mat-icon>
-                </mat-option>
-                <mat-option value="2"><strong>2</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="3"><strong>3</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="4"><strong>4</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="5"><strong>5</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="6"><strong>6</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="7"><strong>7</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="8"><strong>8</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-                <mat-option value="9"><strong>9</strong>
-                  <mat-icon> people</mat-icon>
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div style="text-align:center">
-      <star-rating value="5" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="35px" readonly="false"
-        (rate)="onRate($event)"></star-rating>
-    </div>
-
-
+  <div>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="filter" appearance="fill">
+            <mat-icon class="colorIcon" matPrefix> search </mat-icon>
+            <mat-label>Consultar hotel por nombre</mat-label>
+            <input matInput [(ngModel)]="searchTerm" class="colorLetra">
+            <mat-icon matSuffix></mat-icon>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
+            <mat-label>Precio mínimo </mat-label>
+            <input matInput type="number" [(ngModel)]="searchMin" class="colorLetra">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
+            <mat-label>Precio máximo</mat-label>
+            <input matInput type="number" [(ngModel)]="searchMax" class="colorLetra">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table style="margin: auto; margin-left: 4%;">
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-icon class="colorIcon" matPrefix> my_location </mat-icon>
+            <mat-label>Municipio</mat-label>
+            <mat-select [(ngModel)]="searchMun">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let municipio of listasMunicipios" [value]="municipio.nombre">{{municipio.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill" class="menubar">
+            <mat-icon class="colorIcon" matPrefix> location_searching </mat-icon>
+            <mat-label>Zonas</mat-label>
+            <mat-select [(ngModel)]="searchZona">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let zonas of listasZonas" [value]="zonas.nombre">{{zonas.nombre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-icon class="colorIcon" matPrefix> hotel </mat-icon>
+            <mat-label>Tipo de habitación</mat-label>
+            <mat-select [(ngModel)]="searchHab">
+              <mat-option value="Basica">Básica</mat-option>
+              <mat-option value="Doble">Doble</mat-option>
+              <mat-option value="Premium">Premium</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="personass" appearance="fill">
+            <mat-icon class="colorIcon" matPrefix> people </mat-icon>
+            <mat-label>Personas</mat-label>
+            <mat-select [(ngModel)]="searchPer">
+              <mat-option>N. de personas</mat-option>
+              <mat-option value="1"><strong>1</strong>
+                <mat-icon matPrefix> person</mat-icon>
+              </mat-option>
+              <mat-option value="2"><strong>2</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="3"><strong>3</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="4"><strong>4</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="5"><strong>5</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="6"><strong>6</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="7"><strong>7</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="8"><strong>8</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+              <mat-option value="9"><strong>9</strong>
+                <mat-icon> people</mat-icon>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="text-align:center">
+    <star-rating value="5" [totalstars]="5" checkedcolor="gold" uncheckedcolor="gray" size="35px" readonly="false"
+      (rate)="onRate($event)"></star-rating>
+  </div>
   <div class="subtitles2">
     <br>
-    Descubre los hoteles principales en la sabana de occidente
+    Descubre los hoteles principales en la Sabana Occidente
   </div>
-
   <div *ngIf="filtroNull" class="divi">
     <section class="error-container">
       <span><span>¡</span></span>
@@ -174,13 +167,11 @@
       <span><span>!</span></span>
     </section>
     <p class="zoom-area"><b>Sin resultados</b></p>
-    <p class="zoom-area"><b>No se encontraron resultados para la busqueda</b></p>
+    <p class="zoom-area"><b>No se encontraron resultados para la búsqueda</b></p>
     <div class="link-container">
     </div>
     <br><br>
   </div>
-
-  
   <div>
     <div class="content" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="flex-start">
       <ng-container *ngFor="let card of listaDeHotelesPrincipalesFiltrados">
@@ -188,7 +179,6 @@
           fxFlex.lt-md="0 1 calc(33% - 32px)" (click)="mostrarHotel(card.idhotel)">
           <img mat-card-image class="tamanoImagen" src="{{url}}{{card.imagen}}" fallimg="picture1">
           <mat-card-content>
-            
             <div class="texto-encima3" *ngIf="card.numHabitDisponibles == 0" >Sin disponibilidad  <div class="esquina4"> </div><div class="cuadro2"></div><div class="esquina2"></div></div>
             <div class="texto-encima2" *ngIf="card.numHabitDisponibles != 0">Con disponibilidad   <div class="esquina3"> </div><div class="cuadro1"></div><div class="esquina1"></div></div>
             <div class="hoteltitle"> {{card.nombre}} </div>
@@ -199,15 +189,12 @@
       </ng-container>
     </div>
   </div>
-
   <div class="link-container">
     <button mat-raised-button style="cursor: pointer" color="primary" (click)="recargarHoteles()">
-      Nueva busqueda
+      Nueva búsqueda
     </button>
   </div>
-
 </div>
-
 
 <div class="subtitles3">
   Descubre nuestras sugerencias y hoteles destacados
@@ -236,5 +223,3 @@
     </ng-container>
   </owl-carousel-o>
 </div>
-
-

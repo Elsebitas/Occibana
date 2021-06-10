@@ -7,104 +7,79 @@
                     placeholder="Escriba el campo que desea consultar">
             </mat-form-field>
         </div>
-    
         <div class="titulo">
             <p>RESERVAS POR EFECTUAR</p>
         </div>
-    
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource1" matSort>
-    
                 <ng-container matColumnDef="num_personas">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> N. personas </th>
                     <td mat-cell *matCellDef="let element"> {{element.numpersona}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="fecha_llegada">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha llegada </th>
                     <td mat-cell *matCellDef="let element"> {{element.fecha_llegada}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="fecha_salida">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha salida </th>
                     <td mat-cell *matCellDef="let element"> {{element.fecha_salida}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="nombre">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                     <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="apellido">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
                     <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="correo">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo electrónico </th>
                     <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
                 </ng-container>
-    
                 <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
-    
             </table>
-    
             <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
         </div>
     </div>    
-
-    <div class="line"></div>    
-    
+    <div class="line"></div> 
     <div class="content">
-    
         <div class="titulo">
             <p>RESERVAS REALIZADAS</p>
         </div>
-    
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource2" matSort>
-    
                 <ng-container matColumnDef="num_personas">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> N. personas </th>
                     <td mat-cell *matCellDef="let element"> {{element.numpersona}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="fecha_llegada">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha llegada </th>
                     <td mat-cell *matCellDef="let element"> {{element.fecha_llegada}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="fecha_salida">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha salida </th>
                     <td mat-cell *matCellDef="let element"> {{element.fecha_salida}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="nombre">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                     <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="apellido">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
                     <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="correo">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo electrónico </th>
                     <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
                 </ng-container>
-    
                 <ng-container matColumnDef="medio_pago">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Medio de pago </th>
                     <td mat-cell *matCellDef="let element"> {{element.mediopago}} </td>
                 </ng-container>
-    
                 <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
-    
             </table>
-    
             <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
         </div>
     </div>

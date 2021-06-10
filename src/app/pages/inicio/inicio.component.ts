@@ -1,7 +1,6 @@
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasZonas } from './../../_model/ListasZonas';
 import { ListasMunicipios } from './../../_model/ListasMunicipios';
-
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { ListasService } from './../../_service/listas.service';
@@ -9,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { fadeInItems } from '@angular/material/menu';
 import { StarRatingComponent } from 'ng-starrating';
-
 
 @Component({
   selector: 'app-inicio',
@@ -23,8 +20,8 @@ import { StarRatingComponent } from 'ng-starrating';
  * Clase del componente Inicio que implementa OnInit.
  */
 export class InicioComponent implements OnInit {
-  url: string = environment.URLPHOTOS2;
 
+  url: string = environment.URLPHOTOS2;
 
   /**
    * Variable que instancia el objeto de la clase HotelesPrincipales.
@@ -36,33 +33,43 @@ export class InicioComponent implements OnInit {
    * Variable de tipo array que almacena los datos provenientes del servicio postHotelesPrincipales.
    */
   public listaDeHotelesPrincipales: HotelesPrincipales[];
-  public hotelesDestacados: HotelesDestacados[];
-  public listasMunicipios: ListasMunicipios[];
-  public listasZonas: ListasZonas[];
-  listaDeHotelesPrincipalesFiltrados: HotelesPrincipales[];
 
+  public hotelesDestacados: HotelesDestacados[];
+
+  public listasMunicipios: ListasMunicipios[];
+
+  public listasZonas: ListasZonas[];
+
+  listaDeHotelesPrincipalesFiltrados: HotelesPrincipales[];
 
   /**
    * Variable para el filtrado.
    */
   private _searchTerm: string;
-  private _searchText: string;
-  private _searchMun: string;
-  private _searchMin: number;
-  private _searchMax: number;
-  private _searchHab: string;
-  private _searchZona: string;
-  private _searchPer: number;
-  private _searchStr: number;
-  public filtroNull: boolean;
 
+  private _searchText: string;
+
+  private _searchMun: string;
+
+  private _searchMin: number;
+
+  private _searchMax: number;
+
+  private _searchHab: string;
+
+  private _searchZona: string;
+
+  private _searchPer: number;
+
+  private _searchStr: number;
+
+  public filtroNull: boolean;
 
   recargarHoteles(){
     this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/inicio']);
   });
   }
-
 
   get searchStr(): number {
     return this._searchStr;
@@ -73,7 +80,6 @@ export class InicioComponent implements OnInit {
     this.listaDeHotelesPrincipalesFiltrados = this.filteredStrHotel(value);
     this.verificarNull();
   }
-
 
   filteredStrHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
@@ -90,11 +96,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
   filteredPerHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
       lista.numpersonas == searchString);
-
   }
 
   get searchZona(): string {
@@ -107,12 +111,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
-
   filteredZonaHotel(searchString: string) {
     return this.listaDeHotelesPrincipales.filter(lista =>
       lista.zona.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
-
   }
 
   get searchHab(): string {
@@ -125,12 +126,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
-
   filteredHabHotel(searchString: string) {
     return this.listaDeHotelesPrincipales.filter(lista =>
       lista.tipo.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
-
   }
 
   get searchTerm(): string {
@@ -143,13 +141,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
-
-
   filteredNameHotel(searchString: string) {
     return this.listaDeHotelesPrincipales.filter(lista =>
       lista.nombre.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
-
   }
 
   get searchText(): string {
@@ -162,11 +156,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
   filteredZoneHotel(searchString: string) {
     return this.listaDeHotelesPrincipales.filter(listaa =>
       listaa.zona.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
-
   }
 
   get searchMun(): string {
@@ -179,11 +171,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
   filteredMunHotel(searchString: string) {
     return this.listaDeHotelesPrincipales.filter(listaa =>
       listaa.municipio.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
-
   }
 
   get searchMin(): number {
@@ -196,11 +186,9 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
   filteredMinHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(listaa =>
       listaa.precionoche >= searchString);
-
   }
 
   get searchMax(): number {
@@ -213,14 +201,10 @@ export class InicioComponent implements OnInit {
     this.verificarNull();
   }
 
-
   filteredMaxHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(listaa =>
       listaa.precioNochePremium <= searchString);
-
   }
-
-
 
   verificarNull(){
     if(this.listaDeHotelesPrincipalesFiltrados.length != 0){
@@ -231,8 +215,6 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  
-
   /**
    * Constructor que inicializa el Forms y el servicio ListasService.
    * 
@@ -240,8 +222,6 @@ export class InicioComponent implements OnInit {
    */
   constructor(private listasService: ListasService, private router: Router, private progressbarService: ProgressbarService) {
   }
-
-
 
   /**
    * Método que inicia el servicio postHolelesPrincipales con su suscripción.
@@ -251,7 +231,7 @@ export class InicioComponent implements OnInit {
     this.listasService.postHolelesPrincipales(this.hotelesPrincipales).subscribe(data => {
       this.listaDeHotelesPrincipales = data;
       this.listaDeHotelesPrincipalesFiltrados = data;
-      console.log(data);
+      //console.log(data);
     });
 
     this.listasService.getListasMunicipios().subscribe(data => {
@@ -268,15 +248,13 @@ export class InicioComponent implements OnInit {
     });
   }
 
-
   mostrarHotel(card) {
     this.hotelesPrincipales = new HotelesPrincipales();
     this.hotelesPrincipales.idhotel = card;
     localStorage.setItem("idhotel",card);
     this.router.navigate(['/hotel']);
   }
-
-
+  
   customOptions: OwlOptions = {
     loop: true,
     autoplay: true,

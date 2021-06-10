@@ -4,16 +4,12 @@
   </div>
   <div class="text-title">Necesitamos comprobar tu identidad</div>
 </div>
-
-
 <div *ngIf="mostrar">
   <form [formGroup]="recuperarForm" (ngSubmit)="onFromSubmit()">
     <p>
       Para verificar que tus credenciales son correctas, completa el formulario con tu dirección de correo y usuario.
       Luego haz clic en "Aceptar" para recibir tu código.
     </p>
-
-
     <mat-form-field class="textfield">
       <mat-label>Usuario</mat-label>
       <input matInput #entradaNombre formControlName="usuario" placeholder="Escriba su nombre de usuario">
@@ -22,14 +18,13 @@
         Usuario es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-
     <mat-form-field class="textfield">
       <mat-label>Correo</mat-label>
       <input matInput #entradaCorreo formControlName="correo" placeholder="Escriba su dirección de correo">
       <mat-hint align="end">{{entradaCorreo.value?.length || 0}}/50</mat-hint>
       <mat-error
         *ngIf="recuperarForm.get('correo').hasError('email') && !recuperarForm.get('correo').hasError('required')">
-        Porfavor introduzca un correo valido
+        Introduce un correo válido
       </mat-error>
       <mat-error *ngIf="recuperarForm.get('correo').hasError('required')">
         Correo es <strong>requerido</strong>
@@ -42,23 +37,19 @@
 </form>
 </div>
 
-
 <div *ngIf="mostrar2">
   <p>
-    Una vez completado el formulario con tu dirección de correo y usuario. Luego le llegará un correo con su clave de
-    recuperación, por favor introduzcalo en la entrada de texto y asigne una nueva contraseña.
+    Una vez completado el formulario con su dirección de correo y usuario le llegará un correo con su clave de
+    recuperación. Por favor introdúzcalo en la entrada de texto y asigne una nueva contraseña.
   </p>
-
   <form [formGroup]="reactivarForm" (ngSubmit)="onFromSubmit2()">
     <mat-form-field class="textfield">
-      <mat-label>Codigo</mat-label>
+      <mat-label>Código</mat-label>
       <input matInput  formControlName="codigo" placeholder="Escriba su clave de recuperación">
       <mat-error *ngIf="reactivarForm.get('codigo').hasError('required')">
-        Codigo es <strong>requerido</strong>
+        Código es <strong>requerido</strong>
       </mat-error>
     </mat-form-field>
-
-
     <mat-form-field class="textfield">
       <mat-label>Nueva contraseña</mat-label>
       <input matInput formControlName="contrasena" [type]="hide2 ? 'password' : 'text'">
@@ -70,14 +61,12 @@
         La nueva contraseña es <strong>requerida</strong>
       </mat-error>
       <mat-error *ngIf="reactivarForm.get('contrasena').hasError('pattern')">
-        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres
-          especiales</strong>
+        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, números, carácteres especiales</strong>
       </mat-error>
       <mat-error *ngIf="reactivarForm.get('contrasena').hasError('minlength')">
-        El número de caracteres mínimo es <strong>5</strong>
+        El número de carácteres mínimo es <strong>5</strong>
       </mat-error>
     </mat-form-field>
-
     <div mat-dialog-actions>
       <button mat-button [disabled]="reactivarForm.invalid">Hecho</button>
       <button mat-button cdkFocusInitial (click)="cancelar()">Cancelar</button>

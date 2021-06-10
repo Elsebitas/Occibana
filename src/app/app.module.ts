@@ -2,21 +2,18 @@ import { ServerErrorInterceptorService } from './_service/server-error-intercept
 import { RecuperarConstrasenaComponent } from './pages/login/recuperar-constrasena/recuperar-constrasena.component';
 import { AgregarHabitacionComponent } from './pages/perfil/agregar-habitacion/agregar-habitacion.component';
 import { ActualizarContrasenaComponent } from './pages/perfil/actualizar-contrasena/actualizar-contrasena.component';
-import { ActualizarContrasena } from './_model/ActualizarContrasena';
 import { RegistroLoginService } from './_service/registroLogin.service';
 import { Login } from './_model/Login';
 import { environment } from './../environments/environment';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './pages/error404/error404.component';
 import { FiltroHotelesPipe } from './_pipes/filtro-hoteles.pipe';
@@ -30,7 +27,6 @@ import { EditarPerfilComponent } from './pages/perfil/editar-perfil/editar-perfi
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoService } from './_service/crypto.service';
 import { ProgressbarService } from './_service/progressbar.service';
-import { Router, RouterStateSnapshot } from '@angular/router';
 import { ComentarCalificarComponent } from './pages/comentar-calificar/comentar-calificar.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ReservarComponent } from './pages/hotel/reservar/reservar.component';
@@ -83,7 +79,6 @@ export function jwtOptionsFactory(RegistroLoginService, ProgressbarService, logi
             }
           }
         }
-
         let tk = sessionStorage.getItem(environment.TOKEN);
         return tk != null ? tk : '';
       } else {
@@ -177,4 +172,3 @@ export class AppModule {
 function delay(arg0: number) {
   return new Promise(resolve => setTimeout(resolve, arg0));
 }
-

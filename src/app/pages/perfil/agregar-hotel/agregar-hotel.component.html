@@ -10,13 +10,12 @@
             <form [formGroup]="agregarHotelForm" (ngSubmit)="onFromSubmit()">
                 <div class="flex-row">
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Nombre</mat-label>
                             <input #Nombre matInput formControlName="nombreH">
                             <mat-hint align="end">{{Nombre.value?.length || 0}}/30</mat-hint>
                             <mat-error *ngIf="agregarHotelForm.get('nombreH').hasError('required')">
-                                El nombre es <strong>Requerido</strong>
+                                El nombre es <strong>requerido</strong>
                             </mat-error>
                             <mat-error *ngIf="agregarHotelForm.get('nombreH').hasError('maxlength')">
                                 El número de caracteres máximos son <strong>30</strong>
@@ -25,52 +24,39 @@
                                 El número de caracteres mínimos son <strong>5</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Precio Habitación Básica</mat-label>
                             <input matInput type="number" formControlName="precioBasica">
                             <mat-error *ngIf="agregarHotelForm.get('precioBasica').hasError('required')">
-                                El precio habitación básica <strong>Requerido</strong>
+                                El precio habitación básica <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
 
                     </div>
                 </div>
-
                 <div class="flex-row">
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Precio Habitación Doble</mat-label>
                             <input matInput type="number" formControlName="precioDoble">
                             <mat-error *ngIf="agregarHotelForm.get('precioDoble').hasError('required')">
-                                El precio habitación doble <strong>Requerido</strong>
+                                El precio habitación doble <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Precio Habitación Premiun</mat-label>
                             <input matInput type="number" formControlName="precioPremium">
                             <mat-error *ngIf="agregarHotelForm.get('precioPremium').hasError('required')">
-                                El precio habitación premiun <strong>Requerido</strong>
+                                El precio habitación premiun <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                 </div>
-
                 <div class="left">
-
                     <mat-form-field appearance="fill" class="comBox">
                         <mat-label>Municipio</mat-label>
                         <mat-select formControlName="idMunicipio" (selectionChange)="select($event.value)">
@@ -80,10 +66,9 @@
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="agregarHotelForm.get('idMunicipio').hasError('required')">
-                            El minicipio es <strong>Requerido</strong>
+                            El minicipio es <strong>requerido</strong>
                         </mat-error>
                     </mat-form-field>
-
                     <mat-form-field appearance="fill" class="comBox2">
                         <mat-label>Zonas</mat-label>
                         <mat-select formControlName="Idzona">
@@ -92,14 +77,11 @@
                             </mat-option>
                         </mat-select>
                         <mat-error *ngIf="agregarHotelForm.get('Idzona').hasError('required')">
-                            La zona es <strong>Requerida</strong>
+                            La zona es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
-
                 </div>
-
                 <div class="flex-row2">
-
                     <div>
                         <h3>Imagen principal</h3>
                         <div>
@@ -110,10 +92,9 @@
                             <input #file type="file" accept='image/*' (change)="preview($event)" formControlName="imagenPrincipal"/>
                         </div>
                         <mat-error *ngIf="agregarHotelForm.get('imagenPrincipal').hasError('required')">
-                            La imagen principal es <strong>Requerida</strong>
+                            La imagen principal es <strong>requerida</strong>
                         </mat-error>
                     </div>
-
                     <div>
                         <h3>imagen adicional</h3>
                         <div>
@@ -124,7 +105,6 @@
                             <input #file2 type="file" accept='image/*' (change)="preview2($event)" />
                         </div>
                     </div>
-
                     <div>
                         <h3>imagen adicional</h3>
                         <div>
@@ -135,85 +115,63 @@
                             <input #file3 type="file" accept='image/*' (change)="preview3($event)" />
                         </div>
                     </div>
-
                 </div>
-
                 <div class="left">
-
                     <mat-form-field appearance="fill" class="comBox" style="margin-top: 1%;">
                         <mat-label>Condiciones de bioseguridad del hotel</mat-label>
                         <textarea matInput formControlName="Condicionesbioseguridad"></textarea>
                         <mat-error *ngIf="agregarHotelForm.get('Condicionesbioseguridad').hasError('required')">
-                            Las condiciones de bioseguridad es <strong>Requerida</strong>
+                            Las condiciones de bioseguridad es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
-
                     <mat-form-field appearance="fill" class="comBox2">
                         <mat-label>Dirección</mat-label>
                         <input matInput formControlName="Direccion">
                         <mat-error *ngIf="agregarHotelForm.get('Direccion').hasError('required')">
-                            La dirección es <strong>Requerida</strong>
+                            La dirección es <strong>requerida</strong>
                         </mat-error>
                     </mat-form-field>
-
                 </div>
-
                 <div class="flex-row">
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
-                            <mat-label>Check In</mat-label>
+                            <mat-label>Check-in</mat-label>
                             <input matInput formControlName="Checkin" type="time">
                             <mat-error *ngIf="agregarHotelForm.get('Checkin').hasError('required')">
-                                El check in es <strong>Requerido</strong>
+                                El check-in es <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
-                            <mat-label>Check Out</mat-label>
+                            <mat-label>Check-out</mat-label>
                             <input matInput formControlName="Checkout" type="time">
                             <mat-error *ngIf="agregarHotelForm.get('Checkout').hasError('required')">
-                                El check out es <strong>Requerido</strong>
+                                El check-out es <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                 </div>
-
                 <div class="flex-row">
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Descripción</mat-label>
                             <textarea matInput formControlName="Descripcion"></textarea>
                             <mat-error *ngIf="agregarHotelForm.get('Descripcion').hasError('required')">
-                                La descripción es <strong>Requerida</strong>
+                                La descripción es <strong>requerida</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                     <div>
-
                         <mat-form-field appearance="fill" class="field">
                             <mat-label>Condiciones</mat-label>
                             <textarea matInput formControlName="Condicion"></textarea>
                             <mat-error *ngIf="agregarHotelForm.get('Condicion').hasError('required')">
-                                La condición es <strong>Requerida</strong>
+                                La condición es <strong>requerida</strong>
                             </mat-error>
                         </mat-form-field>
-
                     </div>
-
                 </div>
-
             </form>
         </div>
     </mat-card-content>

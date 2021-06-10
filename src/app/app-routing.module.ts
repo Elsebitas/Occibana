@@ -34,7 +34,6 @@ const routes: Routes = [
       {path: 'reservashotel', component: ReservasHotelComponent},
       {path: 'agregarhotel', component: AgregarHotelComponent}
   ], canActivate: [GuardianService]}, //Guardian
-
   {path: 'error401', component: Error401Component},
   {path: 'mis_reservas', component: MisReservasComponent},
   {path: 'comentar-calificar', component: ComentarCalificarComponent},

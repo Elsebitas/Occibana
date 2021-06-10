@@ -1,4 +1,3 @@
-
 <mat-card>
     <mat-card-content>
         <div class="flex-row">
@@ -8,13 +7,10 @@
                 <div class="precioHab">¡Bienvenido a editar perfil!</div>
                 <!--<button mat-raised-button type="submit" class="boton" style="cursor: pointer" color="primary">Agregar Habitacion</button>-->
                 <img  width="100%" height="100%" class="imagenHotel">
-
             </div>
-
             <div class="derecha">
                 <br><br><br>
                 <form class="example-container" [formGroup]="actualizarform" (ngSubmit)="enviar(f)" #f="ngForm">
-
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>{{cargarDatosPerfil.datos.usuario}}</mat-label>
                         <input #entradaUsuario matInput placeholder="Nuevo usuario" formControlName="UsuarioRegistro">
@@ -24,13 +20,12 @@
                             Usuario es <strong>requerido</strong>
                         </mat-error>
                         <mat-error *ngIf="actualizarform.get('UsuarioRegistro').hasError('minlength')">
-                            El número de caracteres mínimo es <strong>3</strong>
+                            El número de carácteres mínimo es <strong>3</strong>
                         </mat-error>
                         <mat-error *ngIf="actualizarform.get('UsuarioRegistro').hasError('maxlength')">
-                            Excedió el número de <strong>caracteres</strong>
+                            Excedió el número de <strong>carácteres</strong>
                         </mat-error>
                     </mat-form-field>
-        
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>{{cargarDatosPerfil.datos.nombre}}</mat-label>
                         <input #entradaNombre matInput placeholder="Nuevo nombre" formControlName="NombreRegistro">
@@ -43,10 +38,9 @@
                             El número de caracteres mínimo es <strong>3</strong>
                         </mat-error>
                         <mat-error *ngIf="actualizarform.get('NombreRegistro').hasError('maxlength')">
-                            Excedió el número de <strong>caracteres</strong>
+                            Excedió el número de <strong>carácteres</strong>
                         </mat-error>
                     </mat-form-field>
-        
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>{{cargarDatosPerfil.datos.apellido}}</mat-label>
                         <input #entradaApellido matInput placeholder="Nuevo apellido" formControlName="ApellidoRegistro">
@@ -56,22 +50,20 @@
                             Sólo se permiten letras de <strong>A-Z</strong>
                         </mat-error>
                         <mat-error *ngIf="actualizarform.get('ApellidoRegistro').hasError('minlength')">
-                            El número de caracteres mínimo es <strong>3</strong>
+                            El número de carácteres mínimo es <strong>3</strong>
                         </mat-error>
                         <mat-error *ngIf="actualizarform.get('ApellidoRegistro').hasError('maxlength')">
-                            Excedió el número de <strong>caracteres</strong>
+                            Excedió el número de <strong>carácteres</strong>
                         </mat-error>
                     </mat-form-field>
-        
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>{{cargarDatosPerfil.datos.correo}}</mat-label>
                         <input #entradaCorreo matInput placeholder="Nuevo correo" formControlName="CorreoRegistro">
                         <mat-icon class="colorIcon" matPrefix>email</mat-icon>
                         <mat-error *ngIf="actualizarform.get('CorreoRegistro').hasError('email')">
-                            Ingresa un correo <strong>válido</strong>
+                            Ingrese un correo <strong>válido</strong>
                         </mat-error>
                     </mat-form-field>
-        
                     <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>{{cargarDatosPerfil.datos.telefono}}</mat-label>
                         <input matInput placeholder="Nuevo telefono" formControlName="TelefonoRegistro" type="tel">
@@ -84,11 +76,9 @@
                         </mat-error>
                         <mat-error
                             *ngIf="actualizarform.get('TelefonoRegistro').errors?.validarInicialTelefono && !actualizarform.get('TelefonoRegistro').hasError('required')">
-                            Por favor ingresa un teléfono válido
+                            Por favor ingrese un teléfono válido
                         </mat-error>
-        
                     </mat-form-field>
-        
                     <button mat-raised-button color="primary" class="boton" type="submit">
                         <mat-icon>update</mat-icon>
                         <span> Actualizar</span>
@@ -103,5 +93,3 @@
         </div>
     </mat-card-content>
 </mat-card>
-
-

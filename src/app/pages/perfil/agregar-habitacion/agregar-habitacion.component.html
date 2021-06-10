@@ -9,7 +9,7 @@
                         <mat-icon>arrow_forward</mat-icon> Número de camas <strong></strong>
                     </div>
                     <div class="numPer">
-                        <mat-icon>arrow_forward</mat-icon> Maxima capacidad<strong></strong>
+                        <mat-icon>arrow_forward</mat-icon> Máxima capacidad<strong></strong>
                     </div>
                     <div class="precioHab">{{nombre}}</div>
                     <div class="numeroCam"><strong>{{selected}}</strong>$/noche</div>
@@ -17,10 +17,9 @@
                         <mat-icon>arrow_forward</mat-icon> Total de baños <strong></strong>
                     </div>
                     <button mat-raised-button type="submit" class="boton" style="cursor: pointer"
-                        [disabled]="agregarhform.invalid" color="primary">Agregar Habitacion</button>
+                        [disabled]="agregarhform.invalid" color="primary">Agregar habitacion</button>
                     <img src="./assets/images/hotel4.jpg" width="100%" height="100%" class="imagenHotel">
                 </div>
-                
                 <div class="derecha">
                     <button mat-fab style="cursor: pointer" class="botonCerrar" color="warn" routerLink="/perfil">
                         <mat-icon>clear</mat-icon>
@@ -29,15 +28,15 @@
                     <h2 class="subtitles2">Agregar nueva habitación</h2>
                     <p>
                         <mat-form-field appearance="outline">
-                            <mat-label>Numero de baños</mat-label>
+                            <mat-label>Número de baños</mat-label>
                             <input matInput name="Numero de baños" minlength="1" maxlength="1"
                                 formControlName="numbanios">
                             <mat-icon matSuffix>wc</mat-icon>
                             <mat-error *ngIf="agregarhform.get('numbanios').hasError('required')">
-                                Numero de baños <strong>requerido</strong>
+                                Número de baños <strong>requerido</strong>
                             </mat-error>
                             <mat-error *ngIf="agregarhform.get('numbanios').hasError('pattern')">
-                                Se aceptan solo <strong>numeros</strong>
+                                Se aceptan sólo <strong>números</strong>
                             </mat-error>
                         </mat-form-field>
                     </p>
@@ -51,34 +50,34 @@
                                 Cantidad de personas <strong>requerido</strong>
                             </mat-error>
                             <mat-error *ngIf="agregarhform.get('cantpersonas').hasError('pattern')">
-                                Se aceptan solo <strong>numeros</strong>
+                                Se aceptan sólo <strong>números</strong>
                             </mat-error>
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="fill">
-                            <mat-label>Tipo de Habitacion</mat-label>
+                            <mat-label>Tipo de habitacion</mat-label>
                             <mat-select required [(value)]="selected" formControlName="tipo">
                                 <mat-option value="10000">Básica</mat-option>
                                 <mat-option value="20000">Doble</mat-option>
                                 <mat-option value="40000">Premium</mat-option>
                             </mat-select>
                             <mat-error *ngIf="agregarhform.get('tipo').hasError('required')">
-                                Tipo de Habitacion <strong>requerido</strong>
+                                Tipo de habitacion <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field appearance="outline">
-                            <mat-label>Numero de camas</mat-label>
+                            <mat-label>Número de camas</mat-label>
                             <input matInput name="Numero de camas" minlength="1" maxlength="1"
                                 formControlName="cantcamas">
                             <mat-icon matSuffix>hotel</mat-icon>
                             <mat-error *ngIf="agregarhform.get('cantcamas').hasError('required')">
-                                Numero de camas <strong>requerido</strong>
+                                Número de camas <strong>requerido</strong>
                             </mat-error>
                             <mat-error *ngIf="agregarhform.get('cantcamas').hasError('pattern')">
-                                Se aceptan solo <strong>numeros</strong>
+                                Se aceptan sólo <strong>números</strong>
                             </mat-error>
                         </mat-form-field>
                     </p>

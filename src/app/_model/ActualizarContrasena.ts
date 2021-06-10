@@ -1,6 +1,5 @@
 import { RegistroUsuarios } from './RegistroUsuarios';
 
-
 export class ActualizarContrasena{
     usuario: string;
     Correo: string;

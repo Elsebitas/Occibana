@@ -1,6 +1,5 @@
 import { ProgressbarService } from './../../../_service/progressbar.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { element } from 'protractor';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ListasMunicipios } from './../../../_model/ListasMunicipios';
 import { ListasZonas } from './../../../_model/ListasZonas';
 import { ListasService } from './../../../_service/listas.service';
@@ -16,17 +15,24 @@ import { Validators } from '@angular/forms';
   templateUrl: './agregar-hotel.component.html',
   styleUrls: ['./agregar-hotel.component.css']
 })
+
 export class AgregarHotelComponent implements OnInit {
 
   view:boolean= true;
 
    
   public imagePath;
+
   imgURL: any;
+
   public message: string;
+
   imgURL2: any;
+
   public message2: string;
+
   imgURL3: any;
+
   public message3: string;
 
   extension: string;
@@ -37,11 +43,14 @@ export class AgregarHotelComponent implements OnInit {
   sellersPermitString: string;
 
   public listasMunicipios: ListasMunicipios[];
+
   public listasZonas: ListasZonas[];
   
   agregarHotelForm: FormGroup;
 
   private id: any;
+
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(private panelHotelService: PanelHotelService,
               private listasService: ListasService,
@@ -49,32 +58,32 @@ export class AgregarHotelComponent implements OnInit {
               private router:Router,
               private snackBar: MatSnackBar) {
 
-    this.id = +localStorage.getItem("iduser");
+                this.id = +localStorage.getItem("iduser");
 
-    this.agregarHotelForm = new FormGroup({
-      nombreH: new FormControl('',[Validators.required,Validators.maxLength(30),Validators.minLength(5)]),
-      municipio:new FormControl('',[Validators.required]),
-      idMunicipio:new FormControl('',[Validators.required]),
-      precioBasica:new FormControl('',[Validators.required]),
-      precioDoble:new FormControl('',[Validators.required]),
-      precioPremium:new FormControl('',[Validators.required]),
-      Descripcion:new FormControl('',[Validators.required]),
-      Condicion:new FormControl('',[Validators.required]),
-      Checkin:new FormControl('',[Validators.required]),
-      Checkout:new FormControl('',[Validators.required]),
-      UsuarioEncargadoSession:new FormControl(),
-      idUsuario:new FormControl(),
-      Idzona:new FormControl('',[Validators.required]),
-      Condicionesbioseguridad:new FormControl('',[Validators.required]),
-      Direccion:new FormControl('',[Validators.required]),
-      imagenPrincipal:new FormControl('',[Validators.required]),
-      'imagenPrincipal-extension':new FormControl(),
-      imagen2:new FormControl(),
-      'imagen2-extension':new FormControl(),
-      imagen3:new FormControl(),
-      'imagen3-extension':new FormControl(),
-    });
-   }
+                this.agregarHotelForm = new FormGroup({
+                  nombreH: new FormControl('',[Validators.required,Validators.maxLength(30),Validators.minLength(5)]),
+                  municipio:new FormControl('',[Validators.required]),
+                  idMunicipio:new FormControl('',[Validators.required]),
+                  precioBasica:new FormControl('',[Validators.required]),
+                  precioDoble:new FormControl('',[Validators.required]),
+                  precioPremium:new FormControl('',[Validators.required]),
+                  Descripcion:new FormControl('',[Validators.required]),
+                  Condicion:new FormControl('',[Validators.required]),
+                  Checkin:new FormControl('',[Validators.required]),
+                  Checkout:new FormControl('',[Validators.required]),
+                  UsuarioEncargadoSession:new FormControl(),
+                  idUsuario:new FormControl(),
+                  Idzona:new FormControl('',[Validators.required]),
+                  Condicionesbioseguridad:new FormControl('',[Validators.required]),
+                  Direccion:new FormControl('',[Validators.required]),
+                  imagenPrincipal:new FormControl('',[Validators.required]),
+                  'imagenPrincipal-extension':new FormControl(),
+                  imagen2:new FormControl(),
+                  'imagen2-extension':new FormControl(),
+                  imagen3:new FormControl(),
+                  'imagen3-extension':new FormControl(),
+                });
+              }
 
   ngOnInit(): void {
     this.setData();
@@ -88,7 +97,6 @@ export class AgregarHotelComponent implements OnInit {
     this.postAgregarHotel(formularioAgregarHotel);
   } 
 
-
   setData(){
     this.agregarHotelForm.controls['idUsuario'].setValue(this.id);
     this.agregarHotelForm.controls['UsuarioEncargadoSession'].setValue(this.id);
@@ -100,7 +108,7 @@ export class AgregarHotelComponent implements OnInit {
       //console.log(data);
       agregarHotel = data; 
       if(agregarHotel.mensaje == "*Imagen aceptada"){
-        this.openSnackBar('Hotel agregado','ACEPTAR');        
+        this.openSnackBar('Hotel agregado','Aceptar');        
         this.progressbarService.barraProgreso.next("2");
         this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
           this.router.navigate(['/perfil']);
@@ -124,7 +132,10 @@ export class AgregarHotelComponent implements OnInit {
   }    
 
   openSnackBar(message: string, action: string){
-    this.snackBar.open(message, action);
+    this.snackBar.open(message, action, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 
   select(nose){
@@ -202,24 +213,24 @@ export class AgregarHotelComponent implements OnInit {
   }
 
   public picked(event) {
-        let fileList: FileList = event.target.files;
-        const file: File = fileList[0];
-        this.sellersPermitFile = file;
-        this.handleInputChange(file); //turn into base64   
+    let fileList: FileList = event.target.files;
+    const file: File = fileList[0];
+    this.sellersPermitFile = file;
+    this.handleInputChange(file); //turn into base64   
   }
 
   public picked2(event) {
-        let fileList: FileList = event.target.files;
-        const file: File = fileList[0];
-        this.sellersPermitFile = file;
-        this.handleInputChange2(file); //turn into base64   
+    let fileList: FileList = event.target.files;
+    const file: File = fileList[0];
+    this.sellersPermitFile = file;
+    this.handleInputChange2(file); //turn into base64   
   }
 
   public picked3(event) {
-        let fileList: FileList = event.target.files;
-        const file: File = fileList[0];
-        this.sellersPermitFile = file;
-        this.handleInputChange3(file); //turn into base64   
+    let fileList: FileList = event.target.files;
+    const file: File = fileList[0];
+    this.sellersPermitFile = file;
+    this.handleInputChange3(file); //turn into base64   
   }
 
   handleInputChange(files) {
@@ -304,7 +315,7 @@ export class AgregarHotelComponent implements OnInit {
   }
 
   valiadarFormato(exten: string) {
-    console.log(exten);
+    //console.log(exten);
     if (exten == "image/jpeg") {
       this.extension = ".jpeg"
     }
@@ -322,7 +333,6 @@ export class AgregarHotelComponent implements OnInit {
 
   log() { 
     // for debug
-    console.log('base64', this.sellersPermitString);
-
+    //console.log('base64', this.sellersPermitString);
   }
 }

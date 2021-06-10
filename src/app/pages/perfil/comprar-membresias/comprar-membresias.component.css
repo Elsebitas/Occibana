@@ -1,31 +1,28 @@
 mat-card {
-    padding: 0px;
-    background-color:white;
-    width: 80%;
-    margin: 2em auto;
-    margin-top: 5%;
-    background: rgba(0,0,0,0.1);
+  padding: 0px;
+  background-color:white;
+  width: 80%;
+  margin: 2em auto;
+  margin-top: 5%;
+  background: rgba(0,0,0,0.1);
 }
 
-
-
-
 .imagenHotel{
-    fill-opacity: initial;
-    opacity: 0.8;
+  fill-opacity: initial;
+  opacity: 0.8;
 }
 
 .mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
+  margin-left: 16px;
 }
 
 .fecha{
-    margin-left: 5%;
-    width: 43%;
+  margin-left: 5%;
+  width: 43%;
 }
 
 .fotoperfil{
-    top: 10%;
+  top: 10%;
   left: 0px;
   right: 0px;
   position: absolute;
@@ -34,74 +31,70 @@ mat-card {
   border: 2px rgb(147, 1, 245)
 }
 
-
 .tituloTarjeta{
-    text-align: center;
-    margin-top: 1%;
-    font-size: 30px;
-    margin-bottom: 20px;
-    font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 600;
-    color: white;
+  text-align: center;
+  margin-top: 1%;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-family: "HelveticaNeue-Bold","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 600;
+  color: white;
 }
 
 .field{
-    margin-left: 20px;
-    width: 95%;
+  margin-left: 20px;
+  width: 95%;
 }
 
 .field2{
-    margin-left: 20px;
-    width: 90%;
+  margin-left: 20px;
+  width: 90%;
 }
 
 .boton{
-    margin-top: 5%;
-    margin-bottom: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 .colorIcon{
-    color: #fff;
+  color: #fff;
 }
 
 .botonForm{
-    margin-top: 10px;
-    margin-left: 60px;
-    width: 85%;
+  margin-top: 10px;
+  margin-left: 60px;
+  width: 85%;
 }
 
-
 .textos2{
-    margin-bottom: 5px;
-    margin-left: 20px;
-    color:#fff;
-    font-size: 15px;
-    font-weight: 20;
-  }
+  margin-bottom: 5px;
+  margin-left: 20px;
+  color:#fff;
+  font-size: 15px;
+  font-weight: 20;
+}
 
 .flex-row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  .flex-row div{
-    flex: 50%;
-  }
-  
-  .izquierda{
-    position: relative;
-    width: 100%;
-    
-  }
-  
-  .derecha{  
-    position: relative;  
-    background: #4488dd;
-  }
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
 
-  .imagenHotel{
-    background: rgb(141,154,227);
-    background: linear-gradient(180deg, rgba(141,154,227,1) 5%, rgba(63,81,181,1) 74%, rgba(63,81,181,1) 100%);
-  
-  }
-  
+.flex-row div{
+  flex: 50%;
+}
 
+.izquierda{
+  position: relative;
+  width: 100%;
+  
+}
+
+.derecha{  
+  position: relative;  
+  background: #4488dd;
+}
+
+.imagenHotel{
+  background: rgb(141,154,227);
+  background: linear-gradient(180deg, rgba(141,154,227,1) 5%, rgba(63,81,181,1) 74%, rgba(63,81,181,1) 100%);
+}

@@ -1,58 +1,64 @@
 .contenido{    
-   width:100%;
-   height: 100%;
-  
-  
+  width:100%;
+  height: 100%;
 }
 
 .contenedor2{
   width: 72%;
 }
+
 .tdPicture{    
-    margin-left: 30px;
-    margin-right: 100px;
-    padding-left: 2%;
-    width:250px;
+  margin-left: 30px;
+  margin-right: 100px;
+  padding-left: 2%;
+  width:250px;
 }
+
 .imagen{
-    position: relative;
+  position: relative;
 }
+
 .imagen img{
-    width:200px;
-    height:200px;
-    border-radius:150px;
-    border: 2.5px solid rgba(0, 0, 0, 0.295);
-    
+  width:200px;
+  height:200px;
+  border-radius:150px;
+  border: 2.5px solid rgba(0, 0, 0, 0.295);
 }
+
 .linea{
-    position: absolute;
-    background-color: gray;
-    width: 10px;
+  position: absolute;
+  background-color: gray;
+  width: 10px;
 }
+
 .correo{
-    display: inline;
+  display: inline;
 }
+
 .correo div{
-    position: absolute;
+  position: absolute;
 }
+
 .correoTx{
-    margin-top: 0.2%;
-    margin-left: 2%;
+  margin-top: 0.2%;
+  margin-left: 2%;
 }
+
 .salto{    
-    display: none;
+  display: none;
 }
 
 .green-icon{
-    color: greenyellow;
-}
-.red-icon{
-    color: red;
-}
-.orange-icon{
-    color: orange;
+  color: greenyellow;
 }
 
+.red-icon{
+  color: red;
+}
+
+.orange-icon{
+  color: orange;
+}
 
 .content{
   margin: 2em auto;
@@ -75,7 +81,6 @@
   color:#3f51b5;
 }
 
-
 .line{
   margin-top: -10px;
   margin-bottom: 8px;
@@ -89,164 +94,168 @@
 }
 
 .imgCard{
-    height: 250px;
+  height: 250px;
 }
 
 .center{
-    width: 100%;
+  width: 100%;
 }
 
 .boton {
-    margin-right: 2%;
-    width: 52%;
+  margin-right: 2%;
+  width: 52%;
 }
+
 .boton2 {
-    margin-right: 2%;
-    width: 43%;
+  margin-right: 2%;
+  width: 43%;
 }
+
 .boton3 {
-    position: absolute;
-    margin-top: -2%;
-    margin-left: -10%;
+  position: absolute;
+  margin-top: -2%;
+  margin-left: -10%;
 }
+
 .barraIzquierda{
-    font-weight: bold;
-    font-size: larger;
-    color: #323232;
-    font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  color: #323232;
+  font-family: 'Raleway', sans-serif;
 }
+
 .barraIzquierdaNombre{
-    font-weight: bold;
-    font-size: x-large;
-    color: #323232;
-    font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  color: #323232;
+  font-family: 'Raleway', sans-serif;
 }
+
 .styleboton {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .divBoton{
-    height: 80px;
+  height: 80px;
 }
 .botonAdd{
-    display: scroll;
-    position: absolute;
-    bottom:30px;
-    right:20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
+  display: scroll;
+  position: absolute;
+  bottom:30px;
+  right:20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
 }
 
 /* Boton subir foto */
 .file-select {          
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    
-  }
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
    
-  .file-select::before {
-    background-color: #3f51b5;
-    color: white;
-    font-weight: 600;
-    display: flex;            
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    content: 'Seleccionar'; /* testo por defecto */
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;        
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;      
-    cursor: pointer;  
-  }
-   
-  .file-select input[type="file"] {
-    opacity: 0;
-    width: 200px;
-    height: 32px;
-    display: inline-block;            
-  }
-   
-  #src-file1::before {
-    content: 'Seleccionar Archivo 1';
-  }
-   
-  #src-file2::before {
-    content: 'Seleccionar Archivo 2';
-  }
+.file-select::before {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: 600;
+  display: flex;            
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Seleccionar'; /* testo por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;        
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;      
+  cursor: pointer;  
+}
+  
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;            
+}
+  
+#src-file1::before {
+  content: 'Seleccionar Archivo 1';
+}
+  
+#src-file2::before {
+  content: 'Seleccionar Archivo 2';
+}
 
 .subtitles{
-    margin-top: 20px;
-    color:#555555;
-    letter-spacing: normal;
-    text-rendering: auto;
-    font-size: 32px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
+  margin-top: 20px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
   
-  .subtitles2{
-    margin-top: 10px;
-    color:#555555;
-    letter-spacing: normal;
-    text-rendering: auto;
-    font-size: 25px;
-    font-weight: 500;
-  }
+.subtitles2{
+  margin-top: 10px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.subtitles3{
+  margin-top: 8px;
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.subtitles4{
+  color:#555555;
+  letter-spacing: normal;
+  text-rendering: auto;
+  font-size: 20px;
+  font-weight: 500;
+}
   
-  .subtitles3{
-    margin-top: 8px;
-    color:#555555;
-    letter-spacing: normal;
-    text-rendering: auto;
-    font-size: 25px;
-    font-weight: 500;
-  }
-  .subtitles4{
-    color:#555555;
-    letter-spacing: normal;
-    text-rendering: auto;
-    font-size: 20px;
-    font-weight: 500;
-  }
+.error-container{
+  color:#555555;
+  font-size: 15px;
+  font-weight: 20;
+  margin-top: 50px;
+}
+
+.textos{
+  color:#555555;
+  font-size: 20px;
+  font-weight: 20;
+  font-weight: bold;
+}
   
-  .error-container{
-    color:#555555;
-    font-size: 15px;
-    font-weight: 20;
-    margin-top: 50px;
-  }
+.textos2{
+  color:#555555;
+  font-size: 15px;
+  font-weight: 20;
+}
+
+.lema{
+  color:#555555;
+  font-size: 18px;
+  font-weight: 20;
+}
   
-  .textos{
-    color:#555555;
-    font-size: 20px;
-    font-weight: 20;
-    font-weight: bold;
-  }
-  
-  .textos2{
-    color:#555555;
-    font-size: 15px;
-    font-weight: 20;
-  }
-  
-  .lema{
-    color:#555555;
-    font-size: 18px;
-    font-weight: 20;
-  }
-  
-  .iconoColor{
-    color: #3f51b5;
-  }
+.iconoColor{
+  color: #3f51b5;
+}

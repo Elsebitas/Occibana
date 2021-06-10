@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProgressbarService {
   
   public barraProgreso = new Subject<string>();
@@ -12,5 +13,5 @@ export class ProgressbarService {
 
   public delay() {
     return new Promise(resolve => setTimeout(resolve, 5000));
-}
+  }
 }

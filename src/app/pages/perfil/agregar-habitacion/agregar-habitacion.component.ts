@@ -1,23 +1,32 @@
 import { ProgressbarService } from './../../../_service/progressbar.service';
 import { Router } from '@angular/router';
 import { PerfilService } from '../../../_service/perfil.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { AgregarHabitacion } from '../../../_model/AgregarHabitacion';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-agregar-habitacion',
   templateUrl: './agregar-habitacion.component.html',
   styleUrls: ['./agregar-habitacion.component.css']
 })
+
 export class AgregarHabitacionComponent implements OnInit {
+
   selected;
+
   banios;
+
   agregarhform: FormGroup;
+
   error: string;
+
   id: any;
+
   nombre: string;
+
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
   
   constructor(private agregarHabitacionService: PerfilService,
               private snackBar: MatSnackBar,
@@ -27,7 +36,6 @@ export class AgregarHabitacionComponent implements OnInit {
                 this.nombre = localStorage.getItem("idhotel");
               }
 
-
   ngOnInit(): void {
     this.agregarhform = new FormGroup({
       'numbanios': new FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')]),
@@ -36,7 +44,6 @@ export class AgregarHabitacionComponent implements OnInit {
       'tipo': new FormControl('',[Validators.required]),
     })
   }
-
 
   agregarHabitacion(){
     let agregarH = new AgregarHabitacion();
@@ -57,13 +64,17 @@ export class AgregarHabitacionComponent implements OnInit {
     this.progressbarService.barraProgreso.next("1");
     this.progressbarService.delay();
     this.agregarHabitacionService.postAgregarHabitacion(agregarH).subscribe(data =>{
-      this.openSnackBar('Habitación registrada exitosamente', 'Aceptar');
+      this.openSnackBar('Habitación registrada con éxito', 'Aceptar');
       this.progressbarService.barraProgreso.next("2");
       this.router.navigate(['/perfil']);
     })
   }
 
   openSnackBar(message: string, action: string){
-    this.snackBar.open(message, action);
+    this.snackBar.open(message, action, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
+  
 }

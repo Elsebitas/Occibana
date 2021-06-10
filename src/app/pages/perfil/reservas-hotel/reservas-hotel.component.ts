@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ProgressbarService } from './../../../_service/progressbar.service';
 import { ListasService } from './../../../_service/listas.service';
-import { MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MostrarReservasHotel } from './../../../_model/MostrarReservasHotel';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -13,6 +12,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   templateUrl: './reservas-hotel.component.html',
   styleUrls: ['./reservas-hotel.component.css']
 })
+
 export class ReservasHotelComponent implements OnInit {
 
   mostrarReservasHotel: MostrarReservasHotel;
@@ -26,18 +26,17 @@ export class ReservasHotelComponent implements OnInit {
 
   dataSource2 = new MatTableDataSource<MostrarReservasHotel>();
 
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-
   idHotel: any;
 
   @ViewChild(MatSort) sort: MatSort;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private listasService:ListasService, 
               private progressbarService:ProgressbarService,
               private router: Router) {
-    this.idHotel = +localStorage.getItem("idhotel");
-   }
+                this.idHotel = +localStorage.getItem("idhotel");
+              }
 
   ngOnInit(): void {
     this.getMostrarReservas();

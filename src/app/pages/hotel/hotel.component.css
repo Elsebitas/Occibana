@@ -6,39 +6,43 @@
   border-bottom: 1px solid gainsboro;
   box-shadow: 0px 4px 4px -6px black;
 }
+
 .container div{
   display: inline-block;
   padding-left: 1.5%;
   padding-right: 5%;
   border-right: 1px solid gainsboro;  
 }
+
 .example-card {
   margin-top: 1%;
-    max-width: 385px;
-  }
-  .example-card2 {
-    margin-top: 1%;
-      max-width: 86.5%;
-      background-image: url("/assets/images/cardStyle.jpg");
-      height: 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  
-  .example-header-image {
-    background-image: url("/assets/images/perfilDefault.jpg");
-    background-size: cover;
-  }
+  max-width: 385px;
+}
+
+.example-card2 {
+  margin-top: 1%;
+  max-width: 86.5%;
+  background-image: url("/assets/images/cardStyle.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.example-header-image {
+  background-image: url("/assets/images/perfilDefault.jpg");
+  background-size: cover;
+}
 
 .carrusel{
   margin-top: 1%;
   width: 70%;
-  
 }
+
 .owl-demo .item{
   margin: 3px;
 }
+
 .owl-demo .item img{
   display: block;
   width: 100%;
@@ -50,12 +54,15 @@ table{
   width: 100%;
   position: relative;
 }
+
 .tableCarrusel{
   width: 60%;
 }
+
 .botonImg{
   width: 5%;
 }
+
 .tableTitulo{
   position: relative;
   float: right;
@@ -74,11 +81,9 @@ table{
 .contenidoInformacion{
   margin-top: 15px;
   margin-left: 10px;
- 
 }
 
 .infohotel div{
-
   display: inline-table;
   margin-left: 5%;  
 }
@@ -87,16 +92,19 @@ table{
   color: #3f51b5;
   font-size: 60px;
 }
+
 .info{
   margin-top: 3%;
   margin-left: 5%;
   margin-right: 5%;
 }
+
 .habitacion{
   margin-top: 3%;
   margin-left: 5%;
   width: 100%;
 }
+
 .linea{
   border: 0.5px solid gray;
   width: 90%;
@@ -105,13 +113,14 @@ table{
 .habitacion2{
   margin-top: 2%;
 }
+
 .habitacion2 h2{
   text-align: center;
 }
+
 .habitacion2 button{
   margin-left: 41%;
 }
-
 
 .subtitles{
   margin-top: 20px;
@@ -140,6 +149,7 @@ table{
   font-size: 25px;
   font-weight: 500;
 }
+
 .subtitles4{
   color:#555555;
   letter-spacing: normal;
@@ -268,6 +278,5 @@ table{
 }
 
 .centrar{
- 
   text-align: center;
 }

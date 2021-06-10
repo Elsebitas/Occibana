@@ -4,21 +4,20 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { PanelHotelService } from './../../_service/panel-hotel.service';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
-import { InicioComponent } from './../inicio/inicio.component';
 import { ObtenerComentarios } from './../../_model/ObtenerComentarios';
 import { ListasService } from './../../_service/listas.service';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HabitacionesHotel } from 'src/app/_model/HabitacionesHotel';
-
-
 
 const info ={
   IdDelHotelSession: 0
 };
+
 const habitacion ={
   IdHabitacionSession: 1
 };
+
 const habitacionHotel ={
   idHotel:72,
   numPersonas:null
@@ -29,6 +28,7 @@ const habitacionHotel ={
   templateUrl: './hotel.component.html',
   styleUrls: ['./hotel.component.css']
 })
+
 export class HotelComponent implements OnInit {
 
   customOptions: OwlOptions = {
@@ -52,6 +52,7 @@ export class HotelComponent implements OnInit {
   hotelesPrincipales: HotelesPrincipales;
 
   private id: any;
+
   private idHabitacion: number;
 
   obtenerComentarios: ObtenerComentarios;
@@ -61,25 +62,21 @@ export class HotelComponent implements OnInit {
   public habitacionesHotel :HabitacionesHotel[]; 
 
   url:string;
+
   url2:string;
 
+  public comentarios:any = []; 
 
   constructor(private listasService: ListasService, 
               private router: Router, 
               private progressbarService: ProgressbarService, 
               private panelHotelService: PanelHotelService,
               public route: ActivatedRoute) {
+                //this.id = this.router.getCurrentNavigation().extras.state.idhotel;
+                this.id = localStorage.getItem("idhotel");
+                this.informacionHotel = new InformacionHotel();
+              }
   
-    //this.id = this.router.getCurrentNavigation().extras.state.idhotel;
-    this.id = localStorage.getItem("idhotel");
-    this.informacionHotel = new InformacionHotel();
-
-   }
-
-  
-  
-  //Creo el array
-  public comentarios:any = []; 
   ngOnInit(): void {    
     this.url = environment.REALHOST;
     this.url2 = environment.URLPHOTOS2; 
@@ -95,7 +92,7 @@ export class HotelComponent implements OnInit {
   postObtenerInformacion(){
     this.panelHotelService.postInformacionDelHotel(info).subscribe(data =>{
       //console.log("info hotel");
-      console.log(data);
+      //console.log(data);
       this.informacionHotel = data;
     })
   }
@@ -131,8 +128,8 @@ export class HotelComponent implements OnInit {
     this.router.navigate(['/hotel/reservar']);
   }
 
-  
   scroll(el: HTMLElement){
     el.scrollIntoView();
   }
+  
 }

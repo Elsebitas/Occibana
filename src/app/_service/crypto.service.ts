@@ -1,8 +1,6 @@
 import { AppModule } from './../app.module';
-import { Observable } from 'rxjs';
 import { Injectable, Pipe } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { Login } from '../_model/Login';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +8,16 @@ import { Login } from '../_model/Login';
 export class CryptoService {
 
   private tokenFromUI: string = "occibana20010209";
+
   encrypted: any ="";
+
   decrypted: string;
 
   request: string;
+
   responce: string;
-  constructor(private appModule: AppModule) {
-    
-  }
+
+  constructor(private appModule: AppModule) {}
   
   encryptUsingAES256(titulo: string, datosUser: string) {
     

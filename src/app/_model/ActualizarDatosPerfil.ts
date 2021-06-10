@@ -1,4 +1,3 @@
-
 export class ActualizarDatosPerfil {
   NombreRegistro: string;
   ApellidoRegistro: string;

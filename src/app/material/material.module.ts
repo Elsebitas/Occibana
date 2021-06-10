@@ -23,17 +23,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatRadioModule} from '@angular/material/radio';
-
-
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatStepperModule} from '@angular/material/stepper';
-
-
-
 
 /**
  * Modulo donde se realizan importaciones de AngularMaterial.
@@ -78,7 +73,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatStepperModule,
     MatProgressBarModule,
     MatRadioModule
-
     
   ], exports:[
     MatButtonModule,
@@ -115,6 +109,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatProgressBarModule,
     MatGridListModule,
     MatRadioModule
+    
   ]
 })
 export class MaterialModule { }

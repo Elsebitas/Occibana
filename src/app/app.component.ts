@@ -6,7 +6,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { DialogLemaComponent } from './pages/dialog-lema/dialog-lema.component';
 import { DialogVisionComponent } from './pages/dialog-vision/dialog-vision.component';
 import { DialogMisionComponent } from './pages/dialog-mision/dialog-mision.component';
-
 import { ProgressbarService } from './_service/progressbar.service';
 import { Router } from '@angular/router';
 import { environment } from './../environments/environment';
@@ -18,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 /**
  * Clase que funciona como Master Page e implementa de DoCheck.
  */
@@ -37,6 +37,7 @@ export class AppComponent implements DoCheck {
   bandera: number =2;
 
   url: string;
+
   url2: string;
 
   cargarDatosPerfil: CargarDatosPerfil;
@@ -53,14 +54,14 @@ export class AppComponent implements DoCheck {
               private perfilService: PerfilService,
               private registroLoginService:RegistroLoginService,
               public dialogo: MatDialog) {
-    this.url2 = environment.URLPHOTOS;
-    progressbarService.barraProgreso.subscribe(data => {
-      if (data == "1")
-        this.barraProgreso = false;
-      else
-        this.barraProgreso = true;
-    });
-  }
+                this.url2 = environment.URLPHOTOS;
+                progressbarService.barraProgreso.subscribe(data => {
+                  if (data == "1")
+                    this.barraProgreso = false;
+                  else
+                    this.barraProgreso = true;
+                });
+              }
 
   /**
    * Método que verifica el estado del sessionStorage.
@@ -87,7 +88,6 @@ export class AppComponent implements DoCheck {
       let datosPerfil: DatosPerfil;
       datosPerfil = new DatosPerfil();
       datosPerfil.usuario = decodedToken.name;
-
 
       this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
         this.cargarDatosPerfil = data;
@@ -117,9 +117,7 @@ export class AppComponent implements DoCheck {
       width: '700px', height: '245px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      
-    });
+    dialogRef.afterClosed().subscribe(result => { });
   }
 
   openDialogVision(){
@@ -128,7 +126,6 @@ export class AppComponent implements DoCheck {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
     });
   }
 
@@ -138,7 +135,6 @@ export class AppComponent implements DoCheck {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
     });
   }
   

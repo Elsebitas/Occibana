@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './error401.component.html',
   styleUrls: ['./error401.component.css']
 })
+
 /**
  * Clase del componente Error401 que implementa OnInit.
  */
@@ -18,8 +19,7 @@ import { Component, OnInit } from '@angular/core';
   /**
    * Método ngOnInit.
    */
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
 

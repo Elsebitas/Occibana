@@ -12,9 +12,7 @@ export class DialogoElimReservaComponent implements OnInit {
       public dialogRef: MatDialogRef<DialogoElimReservaComponent>,
       @Inject(MAT_DIALOG_DATA) public idReserva: number) { }
 
-  ngOnInit(): void {
-    //console.log(this.idReserva);
-  }
+  ngOnInit(): void {}
 
   aceptar(): void {
     this.dialogRef.close({

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './error404.component.html',
   styleUrls: ['./error404.component.css']
 })
+
 /**
  * Clase del componente Error404 que implementa OnInit.
  */
@@ -18,7 +19,6 @@ export class Error404Component implements OnInit {
   /**
    * Método ngOnInit.
    */
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

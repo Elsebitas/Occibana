@@ -6,12 +6,12 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './dialog-vision.component.html',
   styleUrls: ['./dialog-vision.component.css']
 })
+
 export class DialogVisionComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogVisionComponent>) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   aceptar(): void {
     this.dialogRef.close({

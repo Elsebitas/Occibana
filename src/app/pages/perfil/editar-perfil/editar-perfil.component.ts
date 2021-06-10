@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilService } from 'src/app/_service/perfil.service';
 import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
 
 @Component({
@@ -20,59 +20,63 @@ import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
   templateUrl: './editar-perfil.component.html',
   styleUrls: ['./editar-perfil.component.css']
 })
+
 export class EditarPerfilComponent implements OnInit {
 
   actualizarform: FormGroup;
 
   actualizarDatosPerfil: ActualizarDatosPerfil;
+
   cargarDatosPerfil: CargarDatosPerfil;
+
   datosPerfil: DatosPerfil;
+
   traerMensajeDatosPerfil: TraerMensajeDatosPerfil;
+
   login: Login;
 
   url: string;
+
   url2: string;
 
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(private perfilService: PerfilService,
-    private progressbarService: ProgressbarService,
-    private router: Router,
-    public route: ActivatedRoute,
-    private _snackBar: MatSnackBar,
-    private cryptoService: CryptoService,
-    private registroLoginService: RegistroLoginService) {
-    this.datosPerfil = new DatosPerfil();
-    this.actualizarDatosPerfil = new ActualizarDatosPerfil();
-    this.actualizarform = new FormGroup({
-      UsuarioRegistro: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
-      NombreRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
-      ApellidoRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
-      CorreoRegistro: new FormControl('', [Validators.email]),
-      TelefonoRegistro: new FormControl('', [Validators.pattern('^[0-9]+$'), Validators.maxLength(10), ValidacionesPropias.validarTelefono]),
+              private progressbarService: ProgressbarService,
+              private router: Router,
+              public route: ActivatedRoute,
+              private snackBar: MatSnackBar,
+              private cryptoService: CryptoService,
+              private registroLoginService: RegistroLoginService) {
+              this.datosPerfil = new DatosPerfil();
+              this.actualizarDatosPerfil = new ActualizarDatosPerfil();
+              this.actualizarform = new FormGroup({
+                UsuarioRegistro: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
+                NombreRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
+                ApellidoRegistro: new FormControl('', [Validators.pattern('^[a-zA-Z]+$'), Validators.minLength(3), Validators.maxLength(25)]),
+                CorreoRegistro: new FormControl('', [Validators.email]),
+                TelefonoRegistro: new FormControl('', [Validators.pattern('^[0-9]+$'), Validators.maxLength(10), ValidacionesPropias.validarTelefono]),
 
-      UsuarioSession: new FormControl(''),
-      NombreSession: new FormControl(''),
-      ApellidoSession: new FormControl(''),
-      CorreoSession: new FormControl(''),
-      TelefonoSession: new FormControl(''),
-
-      UsuarioIdSession: new FormControl('')
-    })
+                UsuarioSession: new FormControl(''),
+                NombreSession: new FormControl(''),
+                ApellidoSession: new FormControl(''),
+                CorreoSession: new FormControl(''),
+                TelefonoSession: new FormControl(''),
+                UsuarioIdSession: new FormControl('')
+              })
+            }
+  
+  ngOnInit(): void {
+    this.url2 = environment.URLPHOTOS;
+    this.postCargarDatosPerfil();
   }
   setearDatos() {
-
-
     this.actualizarform.controls['UsuarioSession'].setValue(this.cargarDatosPerfil.datos.usuario);
     this.actualizarform.controls['NombreSession'].setValue(this.cargarDatosPerfil.datos.nombre);
     this.actualizarform.controls['ApellidoSession'].setValue(this.cargarDatosPerfil.datos.apellido);
     this.actualizarform.controls['CorreoSession'].setValue(this.cargarDatosPerfil.datos.correo);
     this.actualizarform.controls['TelefonoSession'].setValue(this.cargarDatosPerfil.datos.telefono);
-
     this.actualizarform.controls['UsuarioIdSession'].setValue(this.cargarDatosPerfil.datos.id);
-  }
-
-  ngOnInit(): void {
-    this.url2 = environment.URLPHOTOS;
-    this.postCargarDatosPerfil();
   }
 
   enviar(f: NgForm) {
@@ -88,7 +92,7 @@ export class EditarPerfilComponent implements OnInit {
       console.log(data);
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
-      this.openSnackBar(this.traerMensajeDatosPerfil.mensaje, 'ACEPTAR');
+      this.openSnackBar(this.traerMensajeDatosPerfil.mensaje, 'Aceptar');
       if (this.traerMensajeDatosPerfil.mensaje != "Utiliza otro usuario, este ya existe o esta registrado") {        
         this.relogin(this.traerMensajeDatosPerfil);
       }
@@ -99,27 +103,25 @@ export class EditarPerfilComponent implements OnInit {
   postCargarDatosPerfil() {
     this.progressbarService.barraProgreso.next("1");
     this.url = environment.HOST;
-
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
     //console.log(decodedToken.name);
-
     this.datosPerfil.usuario = decodedToken.name;
-
     this.perfilService.postCargarDatosPerfil(this.datosPerfil).subscribe(data => {
       this.cargarDatosPerfil = data;
       //console.log(data);
       //console.log(this.cargarDatosPerfil);
       this.setearDatos();
       //this.asignarDatosDefecto();
-
     })
     this.progressbarService.barraProgreso.next("2");
-
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this.snackBar.open(message, action, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 
   relogin(actDatosPerf: TraerMensajeDatosPerfil) {
@@ -134,7 +136,5 @@ export class EditarPerfilComponent implements OnInit {
       });
     })
   }
-
-
 
 }

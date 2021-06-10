@@ -1,5 +1,5 @@
 import { ProgressbarService } from './../../../_service/progressbar.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HabitacionesHotel } from './../../../_model/HabitacionesHotel';
 import { ListasService } from './../../../_service/listas.service';
 import { RegistroLoginService } from './../../../_service/registroLogin.service';
@@ -11,7 +11,6 @@ import { PanelHotelService } from './../../../_service/panel-hotel.service';
 import { Component, OnInit } from '@angular/core';
 import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
 import { formatDate } from '@angular/common';
-
 
 let dispo = {
   IdDelHotelSession: 73,
@@ -35,60 +34,67 @@ const habitacionHotel = {
   numPersonas: null
 };
 
-
 @Component({
   selector: 'app-reservar',
   templateUrl: './reservar.component.html',
   styleUrls: ['./reservar.component.css']
 })
+
 export class ReservarComponent implements OnInit {
 
   boton: boolean = true;
+
   logeado: boolean = true;
 
   public habitacionesHotel: HabitacionesHotel[];
+
   public habitacionesH: HabitacionesHotel;
 
   private id: any;
+
   private idhabita: any;
+
   public nombreHotel: string;
 
   reservaForm: FormGroup;
 
   fechaInicio: string;
+
   fechaFin: string;
+
   mensaje: string;
 
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(private panelHotelService: PanelHotelService,
-    private router: Router,
-    private cryptoService: CryptoService,
-    private registroLoginService: RegistroLoginService,
-    private snackBar: MatSnackBar,
-    private progressbarService: ProgressbarService,
-    private listasService: ListasService) {
-    this.id = +localStorage.getItem("idhotel");
-    this.idhabita = +localStorage.getItem("idhabitacion");
-    this.nombreHotel = localStorage.getItem("nombreHotel");
+              private router: Router,
+              private cryptoService: CryptoService,
+              private registroLoginService: RegistroLoginService,
+              private snackBar: MatSnackBar,
+              private progressbarService: ProgressbarService,
+              private listasService: ListasService) {
+                this.id = +localStorage.getItem("idhotel");
+                this.idhabita = +localStorage.getItem("idhabitacion");
+                this.nombreHotel = localStorage.getItem("nombreHotel");
 
-    habitacionHotel.idHotel = this.id;
+                habitacionHotel.idHotel = this.id;
 
-    this.reservaForm = new FormGroup({
-      UsuarioSession: new FormControl(),
-      IdDelHotelSession: new FormControl(),
-      Nombre: new FormControl('',[Validators.required]),
-      Apellido: new FormControl('',[Validators.required]),
-      IdHabitacion: new FormControl('',[Validators.required]),
-      FechaLlegada: new FormControl('',[Validators.required]),
-      Fechasalida: new FormControl('',[Validators.required]),
-      NumPersonas: new FormControl('',[Validators.required]),
-      ModoDePago: new FormControl('',[Validators.required]),
-      PrecioNoche: new FormControl('',[Validators.required]),
-      Correo: new FormControl('',[Validators.email]),
-      ConfCorreo: new FormControl('',[Validators.email]),
-      
-    },{validators : ValidacionesPropias.verficarCorreos});
-
-  }
+                this.reservaForm = new FormGroup({
+                  UsuarioSession: new FormControl(),
+                  IdDelHotelSession: new FormControl(),
+                  Nombre: new FormControl('',[Validators.required]),
+                  Apellido: new FormControl('',[Validators.required]),
+                  IdHabitacion: new FormControl('',[Validators.required]),
+                  FechaLlegada: new FormControl('',[Validators.required]),
+                  Fechasalida: new FormControl('',[Validators.required]),
+                  NumPersonas: new FormControl('',[Validators.required]),
+                  ModoDePago: new FormControl('',[Validators.required]),
+                  PrecioNoche: new FormControl('',[Validators.required]),
+                  Correo: new FormControl('',[Validators.email]),
+                  ConfCorreo: new FormControl('',[Validators.email]),
+        
+                },{validators : ValidacionesPropias.verficarCorreos});
+              }
 
   ngOnInit(): void {
     let log = this.registroLoginService.estaLogueado();
@@ -107,7 +113,7 @@ export class ReservarComponent implements OnInit {
   }
 
   dataDisponibilidad() {
-    console.log(dispo);
+    //console.log(dispo);
     dispo.FechaLlegada = this.fechaInicio;
     dispo.FechaSalida = this.fechaFin;
     dispo.IdDelHotelSession = this.id;
@@ -117,7 +123,7 @@ export class ReservarComponent implements OnInit {
   }
 
   onFromSubmit() {
-    console.log(this.reservaForm.value);
+    //console.log(this.reservaForm.value);
     this.fechaInicio = formatDate(this.fechaInicio,'yyyy-MM-dd','en-Us');
     this.fechaFin = formatDate(this.fechaFin,'yyyy-MM-dd','en-Us');
     //console.log(this.fechaInicio);
@@ -151,11 +157,11 @@ export class ReservarComponent implements OnInit {
       //console.log("Reserva hotel");
       //console.log(data);
       reserva = data;
-      if (!reserva.boton) {        
-        this.snackBar.open('Reserva realizada!!!','ACEPTAR');
+      if (!reserva.boton) {    
+        this.abrirSnackBar('Reserva realizada con éxito','Aceptar');
         this.router.navigate(['/perfil']);
-      }else{        
-        this.snackBar.open('intentalo otra vez','ACEPTAR')
+      }else {
+        this.abrirSnackBar('No se realizó la reserva, intente nuevamente','Aceptar');
       }      
       this.progressbarService.barraProgreso.next("2");
     })
@@ -182,6 +188,13 @@ export class ReservarComponent implements OnInit {
 
   hotel() {
     this.router.navigate(['/hotel']);
+  }
+
+  abrirSnackBar(mensaje: string, accion: string) {
+    this.snackBar.open(mensaje, accion, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 
 }

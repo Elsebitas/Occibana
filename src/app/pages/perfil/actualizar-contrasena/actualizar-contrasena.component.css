@@ -1,68 +1,68 @@
 mat-card {
-    background-color:white;
-    max-width: 600px;
-    height: 400px;
-    margin: 2em auto;
-    text-align: left;
-    margin-top: 4%;
-    
-   
-  }
-
-
-  mat-form-field {
-    display: block;
-  }
-
-  .mat-raised-button{
-    width: 100%;
-  }
-  
-  
-  .main-wrapper{
-    width: 100%;
-    height: 100%;
-    
-  }
-  
-  .main-wrapper .example-full-width,
-  .main-wrapper .btn-block {
-    width: 100%;
-  }
-  
-  .main-wrapper mat-card-header mat-card-title {
-    font-size: 30px;
-    margin: 0;
-  }
-  
-  .main-wrapper .mat-card {
-    padding: 45px 70px 55px;
-  }
-  
-  .main-wrapper .mat-stroked-button {
-    float: left;
-    max-width: 35%;
-    border-radius: 25px;
-    border: 1px solid rgba(121, 119, 252, 0.295);
-    line-height: 50px;
-    background: #3f51b5;
-    font-weight: bold;
-  }
-  
-  .main-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
-    padding: 0.8375em 0;
-  }
-
-  .boxlogin{
-    max-width: 800px;
-  }
-/**********************************************************************************/
-  .white-icon {
-    color:rgba(0, 0, 0, 0.404);
+  background-color:white;
+  max-width: 600px;
+  height: 400px;
+  margin: 2em auto;
+  text-align: left;
+  margin-top: 4%;
 }
+
+mat-form-field {
+  display: block;
+}
+
+.mat-raised-button{
+  width: 100%;
+}
+
+
+.main-wrapper{
+  width: 100%;
+  height: 100%;
+  
+}
+
+.main-wrapper .example-full-width,
+.main-wrapper .btn-block {
+  width: 100%;
+}
+
+.main-wrapper mat-card-header mat-card-title {
+  font-size: 30px;
+  margin: 0;
+}
+
+.main-wrapper .mat-card {
+  padding: 45px 70px 55px;
+}
+
+.main-wrapper .mat-stroked-button {
+  float: left;
+  max-width: 35%;
+  border-radius: 25px;
+  border: 1px solid rgba(121, 119, 252, 0.295);
+  line-height: 50px;
+  background: #3f51b5;
+  font-weight: bold;
+}
+
+.main-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.8375em 0;
+}
+
+.boxlogin{
+  max-width: 800px;
+}
+
+/**********************************************************************************/
+
+.white-icon {
+  color:rgba(0, 0, 0, 0.404);
+}
+
 /* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
 .white-icon svg {
-    fill: red;
+  fill: red;
 }
 
 .line{
@@ -76,19 +76,24 @@ mat-card {
   margin-right: 2%;
   width: 42%;
 }
+
 .boton2 {
   width: 42%;
 }
+
 .alinear{
   text-align: center;
 }
+
 .tituloStyle{
   color: #3f51b5;
 }
+
 .candadoStyle{
   height: 35px;
   width: 35px;
 }
+
 .styleTitulos{
   color:#555555;
   font-size: 18px;

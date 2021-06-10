@@ -3,27 +3,28 @@
   padding-right: 5%;
   padding-bottom: 5%;
 }
+
 .content {
-    align-items: center;
-    margin: 2em auto;
-    width: 100%;
-  }
+  align-items: center;
+  margin: 2em auto;
+  width: 100%;
+}
 
-  .filter{
-    width: 100%;
-  }
+.filter{
+  width: 100%;
+}
 
-  .reservaTitle {
-    text-align: center;
-  }
+.reservaTitle {
+  text-align: center;
+}
 
-  table {
-    width: 100%;
-  }
-  
-  div.center {
-    text-align: center;
-  }
+table {
+  width: 100%;
+}
+
+div.center {
+  text-align: center;
+}
 
 .titulo{
   margin-top: 1%;

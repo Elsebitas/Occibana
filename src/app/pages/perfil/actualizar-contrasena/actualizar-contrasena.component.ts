@@ -1,5 +1,4 @@
 import { CargarDatosPerfil } from './../../../_model/CargarDatosPerfil';
-import { ListasService } from './../../../_service/listas.service';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
@@ -7,7 +6,7 @@ import { PerfilService } from './../../../_service/perfil.service';
 import { ProgressbarService } from './../../../_service/progressbar.service';
 import { Router } from '@angular/router';
 import { ActualizarContrasena } from './../../../_model/ActualizarContrasena';
-import { FormGroup, Validators, NgForm, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ValidacionesPropias } from 'src/app/_clase/ValidacionesPropias';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -17,18 +16,23 @@ import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snac
   templateUrl: './actualizar-contrasena.component.html',
   styleUrls: ['./actualizar-contrasena.component.css']
 })
+
 export class ActualizarContrasenaComponent implements OnInit {
+
   url: string;
+
   hide = true;
+
   hide2 = true;
+
   hide3 = true;
+
   error: string;
   
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-
-
   cargarDatosPerfil: CargarDatosPerfil;
+
   profileForm: FormGroup;
 
   /**
@@ -38,28 +42,27 @@ export class ActualizarContrasenaComponent implements OnInit {
    * @param loginService recibe el objeto RegistroLoginService.
    * @param router recibe el objeto Router.
    */
-  constructor(
-    private constrasenaService: PerfilService,
-    private perfilService: PerfilService,
-    private router: Router,
-    private progressbarService: ProgressbarService,
-    private _snackBar: MatSnackBar) { 
-    this.cargarDatosPerfil = new CargarDatosPerfil(),
+  constructor(private constrasenaService: PerfilService,
+              private perfilService: PerfilService,
+              private router: Router,
+              private progressbarService: ProgressbarService,
+              private _snackBar: MatSnackBar) { 
+              this.cargarDatosPerfil = new CargarDatosPerfil(),
     
-    this.profileForm = new FormGroup({
-        usuario: new FormControl('',Validators.required),
-        Correo: new FormControl('',Validators.required),
-        contrasenaAct: new FormControl('',Validators.required),
-        contrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')]),
-        confContrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')])
+              this.profileForm = new FormGroup({
+                  usuario: new FormControl('',Validators.required),
+                  Correo: new FormControl('',Validators.required),
+                  contrasenaAct: new FormControl('',Validators.required),
+                  contrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')]),
+                  confContrasenaNueva: new FormControl('', [Validators.required, Validators.minLength(5), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&#/=])[A-Za-z\d$@$!%*?&].{8,}')])
 
-      },{validators : ValidacionesPropias.cambiarContrasena});
-    }
+                },{validators : ValidacionesPropias.cambiarContrasena});
+              }
 
-    cargarDatos(){
-      this.profileForm.controls['usuario'].setValue(this.cargarDatosPerfil.datos.usuario);
-      this.profileForm.controls['Correo'].setValue(this.cargarDatosPerfil.datos.correo);
-    }
+  cargarDatos(){
+    this.profileForm.controls['usuario'].setValue(this.cargarDatosPerfil.datos.usuario);
+    this.profileForm.controls['Correo'].setValue(this.cargarDatosPerfil.datos.correo);
+  }
 
   /**
    * Método que instancia el formulario con sus validaciones.
@@ -68,26 +71,19 @@ export class ActualizarContrasenaComponent implements OnInit {
     this.postCargarDatosPerfil();
   }
 
-
   postCargarDatosPerfil(){
     this.url = environment.HOST;
-    
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
     //console.log(decodedToken.name);
-
     let datosPerfil: DatosPerfil;
     datosPerfil = new DatosPerfil();
     datosPerfil.usuario = decodedToken.name;
-
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data =>{ 
       this.cargarDatosPerfil = data; 
       //console.log(data);
       this.cargarDatos();
     })
-   
-    
-
   }
 
   /**
@@ -98,7 +94,6 @@ export class ActualizarContrasenaComponent implements OnInit {
   onFromSubmit() {
     let actualizarContrasena = this.profileForm.value;
     this.actualizarContrasena(actualizarContrasena);
-    
   }
 
   /**
@@ -113,13 +108,12 @@ export class ActualizarContrasenaComponent implements OnInit {
     this.constrasenaService.putActualizarDatos(actualizarContrasena).subscribe(data => {
       actualizarContrasena = data;
       this.abrirSnackBar(actualizarContrasena.mensaje, 'Aceptar');
-      console.log(data);
+      //console.log(data);
       //console.log(data);
       this.progressbarService.barraProgreso.next("2");
       if(actualizarContrasena.mensaje != "Verifica tus datos.\n La contraseña no coinside con tu usuario"){
         this.router.navigate(['/perfil']);
       }
-      
     })   
   }
 

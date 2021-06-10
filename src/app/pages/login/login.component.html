@@ -5,9 +5,7 @@
                 <img class="crop" src=".\assets\images\logo_login.png" width="150" height="160">
             </div>
         </mat-card-header>
-
         <mat-card-content>
-
             <br>
             <mat-tab-group mat-align-tabs="center">
                 <mat-tab label="Iniciar sesión">
@@ -24,12 +22,10 @@
                                     Usuario es <strong>requerido</strong>
                                 </mat-error>
                             </mat-form-field>
-
-
                         </p>
                         <div>
                             <mat-form-field appearance="outline">
-                                <mat-label>Ingresar su contraseña</mat-label>
+                                <mat-label>Contraseña</mat-label>
                                 <input required matInput formControlName="Contrasena"
                                     [type]="hide ? 'password' : 'text'">
                                 <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
@@ -40,14 +36,10 @@
                                     Contraseña es <strong>requerida</strong>
                                 </mat-error>
                             </mat-form-field>
-
-
-
                         </div>
                         <p>
                             <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
                         </p>
-
                         <p>
                             <button button mat-stroked-button style="color:#fffafa" [disabled]="loginForm.invalid"
                                 class="btn-block">
@@ -56,14 +48,10 @@
                         </p>
                         <p>
                             <a style="color:#a271fc" style="cursor: pointer;"
-                                (click)="dialogoRecuperarContrasena()">¿Olvido su contraseña?</a>
+                                (click)="dialogoRecuperarContrasena()">¿Olvidó su contraseña?</a>
                         </p>
                     </form>
                 </mat-tab>
-
-
-
-
                 <mat-tab label="Registrarse">
                     <form [formGroup]="registroForm" (ngSubmit)="onFromSubmit2()">
                         <mat-vertical-stepper>
@@ -82,7 +70,6 @@
                                         Nombre es <strong>requerido</strong>
                                     </mat-error>
                                 </mat-form-field>
-
                                 <mat-form-field class="textfield">
                                     <mat-label>Apellido</mat-label>
                                     <input matInput #entradaApellido formControlName="Apellido"
@@ -97,21 +84,20 @@
                                     </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
-                                    <mat-label>Telefono</mat-label>
+                                    <mat-label>Teléfono</mat-label>
                                     <input matInput #entradaTelefono formControlName="Telefono"
                                         placeholder="Escriba su telefono personal">
                                     <mat-hint align="end">{{entradaTelefono.value?.length || 0}}/10</mat-hint>
                                     <mat-error *ngIf="registroForm.get('Telefono').hasError('required')">
-                                        Telefono es <strong>requerido</strong>
+                                        Teléfono es <strong>requerido</strong>
                                     </mat-error>
                                     <mat-error
                                         *ngIf="registroForm.get('Telefono').errors?.validarInicialTelefono && !registroForm.get('Telefono').hasError('required')">
-                                        Por favor introduzca un telefono valido
+                                        Por favor introduzca un teléfono valido
                                     </mat-error>
-
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
-                                    <mat-label>Correo</mat-label>
+                                    <mat-label>Correo electrónico</mat-label>
                                     <input matInput #entradaCorreo formControlName="Correo"
                                         placeholder="Escriba su correo personal">
                                     <mat-hint align="end">{{entradaCorreo.value?.length || 0}}/50</mat-hint>
@@ -149,7 +135,7 @@
                                         Contraseña es <strong>requerido</strong>
                                     </mat-error>
                                     <mat-error *ngIf="registroForm.get('Contrasena').hasError('pattern')">
-                                        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                                        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, números, carácteres especiales</strong>
                                     </mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="textfield">
@@ -161,16 +147,15 @@
                                         <mat-icon class="white-icon">{{hide2 ? 'visibility_off' : 'visibility'}}
                                         </mat-icon>
                                     </button>
-
                                     <mat-error *ngIf="registroForm.controls.Actcontrasena.hasError('required')">
                                         Confirmar su contraseña es <strong>requerido</strong>
                                     </mat-error>
                                     <mat-error
                                         *ngIf="registroForm.controls.Actcontrasena.hasError('NoPasswordsMatch') && !registroForm.controls.Actcontrasena.hasError('required')">
-                                        Contraseñas no <strong>Coinciden</strong>
+                                        Las contraseñas <strong>no coinciden</strong>
                                     </mat-error>
                                     <mat-error *ngIf="registroForm.get('Actcontrasena').hasError('pattern')">
-                                        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                                        La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, números, carácteres especiales</strong>
                                     </mat-error>
                                 </mat-form-field>
                                 <br>
@@ -179,13 +164,11 @@
                                 </p>
                                 <button mat-button type="button" matStepperPrevious>Anterior</button>
                                 <button mat-button [disabled]="registroForm.invalid">!Hecho!</button>
-
                             </mat-step>                          
                         </mat-vertical-stepper>
                     </form>
                 </mat-tab>
             </mat-tab-group>
-
         </mat-card-content>
     </mat-card>
 </div>

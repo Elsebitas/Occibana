@@ -9,7 +9,6 @@
                 <div class="line"></div>
                 <br>
                 <div class="styleTitulos">Confirme su contraseña actual:</div>
-                
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Contraseña actual</mat-label>
@@ -36,14 +35,13 @@
                             La nueva contraseña es <strong>requerida</strong>
                         </mat-error>
                         <mat-error *ngIf="profileForm.get('contrasenaNueva').hasError('pattern')">
-                            La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                            La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, números, carácteres especiales</strong>
                         </mat-error>      
                         <mat-error *ngIf="profileForm.get('contrasenaNueva').hasError('minlength')">
                             El número de caracteres mínimo es <strong>5</strong>
                         </mat-error>  
                     </mat-form-field>
                 </p>
-
                 <p>
                     <mat-form-field appearance="outline">
                         <mat-label>Confirmar nueva contraseña</mat-label>
@@ -52,7 +50,6 @@
                             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
                             <mat-icon class="white-icon">{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        
                         <mat-error *ngIf="profileForm.get('confContrasenaNueva').hasError('required')">
                             Confirmar la nueva contraseña es <strong>requerido</strong>
                         </mat-error> 
@@ -64,20 +61,17 @@
                             El número de caracteres mínimo es <strong>5</strong>
                         </mat-error>  
                         <mat-error *ngIf="profileForm.get('confContrasenaNueva').hasError('pattern')">
-                            La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, numeros, carácteres especiales</strong>
+                            La contraseña debe tener al menos: <strong>8 carácteres, letras minúsculas y mayúsculas, números, carácteres especiales</strong>
                         </mat-error>
                     </mat-form-field>
                 </p>
-
                 <p>
                     <mat-error *ngIf="error != null">Usuario o Contraseña incorrectas</mat-error>
                 </p>
-
                 <p class="alinear">
-                    
                     <button mat-raised-button color="primary" class="boton" type="submit" [disabled]="profileForm.invalid">
                         <mat-icon>update</mat-icon>
-                        <span> Actualizar Contraseña</span>
+                        <span> Actualizar contraseña</span>
                     </button>
                     <button mat-raised-button color="warn" class="boton2" type="button" routerLink="/perfil">
                         <mat-icon>close</mat-icon>

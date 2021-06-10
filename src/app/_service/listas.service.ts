@@ -2,19 +2,18 @@ import { ListasMunicipios } from './../_model/ListasMunicipios';
 import { ListasZonas } from './../_model/ListasZonas';
 import { MisReservas } from './../_model/MisReservas';
 import { MostrarReservasHotel } from './../_model/MostrarReservasHotel';
-import { ObtenerComentarios } from './../_model/ObtenerComentarios';
 import { Observable } from 'rxjs';
 import { HotelesPrincipales } from './../_model/HotelesPrincipales';
 import { HotelesDestacados } from './../_model/HotelesDestacados';
 import { HabitacionesHotel } from './../_model/HabitacionesHotel';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
+
 /**
  * Servicio que implementa todos los servicios del apartado listas.
  */

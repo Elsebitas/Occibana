@@ -1,4 +1,3 @@
-
 export class RegistroUsuarios{
     Nombre: string;
     Apellido: string;

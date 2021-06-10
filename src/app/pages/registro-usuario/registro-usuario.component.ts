@@ -12,10 +12,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroUsuarioComponent implements OnInit {
 
-
   hide = true;
-  registroUsarios: RegistroUsuarios;
 
+  registroUsarios: RegistroUsuarios;
 
   /**
    * Variable que instancia el objeto FormGroup.
@@ -26,6 +25,7 @@ export class RegistroUsuarioComponent implements OnInit {
    * Variable que almacena el error.
    */
   error: string;
+
   /**
    * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
    * 
@@ -34,9 +34,9 @@ export class RegistroUsuarioComponent implements OnInit {
    * @param router recibe el objeto Router.
    */
   constructor(private formBuilder: FormBuilder,
-    private registroService: RegistroLoginService,
-    private router: Router,
-    private progressbarService: ProgressbarService) { }
+              private registroService: RegistroLoginService,
+              private router: Router,
+              private progressbarService: ProgressbarService) { }
 
   /**
    * Método que instancia el formulario con sus validaciones.

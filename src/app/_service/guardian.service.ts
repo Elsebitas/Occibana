@@ -1,6 +1,5 @@
 import { ProgressbarService } from './progressbar.service';
 import { CryptoService } from './crypto.service';
-import { Observable } from 'rxjs';
 import { Login } from './../_model/Login';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from './../../environments/environment';
@@ -11,14 +10,14 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from
 @Injectable({
   providedIn: 'root'
 })
+
 export class GuardianService implements CanActivate {
 
-
   constructor(private RegistroLoginService: RegistroLoginService,
-    private router: Router,
-    private crypto: CryptoService,
-    private login: Login,
-    private progressbarService: ProgressbarService
+              private router: Router,
+              private crypto: CryptoService,
+              private login: Login,
+              private progressbarService: ProgressbarService
   ) { }
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

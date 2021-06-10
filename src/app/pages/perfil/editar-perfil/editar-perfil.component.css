@@ -11,42 +11,45 @@ h1{
     
 }
 .example-full-width{
-    width: 85%;
+  width: 85%;
 }
+
 mat-card {
-    background-color:white;
-    max-width: 80%;
-    margin: 2em auto;
-    text-align: center;
-    margin-top: 4%;
-  }
+  background-color:white;
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+  margin-top: 4%;
+}
 
-  mat-card-header {
-    text-align: center;
-  }
+mat-card-header {
+  text-align: center;
+}
 
-  mat-card-content {
-    margin: 2em auto;
-    margin-top: 1%;
-  }
+mat-card-content {
+  margin: 2em auto;
+  margin-top: 1%;
+}
 
 .boton {
-    margin-right: 2%;
-    width: 42%;
+  margin-right: 2%;
+  width: 42%;
 }
+
 .boton2 {
-    width: 42%;
+  width: 42%;
 }
+
 .colorIcon{
   color: grey;
 }
-
 
 .flex-row {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
+
 .flex-row div{
   flex: 50%;
 }
@@ -54,7 +57,6 @@ mat-card {
 .izquierda{
   position: relative;
   width: 100%;
-  
 }
 
 .derecha{  
@@ -65,10 +67,7 @@ mat-card {
 .imagenHotel{
   background: rgb(141,154,227);
   background: linear-gradient(180deg, rgba(141,154,227,1) 5%, rgba(63,81,181,1) 74%, rgba(63,81,181,1) 100%);
-
 }
-
-
 
 .subtitles2{
   text-align: center;
@@ -95,7 +94,6 @@ mat-card {
   font-weight: 550;
 }
 
-
 .nombreHot{
   top: 63%;
   left: 0;
@@ -111,7 +109,6 @@ mat-card {
   font-weight: 500;
 }
 
-
 .fotoperfil{
   top: 10%;
   left: 0px;
@@ -122,7 +119,6 @@ mat-card {
   border-radius: 150px;
   border: 2px rgb(147, 1, 245)
 }
-
 
 .opacidad {
   opacity: 0.5;

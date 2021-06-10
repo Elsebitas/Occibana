@@ -1,16 +1,13 @@
-import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ValidacionesPropias } from './../../_clase/ValidacionesPropias';
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroUsuarios } from './../../_model/RegistroUsuarios';
-import { AppModule } from './../../app.module';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { CryptoService } from './../../_service/crypto.service';
 import { environment } from './../../../environments/environment';
 import { Login } from './../../_model/Login';
 import { RegistroLoginService } from '../../_service/registroLogin.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators, FormControl } from '@angular/forms';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RecuperarConstrasenaComponent } from './recuperar-constrasena/recuperar-constrasena.component';
 
@@ -19,6 +16,7 @@ import { RecuperarConstrasenaComponent } from './recuperar-constrasena/recuperar
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 /**
  * Clase del componente Login que implementa OnInit.
  */
@@ -30,24 +28,22 @@ export class LoginComponent implements OnInit {
   login : Login;
 
   hide = true;
-  hide2 = true;
 
+  hide2 = true;
 
   /**
    * Variable que instancia el objeto FormGroup.
    */
   loginForm: FormGroup;
+
   registroForm: FormGroup;
 
   /**
    * Variable que almacena el error.
    */
   error: string;
+
   error2: string;
-
-
-  
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   /**
    * Constructor que inicializa el formulario, el ServicioLogin y la ruta.
@@ -56,15 +52,11 @@ export class LoginComponent implements OnInit {
    * @param loginService recibe el objeto RegistroLoginService.
    * @param router recibe el objeto Router.
    */
-  constructor(private formBuilder:FormBuilder,
-              private loginService:RegistroLoginService, 
+  constructor(private loginService:RegistroLoginService, 
               private router: Router,
               private crypto: CryptoService,
               private progressbarService: ProgressbarService,
-              private appModule: AppModule,
-              private dialogo : MatDialog,
-              private _snackBar: MatSnackBar) { 
-
+              private dialogo : MatDialog,) { 
                 this.loginForm = new FormGroup({
                   Usuario: new FormControl('', [Validators.required, Validators.maxLength(20)]),
                   Contrasena: new FormControl('', Validators.required),
@@ -125,14 +117,14 @@ export class LoginComponent implements OnInit {
       //this.abrirSnackBar('¡Bienvenido! gracias por iniciar sesión','Aceptar');
       this.router.navigate(['/inicio']);
     }, err =>{
-      console.log(err);
+      //console.log(err);
       if(err.status == 400) {
         this.error = 'Usuario y/o cotrasena incorrecta';
         this.progressbarService.barraProgreso.next("2");
       } else {
         //this.router.navigate([`/error/${err.status}/${err.statusText}`]);
       }
-  })
+    })
   }
 
   postRegistroUsuarios(registroUsuarios: RegistroUsuarios) {
@@ -154,7 +146,7 @@ export class LoginComponent implements OnInit {
     //usuario: string, correo: string
     const dialogRef = this.dialogo.open(RecuperarConstrasenaComponent, {
       width: '400px',
-//      data: {idReserva: idReserva}
+      //data: {idReserva: idReserva}
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -7,28 +7,24 @@
     <p class="tituloOcci">OCCIBANA</p>
     <!--<span>Occibana</span>-->
     <span class="example-spacer"></span>
-
     <button mat-raised-button routerLink="/inicio" *ngIf="usuario == null" class="botonInicio" style="cursor: pointer"
       color="primary">
       <mat-icon>apartment</mat-icon>
        Inicio
     </button>
-
     <button mat-raised-button class="botonLog" *ngIf="usuario == null" routerLink="/login" color="primary">
       <mat-icon>account_box</mat-icon>
-      <span> Iniciar Sesión</span>
+      <span> Iniciar sesión</span>
     </button>
-
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="usuario != null" class="botonMenu">
       <!--<img src="assets/images/cheems.jpg">-->
       <img src="{{url2}}{{cargarDatosPerfil.datos.fotoperfil}}" fallimg>
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
-
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngIf="usuario == null" routerLink="/login">
         <mat-icon>account_box</mat-icon>
-        <span>Iniciar Sesión</span>
+        <span>Iniciar sesión</span>
       </button>
       <button mat-menu-item *ngIf="usuario != null" routerLink="/inicio">
         <mat-icon>home</mat-icon>
@@ -40,12 +36,10 @@
       </button>
       <button mat-menu-item *ngIf="usuario != null" routerLink="/inicio" (click)="postCerrarSesion()">
         <mat-icon>exit_to_app</mat-icon>
-        <span>Cerrar Sesión</span>
+        <span>Cerrar sesión</span>
       </button>
     </mat-menu>
-
   </mat-toolbar>
-
   <router-outlet></router-outlet>
   <div class="container"></div>
   <footer>
@@ -54,9 +48,9 @@
       <div class="ft-main-item">
         <h2 class="ft-title"><strong>Nosotros</strong></h2>
         <ul>
-          <li><a style="cursor:pointer" (click)="openDialogMision()" >Misión</a></li>
-          <li><a style="cursor:pointer" (click)="openDialogVision()" >Visión</a></li>
-          <li><a style="cursor:pointer" (click)="openDialogLema()" >Lema</a></li>
+          <li><a style="cursor:pointer" (click)="openDialogMision()">Misión</a></li>
+          <li><a style="cursor:pointer" (click)="openDialogVision()">Visión</a></li>
+          <li><a style="cursor:pointer" (click)="openDialogLema()">Lema</a></li>
         </ul>
       </div>
       <div class="ft-main-item">
@@ -69,7 +63,7 @@
         <h2 class="ft-title">Contáctanos</h2>
         <ul>
           <li>
-            <mat-icon> email</mat-icon><a href="https://accounts.google.com/" target="_blank" > Occibana@gmail.com</a>
+            <mat-icon> email</mat-icon><a href="https://accounts.google.com/" target="_blank" > occibana@gmail.com</a>
           </li>
           <li>
             <mat-icon> phone</mat-icon><a href="https://www.google.com/" target="_blank"> +57 1234567</a>
@@ -92,7 +86,6 @@
         </div>
       </div>
     </section>
-
     <!-- Footer social -->
     <section class="ft-social">
       <ul class="ft-social-list">
@@ -104,7 +97,6 @@
         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
       </ul>
     </section>
-
     <!-- Footer legal -->
     <section class="ft-legal">
       <ul class="ft-legal-list">
@@ -114,5 +106,4 @@
       </ul>
     </section>
   </footer>
-
 </div>

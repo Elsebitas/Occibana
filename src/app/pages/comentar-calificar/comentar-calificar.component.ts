@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TraerMensajeDatosPerfil } from './../../_model/TraerMensajeDatosPerfil';
 import { ComentarCalificarService } from './../../_service/comentar-calificar.service';
 import { Router } from '@angular/router';
-import { ObtenerComentarios } from './../../_model/ObtenerComentarios';
 import { HotelesPrincipales } from './../../_model/HotelesPrincipales';
 import { ProgressbarService } from './../../_service/progressbar.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +16,7 @@ import { RegistroLoginService } from 'src/app/_service/registroLogin.service';
   templateUrl: './comentar-calificar.component.html',
   styleUrls: ['./comentar-calificar.component.css']
 })
+
 export class ComentarCalificarComponent implements OnInit {
 
   boton: boolean = true;

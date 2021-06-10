@@ -36,7 +36,6 @@ export class RegistroLoginService {
 
   private url3: string = `${environment.HOST}/admin/`;
 
-
   /**
    * Constructor que inicializa el objeto http.
    * 

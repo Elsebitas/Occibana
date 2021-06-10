@@ -6,12 +6,12 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './dialog-mision.component.html',
   styleUrls: ['./dialog-mision.component.css']
 })
+
 export class DialogMisionComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogMisionComponent>) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   aceptar(): void {
     this.dialogRef.close({

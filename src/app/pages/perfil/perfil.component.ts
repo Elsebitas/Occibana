@@ -1,6 +1,6 @@
 import { FormControl, FormGroup } from '@angular/forms';
 import { AgregarImagen } from './../../_model/AgregarImagen';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { HotelesDestacados } from './../../_model/HotelesDestacados';
 import { ListasService } from './../../_service/listas.service';
@@ -12,11 +12,11 @@ import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DatosPerfil } from 'src/app/_model/DatosPerfil';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 
 let id = {
   idUsuario: 1
 }
+
 let idH = {
   idhotel: 1
 }
@@ -26,12 +26,15 @@ let idH = {
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
 })
+
 export class PerfilComponent implements OnInit {
 
-
   public imagePath;
+
   imgURL: any;
+
   public message: string;
+
   public extension: any;
 
   sellersPermitFile: any;
@@ -46,54 +49,32 @@ export class PerfilComponent implements OnInit {
   hotelesDestacados: HotelesDestacados[];
 
   url: string;
-  url2: string;
-  url3: string;
-  url4: string;
 
+  url2: string;
+
+  url3: string;
+
+  url4: string;
 
   form: FormGroup;
 
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   constructor(private perfilService: PerfilService,
-    private appModule: AppModule,
-    private progressbarService: ProgressbarService,
-    private listasService: ListasService,
-    public route: ActivatedRoute,
-    private router: Router,
-    private _snackBar: MatSnackBar) {
-    this.cargarDatosPerfil = new CargarDatosPerfil();
-    this.form = new FormGroup({
-      usuario: new FormControl(''),
-      imagen: new FormControl('',),
-      extension: new FormControl('',),
-    });
-
-  }
-
-
-  cargarDatos() {
-
-    const helper = new JwtHelperService();
-    const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
-
-
-    this.form.controls['usuario'].setValue(decodedToken.name);
-    this.form.controls['imagen'].setValue(this.sellersPermitString);
-    this.form.controls['extension'].setValue(this.extension);
-    console.log(this.form.value);
-    let fotoDePerfil = this.form.value;
-
-    this.perfilService.postAgregarImagen(fotoDePerfil).subscribe(data => {
-      console.log(data);
-      this.progressbarService.barraProgreso.next("2");
-      window.location.reload();
-      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/perfil']);
-      });
-    })
-
-  }
-
+              private appModule: AppModule,
+              private progressbarService: ProgressbarService,
+              private listasService: ListasService,
+              public route: ActivatedRoute,
+              private router: Router,
+              private snackBar: MatSnackBar) {
+              this.cargarDatosPerfil = new CargarDatosPerfil();
+              this.form = new FormGroup({
+                usuario: new FormControl(''),
+                imagen: new FormControl('',),
+                extension: new FormControl('',),
+              });
+              }
+  
   ngOnInit(): void {
     this.url2 = environment.REALHOST;
     this.url3 = environment.URLPHOTOS2;
@@ -103,56 +84,71 @@ export class PerfilComponent implements OnInit {
     this.postCargarDatosPerfil();
   }
 
-  postCargarDatosPerfil() {
-    //appModule usuarios
-    //console.log("Usuario App Module "+this.appModule.usuario);
-    //console.log("ContraseÃ±a App Module "+this.appModule.contra);
-    this.url = environment.HOST;
-
+  cargarDatos() {
     const helper = new JwtHelperService();
     const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
-    //console.log(decodedToken.name);
-
-    let datosPerfil: DatosPerfil;
-    datosPerfil = new DatosPerfil();
-    datosPerfil.usuario = decodedToken.name;
-
-
-
-    this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
-      this.cargarDatosPerfil = data;
-      id.idUsuario = this.cargarDatosPerfil.datos.id;
-      let iduser: any = this.cargarDatosPerfil.datos.id;
-      localStorage.setItem("iduser", iduser);
-      this.postMostrarMisHoteles(id);
-      console.log(data);
-      console.log(this.cargarDatosPerfil);
-    })
-    this.progressbarService.barraProgreso.next("2");
-  }
-
-
-  postMostrarMisHoteles(idUser) {
-    this.listasService.postMostrarMisHoteles(idUser).subscribe(data => {
-      this.hotelesDestacados = data;
-      console.log("Mis Hoteles");
-      console.log(idUser);
-      console.log(data);
-    })
-  }
-
-
-  postEliminarHotelTabla(idHotel, idUser) {
-    idH.idhotel = idHotel;
-    this.listasService.postEliminarHotelTabla(idH).subscribe(data => {
-      this._snackBar.open(data, 'ACEPTAR');
-      this.postMostrarMisHoteles(idUser);
+    this.form.controls['usuario'].setValue(decodedToken.name);
+    this.form.controls['imagen'].setValue(this.sellersPermitString);
+    this.form.controls['extension'].setValue(this.extension);
+    //console.log(this.form.value);
+    let fotoDePerfil = this.form.value;
+    this.perfilService.postAgregarImagen(fotoDePerfil).subscribe(data => {
+      //console.log(data);
+      this.progressbarService.barraProgreso.next("2");
+      window.location.reload();
       this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/perfil']);
       });
     })
   }
 
+  postCargarDatosPerfil() {
+    //appModule usuarios
+    //console.log("Usuario App Module "+this.appModule.usuario);
+    //console.log("ContraseÃ±a App Module "+this.appModule.contra);
+    this.url = environment.HOST;
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(sessionStorage.getItem(environment.TOKEN));
+    //console.log(decodedToken.name);
+    let datosPerfil: DatosPerfil;
+    datosPerfil = new DatosPerfil();
+    datosPerfil.usuario = decodedToken.name;
+    this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
+      this.cargarDatosPerfil = data;
+      id.idUsuario = this.cargarDatosPerfil.datos.id;
+      let iduser: any = this.cargarDatosPerfil.datos.id;
+      localStorage.setItem("iduser", iduser);
+      this.postMostrarMisHoteles(id);
+      /*
+      console.log(data);
+      console.log(this.cargarDatosPerfil);
+      */
+    })
+    this.progressbarService.barraProgreso.next("2");
+  }
+
+  postMostrarMisHoteles(idUser) {
+    this.listasService.postMostrarMisHoteles(idUser).subscribe(data => {
+      this.hotelesDestacados = data;
+      /*
+      console.log("Mis Hoteles");
+      console.log(idUser);
+      console.log(data);
+      */
+    })
+  }
+
+  postEliminarHotelTabla(idHotel, idUser) {
+    idH.idhotel = idHotel;
+    this.listasService.postEliminarHotelTabla(idH).subscribe(data => {
+      this.abrirSnackBar(data, 'Aceptar');
+      //this._snackBar.open(data, 'Aceptar');
+      this.postMostrarMisHoteles(idUser);
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/perfil']);
+      });
+    })
+  }
 
   agregarHabitacion(id, nombre, precio) {
     //console.log(id);
@@ -172,7 +168,6 @@ export class PerfilComponent implements OnInit {
     localStorage.setItem("idhotel", id);
     this.router.navigate(['/perfil/reservashotel']);
   }
-
 
   agregarHotel() {
     this.router.navigate(['/perfil/agregarhotel']);
@@ -199,7 +194,6 @@ export class PerfilComponent implements OnInit {
     this.picked(event);
   }
 
-
   public picked(event) {
     let fileList: FileList = event.target.files;
     const file: File = fileList[0];
@@ -215,32 +209,28 @@ export class PerfilComponent implements OnInit {
       alert('invalid format');
       return;
     }
-    console.log(file);
+    //console.log(file);
     reader.onloadend = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
-
-
     let extensioNueva = this.valiadarFormato(file.type);
-    console.log(extensioNueva);
+    //console.log(extensioNueva);
   }
+
   _handleReaderLoaded(e) {
     let reader = e.target;
     var base64result = reader.result.substr(reader.result.indexOf(',') + 1);
     //this.imageSrc = base64result;
     this.sellersPermitString = base64result;
     this.log();
-
-
   }
 
   log() {
     this.cargarDatos();
     this.progressbarService.barraProgreso.next("1");
-
   }
 
   valiadarFormato(exten: string) {
-    console.log(exten);
+    //console.log(exten);
     if (exten == "image/jpeg") {
       this.extension = ".jpeg"
     }
@@ -255,6 +245,13 @@ export class PerfilComponent implements OnInit {
     }
 
     this.agregarImagen.extension = this.extension;
+  }
+
+  abrirSnackBar(mensaje: string, accion: string) {
+    this.snackBar.open(mensaje, accion, {
+      verticalPosition: this.verticalPosition,
+      duration: 4000,
+    });
   }
 
 }
