@@ -94,25 +94,25 @@ export class HotelComponent implements OnInit {
   
   postObtenerInformacion(){
     this.panelHotelService.postInformacionDelHotel(info).subscribe(data =>{
-      console.log("info hotel");
-      console.log(data);
+      //console.log("info hotel");
+      //console.log(data);
       this.informacionHotel = data;
     })
   }
 
   postInformacionDelHabitacion(){
     this.panelHotelService.postInformacionDelHabitacion(habitacion).subscribe(data =>{
-      console.log("info habitacion");
-      console.log(data);
+      //console.log("info habitacion");
+      //console.log(data);
     })
   }
 
   postHabitacionesHotel(){
     habitacionHotel.idHotel = this.id;
     this.listasService.postHabitacionesHotel(habitacionHotel).subscribe(data =>{
-      console.log("Habitaciones hotel");
+      //console.log("Habitaciones hotel");
       this.habitacionesHotel = data;
-      console.log(data);
+      //console.log(data);
     });
   }
 
@@ -125,16 +125,10 @@ export class HotelComponent implements OnInit {
     });
   }
 
-  reservar(idhabitacion,numpersonas, precio, nombre, numcamas, numbanio){
+  reservar(idhabitacion, nombre){
     localStorage.setItem("idhabitacion",idhabitacion);
     localStorage.setItem("nombreHotel",nombre);
-    this.router.navigate(['/hotel/reservar'], { state:{ idhotel: this.id, 
-                                                        idhabitacion: idhabitacion,
-                                                        numPersonas: numpersonas,
-                                                        precio: precio,
-                                                        nombre: nombre,
-                                                        numcamas: numcamas,
-                                                        numbanio: numbanio} });
+    this.router.navigate(['/hotel/reservar']);
   }
 
   

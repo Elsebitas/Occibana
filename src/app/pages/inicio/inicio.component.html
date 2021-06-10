@@ -60,29 +60,33 @@
         <tr>
           <td>
             <mat-form-field class="filter" appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> search </mat-icon>
               <mat-label>Consultar hotel por nombre</mat-label>
-              <input matInput [(ngModel)]="searchTerm">
+              <input matInput [(ngModel)]="searchTerm" class="colorLetra">
               <mat-icon matSuffix></mat-icon>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
               <mat-label>Precio minimo </mat-label>
-              <input matInput type="number" [(ngModel)]="searchMin">
+              <input matInput type="number" [(ngModel)]="searchMin" class="colorLetra">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> attach_money </mat-icon>
               <mat-label>Precio maximo</mat-label>
-              <input matInput type="number" [(ngModel)]="searchMax">
+              <input matInput type="number" [(ngModel)]="searchMax" class="colorLetra">
             </mat-form-field>
           </td>
         </tr>
       </table>
-      <table style="margin: auto; margin-left: 6%;">
+      <table style="margin: auto; margin-left: 4%;">
         <tr>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> my_location </mat-icon>
               <mat-label>Municipio</mat-label>
               <mat-select [(ngModel)]="searchMun">
                 <mat-option>None</mat-option>
@@ -93,6 +97,7 @@
           </td>
           <td>
             <mat-form-field appearance="fill" class="menubar">
+              <mat-icon class="colorIcon" matPrefix> location_searching </mat-icon>
               <mat-label>Zonas</mat-label>
               <mat-select [(ngModel)]="searchZona">
                 <mat-option>None</mat-option>
@@ -102,6 +107,7 @@
           </td>
           <td>
             <mat-form-field appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> hotel </mat-icon>
               <mat-label>Tipo de Habitación</mat-label>
               <mat-select [(ngModel)]="searchHab">
                 <mat-option value="Basica">Basica</mat-option>
@@ -112,35 +118,36 @@
           </td>
           <td>
             <mat-form-field class="personass" appearance="fill">
+              <mat-icon class="colorIcon" matPrefix> people </mat-icon>
               <mat-label>personas</mat-label>
               <mat-select [(ngModel)]="searchPer">
                 <mat-option># de personas</mat-option>
                 <mat-option value="1"><strong>1</strong>
-                  <mat-icon>person</mat-icon>
+                  <mat-icon matPrefix> person</mat-icon>
                 </mat-option>
                 <mat-option value="2"><strong>2</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="3"><strong>3</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="4"><strong>4</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="5"><strong>5</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="6"><strong>6</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="7"><strong>7</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="8"><strong>8</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
                 <mat-option value="9"><strong>9</strong>
-                  <mat-icon>people</mat-icon>
+                  <mat-icon> people</mat-icon>
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -217,11 +224,11 @@
             <p class="hoteltitle2">    {{hotelesDes.nombre}} </p>
             <p class="hoteltitle2"></p>
             <div *ngIf="hotelesDes.promediocalificacion == null" class="titles3"> Sin calificación aún </div>
-            <p *ngIf="hotelesDes.promediocalificacion == 1" class="titles4"> 	<mat-icon >star star_border star_border star_border star_border</mat-icon> </p>
-            <p *ngIf="hotelesDes.promediocalificacion == 2" class="titles4"> 	<mat-icon>star star star_border star_border star_border</mat-icon> </p>
-            <p *ngIf="hotelesDes.promediocalificacion == 3" class="titles4"> <mat-icon>star star star star_border star_border</mat-icon> </p>
-            <p *ngIf="hotelesDes.promediocalificacion == 4" class="titles4"> <mat-icon>star star star star star_border</mat-icon> </p>
-            <p *ngIf="hotelesDes.promediocalificacion == 5" class="titles4"> <mat-icon>star star star star star</mat-icon>  </p>
+            <p *ngIf="hotelesDes.promediocalificacion == 1" class="titles4"> 	<mat-icon class="starColor">star star_border star_border star_border star_border</mat-icon> </p>
+            <p *ngIf="hotelesDes.promediocalificacion == 2" class="titles4"> 	<mat-icon class="starColor">star star star_border star_border star_border</mat-icon> </p>
+            <p *ngIf="hotelesDes.promediocalificacion == 3" class="titles4"> <mat-icon class="starColor">star star star star_border star_border</mat-icon> </p>
+            <p *ngIf="hotelesDes.promediocalificacion == 4" class="titles4"> <mat-icon class="starColor">star star star star star_border</mat-icon> </p>
+            <p *ngIf="hotelesDes.promediocalificacion == 5" class="titles4"> <mat-icon class="starColor">star star star star star</mat-icon>  </p>
           </mat-card-content>
         </mat-card>
         <br>
