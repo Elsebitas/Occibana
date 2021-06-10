@@ -47,7 +47,7 @@ export class PerfilComponent implements OnInit {
 
   url: string;
   url2: string;
-  url3: string; 
+  url3: string;
   url4: string;
 
 
@@ -85,7 +85,13 @@ export class PerfilComponent implements OnInit {
 
     this.perfilService.postAgregarImagen(fotoDePerfil).subscribe(data => {
       console.log(data);
+      this.progressbarService.barraProgreso.next("2");
+      window.location.reload();
+      this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/perfil']);
+      });
     })
+
   }
 
   ngOnInit(): void {
@@ -116,8 +122,8 @@ export class PerfilComponent implements OnInit {
     this.perfilService.postCargarDatosPerfil(datosPerfil).subscribe(data => {
       this.cargarDatosPerfil = data;
       id.idUsuario = this.cargarDatosPerfil.datos.id;
-      let iduser:any = this.cargarDatosPerfil.datos.id;
-      localStorage.setItem("iduser",iduser);
+      let iduser: any = this.cargarDatosPerfil.datos.id;
+      localStorage.setItem("iduser", iduser);
       this.postMostrarMisHoteles(id);
       console.log(data);
       console.log(this.cargarDatosPerfil);
@@ -150,20 +156,20 @@ export class PerfilComponent implements OnInit {
 
   agregarHabitacion(id, nombre, precio) {
     //console.log(id);
-    localStorage.setItem("idhotel",id);
-    localStorage.setItem("nombreHotel",nombre);
+    localStorage.setItem("idhotel", id);
+    localStorage.setItem("nombreHotel", nombre);
     this.router.navigate(['/perfil/agregar_habitacion']);
   }
 
   comprarMembresia(id, user, correo) {
     //console.log(id);
-    localStorage.setItem("iduser",id);
-    localStorage.setItem("correo",correo);
+    localStorage.setItem("iduser", id);
+    localStorage.setItem("correo", correo);
     this.router.navigate(['/perfil/comprarmembresias']);
   }
 
   mostrarReservasHotel(id) {
-    localStorage.setItem("idhotel",id);
+    localStorage.setItem("idhotel", id);
     this.router.navigate(['/perfil/reservashotel']);
   }
 
@@ -229,6 +235,7 @@ export class PerfilComponent implements OnInit {
 
   log() {
     this.cargarDatos();
+    this.progressbarService.barraProgreso.next("1");
 
   }
 
