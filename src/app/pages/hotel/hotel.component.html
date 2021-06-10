@@ -148,41 +148,47 @@
                     </ng-container>
                 </div>
             </div>
+            <div *ngIf="habitacionesHotel.length == 0" class="comentarios2">Sin habitaciones por el momento</div>
+            <div *ngIf="habitacionesHotel.length == 0" class="comentarios3">Revise en otra ocasión</div>
+            <div *ngIf="habitacionesHotel.length == 0" class="centrar" ><mat-icon class="coments2"> local_hotel </mat-icon></div>
         </td>
         <td>
             <div>
                 <h2 class="textos">Comentarios de usuarios</h2>
-                <ng-container *ngFor="let coment of comentarios" style="padding: 50%;">
+                <div *ngIf="comentarios.length != 0">
+                    <ng-container *ngFor="let coment of comentarios" style="padding: 50%;">
                     
-                    <mat-card class="example-card">
-                        <mat-card-header>
-                            <div mat-card-avatar class="example-header-image"></div>
-                            <mat-card-title class="textos">{{coment.nombre_usuario}}</mat-card-title>
-                            <mat-card-subtitle>Usuario de OCCIBANA</mat-card-subtitle>
-                        </mat-card-header>
-                        <!--<img mat-card-image src="http://static1.eskypartners.com/travelguide/vancouver-hotels.jpg"
-                            alt="Photo of a Shiba Inu">-->
-                        <mat-card-content>
-                            <div class="textos2"> 
-                               <strong> Comentario: </strong>
-                                {{coment.comentario}}                  
-                            </div>
-                            <div class="textos2">
-                                <strong>Fecha del Comentario:</strong>
-                                
-                                {{coment.fecha_comentario}}
-                            </div>
-                            <div class="textos2">
-                                <strong>Fecha de salida: </strong>
-                                
-                               {{coment.fecha_salida}}
-    
-                            </div>
-    
-                        </mat-card-content>
-                    </mat-card>
-                </ng-container>
-
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title class="textos">{{coment.nombre_usuario}}</mat-card-title>
+                                <mat-card-subtitle>Usuario de OCCIBANA</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <div class="textos2"> 
+                                   <strong> Comentario: </strong>
+                                    {{coment.comentario}}                  
+                                </div>
+                                <div class="textos2">
+                                    <strong>Fecha del Comentario:</strong>
+                                    
+                                    {{coment.fecha_comentario}}
+                                </div>
+                                <div class="textos2">
+                                    <strong>Fecha de salida: </strong>
+                                    
+                                   {{coment.fecha_salida}}
+        
+                                </div>
+        
+                            </mat-card-content>
+                        </mat-card>
+                    </ng-container>
+                </div>
+                <div *ngIf="comentarios.length == 0" class="comentarios">Sin comentarios de usuarios</div>
+                <div *ngIf="comentarios.length == 0" >
+                    <mat-icon class="coments">comments_disabled</mat-icon>
+                </div>
             </div>
         </td>
     </table>
