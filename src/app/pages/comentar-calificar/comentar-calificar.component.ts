@@ -56,10 +56,10 @@ export class ComentarCalificarComponent implements OnInit {
                   comentario: new FormControl('', [Validators.required, Validators.maxLength(150), Validators.minLength(5)]),
                 });
 
-                this.idHotel = localStorage.getItem('idhotel');
+                this.idHotel = +localStorage.getItem('idhotel');
                 this.nombreHotel = localStorage.getItem('nombre');
-                this.idUsuario = localStorage.getItem('idreserva');
-                this.idReserva = localStorage.getItem('idusuario');
+                this.idUsuario = +localStorage.getItem('idusuario');
+                this.idReserva = +localStorage.getItem('idreserva');
 
                 /*
                 this.idHotel = this.router.getCurrentNavigation().extras.state.idhotel;
@@ -88,7 +88,9 @@ export class ComentarCalificarComponent implements OnInit {
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
 
-      if (this.traerMensajeDatosPerfil.mensaje == "Comentario Agregado.") {
+      console.log(this.traerMensajeDatosPerfil.mensaje);
+
+      if (this.traerMensajeDatosPerfil.mensaje == 'Comentario Agregado.') {
         this.cargarsnackBar();
         this.returnPerfil();
       } else {
@@ -110,7 +112,7 @@ export class ComentarCalificarComponent implements OnInit {
       this.traerMensajeDatosPerfil = new TraerMensajeDatosPerfil();
       this.traerMensajeDatosPerfil = data;
 
-      if (this.traerMensajeDatosPerfil.mensaje == "Calificacion realizada con exito") {
+      if (this.traerMensajeDatosPerfil.mensaje == 'Calificacion realizada con exito') {
         this.cargarsnackBar();
         this.returnPerfil();
       } else {

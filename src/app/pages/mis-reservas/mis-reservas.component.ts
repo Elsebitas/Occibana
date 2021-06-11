@@ -70,7 +70,7 @@ export class MisReservasComponent implements OnInit {
     localStorage.setItem('nombre', nombreHotel);
     localStorage.setItem('idreserva', idReserva);
     localStorage.setItem('idusuario', idUsuario);
-    this.router.navigate(['/comentar-calificar'], { state:{ idhotel: idHotel, nombre: nombreHotel, idusuario: idUsuario, idreserva: idReserva} });
+    this.router.navigate(['/comentar-calificar']);
   }
 
   aplicarFiltro(filtro: string) {
