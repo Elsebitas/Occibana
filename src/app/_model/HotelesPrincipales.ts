@@ -19,5 +19,6 @@ export class HotelesPrincipales{
     precioNocheDoble : number;
     precioNochePremium : number;
     imagen: string;
+    numMaxPersonasF: number;
     
 }
