@@ -151,6 +151,23 @@
   border-radius: 50px;
 }
 
+
+.coments{
+  text-align: center;
+  font-size: 60px;
+  margin-top: 30px;
+  font-weight: 700;
+  color: rgb(107, 107, 107);
+}
+
+.coments2{
+  text-align: center;
+  font-size: 40px;
+  margin-top: 35px;
+  color: rgb(180, 180, 180);
+}
+
+
 /* Boton subir foto */
 .file-select {          
   position: relative;

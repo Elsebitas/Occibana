@@ -33,7 +33,7 @@ export class AgregarHabitacionComponent implements OnInit {
               private router: Router,
               private progressbarService: ProgressbarService,) {           
                 this.id = localStorage.getItem("idhotel");
-                this.nombre = localStorage.getItem("idhotel");
+                this.nombre = localStorage.getItem("nombreHotel");
               }
 
   ngOnInit(): void {

@@ -100,6 +100,12 @@
                                 </mat-card>
                             </ng-container>
                         </div>
+                        <div *ngIf="hotelesDestacados.length == 0" class="coments"><br> No hay hoteles aún</div>
+                        <div *ngIf="hotelesDestacados.length == 0" class="coments2">Agregre uno en
+                            <button mat-mini-fab disabled >
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
                         <div class="divBoton">
                             <button mat-mini-fab color="primary" class="botonAdd" (click)="agregarHotel()">
                                 <mat-icon>add</mat-icon>

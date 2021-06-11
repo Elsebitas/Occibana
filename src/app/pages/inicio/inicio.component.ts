@@ -98,7 +98,7 @@ export class InicioComponent implements OnInit {
 
   filteredPerHotel(searchString: number) {
     return this.listaDeHotelesPrincipales.filter(lista =>
-      lista.numpersonas == searchString);
+      lista.numMaxPersonasF == searchString);
   }
 
   get searchZona(): string {
@@ -231,7 +231,7 @@ export class InicioComponent implements OnInit {
     this.listasService.postHolelesPrincipales(this.hotelesPrincipales).subscribe(data => {
       this.listaDeHotelesPrincipales = data;
       this.listaDeHotelesPrincipalesFiltrados = data;
-      //console.log(data);
+      console.log(data);
     });
 
     this.listasService.getListasMunicipios().subscribe(data => {
